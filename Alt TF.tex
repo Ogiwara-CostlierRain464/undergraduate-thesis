@@ -101,7 +101,7 @@ TF森の実態はtf2パッケージ中にあるBufferCoreクラス\cite{4} で�
 
 
 文字列であるframeはTF森内部では整数型のidで管理している
-frameからframe idを検索するテーブル、及びframe idからframeを検索するテーブルが存在する
+frameからframe idを検索するテーブル、及びframe idからframeを検索するテーブルが存在する frameIDs_
 
 座標変換はTransformStorageで表現され、これは以下で構成される
 回転成分を表すrotation。これはQuaternionで表現される
@@ -110,16 +110,31 @@ frameからframe idを検索するテーブル、及びframe idからframeを検
 座標変換の親フレームのframe idを表すframe\_id。これは整数型で表現される
 座標変換の子フレームのframe idを表すchild\_frame\_id。これは整数型で表現される
 
+TimeCacheInterfaceは特定のフレームから親フレームへの座標変換を登録・管理する抽象クラスである。主に以下のようなメソッドがある
+bool getData(ros::Time time, TransformStorage & data_out, std::string * error_str = 0)
+
+特定の時刻timeにおけるTransformStorageを取得する。
+
 TimeCacheはある子フレームにおける親フレームへの座標変換を時系列的に管理する。これはTransformStorageのdequeで構成され、ユーザーが座標変換情報を登録する際には先頭にpushし、保存していた座標変換の時刻が10秒以上過去のものとなればdequeから追い出す。
 
-StaticCacheは先程の例のrobot->sensor間の座標変換のように不変なある子フレームにおける親フレームへの座標変換情報を管理する。
+StaticCacheは先程の例のrobot->sensor間の座標変換のように不変なある子フレームにおける親フレームへの座標変換情報を管理する。frames_
 
-TimeCacheとStaticCacheはTF森における子フレームから親フレームへのエッジ及び子フレームのノードを表す。TimeCacheInterfaceはTimeCacheとStaticCacheの親クラスであり、各フレームidに対応するTimeCacheInterfaceのポインタを管理する配列が各フレームに対応するTimeCacheとStaticCacheを管理する。
+TimeCacheとStaticCacheはTF森における子フレームから親フレームへのエッジ及び子フレームのノードを表す。TimeCacheInterfaceはTimeCacheとStaticCacheの親クラスであり、TimeCacheとStaticCacheと同様のインターフェイスを提供する。
 
+各フレームidに対応するTimeCacheInterfaceのポインタを管理する配列が各フレームに対応するTimeCacheとStaticCacheを管理する。
+
+TF森は子から親フレームに子フレームからエッジが伸びる有向森構造となっている。特定のフレームに対応するTimeCacheInterfaceを取得するには、まずframeIDs_から対応するframe idを取得し、続いてframes_から対応するTimeCacheInterfaceへのポインタを取得する。
+
+
+TimeCacheInterface
+TimeCache
+StaticCache
+
+球面線形補間
 
 \subsection{検索}
 
-TFにはlookupTransformというメソッドがあり、
+TFにはlookupTransformというメソッドがあるこれは指定した時刻のtarget\_frameからsource\_frameまでの
 
 
 \subsection{更新、挿入}
