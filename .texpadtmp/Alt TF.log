@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.141592653-p3.9.0-210218-2.6 (utf8.euc) (TeX Live 2021) (preloaded format=platex 2021.6.8)  18 DEC 2021 09:08
+This is e-pTeX, Version 3.141592653-p3.9.0-210218-2.6 (utf8.euc) (TeX Live 2021) (preloaded format=platex 2021.6.8)  19 DEC 2021 21:09
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -415,40 +415,67 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 286.
 )
 \Hy@SectionHShift=\skip60
-)) (/usr/local/texlive/2021/texmf-dist/tex/latex/l3backend/l3backend-dvips.def
+)) (/usr/local/texlive/2021/texmf-dist/tex/latex/algorithms/algorithmic.sty
+Package: algorithmic 2009/08/24 v0.1 Document Style `algorithmic'
+ (/usr/local/texlive/2021/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+)
+\c@ALC@unique=\count303
+\c@ALC@line=\count304
+\c@ALC@rem=\count305
+\c@ALC@depth=\count306
+\ALC@tlm=\skip61
+\algorithmicindent=\skip62
+) (/usr/local/texlive/2021/texmf-dist/tex/latex/algorithms/algorithm.sty
+Package: algorithm 2009/08/24 v0.1 Document Style `algorithm' - floating environment
+ (/usr/local/texlive/2021/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count307
+\float@exts=\toks29
+\float@box=\box124
+\@float@everytoks=\toks30
+\@floatcapt=\box125
+)
+\@float@every@algorithm=\toks31
+\c@algorithm=\count308
+) (/usr/local/texlive/2021/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2020/03/24 1.8d listings language file
+) (/usr/local/texlive/2021/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
+) (/usr/local/texlive/2021/texmf-dist/tex/latex/l3backend/l3backend-dvips.def
 File: l3backend-dvips.def 2021-03-18 L3 backend support: dvips
-\l__pdf_internal_box=\box124
-\g__pdf_backend_object_int=\count303
-\l__pdf_backend_content_box=\box125
-\l__pdf_backend_model_box=\box126
-\g__pdf_backend_annotation_int=\count304
-\g__pdf_backend_link_int=\count305
-\g__pdf_backend_link_sf_int=\count306
+\l__pdf_internal_box=\box126
+\g__pdf_backend_object_int=\count309
+\l__pdf_backend_content_box=\box127
+\l__pdf_backend_model_box=\box128
+\g__pdf_backend_annotation_int=\count310
+\g__pdf_backend_link_int=\count311
+\g__pdf_backend_link_sf_int=\count312
 ) (/Users/ogiwara/Documents/undergraduate-thesis/.texpadtmp/Alt TF.aux)
 \openout1 = `"Alt TF.aux"'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 23.
-LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 32.
+LaTeX Font Info:    ... okay on input line 32.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: dvips
@@ -484,8 +511,8 @@ LaTeX Font Info:    ... okay on input line 23.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-\c@lstlisting=\count307
-Package hyperref Info: Link coloring OFF on input line 23.
+\c@lstlisting=\count313
+Package hyperref Info: Link coloring OFF on input line 32.
 (/usr/local/texlive/2021/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
  (/usr/local/texlive/2021/texmf-dist/tex/latex/refcount/refcount.sty
@@ -493,49 +520,74 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ) (/usr/local/texlive/2021/texmf-dist/tex/generic/gettitlestring/gettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count308
+\c@section@level=\count314
 )
-LaTeX Info: Redefining \ref on input line 23.
-LaTeX Info: Redefining \pageref on input line 23.
-LaTeX Info: Redefining \nameref on input line 23.
+LaTeX Info: Redefining \ref on input line 32.
+LaTeX Info: Redefining \pageref on input line 32.
+LaTeX Info: Redefining \nameref on input line 32.
  (/Users/ogiwara/Documents/undergraduate-thesis/.texpadtmp/Alt TF.out) (/Users/ogiwara/Documents/undergraduate-thesis/.texpadtmp/Alt TF.out)
 \@outlinefile=\write3
 \openout3 = `"Alt TF.out"'.
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 27.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 36.
  (/usr/local/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 27.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 36.
  (/usr/local/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <14.4> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 28.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 37.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <14.4> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 28.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 37.
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 59.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 68.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 59.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 68.
  [1
 
 ]
-Overfull \hbox (52.00871pt too wide) in paragraph at lines 159--160
+Underfull \hbox (badness 10000) in paragraph at lines 132--133
+[]\OT1/cmr/m/n/10 std::pair<ros::Time, Com-pact-FrameID> get-Lat-est-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 173--174
+[]\OT1/cmr/m/n/10 geometry[]msgs::TransformStamped lookup-Trans-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 188--189
+[]\OT1/cmr/m/n/10 int get-Lat-est-Com-mon-Time(CompactFrameID tar-
+ []
+
+
+Overfull \hbox (44.50851pt too wide) in paragraph at lines 200--201
+[]\OT1/cmr/m/n/10 TimeCacheInterfacePtr Buffer-Core::getFrame(CompactFrameID
+ []
+
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 232.
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 232.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 232.
+[2] [3]
+Overfull \hbox (52.00871pt too wide) in paragraph at lines 419--420
 []\OT1/cmr/m/n/10 "BufferCore.h", https://github.com/ros/geometry2/blob/noetic-
  []
 
-[2] (/Users/ogiwara/Documents/undergraduate-thesis/.texpadtmp/Alt TF.aux)
+[4] (/Users/ogiwara/Documents/undergraduate-thesis/.texpadtmp/Alt TF.aux)
 Package rerunfilecheck Info: File `"Alt TF".out' has not changed.
-(rerunfilecheck)             Checksum: 84223D53C6F6AD54EE36DF22E6C9802D;647.
+(rerunfilecheck)             Checksum: 19BEFFB15915FBC5704765608E383A4A;653.
  ) 
 Here is how much of TeX's memory you used:
- 11459 strings out of 479466
- 167843 string characters out of 5870549
- 503125 words of memory out of 5000000
- 29003 multiletter control sequences out of 15000+600000
- 414546 words of font info for 72 fonts, out of 8000000 for 9000
+ 11798 strings out of 479466
+ 172477 string characters out of 5870549
+ 699422 words of memory out of 5000000
+ 29319 multiletter control sequences out of 15000+600000
+ 416553 words of font info for 81 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 76i,6n,80p,331b,468s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 76i,6n,80p,485b,694s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on "/Users/ogiwara/Documents/undergraduate-thesis/.texpadtmp/Alt TF.dvi" (2 pages, 20168 bytes).
+Output written on "/Users/ogiwara/Documents/undergraduate-thesis/.texpadtmp/Alt TF.dvi" (4 pages, 47188 bytes).

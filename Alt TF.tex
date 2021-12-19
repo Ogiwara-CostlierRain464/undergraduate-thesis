@@ -14,10 +14,19 @@
 \usepackage{multicol}
 \usepackage{hyperref}
 \pagestyle{empty}
+\usepackage{algorithmic}
+\usepackage{algorithm}
 
 \setlength{\columnsep}{1cm}
 
-\title{AltTF: Alternative lock-free TF tree}
+
+\lstset{ 
+  language={C}
+}
+
+
+
+\title{AltTF: Alternative lock-free TF forest}
 \author{荻原湧志, 川島英之}
 
 \begin{document}
@@ -95,57 +104,289 @@ TF森の実態はtf2パッケージ中にあるBufferCoreクラス\cite{4} で�
 図は各フレーム間の座標変換情報が提供される時刻を表す。横軸が時間軸を表し、左側が過去、右側が最新の時刻を表す。
 
 灰色線は対応する時刻の座標変換情報が登録されたことを表す。
-図の点線の位置でのmapからappleへの座標変換を計算する際、各フレーム間の座標変換情報が必要になる。robotからcameraへの座標変換情報は常にある物として扱われるが、mapからrobot、cameraからappleの座標変換データは該当する時刻では登録されていない。ここで、TFは前後のデータから線形補間を行うことにより座標変換データを計算する。
+図の点線の位置でのmapからappleへの座標変換を計算する際、各フレーム間の座標変換情報が必要になる。robotからcameraへの座標変換情報は常にある物として扱われるが、mapからrobot、cameraからappleの座標変換データは該当する時刻では登録されていない。そのため、TFは前後のデータから線形補間を行うことにより座標変換データを計算する。つまり、TFは該当する時刻の座標変換データが保存されている、もしくは前後の値を元に線形補間ができる場合にはその時刻の座標変換データを提供できる、とみなす。
 
 
 
 
-文字列であるframeはTF森内部では整数型のidで管理している
-frameからframe idを検索するテーブル、及びframe idからframeを検索するテーブルが存在する frameIDs_
+
+まずはCompactFrameID等のtypedefは説明が面倒なので、展開してしまうか。
+
 
 座標変換はTransformStorageで表現され、これは以下で構成される
-回転成分を表すrotation。これはQuaternionで表現される
-並行移動成分を表すtranslation。これはVector3で表現される
+回転成分を表すrotation\_。これはQuaternionで表現される
+並行移動成分を表すtranslation\_。これはVector3で表現される
 座標変換の時刻を表すstamp。これはros::Time型で表現される
 座標変換の親フレームのframe idを表すframe\_id。これは整数型で表現される
 座標変換の子フレームのframe idを表すchild\_frame\_id。これは整数型で表現される
 
 TimeCacheInterfaceは特定のフレームから親フレームへの座標変換を登録・管理する抽象クラスである。主に以下のようなメソッドがある
-bool getData(ros::Time time, TransformStorage & data_out, std::string * error_str = 0)
+bool getData(ros::Time time, TransformStorage \& data\_out, std::string * error\_str = 0)
 
-特定の時刻timeにおけるTransformStorageを取得する。
+特定の時刻timeにおけるTransformStorageを取得する。取得できた場合にはtrueを返し、取得できなかった場合にはfalseを返しエラーの内容をerror\_strに代入する。
 
-TimeCacheはある子フレームにおける親フレームへの座標変換を時系列的に管理する。これはTransformStorageのdequeで構成され、ユーザーが座標変換情報を登録する際には先頭にpushし、保存していた座標変換の時刻が10秒以上過去のものとなればdequeから追い出す。
+bool insertData(const TransformStorage\& new\_data)
 
-StaticCacheは先程の例のrobot->sensor間の座標変換のように不変なある子フレームにおける親フレームへの座標変換情報を管理する。frames_
+座標変換の情報を登録する。情報の登録に成功した場合にはtrueを、そうでない場合にはfalseを返す。
 
-TimeCacheとStaticCacheはTF森における子フレームから親フレームへのエッジ及び子フレームのノードを表す。TimeCacheInterfaceはTimeCacheとStaticCacheの親クラスであり、TimeCacheとStaticCacheと同様のインターフェイスを提供する。
+std::pair<ros::Time, CompactFrameID> getLatestTimeAndPare()
 
-各フレームidに対応するTimeCacheInterfaceのポインタを管理する配列が各フレームに対応するTimeCacheとStaticCacheを管理する。
-
-TF森は子から親フレームに子フレームからエッジが伸びる有向森構造となっている。特定のフレームに対応するTimeCacheInterfaceを取得するには、まずframeIDs_から対応するframe idを取得し、続いてframes_から対応するTimeCacheInterfaceへのポインタを取得する。
+最新の座標変換情報のうちその時刻と、親フレームのidを返す。
 
 
-TimeCacheInterface
-TimeCache
-StaticCache
-
-球面線形補間
-
-\subsection{検索}
-
-TFにはlookupTransformというメソッドがあるこれは指定した時刻のtarget\_frameからsource\_frameまでの
+TimeCacheはTimeCacheInterfaceを継承し、あるフレームにおける親フレームへの座標変換を時系列的に管理する。これはTransformStorageの双方向キューで構成され、ユーザーが座標変換情報を登録する際には先頭にpushし、保存していた座標変換の時刻が10秒以上過去のものとなればdequeから追い出す。getDataのアルゴリズムは以下のようになる
 
 
-\subsection{更新、挿入}
+%if(指定した時刻の座標変換データがある){
+%  return その座標変換データを返す
+%}else{
+%  if(前後にデータがある){
+%    if(前後で親が同じ){
+%       前後のrotationを球面線形補間、前後のtranslationを線形補間したものを返す       
+%    }else{
+% 　　　　エラー
+%    }     
+%  }else{
+%    エラー
+%  }
+%}
 
 
 
 
+StaticCacheはTimeCacheInterfaceを継承し、先程の例のrobot->sensor間の座標変換のように不変な座標変換情報を管理する。
+
+
+BufferCoreはTF森を管理する。
+
+文字列であるframeはTF森内部では整数型のidで管理している
+
+TimeCacheInterfaceを継承するTimeCacheとStaticCacheはそれぞれあるフレームからみた親フレームのid、親フレームのの座標変換を保持するため、これらはTF森における子フレームから親フレームへのエッジ及び子フレームのノードを表す。この’ためTF森は子フレームから親フレームへエッジが伸びる有効森構造となっている。
+
+
+以下のようなインターフェイスがある。
+bool setTransform(const geometry\_msgs::TransformStamped\& transform, const std::string \& authority, bool is\_static = false)
+
+座標変換情報を登録する。authorityには座標変換情報を登録するプログラムの名前等を指定できる。is\_staticをtrueにすると、StaticCacheにデータを登録できる。
+下記の更新、挿入において詳細を説明する
+
+geometry\_msgs::TransformStamped lookupTransform(const std::string\& target\_frame, const std::string\& source\_frame, const ros::Time\& time) const;
+		   
+時刻timeにおけるtarget\_frameからsource\_frameへの座標変換を返す。
+下記の検索の節において詳細を説明する
+
+
+template<typename F> int walkToTopParent(F\& f, ros::Time time, CompactFrameID target\_id, CompactFrameID source\_id, std::string* error\_string) const;
+
+
+指定の時刻timeについてtarget\_idからsource\_idへの座標変換を計算する。返り値は0以外の場合にはエラーコードとなり、エラーの原因がerror\_stringに代入される。
+
+テンプレートパラメータのFにはよくTransformAccumクラスが与えられ、これは通過したパスの座標変換情報を蓄積するオブジェクトである。
+
+主にlookupTransformの中で用いられる。
+
+int getLatestCommonTime(CompactFrameID target\_frame, CompactFrameID source\_frame, ros::Time\& time, std::string* error\_string) const;
+
+target\_frameからsource\_frameまでのパスにおいて、座標変換のデータが提供できる時刻で最新のものを取得する。そのような時刻が存在する場合にはtimeに代入され0を返す。もしそのような時刻がない場合にはエラーコードを返し、エラーの内容をerror\_stringに代入する。
+
+これは図のように説明できる。
+
+図においてmapからrobotへのパスにおいて必要なのはmapからrobotへの座標変換、robotからsensorへの座標変換。sensorからappleへの座標変換である。この中で最新のデータが最も古い時刻に来ているのはmapからrobotへの座標変換である。この時刻よりも前ならばmapからappleへの座標変換データは提供できるが、この時刻より後ではパス中の座標変換が提供できなくなる。このため、getLatestCommonTimeではこの時刻Aが選択される。
+
+ここで、図中ではlidarからobjectへの座標変換が最も古い時刻に来ているが、mapからrobotへの座標変換を計算する時にこの座標変換は使わないために時刻Dが選ばれないことに注意する。
+
+(robot -> lidar -> とか別のもっと遅いものも追加！)
+
+TimeCacheInterfacePtr BufferCore::getFrame(CompactFrameID frame\_id)
+
+与えられたframe\_idに対応するTimeCahceInterfaceへのポインタを取得する。該当するものがない場合にはnullを返す。
+
+また、BufferCoreには以下のようなフィールドがある
+
+
+
+frames\_: 各フレームidに対応するTimeCacheInterfaceのポインタを管理する配列。TF森はこの配列で表現される。
+
+
+
+
+frameからframe idを検索するテーブル、及びframe idからframeを検索するテーブルが存在する frameIDs\_, frameIDs\_reverse
+
+frame\_mutex\_: frames\_, frameIDs\_, frameIDs\_reverseは複数のスレッドから操作される。データ競合を防ぐため、各スレッドはframe\_mutex\_を用いて排他処理を行う。
+
+
+特定のフレームに対応するTimeCacheInterfaceを取得するには、まずframeIDs\_から対応するframe idを取得し、続いてframes\_から対応するTimeCacheInterfaceへのポインタを取得する。この二回の検索処理の後、TF森のフレームに該当するTimeCacheInterfaceにアクセスできる。
+
+TransformAccumクラスは、lookupTransformにて木構造を辿って座標変換を計算する際に座標変換の計算を蓄積していくクラスである。
+
+int gather(TimeCacheInterface* cache, Time time, string * error\_string)
+
+cacheからtimeの時の座標変換を取得し、それをTransformAccumインスタンス内の一時変数に記録する。cacheから親のフレームのidを取得しそれを返す。	
+
+
+\subsection{lookupTransform}
+
+擬似コード
+
+\begin{algorithm}[H]
+	\caption{lookupTransform}
+	\begin{algorithmic}
+	\STATE e = walkToTopParent
+	\IF{$n < 0$}
+	\STATE $X \leftarrow 1 / x$
+    \STATE $N \leftarrow -n$
+    \ENDIF
+	\end{algorithmic}
+\end{algorithm}
+
+
+まずはrunning exampleを示す。なるべくC++レベルでの説明は避けるべきか。
+とりあえず、途中で親が変わらないと仮定する。じゃないと説明が面倒
+
+1. sourceからrootへの座標変換を計算
+2. targetからrootへの座標変換を計算
+3. sourceからrootへの座標変換 * rootからtargetへの座標変換を計算
+
+まずは普通のケースから。同じ親を持ち、
+%    r
+%   / \
+%  /   \
+%  a     c
+% / \
+% b e
+%/
+%d
+%
+% d -> e
+まずはこの時間で見ていく
+まずはdからrへの座標変換を計算
+次にeからrへの座標変換を計算
+rからeへの座標変換は、単にeからrへの逆変換をとれば良い。
+あとはdからrへの変換 * rからeへの変換で計算できる
+
+% r
+% |
+% t
+% |
+% s
+
+このようにtargetが直接の
+
+ここら辺は説明省いても良い？？？？
+
+この例のように、sourceとtargetが同じ木の中にない場合、つまり同じrootを共有しない場合にはエラーとなる。
+
+
+running exampleが十分であれば、擬似アルゴリズムでの説明を省けるかも。
+
+\begin{algorithm}[H]
+	\caption{walkToTopParent(time, source\_id, target\_id)}
+	\begin{algorithmic}
+	\STATE frame\_id = source\_id
+	\STATE top\_parent\_id = frame\_id
+	\STATE // source frameからrootへのパスをたどる
+	\WHILE{ frame\_id $\neq$ 0 }
+	\STATE cache = getFrame(frame\_id)
+	\IF{cache = NULL}
+	\STATE // 木構造のrootに到達
+	\STATE top\_parent\_id = frame\_id
+	\STATE \textbf{break}
+	\ENDIF
+	\STATE paret\_id = cacheから座標変換と親のidを取得
+	\IF{frame\_id == target\_id }
+	\STATE // target frameはsource frameの祖先なので早期リターン
+	\STATE 累積したデータから座標変換を計算
+	\RETURN 0
+	\ENDIF
+	\STATE 座標変換を蓄積
+	\STATE top\_parent\_id = frame\_id
+	\STATE frame\_id = parent\_id
+	\ENDWHILE
+	
+	\STATE // target\_idからrootへのパスをたどる
+	\STATE frame\_id = target\_id
+	\WHILE{ frame\_id $\neq$ top\_parent\_id }
+	\STATE cache = getFrame(frame\_id)
+	\IF{cache = NULL}
+	\STATE // 木構造のrootに到達
+	\STATE \textbf{break}
+	\ENDIF
+	\STATE parent\_id = cacheから座標変換と親のidを取得
+	\IF{frame\_id == source\_id }
+	\STATE // source frameはtarget frameの祖先なので早期リターン
+	\STATE 累積したデータから座標変換を計算
+	\RETURN 0
+	\ENDIF
+	\STATE 座標変換を蓄積
+	\STATE frame\_id = parent\_id
+	\ENDWHILE
+	\IF{frame\_id $\neq$ top\_parent\_id}
+	\STATE // source frameとtarget frameは同じ木構造に属していない
+	\RETURN エラーコード
+	\ENDIF
+	\STATE // source frameとtarget frameは祖先関係にはないが、同じ木に属している
+	\STATE source frameからtarget frameへの座標変換の計算
+	\RETURN 0
+	\end{algorithmic}
+\end{algorithm}
+
+
+
+
+\subsection{setTransform}
+
+座標変換を登録する。特に説明の必要はない
 
 \subsection{問題点}
 
+ここより上の部分では、どの程度エラーケースを、どの程度正確な説明が必要か不明瞭。とりあえず以下を書き下す。
+
+giant lock
+
+最新のデータを返さない
+exampleを示そう
+%
+% a  |  | |
+% b    | 
+% c   | | 
+この場合には、bに引っ張られてaの最新のデータが取れない
+
+線形補間により、一貫性がないケースがある。
+例えば関節間の制約やジンバルロック、特異点など
+制御プログラムが意図しない状態を見てしまうかもしれない
+
 \section{提案手法}
+
+まず、ginat lockをしない方法を導入
+読み書きを行う際には必要なノードのみlockする
+
+setTransformとは異なり、lookupTransformは各ノードの情報の読み込みのみ行う。
+
+読み込み処理であれば複数のスレッドからの同時アクセスを行ってもdata raceは発生しない。このため、
+
+
+S lockはdata raceが発生しないreadの時に、X lockは二つ以上のスレッドからwrite操作されるとdata raceが発生するのを防ぐために使われる。
+
+
+
+さらに、shared lockとexclusive lockを導入する
+これは次のような表で表現できる
+%   N | S | X
+% S o   o   x   
+% X o   x   x
+%
+表は列が既にかかっているロック(Nは何もかかっていない)、行はかけようとしているロックを表し、oであれば新たにかけようとしているロックの確保に成功し、xであればロックがかけられないことを表す
+例えば、S lockが既にかけられていても新たにS lockを他のスレッドが書けることが可能になる。対し、X lockが既にかかっている場合にはS lockはかけられず、S lockがかかっている場合にもX lockはかけられない。X lockをかけることができるスレッドは常に一つだけである。
+
+
+続いて、最新のデータを取らない問題と線形補間によりデータの一貫性がなくなる問題について
+
+既存のlookupTransformでは、最新のデータを取得しようとしても過去のデータを参照してしまう、また線形補間されてしまう
+
+最新のデータをそれぞれ取ってくるという方法もサポートする。しかしこれだけでは十分ではない。
+
+そこで、我々は最新のデータを取得し、かつ
+
 
 提案手法とsnapshot latestの概念の導入について
 時系列データにはいかなる変更も加えられないためserializabilityを導入する必要はない
@@ -153,6 +394,16 @@ TFにはlookupTransformというメソッドがあるこれは指定した時刻
 
 \section{評価}
 実験を行う
+
+スレッド数を上げるとスループット伸びる
+jointを増やすと緩やかにスループットが落ちる
+iterを増やすと1000以降で急激にスループットが下がる。no waitによる弊害か？
+read ratioは高くなるほどブロックされる可能性が減る
+read lenは安定しているように見える。なぜtrnでread lenが小さいとこうなるのか。。。2PLでロックする箇所が変わるから？
+
+write lenを上げるとやはりブロックされる部分が増える
+
+
 
 \section{結論}
 
