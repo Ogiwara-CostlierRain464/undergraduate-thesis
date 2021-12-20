@@ -13,9 +13,13 @@
 \usepackage[dvipdfmx]{graphicx}
 \usepackage{multicol}
 \usepackage{hyperref}
+\usepackage{breakurl}
 \pagestyle{empty}
 \usepackage{algorithmic}
 \usepackage{algorithm}
+
+\renewcommand{\abstract}{\textbf{概要}：}
+%\renewcommand{\bibname}{\textbf{参考文献}}
 
 \setlength{\columnsep}{1cm}
 
@@ -26,21 +30,28 @@
 
 
 
-\title{AltTF: Alternative lock-free TF forest}
+\title{TFの高性能化とデータ一貫性の確保}
 \author{荻原湧志, 川島英之}
 
+% 質問をここに書く
+% abstractでは\citeは使わない？
+% 起承転結が二つ？
+% 原文から引用しても良いのか？
+% ~の問題がある、は喧嘩腰だろうか？
+
 \begin{document}
+\maketitle
+\begin{abstract} % 原文から引用
+TFライブラリはROSで頻繁に使用されるパッケージであり、ロボットシステム内の座標変換を追跡し、データを変換する標準的な方法を提供するために設計されたものである。Robot Operating System (ROS)の開発初期には複数の座標変換の管理が開発者共通の悩みの種であると認識されていた。このタスクは複雑なために、開発者がデータに不適切な変換を適用した場合にバグが発生しやすい場所となっていた。また、この問題は異なる座標系同士の変換に関する情報が分散していることが多いことが課題となっていた。そこで、TFライブラリは各座標系間の変換を有向森構造として管理し、効率的な座標変換情報の登録、座標変換の計算を可能にした。しかしながら、この有向森構造にはデータの暗黙的な線形補間による一貫性の欠落、及び非効率な並行性制御によりアクセスするスレッドが増えるに従ってパフォーマンスが低下するという問題があることがわかった。そこで、我々はデータベースのトランザクション技術における再粒度ロッキング法、及び並行性制御のアルゴリズムの一種である2PLを応用することにより、この問題を解決した。提案手法では、スレッド数が12までスケールアップすることを示した。また、多くのアクセスパターンにおいて提案手法は既存手法より高いスループットを出すことを示した。
+\newline	
+\end{abstract}
+
 \begin{multicols}{2}
 
-\maketitle
-
-\section*{概要}
-TFはROSでよく使われるパッケージであり、これは有向木で座標変換を管理する。この木構造にはGiant lockによるパフォーマンス低下の問題、線形補間による一貫性の欠落の問題があった。そこで、我々はトランザクション技術における2PLを導入することにより、この問題を解決した。
-
 \section{序論}
+\subsection{背景}
 
-
-ROSはロボットソフトウェア用のミドルウェアソフトプラットフォームであり、近年多くの研究用ロボットで使われている
+Robot Operating System(ROS)はロボットソフトウェア用のミドルウェアソフトプラットフォームであり、近年多くの研究用ロボットで使われている
 
 グローバル座標系の中でのロボットの位置、ロボットのローカル座標系の中でのセンサーの位置、センサーのローカル座標系の中での物体の位置、という風に別々に管理している
 
@@ -76,9 +87,22 @@ Giant lockにより、木構造が大きくなり多くのスレッドがアク�
 本論文の構成は次の通りである。2章では既存のTF森の構造とその問題点について述べる。3章では提案手法であるTF森の再粒度ロックの導入とデータ一貫性のためのインターフェイスの提供について述べる。4章では提案手法の評価結果を述べる。5章では本研究の結論を述べる。6章では今後の課題について述べる。
 
 
+
+\section{関連研究}
+
+データベースの技術をロボットに適用するという内容ではGAIA\cite{gaia}が挙げられる。
+
+これはRDBベースでreactiveな挙動を提供する。
+
+プロダクトレベルのものを目指すROS2\cite{ros2}やAutoware\cite{autoware}でも、本研究のようなアプローチは存在しない。
+
+2PL以外の並行性制御アルゴリズムとしてはSilo\cite{silo}が挙げられる。
+
+
+
 \section{既存のTF森の構造とその問題点}
 
-TF森の実態はtf2パッケージ中にあるBufferCoreクラス\cite{4} である。
+TF森の実態はtf2パッケージ中にあるBufferCoreクラス\cite{buffer-core} である。
 \subsection{構造}
 まずはTF森とタイムテーブルから？
 
@@ -397,7 +421,9 @@ S lockはdata raceが発生しないreadの時に、X lockは二つ以上のス�
 
 そこで我々はdeadlock preventの方法としてNo-wait[Bern 1981]を採用した。これはwrite lockをかけようとして失敗したら最初からやり直す。
 
+Wound wait, nonpreemptive (Concurrency Control in Distributed Database Systems PHLIP.A BERNSTEIN AND NATHAN GOODMAN P196)
 
+transactionにpriorityを足すとかは？
 
 
 
@@ -430,13 +456,23 @@ write lenを上げるとやはりブロックされる部分が増える
 	
 \begin{thebibliography}{99}
 
-\bibitem{1} Simon J. Julier and Jeffrey K. Uhlmann "Building a million beacon map", Proc. SPIE 4571, Sensor Fusion and Decentralized Control in Robotic Systems IV, (4 October 2001)
+\bibitem{tf} T. Foote, "tf: The transform library," 2013 IEEE Conference on Technologies for Practical Robot Applications (TePRA), 2013, pp. 1-6, doi: 10.1109/TePRA.2013.6556373.
 
-\bibitem{2} M. Quigley, K. Conley, B. P. Gerkey, J. Faust, T. Foote, J. Leibs, R. Wheeler, and A. Y. Ng, “Ros: an open-source robot operating system,” in ICRA Workshop on Open Source Software, 2009.
+\bibitem{ros} M. Quigley, K. Conley, B. P. Gerkey, J. Faust, T. Foote, J. Leibs, R. Wheeler, and A. Y. Ng, “Ros: an open-source robot operating system,” in ICRA Workshop on Open Source Software, 2009.
 
-\bibitem{3} T. Foote, "tf: The transform library," 2013 IEEE Conference on Technologies for Practical Robot Applications (TePRA), 2013, pp. 1-6, doi: 10.1109/TePRA.2013.6556373.
+\bibitem{2PL} Philip A. Bernstein and Nathan Goodman, "Concurrency Control in Distributed Database Systems" in ACM Computing Surveys, 1981, pp. 185-221
 
-\bibitem{4} "BufferCore.h", https://github.com/ros/geometry2/blob/noetic-devel/tf2/include/tf2/buffer\_core.h
+\bibitem{buffer-core} "BufferCore.h", \url{https://github.com/ros/geometry2/blob/noetic-devel/tf2/include/tf2/buffer_core.h}
+
+\bibitem{gaia} "GAIA platform", \url{https://www.gaiaplatform.io}
+
+\bibitem{ros2} "ROS2", \url{https://docs.ros.org/en/rolling/}
+
+\bibitem{autoware} "Autoware", \url{https://tier4.jp/en/autoware/}
+
+\bibitem{silo} Stephen Tu, Wenting Zheng, Eddie Kohler †, Barbara Liskov,
+and Samuel Madden. Speedy transactions in multicore in-memory
+databases. In SOSP, pages 18–32. ACM, 2013
 
 \end{thebibliography}
 	
