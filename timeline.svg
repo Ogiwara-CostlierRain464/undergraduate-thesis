@@ -1027,6 +1027,20 @@
            id="path7557" />
       </symbol>
     </g>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="Arrow1Lend-3"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path838-4" />
+    </marker>
   </defs>
   <sodipodi:namedview
      inkscape:window-maximized="0"
@@ -1038,9 +1052,9 @@
      inkscape:document-rotation="0"
      inkscape:current-layer="layer1"
      inkscape:document-units="mm"
-     inkscape:cy="385.79178"
-     inkscape:cx="420.07147"
-     inkscape:zoom="0.86056784"
+     inkscape:cy="854.27282"
+     inkscape:cx="501.61147"
+     inkscape:zoom="1.5978502"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0.0"
      borderopacity="1.0"
@@ -1838,5 +1852,210 @@
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
          x="146.40517"
          y="75.032974">線形補間により取得可能なデータ</tspan></text>
+    <path
+       id="path833-7"
+       d="m 62.294094,241.62836 c 103.979486,0 103.979486,0 103.979486,0"
+       style="fill:none;stroke:#000000;stroke-width:0.196223;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Lend-3)" />
+    <rect
+       ry="0"
+       y="215.39967"
+       x="83.543953"
+       height="6.5266671"
+       width="70.402496"
+       id="rect1155-9-1"
+       style="fill:none;stroke:#000000;stroke-width:0.208833;stroke-miterlimit:4;stroke-dasharray:none" />
+    <rect
+       ry="0"
+       y="230.91867"
+       x="83.547409"
+       height="6.5197649"
+       width="75.212845"
+       id="rect1155-9-1-5"
+       style="fill:none;stroke:#000000;stroke-width:0.215735;stroke-miterlimit:4;stroke-dasharray:none" />
+    <rect
+       style="fill:#000000;stroke:#000000;stroke-width:0.564931"
+       id="rect1638-5-6-0-7"
+       width="1.6390691"
+       height="6.2505932"
+       x="-153.76721"
+       y="215.4977"
+       transform="scale(-1,1)" />
+    <rect
+       style="fill:#000000;stroke:#000000;stroke-width:0.564931"
+       id="rect1638-5-6-0-79"
+       width="1.6390691"
+       height="6.2505932"
+       x="-142.3662"
+       y="215.4977"
+       transform="scale(-1,1)" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="104.65099"
+       y="250.72951"
+       id="text10665-0"><tspan
+         sodipodi:role="line"
+         id="tspan10663-9"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+         x="104.65099"
+         y="250.72951">time</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="158.58644"
+       y="248.01099"
+       id="text14580-8-0"><tspan
+         sodipodi:role="line"
+         id="tspan14578-1-2"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+         x="158.58644"
+         y="248.01099">future</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="57.231834"
+       y="248.27698"
+       id="text14580-7-9"><tspan
+         sodipodi:role="line"
+         id="tspan14578-0-7"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+         x="57.231834"
+         y="248.27698">past</tspan></text>
+    <rect
+       style="fill:#000000;stroke:none;stroke-width:0.353553;stroke-miterlimit:4;stroke-dasharray:1.41421, 0.353553;stroke-dashoffset:0"
+       id="rect17044-9"
+       width="3.9903395"
+       height="4.5223846"
+       x="163.07286"
+       y="204.99509" />
+    <text
+       xml:space="preserve"
+       style="font-size:5.64444px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';stroke-width:0.264583"
+       x="169.0248"
+       y="208.70032"
+       id="text18288-2"><tspan
+         sodipodi:role="line"
+         id="tspan18286-3"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+         x="169.0248"
+         y="208.70032">登録されたデータ</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:5.64444px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';stroke-width:0.264583"
+       x="8.6710491"
+       y="220.39645"
+       id="text2591"><tspan
+         sodipodi:role="line"
+         id="tspan2589"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+         x="8.6710491"
+         y="220.39645">地図座標系からロボット座標系</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:5.64444px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';stroke-width:0.264583"
+       x="8.9119062"
+       y="236.52695"
+       id="text4869"><tspan
+         sodipodi:role="line"
+         id="tspan4867"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+         x="8.9119062"
+         y="236.52695">ロボット座標系から物体座標系</tspan></text>
+    <rect
+       style="fill:#000000;stroke:#000000;stroke-width:0.564931"
+       id="rect1638-5-6-0-76"
+       width="1.6390691"
+       height="6.2505932"
+       x="-130.96516"
+       y="215.54514"
+       transform="scale(-1,1)" />
+    <rect
+       style="fill:#000000;stroke:#000000;stroke-width:0.564931"
+       id="rect1638-5-6-0-794"
+       width="1.6390691"
+       height="6.2505932"
+       x="-119.56415"
+       y="215.63998"
+       transform="scale(-1,1)" />
+    <rect
+       style="fill:#000000;stroke:#000000;stroke-width:0.564931"
+       id="rect1638-5-6-0-5"
+       width="1.6390691"
+       height="6.2505932"
+       x="-108.16312"
+       y="215.54514"
+       transform="scale(-1,1)" />
+    <rect
+       style="fill:#000000;stroke:#000000;stroke-width:0.564931"
+       id="rect1638-5-6-0-1"
+       width="1.6390691"
+       height="6.2505932"
+       x="-96.762093"
+       y="215.63998"
+       transform="scale(-1,1)" />
+    <rect
+       style="fill:#000000;stroke:#000000;stroke-width:0.564931"
+       id="rect1638-5-6-0-1-1"
+       width="1.6390691"
+       height="6.2505932"
+       x="-85.437759"
+       y="215.37413"
+       transform="scale(-1,1)" />
+    <rect
+       style="fill:#000000;stroke:#000000;stroke-width:0.564931"
+       id="rect1638-5-6-0-9"
+       width="1.6390691"
+       height="6.2505932"
+       x="-158.76025"
+       y="231.18784"
+       transform="scale(-1,1)" />
+    <rect
+       style="fill:#000000;stroke:#000000;stroke-width:0.564931"
+       id="rect1638-5-6-0-78"
+       width="1.6390691"
+       height="6.2505932"
+       x="-148.17995"
+       y="231.13902"
+       transform="scale(-1,1)" />
+    <rect
+       style="fill:#000000;stroke:#000000;stroke-width:0.564931"
+       id="rect1638-5-6-0-70"
+       width="1.6390691"
+       height="6.2505932"
+       x="-136.03825"
+       y="231.28133"
+       transform="scale(-1,1)" />
+    <rect
+       style="fill:#000000;stroke:#000000;stroke-width:0.564931"
+       id="rect1638-5-6-0-53"
+       width="1.6390691"
+       height="6.2505932"
+       x="-124.42943"
+       y="231.04047"
+       transform="scale(-1,1)" />
+    <rect
+       style="fill:#000000;stroke:#000000;stroke-width:0.564931"
+       id="rect1638-5-6-0-4"
+       width="1.6390691"
+       height="6.2505932"
+       x="-113.34974"
+       y="231.08791"
+       transform="scale(-1,1)" />
+    <rect
+       style="fill:#000000;stroke:#000000;stroke-width:0.564931"
+       id="rect1638-5-6-0-6"
+       width="1.6390691"
+       height="6.2505932"
+       x="-101.93433"
+       y="231.04047"
+       transform="scale(-1,1)" />
+    <rect
+       style="fill:#000000;stroke:#000000;stroke-width:0.564931"
+       id="rect1638-5-6-0-62"
+       width="1.6390691"
+       height="6.2505932"
+       x="-91.146614"
+       y="231.04047"
+       transform="scale(-1,1)" />
   </g>
 </svg>
