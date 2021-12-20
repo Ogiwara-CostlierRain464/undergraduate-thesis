@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.141592653-p3.9.0-210218-2.6 (utf8.euc) (TeX Live 2021) (preloaded format=platex 2021.6.8)  20 DEC 2021 13:29
+This is e-pTeX, Version 3.141592653-p3.9.0-210218-2.6 (utf8.euc) (TeX Live 2021) (preloaded format=platex 2021.6.8)  20 DEC 2021 22:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -471,28 +471,28 @@ File: l3backend-dvips.def 2021-03-18 L3 backend support: dvips
 ) (/Users/ogiwara/Documents/undergraduate-thesis/.texpadtmp/Alt TF.aux)
 \openout1 = `"Alt TF.aux"'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for JY1/mc/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for JT1/mc/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: dvips
@@ -529,7 +529,7 @@ LaTeX Font Info:    ... okay on input line 35.
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \c@lstlisting=\count316
-Package hyperref Info: Link coloring OFF on input line 35.
+Package hyperref Info: Link coloring OFF on input line 36.
 (/usr/local/texlive/2021/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
  (/usr/local/texlive/2021/texmf-dist/tex/latex/refcount/refcount.sty
@@ -539,33 +539,33 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count317
 )
-LaTeX Info: Redefining \ref on input line 35.
-LaTeX Info: Redefining \pageref on input line 35.
-LaTeX Info: Redefining \nameref on input line 35.
+LaTeX Info: Redefining \ref on input line 36.
+LaTeX Info: Redefining \pageref on input line 36.
+LaTeX Info: Redefining \nameref on input line 36.
  (/Users/ogiwara/Documents/undergraduate-thesis/.texpadtmp/Alt TF.out) (/Users/ogiwara/Documents/undergraduate-thesis/.texpadtmp/Alt TF.out)
 \@outlinefile=\write3
 \openout3 = `"Alt TF.out"'.
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 43.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 44.
  (/usr/local/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 43.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 44.
  (/usr/local/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <9> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 44.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 45.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <9> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 44.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 45.
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <14.4> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 51.
-LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <14.4> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 51.
-LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <12> not available
 (Font)              Font shape `JT1/gt/m/n' tried instead on input line 52.
-LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <12> not available
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <14.4> not available
 (Font)              Font shape `JY1/gt/m/n' tried instead on input line 52.
+LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <12> not available
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 53.
+LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <12> not available
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 53.
 File: room.png Graphic file (type bmp)
 <room.png>
 File: sensor-sync.png Graphic file (type bmp)
@@ -573,56 +573,63 @@ File: sensor-sync.png Graphic file (type bmp)
  [1
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 153--154
+File: tree.png Graphic file (type bmp)
+<tree.png>
+File: room-timeline.png Graphic file (type bmp)
+<room-timeline.png>
+File: add-arm.png Graphic file (type bmp)
+<add-arm.png>
+ [2]
+Underfull \hbox (badness 10000) in paragraph at lines 151--152
 []\JY1/mc/m/n/10 プロダクトレベルのものを目指す \OT1/cmr/m/n/10 ROS2[[]] \JY1/mc/m/n/10 や
  []
 
-[2]
-Underfull \hbox (badness 7362) in paragraph at lines 212--213
+[3]
+Underfull \hbox (badness 7362) in paragraph at lines 211--212
 []\OT1/cmr/m/n/10 std::pair<ros::Time, Com-pact-FrameID> get-Lat-est-
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 253--254
+Underfull \hbox (badness 10000) in paragraph at lines 252--253
 []\OT1/cmr/m/n/10 geometry[]msgs::TransformStamped lookup-Trans-
  []
 
-[3]
-Underfull \hbox (badness 5316) in paragraph at lines 268--269
+
+Underfull \hbox (badness 5316) in paragraph at lines 267--268
 []\OT1/cmr/m/n/10 int get-Lat-est-Com-mon-Time(CompactFrameID tar-
  []
 
-
-Overfull \hbox (47.52425pt too wide) in paragraph at lines 280--281
+[4]
+Overfull \hbox (47.52425pt too wide) in paragraph at lines 279--280
 []\OT1/cmr/m/n/10 TimeCacheInterfacePtr Buffer-Core::getFrame(CompactFrameID
  []
 
-Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 312.
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 311.
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 312.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 311.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 312.
-[4] [5]
-Underfull \hbox (badness 10000) in paragraph at lines 521--522
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 311.
+[5] [6]
+Underfull \hbox (badness 10000) in paragraph at lines 520--521
 []\OT1/cmr/m/n/10 "BufferCore.h", [][][][][][][][][][][][][][][][][][][][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 521--522
+Underfull \hbox (badness 10000) in paragraph at lines 520--521
 [][][][][][][][][][][][][][][][][][][][][][][][][]
  []
 
-[6] (/Users/ogiwara/Documents/undergraduate-thesis/.texpadtmp/Alt TF.aux)
+[7] (/Users/ogiwara/Documents/undergraduate-thesis/.texpadtmp/Alt TF.aux)
 Package rerunfilecheck Info: File `"Alt TF".out' has not changed.
 (rerunfilecheck)             Checksum: 7131A6C3F8A8E529BA1ABC42936ECD61;757.
  ) 
 Here is how much of TeX's memory you used:
- 12161 strings out of 479466
- 177488 string characters out of 5870549
- 526611 words of memory out of 5000000
- 29655 multiletter control sequences out of 15000+600000
+ 12191 strings out of 479466
+ 177961 string characters out of 5870549
+ 526749 words of memory out of 5000000
+ 29682 multiletter control sequences out of 15000+600000
  418802 words of font info for 90 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 76i,6n,80p,1231b,692s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 76i,6n,80p,1231b,694s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on "/Users/ogiwara/Documents/undergraduate-thesis/.texpadtmp/Alt TF.dvi" (6 pages, 73896 bytes).
+Output written on "/Users/ogiwara/Documents/undergraduate-thesis/.texpadtmp/Alt TF.dvi" (7 pages, 82532 bytes).
