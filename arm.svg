@@ -9,6 +9,9 @@
    id="svg16462"
    inkscape:version="1.1.1 (c3084ef, 2021-09-22)"
    sodipodi:docname="arm.svg"
+   inkscape:export-filename="/Users/ogiwara/documents/undergraduate-thesis/add-arm.png"
+   inkscape:export-xdpi="200"
+   inkscape:export-ydpi="200"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
@@ -23,9 +26,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="0.9192745"
-     inkscape:cx="342.11762"
-     inkscape:cy="324.71259"
+     inkscape:zoom="1.6633263"
+     inkscape:cx="431.36455"
+     inkscape:cy="283.46813"
      inkscape:window-width="1440"
      inkscape:window-height="791"
      inkscape:window-x="0"
@@ -46,37 +49,56 @@
        x="12.8595"
        y="23.740618" />
     <path
-       style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:none"
-       d="m 90.086891,44.036085 c 0,0 0,0.287818 0,48.353347 0,0 0,0 64.183319,-26.191397 -20.35728,75.974415 -20.35728,75.974415 -20.35728,75.974415"
-       id="path16601" />
+       style="fill:none;stroke:#000000;stroke-width:3;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 90.086891,44.036085 V 92.389432 L 154.27021,66.198035 143.69873,115.1176"
+       id="path16601"
+       sodipodi:nodetypes="cccc"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/add-arm.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200" />
     <circle
        style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2.64996;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path16704"
        cx="91.382072"
        cy="90.518623"
-       r="5.2118249" />
+       r="5.2118249"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/add-arm.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200" />
     <circle
        style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:2.64996;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        id="path16704-9"
        cx="152.83112"
        cy="68.212753"
-       r="5.2118249" />
+       r="5.2118249"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/add-arm.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200" />
     <path
        style="fill:none;stroke:#000000;stroke-width:0.7;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 88.98329,74.862063 c 12.87985,-0.683212 14.40723,6.201891 16.85549,12.47307"
        id="path16956"
-       sodipodi:nodetypes="cc" />
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/add-arm.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200" />
     <path
        style="fill:none;stroke:#000000;stroke-width:0.792;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 150.20211,82.529903 c -9.03371,-0.688854 -9.47502,-5.623046 -10.61332,-10.21287"
        id="path16956-5"
-       sodipodi:nodetypes="cc" />
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/add-arm.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200" />
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
        x="99.29705"
        y="73.68129"
-       id="text18899"><tspan
+       id="text18899"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/add-arm.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200"><tspan
          sodipodi:role="line"
          id="tspan18897"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
@@ -87,7 +109,10 @@
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
        x="134.86023"
        y="85.505699"
-       id="text18899-0"><tspan
+       id="text18899-0"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/add-arm.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200"><tspan
          sodipodi:role="line"
          id="tspan18897-9"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"

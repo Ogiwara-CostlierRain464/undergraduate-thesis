@@ -1,30 +1,78 @@
-\documentclass{jarticle}
-\usepackage[margin={1.5cm, 1.5cm}]{geometry}
+\documentclass[a4paper]{jreport}	% 日本語の場合
 
-\usepackage{listings}
-\usepackage{amsmath}
-\usepackage{amssymb}
-\usepackage{mathtools}
-\usepackage{listings}
-\usepackage{color}
-\usepackage{tabularx}
-\usepackage{pdfrender}
-\usepackage{bussproofs}
+\usepackage{masterThesisJa-Ja}
 \usepackage[dvipdfmx]{graphicx}
-\usepackage{multicol}
 \usepackage{hyperref}
 \usepackage{breakurl}
 \pagestyle{empty}
 \usepackage{algorithmic}
 \usepackage{algorithm}
 
+\setcounter{tocdepth}{3}
+\setcounter{page}{-1}
 
-\setlength{\columnsep}{1cm}
+% 【必須】主題：\maintatile{日本語}{英語}
+\maintitle{TFライブラリの高性能化とデータ一貫性の確保}{Consistent and fast TF library}
 
-\title{TFの高性能化とデータ一貫性の確保}
-\author{荻原湧志, 川島英之, 大矢晃久, 萬礼応}
+% 【任意】副題：\subtitle{日本語}{英語}
+% 副題が不要な場合は次の行をコメントアウトしてください
+%\subtitle{}{}
 
-\date{}
+% 【必須】発表年月：\publish{年}{月}
+\publish{2022}{1}
+
+% 【必須】学生情報：\student{学籍番号/CNSアカウント}{氏名（日本語：氏名の間は1文字空ける）}{氏名（英語：Twins登録の表記）}
+\student{71970013 / t19501yo}{荻原　湧志}{Yushi Ogiwara}
+
+% 【必須】概要：\abst{概要}
+\abst{
+　Robot Operating System(ROS)はロボットソフトウェア用のミドルウェアソフトプラットフォームであり、近年多くの研究用ロボットで用いられている。TFライブラリはROSで頻繁に使用されるパッケージであり、ロボットシステム内の座標変換を追跡し、データを変換する標準的な方法を提供するために設計されたものである。ROSの開発初期には複数の座標変換の管理が開発者共通の悩みの種であると認識されていた。このタスクは複雑なために、開発者がデータに不適切な変換を適用した場合にバグが発生しやすい場所となっていた。また、この問題は異なる座標系同士の変換に関する情報が分散していることが多いことが課題となっていた。そこで、TFライブラリは各座標系間の変換を有向森構造として管理し、効率的な座標変換情報の登録、座標変換の計算を可能にした。しかしながら、この有向森構造にはデータの暗黙的な線形補間による一貫性の欠落、及び非効率な並行性制御によりアクセスするスレッドが増えるに従ってパフォーマンスが低下するという問題があることがわかった。そこで、我々はデータベースのトランザクション技術における再粒度ロッキング法、及び並行性制御のアルゴリズムの一種である2PLを応用することにより、この問題を解決した。提案手法では、スレッド数が12までスケールアップすることを示した。また、多くのアクセスパターンにおいて提案手法は既存手法より高いスループットを出すことを示した。
+}
+
+% 【必須】研究指導教員（氏名の間は1文字空ける）：\advisors{主研究指導教員}{副研究指導教員}
+%\advisors{川島 英之}{}
+\advisors{川島 英之}
+
+
+% 以下，本文を出力
+\begin{document}
+
+\makecover
+
+\addtolength{\textheight}{-5mm}	% 本文の下限を5mm上昇
+\setlength{\footskip}{15mm}	% フッタの高さを15mmに設定
+\fontsize{11pt}{15pt}\selectfont
+
+% 目次・表目次を出力
+\pagebreak\setcounter{page}{1}
+\pagenumbering{roman} % I, II, III, IV
+\pagestyle{plain}
+\tableofcontents
+\listoffigures
+
+% 本文
+\parindent=1zw	% インデントを1文字分に設定
+\pagebreak\setcounter{page}{1}
+\pagenumbering{arabic} % 1,2,3
+\pagestyle{plain}
+
+% 章：\chapter{}
+% 節：\section{}
+% 項：\subsection{}
+
+% 図表：
+% \begin{figure}[h]
+% \centering
+% \begin{center}
+% \includegraphics[width=10cm]{fig/<file name>}
+% \caption{ <図の一言説明> }\label{fig001}
+% \end{center}
+% \end{figure}
+
+
+\chapter{はじめに}
+% プレースホルダ
+\section{研究背景}
 
 % 質問をここに書く
 % abstractでは\citeは使わない？
@@ -33,24 +81,7 @@
 % ~の問題がある、は喧嘩腰だろうか？
 % 面倒なので、有向木と言ってしまう？
 
-\begin{document}
-% https://puarts.com/?pid=1014
-\makeatletter
-\newenvironment{tablehere}{\def\@captype{tabel}}{} 
-\newenvironment{figurehere}{\def\@captype{figure}}{} 
-\makeatother
 
-\maketitle 
-
-\begin{abstract} % 原文から引用
-Robot Operating System(ROS)はロボットソフトウェア用のミドルウェアソフトプラットフォームであり、近年多くの研究用ロボットで用いられている。TFライブラリはROSで頻繁に使用されるパッケージであり、ロボットシステム内の座標変換を追跡し、データを変換する標準的な方法を提供するために設計されたものである。ROSの開発初期には複数の座標変換の管理が開発者共通の悩みの種であると認識されていた。このタスクは複雑なために、開発者がデータに不適切な変換を適用した場合にバグが発生しやすい場所となっていた。また、この問題は異なる座標系同士の変換に関する情報が分散していることが多いことが課題となっていた。そこで、TFライブラリは各座標系間の変換を有向森構造として管理し、効率的な座標変換情報の登録、座標変換の計算を可能にした。しかしながら、この有向森構造にはデータの暗黙的な線形補間による一貫性の欠落、及び非効率な並行性制御によりアクセスするスレッドが増えるに従ってパフォーマンスが低下するという問題があることがわかった。そこで、我々はデータベースのトランザクション技術における再粒度ロッキング法、及び並行性制御のアルゴリズムの一種である2PLを応用することにより、この問題を解決した。提案手法では、スレッド数が12までスケールアップすることを示した。また、多くのアクセスパターンにおいて提案手法は既存手法より高いスループットを出すことを示した。
-\newline	
-\end{abstract}
-
-\begin{multicols}{2}
-
-\section{序論}
-\subsection{背景}
 % ここもTFの冒頭からコピー
 ロボットを使って作業を行う場合、ロボット自身がどこにいるのか、ロボットにはどこにどんなセンサーがついており、また周りの環境のどこにどんなものがあるかをシステムが把握することが重要である。例えば、図\ref{fig:room} のように部屋の中にロボットと、ロボットから観測できる二つの物体があるケースを考える。図中にてロボットは円形、物体は星形で表現される。ロボットが向いている方向は円の中心から円の弧へつながる直線の方向で表している。途中で交わる二つの矢印は各座標系の位置と原点、姿勢を表す。ここでは、地図座標系、ロボットの座標系、二つの物体それぞれの座標系が示されている。
 
@@ -60,20 +91,18 @@ Robot Operating System(ROS)はロボットソフトウェア用のミドルウ�
 
 % SSMはsensor -> osの話で、ROSではosにもう入っていることが前提なのでちょっと話が違うか？
 
-\begin{figurehere} 
-\centering
-\includegraphics[width=0.3\textwidth]{room}	
+
+\begin{figure}[h] 
+\centering{\includegraphics[width=10cm]{room}}	
 \caption{部屋の中のロボット}
 \label{fig:room}
-\end{figurehere}
+\end{figure}
 
-
-\begin{figure*} 
-\centering
-\includegraphics[width=0.8\textwidth]{sensor-sync}	
+\begin{figure}[h] 
+\centering{\includegraphics[width=10cm]{sensor-sync}}	
 \caption{位置関係の登録のタイムライン}
 \label{fig:sensor-sync}
-\end{figure*}
+\end{figure}
 
 
 ここで地図中での物体の位置を把握するために、地図座標系から物体座標系への位置関係を取得する方法について考える。地図座標系から物体座標系への位置関係は地図座標系からロボット座標系への変換とロボット座標系から物体座標系への変換を掛け合わせれば計算ができるが、図\ref{fig:sensor-sync}のように各変換データは異なるタイミングで来るため、最新の変換データを取得するプログラムは複雑なものとなる。Aの時刻で地図座標系から物体座標系への変換データを計算しようとするとロボット座標系から物体座標系への最新の変換データを取得できるが、地図座標系からロボット座標系への変換データはまだ取得できない。このため、最新の変換データ$\theta$を取得する、もしくは過去のデータを元にデータの補外をすると必要がある。Bの時刻で地図座標系から物体座標系への変換データを計算しようとすると地図座標系からロボット座標系への最新の変換データを取得できるが、ロボット座標系から物体座標系への変換データはその時間には提供されていない。このため、$\alpha$と$\beta$のデータから線形補間を行う、もしくは最新の変換データ$\beta$を取得する必要がある。
@@ -84,23 +113,24 @@ Robot Operating System(ROS)はロボットソフトウェア用のミドルウ�
 そこで、TFライブラリは各座標系間の変換を有向森構造として一元管理し、効率的な座標系間の変換情報の登録、座標系間の変換の計算を可能にした。まず、図\ref{fig:room}を表す木構造は図\ref{fig:room-tree}で表現できる。木構造のノードが各座標系を表し、木構造のエッジは子ノードから親ノードへの変換データが存在することを表す。
 % camera1, camera2の説明はいるだろうか？
 
-\begin{figurehere} 
+\begin{figure}[h] 
 \centering
-\includegraphics[width=0.3\textwidth]{tree}	
+\includegraphics[width=10cm]{tree}	
 \caption{図\ref{fig:room}に対応する木構造}
 \label{fig:room-tree}
-\end{figurehere}
+\end{figure}
 
 各ノードはTFではフレームと呼ばれ、ノード中の文字列は各座標系に対応するフレーム名が書かれている。図\ref{fig:room-tree}では地図座標系のフレーム名はmap、ロボット座標系のフレーム名はrobot、物体1の座標系のフレーム名はobject1となる。木構造は子ノードから親ノードへポインタが貼られ、子ノードから親ノードを辿ることができる。このため、mapからobject1への座標変換を計算するにはobject1からmapへの座標変換の計算し、その逆数を取る必要がある。
 
 子ノードから親ノードへの位置関係は子ノードが保持する。図中では示されていないが、木のルートノードのエッジはNULLポインタを指している。
 
-\begin{figure*} 
+
+\begin{figure}[h] 
 \centering
-\includegraphics[width=0.8\textwidth]{room-timeline}	
+\includegraphics[width=10cm]{room-timeline}	
 \caption{図\ref{fig:room-tree}における位置関係登録のタイムライン}
 \label{fig:room-timeline}
-\end{figure*}
+\end{figure}
 
 図\ref{fig:room-tree}における位置関係登録のタイムラインが図\ref{fig:room-timeline}のようになっているとき、TFではobject1からmapへの最新の位置関係は次のように計算する。
 
@@ -110,7 +140,9 @@ Robot Operating System(ROS)はロボットソフトウェア用のミドルウ�
 
 最後に、時刻Aでの各パスのデータを取得し、それらを掛け合わせる。$robot \rightarrow map$については登録されたデータを使えるが、$object1 \rightarrow camera1$, $camera1 \rightarrow robot$は時刻Aにおけるデータは存在しない。このため、TFでは時刻Aの前後のデータを元に時刻Aのデータを線形補間によって構築する。
 
-このようにTFはシステム内部の座標系間の位置関係を一元管理する機構を提供する。しかしながら、これには以下のような問題点が挙げられる。
+
+\section{研究課題}
+前述したようにTFはシステム内部の座標系間の位置関係を一元管理する機構を提供する。しかしながら、これには以下のような問題点が挙げられる。
 
 \subsection*{問題1：ジャイアント・ロック}
 まず、TFの森構造には複数のスレッドがアクセスするため並行性制御が必要となるが、一つのスレッドが森構造にアクセスしている際は他のスレッドは森構造にアクセスできないアルゴリズムとなっている。これは、マルチコアが常識となっている現代では大きな問題となる。
@@ -118,28 +150,31 @@ Robot Operating System(ROS)はロボットソフトウェア用のミドルウ�
 \subsection*{問題2：データの一貫性}
 次に、TFが提供するインターフェイスでは座標変換の計算の際に最新のデータを使えず、線形補間されたデータを用いてしまう。図\ref{fig:room-timeline}においてobject1からrobotの座標変換を計算する際には時刻Aの$object \rightarrow$のデータを使うが、ここでは線形補間によってデータが暗黙的に生成されており、さらに線形補間の際にも最新のデータは参照されていない。これは次のようなケースで問題となる。
 
-\begin{figurehere} 
+\begin{figure}[h] 
 \centering
-\includegraphics[width=0.2\textwidth]{add-arm}	
+\includegraphics[width=10cm]{add-arm}	
 \caption{関節aとbの角度の合計が一定のアーム}
 \label{fig:add-arm}
-\end{figurehere}
+\end{figure}
 
 図\ref{fig:add-arm}はロボットのアームを示しており、このアームは常に各関節の角度aとbの和が一定値になるように制御される。このため、TFの森構造にこのアームの情報が登録され、アームの各関節の角度を読み取る制御プログラムは角度aとbの和が一定値であることを想定する。TFによるデータの暗黙的な線形補間でこの一貫性が失われる可能性があり、制御プログラムは意図しないデータを読み込むことになり、例外処理の発生につながる。
 
 このように高精度の制御が求められる場面では現状のTFの並行性制御アルゴリズム、及びインターフェイスには問題がある。
 
-\subsection{貢献}
+\section{研究方針}
+本研究ではデータベースのトランザクション技術における再粒度ロッキング法、及び並行性制アルゴリズムの一種である2PLを応用する。
 
+
+\section{貢献}
 本研究ではデータベースのトランザクション技術における再粒度ロッキング法、及び並行性制アルゴリズムの一種である2PLを応用することにより、問題1および問題2を解決した。
 
-%また、データ一貫性を保証できるようなsetTransforms, lookupLatestTransformというインターフェースを導入した。
-
-\subsection{論文構成}
-本論文の構成は次の通りである。2章では関連研究について述べる。3章では既存のTFの森構造とその問題点について述べる。4章では提案手法である森構造への再粒度ロックの導入とデータ一貫性のためのインターフェイスの提供について述べる。5章では提案手法の評価結果を述べる。6章では本研究の結論を述べる。7章では今後の課題について述べる。
 
 
-\section{関連研究}
+\section{構成}
+本論文の構成は次の通りである。第二章では関連研究について述べる。第三章では既存のTFの森構造とその問題点について述べる。第四章では提案手法である森構造への再粒度ロックの導入とデータ一貫性のためのインターフェイスの提供について述べる。第五章では提案手法の評価結果を述べる。第六章では本研究の結論を述べる。第七章では今後の課題について述べる。
+
+
+\chapter{関連研究}
 
 TFのようにデータを時系列的に管理するものとしてSSMが挙げられる。
 % 移動ロボット用センサ情報処理ミドルウェアの開発 か？
@@ -167,10 +202,9 @@ DDS
 
 
 
-\section{既存のTF森の構造とその問題点}
-
+\chapter{既存のTF森の構造とその問題点}
 TF森の実態はtf2パッケージ中にあるBufferCoreクラス\cite{buffer-core} である。
-\subsection{構造}
+\section{構造}
 まずはTF森とタイムテーブルから？
 TFは構造上
 
@@ -315,8 +349,8 @@ int gather(TimeCacheInterface* cache, Time time, string * error\_string)
 
 cacheからtimeの時の座標変換を取得し、それをTransformAccumインスタンス内の一時変数に記録する。cacheから親のフレームのidを取得しそれを返す。	
 
+\section{lookupTransform}
 
-\subsection{lookupTransform}
 
 擬似コード
 
@@ -425,16 +459,14 @@ running exampleが十分であれば、擬似アルゴリズムでの説明を�
 
 
 
-\subsection{setTransform}
+\section{setTransform}
 
 座標変換を登録する。特に説明の必要はない
 
-\subsection{問題点}
+
+\section{問題点}
 
 ここより上の部分では、どの程度エラーケースを、どの程度正確な説明が必要か不明瞭。とりあえず以下を書き下す。
-
-
-
 
 giant lock
 
@@ -450,7 +482,7 @@ exampleを示そう
 例えば関節間の制約やジンバルロック、特異点など
 制御プログラムが意図しない状態を見てしまうかもしれない
 
-\section{提案手法}
+\chapter{提案手法}
 
 まず、ginat lockをしない方法を導入
 読み書きを行う際には必要なノードのみlockする
@@ -498,7 +530,7 @@ transactionにpriorityを足すとかは？
 
 
 
-\section{評価}
+\chapter{評価}
 実験を行う
 
 スレッド数を上げるとスループット伸びる
@@ -511,21 +543,38 @@ write lenを上げるとやはりブロックされる部分が増える
 
 
 
-\section{結論}
-
+\chapter{結論}
 再粒度ロックの導入により、パフォーマンスを上げることができた
 特に、スレッド数の増加とともにスループットが下がる問題を解決できた
 
 データの一貫性は必須、というデータも示したい。
 
-\section{今後の課題}
-
+\chapter{今後の課題}
 ここでは取り上げなかったTF木の問題点として、部分的に座標情報の登録に失敗するケース。rollbackなどもいれtransactionalに行う必要
 
 また、insert/deleteが大量に発生するケースも考える。
 
+
+\chapter*{謝辞}
+\addcontentsline{toc}{chapter}{\numberline{}謝辞}
+
+本研究を進めるにあたり、慶應義塾大学准教授川島英之先生とサイボウズラボ株式会社星野喬様に頂きました優れた御指導により、私の研究はとても有意義で満ち足りたものとなりました。また、慶應義塾大学川島研究会秘書藤川綾様には幾多の手続きを丁寧にサポートして頂き，円滑な出張や書類作成，研究環境整備を行うことができました。そして、CCBench開発者である株式会社ノーチラス・テクノロジーズ田辺敬之様。この研究に関わっていただいたすべての方に深く感謝を申し上げます。
+
+% 参考文献（References）
+\newpage
+\addcontentsline{toc}{chapter}{\numberline{}参考文献}
+\renewcommand{\bibname}{参考文献}
+
+
+
+%% 参考文献に bibtex を使う場合
+%\bibliographystyle{junsrt}
+%\bibliography{ref}
+
+%% 参考文献を直接ファイルに含めて書く場合
 	
 \begin{thebibliography}{99}
+
 
 \bibitem{ros} M. Quigley, K. Conley, B. P. Gerkey, J. Faust, T. Foote, J. Leibs, R. Wheeler, and A. Y. Ng, “Ros: an open-source robot operating system,” in ICRA Workshop on Open Source Software, 2009.
 
@@ -546,6 +595,6 @@ and Samuel Madden. Speedy transactions in multicore in-memory
 databases. In SOSP, pages 18–32. ACM, 2013
 
 \end{thebibliography}
-	
-\end{multicols}	
+
+
 \end{document}
