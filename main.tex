@@ -152,7 +152,7 @@ TFの森構造には複数のスレッドがアクセスするため並行性制
 上記の説明のように、TFのフレーム間の座標変換計算インターフェースは最新のデータを使わない可能性がある。そこで、最新のデータを取得できるインターフェースを追加する。
 
 \section{研究方針}
-前述した問題1については、データベースの並行性制御技術における再粒度ロッキング法を適用して解決する。再粒度ロッキング法は、並行性制御においてロックするデータの単位をなるべく小さくし、並行性を向上させる手法である。問題2については、データベースのトランザクション技術における2PLを適用した新たなインターフェースを提供することにより解決する。2PLとは、複数のデータに対するロック・アンロックのタイミングを二つのフェーズに分けることにより並行性を向上させつつデータ操作の一貫性を確保する手法である。
+前述した問題1については、データベースの並行性制御技術における細粒度ロッキング法を適用して解決する。細粒度ロッキング法は、並行性制御においてロックするデータの単位をなるべく小さくし、並行性を向上させる手法である。問題2については、データベースのトランザクション技術における2PLを適用した新たなインターフェースを提供することにより解決する。2PLとは、複数のデータに対するロック・アンロックのタイミングを二つのフェーズに分けることにより並行性を向上させつつデータ操作の一貫性を確保する手法である。
 
 \section{貢献}
 
@@ -195,162 +195,51 @@ DDS
 \chapter{既存のTF森の構造とその問題点}
 %TF森の実態はtf2パッケージ中にあるBufferCoreクラス\cite{buffer-core} である。
 \section{構造}
-TFライブラリでは図のように各座標系間の位置関係を森構造で管理し、複数の木の登録が登録できる。ノードが各座標系を表し、エッジは子ノードから親ノードへの座標変換データが存在することを表す。各ノードはフレームと呼ばれ、ノード内の文字列は各座標系に対応するフレーム名が書かれている。
+TFライブラリでは図\ref{fig:multitree} のように各座標系間の位置関係を森構造で管理し、複数の木の登録が登録できる。ノードが各座標系を表し、エッジは子ノードから親ノードへの座標変換データが存在することを表す。各ノードはフレームと呼ばれ、ノード内の文字列は各座標系に対応するフレーム名が書かれている。
 
-各フレーム間の座標変換情報は過去10秒間保存される。このため、各フレーム間の座標変換情報が登録された時刻を図のようなタイムラインで表現できる。黒のセルは登録されたデータを表し、灰色のセルは線形補間により座標変換データが取得可能な時刻を表す。横軸が時間軸を表し、左側が過去、右側が最新の時刻を表す。
+各フレーム間の座標変換情報は過去10秒間保存される。このため、各フレーム間の座標変換情報が登録された時刻を図\ref{fig:general-timeline}のようなタイムラインで表現できる。黒のセルは登録されたデータを表し、灰色のセルは線形補間により座標変換データが取得可能な時刻を表す。横軸が時間軸を表し、左側が過去、右側が最新の時刻を表す。
 
 
 
 \begin{figure}[h] 
 \centering
-\includegraphics[width=5cm]{multitree.png}	
-\caption{関節aとbの角度の合計が一定のアーム}
+\includegraphics[width=7cm]{multitree.png}	
+\caption{複数の木構造}
 \label{fig:multitree}
 \end{figure}
 
 \begin{figure}[h] 
 \centering
-\includegraphics[width=5cm]{general-timeline.png}
-\caption{関節aとbの角度の合計が一定のアーム}
+\includegraphics[width=10cm]{general-timeline.png}
+\caption{タイムライン}
 \label{fig:general-timeline}
 \end{figure}
 
 
-%さて、座標変換の情報は変わらない場合と時刻とともに変わる場合がある
-
-さて、座標変換の情報は主にセンサーからデータが送られてくるたびに計算され、TF森に登録される。このため各フレーム間の座標変換の情報はセンサーの更新頻度に依存し、それぞれ異なるタイミングで更新される。
-例えば、マップ座標系からロボット座標系の座標変換を計算するプログラムはLiDARのデータ更新頻度に合わせて自己位置を計算し、マップ座標系からロボット座標系の座標変換を登録する。
-カメラ座標系から物体の座標系の座標変換を計算するプログラムはビデオカメラのデータ更新頻度に合わせて物体の位置を計算し、カメラ座標系から物体の座標系の座標変換を登録する。
-カメラの更新頻度とLiDARの更新頻度が異なる場合、マップ座標系からロボット座標系の座標変換が登録されるタイミング、カメラ座標系から物体の座標系の座標変換が登録されるタイミングにズレが生じる。マップ座標系から物体の座標系を計算する際にデータ同期の問題が生じてしまう。
-これに対処するため、まずTF森は各フレーム間の座標変換情報を過去一定期間保存する。これは図のように表現できる
-
-% map -> robot    
-% robot -> camera
-% camera -> apple
-
-図は各フレーム間の座標変換情報が提供される時刻を表す。横軸が時間軸を表し、左側が過去、右側が最新の時刻を表す。
-
-灰色線は対応する時刻の座標変換情報が登録されたことを表す。
-図の点線の位置でのmapからappleへの座標変換を計算する際、各フレーム間の座標変換情報が必要になる。robotからcameraへの座標変換情報は常にある物として扱われるが、mapからrobot、cameraからappleの座標変換データは該当する時刻では登録されていない。そのため、TFは前後のデータから線形補間を行うことにより座標変換データを計算する。つまり、TFは該当する時刻の座標変換データが保存されている、もしくは前後の値を元に線形補間ができる場合にはその時刻の座標変換データを提供できる、とみなす。
-
-
-
-
-
-まずはCompactFrameID等のtypedefは説明が面倒なので、展開してしまうか。
-
-
-座標変換はTransformStorageで表現され、これは以下で構成される
-回転成分を表すrotation\_。これはQuaternionで表現される
-並行移動成分を表すtranslation\_。これはVector3で表現される
-座標変換の時刻を表すstamp。これはros::Time型で表現される
-座標変換の親フレームのframe idを表すframe\_id。これは整数型で表現される
-座標変換の子フレームのframe idを表すchild\_frame\_id。これは整数型で表現される
-
-TimeCacheInterfaceは特定のフレームから親フレームへの座標変換を登録・管理する抽象クラスである。主に以下のようなメソッドがある
-bool getData(ros::Time time, TransformStorage \& data\_out, std::string * error\_str = 0)
-
-特定の時刻timeにおけるTransformStorageを取得する。取得できた場合にはtrueを返し、取得できなかった場合にはfalseを返しエラーの内容をerror\_strに代入する。
-
-bool insertData(const TransformStorage\& new\_data)
-
-座標変換の情報を登録する。情報の登録に成功した場合にはtrueを、そうでない場合にはfalseを返す。
-
-std::pair<ros::Time, CompactFrameID> getLatestTimeAndPare()
-
-最新の座標変換情報のうちその時刻と、親フレームのidを返す。
-
-
-TimeCacheはTimeCacheInterfaceを継承し、あるフレームにおける親フレームへの座標変換を時系列的に管理する。これはTransformStorageの双方向キューで構成され、ユーザーが座標変換情報を登録する際には先頭にpushし、保存していた座標変換の時刻が10秒以上過去のものとなればdequeから追い出す。getDataのアルゴリズムは以下のようになる
-
-
-%if(指定した時刻の座標変換データがある){
-%  return その座標変換データを返す
-%}else{
-%  if(前後にデータがある){
-%    if(前後で親が同じ){
-%       前後のrotationを球面線形補間、前後のtranslationを線形補間したものを返す       
-%    }else{
-% 　　　　エラー
-%    }     
-%  }else{
-%    エラー
-%  }
-%}
-
-
-
-
-StaticCacheはTimeCacheInterfaceを継承し、先程の例のrobot->sensor間の座標変換のように不変な座標変換情報を管理する。
-
-
-BufferCoreはTF森を管理する。
-
-文字列であるframeはTF森内部では整数型のidで管理している
-
-TimeCacheInterfaceを継承するTimeCacheとStaticCacheはそれぞれあるフレームからみた親フレームのid、親フレームのの座標変換を保持するため、これらはTF森における子フレームから親フレームへのエッジ及び子フレームのノードを表す。この’ためTF森は子フレームから親フレームへエッジが伸びる有効森構造となっている。
-
-
-以下のようなインターフェイスがある。
-bool setTransform(const geometry\_msgs::TransformStamped\& transform, const std::string \& authority, bool is\_static = false)
-
-座標変換情報を登録する。authorityには座標変換情報を登録するプログラムの名前等を指定できる。is\_staticをtrueにすると、StaticCacheにデータを登録できる。
-下記の更新、挿入において詳細を説明する
-
-geometry\_msgs::TransformStamped lookupTransform(const std::string\& target\_frame, const std::string\& source\_frame, const ros::Time\& time) const;
-		   
-時刻timeにおけるtarget\_frameからsource\_frameへの座標変換を返す。
-下記の検索の節において詳細を説明する
-
-
-template<typename F> int walkToTopParent(F\& f, ros::Time time, CompactFrameID target\_id, CompactFrameID source\_id, std::string* error\_string) const;
-
-
-指定の時刻timeについてtarget\_idからsource\_idへの座標変換を計算する。返り値は0以外の場合にはエラーコードとなり、エラーの原因がerror\_stringに代入される。
-
-テンプレートパラメータのFにはよくTransformAccumクラスが与えられ、これは通過したパスの座標変換情報を蓄積するオブジェクトである。
-
-主にlookupTransformの中で用いられる。
-
-int getLatestCommonTime(CompactFrameID target\_frame, CompactFrameID source\_frame, ros::Time\& time, std::string* error\_string) const;
-
-target\_frameからsource\_frameまでのパスにおいて、座標変換のデータが提供できる時刻で最新のものを取得する。そのような時刻が存在する場合にはtimeに代入され0を返す。もしそのような時刻がない場合にはエラーコードを返し、エラーの内容をerror\_stringに代入する。
-
-これは図のように説明できる。
-
-図においてmapからrobotへのパスにおいて必要なのはmapからrobotへの座標変換、robotからsensorへの座標変換。sensorからappleへの座標変換である。この中で最新のデータが最も古い時刻に来ているのはmapからrobotへの座標変換である。この時刻よりも前ならばmapからappleへの座標変換データは提供できるが、この時刻より後ではパス中の座標変換が提供できなくなる。このため、getLatestCommonTimeではこの時刻Aが選択される。
-
-ここで、図中ではlidarからobjectへの座標変換が最も古い時刻に来ているが、mapからrobotへの座標変換を計算する時にこの座標変換は使わないために時刻Dが選ばれないことに注意する。
-
-(robot -> lidar -> とか別のもっと遅いものも追加！)
-
-TimeCacheInterfacePtr BufferCore::getFrame(CompactFrameID frame\_id)
-
-与えられたframe\_idに対応するTimeCahceInterfaceへのポインタを取得する。該当するものがない場合にはnullを返す。
-
-また、BufferCoreには以下のようなフィールドがある
-
-
-
-frames\_: 各フレームidに対応するTimeCacheInterfaceのポインタを管理する配列。TF森はこの配列で表現される。
-
-
-
-
-frameからframe idを検索するテーブル、及びframe idからframeを検索するテーブルが存在する frameIDs\_, frameIDs\_reverse
-
-frame\_mutex\_: frames\_, frameIDs\_, frameIDs\_reverseは複数のスレッドから操作される。データ競合を防ぐため、各スレッドはframe\_mutex\_を用いて排他処理を行う。
-
-
-特定のフレームに対応するTimeCacheInterfaceを取得するには、まずframeIDs\_から対応するframe idを取得し、続いてframes\_から対応するTimeCacheInterfaceへのポインタを取得する。この二回の検索処理の後、TF森のフレームに該当するTimeCacheInterfaceにアクセスできる。
-
-TransformAccumクラスは、lookupTransformにて木構造を辿って座標変換を計算する際に座標変換の計算を蓄積していくクラスである。
-
-int gather(TimeCacheInterface* cache, Time time, string * error\_string)
-
-cacheからtimeの時の座標変換を取得し、それをTransformAccumインスタンス内の一時変数に記録する。cacheから親のフレームのidを取得しそれを返す。	
-
 \section{lookupTransform}
+二つのフレーム間の座標変換情報を取得するにはlookupTransformメソッドを使う。
+
+登録されたフレームが図\ref{fig:multitree}、登録された座標変換情報のタイムラインが図\ref{fig:general-timeline}の状況において、lookupTransformメソッドを用いてフレームcからフレームdへの座標変換を計算するアルゴリズムを説明する。
+
+\begin{enumerate}
+	\item フレームcから木構造のルートノードへのパスを取得する。ここではルートノードはaとなり、フレームcからフレームaへのパスはc$\rightarrow$bとb$\rightarrow$aとなる。
+	\item フレームdから木構造のルートノードへのパスを取得する。同じようにルートノードはaとなり、フレームdからフレームaへのパスはd$\rightarrow$aとなる。
+	\item 得られた三つのどのパスにおいてもなるべく最新の座標変換を提供できる時刻を確認する。ここでは時刻Aが要件を満たす。
+	\item 時刻Aにおける各パスの座標変換データを計算する。b$\rightarrow$aについては登録されたデータを利用でき、c$\rightarrow$bとd$\rightarrow$aについては線形補間されたデータを利用できる。
+	\item 最後に、フレームcからフレームaへの座標変換と、フレームaからdへの座標変換を掛け合わせる。フレームcからフレームaへの座標変換はc$\rightarrow$bとb$\rightarrow$aの
+\end{enumerate}
+
+
+
+最後に、フレームcからフレームaへの座標変換と、フレームaからdへの座標変換を掛け合わせる。フレームcからフレームaへの座標変換はc$\rightarrow$bとb$\rightarrow$aの
+
+% ショートカットについては説明不要？
+
+
+例外パターンの説明
+
+また、lookupTransformは指定した時刻のデータを取得することもできる。
+
 
 
 擬似コード
