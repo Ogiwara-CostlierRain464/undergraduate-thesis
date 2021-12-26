@@ -24,9 +24,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="1.6988432"
-     inkscape:cx="496.51435"
-     inkscape:cy="536.24727"
+     inkscape:zoom="0.76182723"
+     inkscape:cx="218.55349"
+     inkscape:cy="841.39813"
      inkscape:window-width="1440"
      inkscape:window-height="792"
      inkscape:window-x="0"
@@ -1077,6 +1077,76 @@
            id="path7916" />
       </symbol>
     </g>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lstart-35-0"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path1091-8-2"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lstart-9-4"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path1091-7-0"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lstart-9-2-4"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path1091-7-2-3"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lstart-9-2-4-9"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path1091-7-2-3-5"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lstart-9-2-4-3"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path1091-7-2-3-6"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)" />
+    </marker>
   </defs>
   <g
      inkscape:label="Layer 1"
@@ -3369,6 +3439,221 @@
              height="100%" />
         </g>
       </g>
+    </g>
+    <g
+       id="g8334-1"
+       transform="translate(-50.200298,130.97527)"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/multitree.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200">
+      <text
+         id="text870-6-7"
+         y="50.982342"
+         x="92.447708"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:1.15;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+           y="50.982342"
+           x="92.447708"
+           id="tspan868-1-9"
+           sodipodi:role="line">a</tspan></text>
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none"
+         id="rect8169-4"
+         width="7.9047027"
+         height="7.9047027"
+         x="90.180008"
+         y="45.438354" />
+    </g>
+    <g
+       id="g8334-7-7"
+       transform="translate(-62.233961,149.15443)"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/multitree.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200">
+      <text
+         id="text870-6-2-0"
+         y="50.982342"
+         x="92.447708"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:1.15;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+           y="50.982342"
+           x="92.447708"
+           id="tspan868-1-3-1"
+           sodipodi:role="line">b</tspan></text>
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none"
+         id="rect8169-3-1"
+         width="7.9047027"
+         height="7.9047027"
+         x="90.180008"
+         y="45.438354" />
+    </g>
+    <g
+       id="g8334-7-7-3"
+       transform="translate(-20.177241,148.28632)"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/multitree.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200">
+      <text
+         id="text870-6-2-0-2"
+         y="50.982342"
+         x="92.447708"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:1.15;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+           y="50.982342"
+           x="92.447708"
+           id="tspan868-1-3-1-1"
+           sodipodi:role="line">f</tspan></text>
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none"
+         id="rect8169-3-1-0"
+         width="7.9047027"
+         height="7.9047027"
+         x="90.180008"
+         y="45.438354" />
+    </g>
+    <path
+       inkscape:export-ydpi="200"
+       inkscape:export-xdpi="200"
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart-35-0)"
+       d="m 31.958199,202.89667 0.0164,11.87759"
+       id="path1032-82-5"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/multitree.png" />
+    <g
+       id="g8334-3-2"
+       transform="translate(-62.363215,169.63097)"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/multitree.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200">
+      <text
+         id="text870-6-9-2"
+         y="50.982342"
+         x="92.447708"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:1.15;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+           y="50.982342"
+           x="92.447708"
+           id="tspan868-1-53-2"
+           sodipodi:role="line">c</tspan></text>
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none"
+         id="rect8169-6-4"
+         width="7.9047027"
+         height="7.9047027"
+         x="90.180008"
+         y="45.438354" />
+    </g>
+    <path
+       inkscape:export-ydpi="200"
+       inkscape:export-xdpi="200"
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart-9-4)"
+       d="M 42.129899,184.31832 31.610235,194.43741"
+       id="path1032-0-9"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/multitree.png" />
+    <path
+       inkscape:export-ydpi="200"
+       inkscape:export-xdpi="200"
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart-9-2-4)"
+       d="m 45.302897,184.31436 10.18113,10.11908"
+       id="path1032-0-6-7"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/multitree.png" />
+    <path
+       inkscape:export-ydpi="200"
+       inkscape:export-xdpi="200"
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart-9-2-4-3)"
+       d="m 78.340007,183.68493 10.18113,10.11908"
+       id="path1032-0-6-7-9"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/multitree.png" />
+    <path
+       inkscape:export-ydpi="200"
+       inkscape:export-xdpi="200"
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart-9-2-4-9)"
+       d="m 74.605965,183.86171 -0.850656,9.86207"
+       id="path1032-0-6-7-6"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/multitree.png" />
+    <g
+       id="g8334-5-7"
+       transform="translate(-38.452138,149.15158)"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/multitree.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200">
+      <text
+         id="text870-6-6-2"
+         y="50.982342"
+         x="92.447708"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:1.15;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+           y="50.982342"
+           x="92.447708"
+           id="tspan868-1-5-0"
+           sodipodi:role="line">d</tspan></text>
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none"
+         id="rect8169-5-9"
+         width="7.9047027"
+         height="7.9047027"
+         x="90.180008"
+         y="45.438354" />
+    </g>
+    <g
+       id="g8334-1-9"
+       transform="translate(-17.512234,130.20234)"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/multitree.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200">
+      <text
+         id="text870-6-7-3"
+         y="50.982342"
+         x="92.447708"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:1.15;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+           y="50.982342"
+           x="92.447708"
+           id="tspan868-1-9-7"
+           sodipodi:role="line">e</tspan></text>
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none"
+         id="rect8169-4-2"
+         width="7.9047027"
+         height="7.9047027"
+         x="90.180008"
+         y="45.438354" />
+    </g>
+    <g
+       id="g8334-7-7-1"
+       transform="translate(-2.9932283,148.23549)"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/multitree.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200">
+      <text
+         id="text870-6-2-0-3"
+         y="50.982342"
+         x="92.447708"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:1.15;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+           y="50.982342"
+           x="92.447708"
+           id="tspan868-1-3-1-0"
+           sodipodi:role="line">g</tspan></text>
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none"
+         id="rect8169-3-1-8"
+         width="7.9047027"
+         height="7.9047027"
+         x="90.180008"
+         y="45.438354" />
     </g>
   </g>
 </svg>
