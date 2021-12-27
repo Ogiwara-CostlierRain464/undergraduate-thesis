@@ -24,10 +24,10 @@
      inkscape:pagecheckerboard="0"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="0.76182723"
-     inkscape:cx="218.55349"
-     inkscape:cy="841.39813"
-     inkscape:window-width="1440"
+     inkscape:zoom="0.49247813"
+     inkscape:cx="552.30879"
+     inkscape:cy="493.42293"
+     inkscape:window-width="893"
      inkscape:window-height="792"
      inkscape:window-x="0"
      inkscape:window-y="25"
@@ -2243,8 +2243,8 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.23387px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.163558"
-       x="69.922592"
-       y="143.19937"
+       x="69.4804"
+       y="146.11783"
        id="text10665"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/g-lock-time.png"
        inkscape:export-xdpi="200"
@@ -2252,8 +2252,8 @@
          sodipodi:role="line"
          id="tspan10663"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.23387px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.163558"
-         x="69.922592"
-         y="143.19937">time</tspan></text>
+         x="69.4804"
+         y="146.11783">time</tspan></text>
     <g
        inkscape:label=""
        transform="translate(148.228,68.6754)"
@@ -2449,7 +2449,7 @@
        x="122.19585"
        y="134.99211"
        id="text6497-5"
-       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/low-time.png"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/high-gran-time.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200"><tspan
          sodipodi:role="line"
@@ -2463,7 +2463,7 @@
        x="122.20802"
        y="144.00267"
        id="text6497-6-7"
-       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/low-time.png"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/high-gran-time.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200"><tspan
          sodipodi:role="line"
@@ -2476,30 +2476,30 @@
        d="m 133.37379,129.48364 h 1.84473 l -0.92237,1.01105 z"
        id="path8955-3-6"
        sodipodi:nodetypes="cccc"
-       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/low-time.png"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/high-gran-time.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200" />
     <path
        style="fill:#000000;stroke:#000000;stroke-width:0.073664;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 133.63919,146.82679 h 1.84472 l -0.92236,-1.01105 z"
+       d="m 139.46003,146.82679 h 1.84472 l -0.92236,-1.01105 z"
        id="path8955-3-2-4"
        sodipodi:nodetypes="cccc"
-       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/low-time.png"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/high-gran-time.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200" />
     <path
        style="fill:none;stroke:#000000;stroke-width:0.073664;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 146.139,146.82679 h 1.84473 l -0.92236,-1.01105 z"
+       d="m 151.95984,146.82679 h 1.84473 l -0.92236,-1.01105 z"
        id="path8955-3-4-4-3"
        sodipodi:nodetypes="cccc"
-       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/low-time.png"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/high-gran-time.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200" />
     <path
        id="path833-4"
        d="m 133.65598,154.98219 c 39.00537,0 39.00537,0 39.00537,0"
        style="fill:none;stroke:#000000;stroke-width:0.120182;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Lend-0)"
-       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/low-time.png"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/high-gran-time.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200" />
     <text
@@ -2508,7 +2508,7 @@
        x="148.41464"
        y="160.31787"
        id="text10665-9"
-       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/low-time.png"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/high-gran-time.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200"><tspan
          sodipodi:role="line"
@@ -2518,8 +2518,8 @@
          y="160.31787">time</tspan></text>
     <g
        id="g8411-2-2-3"
-       transform="matrix(0.63658547,0,0,1.0085058,98.787659,21.126718)"
-       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/low-time.png"
+       transform="matrix(0.63658547,0,0,1.0085058,104.6085,21.126718)"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/high-gran-time.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200">
       <rect
@@ -2532,9 +2532,9 @@
     </g>
     <g
        inkscape:label=""
-       transform="matrix(0.44640163,0,0,0.44640163,94.550068,106.89037)"
+       transform="matrix(0.44640163,0,0,0.44640163,100.3709,106.89037)"
        id="g12113-3-1-0"
-       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/low-time.png"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/high-gran-time.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200">
       <g
@@ -2599,7 +2599,7 @@
     <g
        id="g8411-2-2-3-8"
        transform="matrix(0.63658547,0,0,1.0085058,98.522259,12.410929)"
-       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/low-time.png"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/high-gran-time.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200">
       <rect
@@ -2614,7 +2614,7 @@
        inkscape:label=""
        transform="matrix(0.51302157,0,0,0.51302157,88.203166,93.18269)"
        id="g29766-7"
-       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/low-time.png"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/high-gran-time.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200">
       <g
@@ -2679,7 +2679,7 @@
     <g
        id="g8411-2-2-3-8-7"
        transform="matrix(0.63658547,0,0,1.0085058,111.02208,12.410929)"
-       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/low-time.png"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/high-gran-time.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200">
       <rect
@@ -2695,7 +2695,7 @@
        d="m 144.45888,126.01802 2.33709,4.47667"
        id="path37446"
        sodipodi:nodetypes="cc"
-       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/low-time.png"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/high-gran-time.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200" />
     <path
@@ -2703,14 +2703,14 @@
        d="m 149.13306,126.01802 -2.33709,4.47667"
        id="path37446-4"
        sodipodi:nodetypes="cc"
-       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/low-time.png"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/high-gran-time.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200" />
     <g
        inkscape:label=""
        transform="matrix(0.25689969,0,0,0.25689969,107.40131,107.28869)"
        id="g2167-9"
-       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/low-time.png"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/high-gran-time.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200">
       <g
@@ -2785,15 +2785,17 @@
     </g>
     <g
        inkscape:label=""
-       transform="matrix(0.28093389,0,0,0.28093389,105.05259,126.67461)"
+       transform="matrix(0.28093389,0,0,0.28093389,110.87343,126.67461)"
        id="g2811-8"
-       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/low-time.png"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/high-gran-time.png"
        inkscape:export-xdpi="200"
-       inkscape:export-ydpi="200">
+       inkscape:export-ydpi="200"
+       style="paint-order:normal">
       <g
-         id="g1782-6">
+         id="g1782-6"
+         style="paint-order:normal">
         <g
-           style="fill:#000000;fill-opacity:1"
+           style="fill:#000000;fill-opacity:1;paint-order:normal"
            id="g4364-1">
           <use
              xlink:href="#symbol3780"
@@ -2801,10 +2803,11 @@
              y="81.962997"
              id="use7265-6"
              width="100%"
-             height="100%" />
+             height="100%"
+             style="paint-order:normal" />
         </g>
         <g
-           style="fill:#000000;fill-opacity:1"
+           style="fill:#000000;fill-opacity:1;paint-order:normal"
            id="g4683-7">
           <use
              xlink:href="#symbol8578"
@@ -2812,10 +2815,11 @@
              y="81.962997"
              id="use2007-3"
              width="100%"
-             height="100%" />
+             height="100%"
+             style="paint-order:normal" />
         </g>
         <g
-           style="fill:#000000;fill-opacity:1"
+           style="fill:#000000;fill-opacity:1;paint-order:normal"
            id="g5322-9">
           <use
              xlink:href="#symbol8058"
@@ -2823,10 +2827,11 @@
              y="83.457001"
              id="use7972-3"
              width="100%"
-             height="100%" />
+             height="100%"
+             style="paint-order:normal" />
         </g>
         <g
-           style="fill:#000000;fill-opacity:1"
+           style="fill:#000000;fill-opacity:1;paint-order:normal"
            id="g3566-5">
           <use
              xlink:href="#symbol6190"
@@ -2834,10 +2839,11 @@
              y="81.962997"
              id="use818-7"
              width="100%"
-             height="100%" />
+             height="100%"
+             style="paint-order:normal" />
         </g>
         <g
-           style="fill:#000000;fill-opacity:1"
+           style="fill:#000000;fill-opacity:1;paint-order:normal"
            id="g8477-9">
           <use
              xlink:href="#symbol9320"
@@ -2845,10 +2851,11 @@
              y="81.962997"
              id="use8274-8"
              width="100%"
-             height="100%" />
+             height="100%"
+             style="paint-order:normal" />
         </g>
         <g
-           style="fill:#000000;fill-opacity:1"
+           style="fill:#000000;fill-opacity:1;paint-order:normal"
            id="g9499-7">
           <use
              xlink:href="#symbol9123"
@@ -2856,7 +2863,8 @@
              y="81.962997"
              id="use7754-6"
              width="100%"
-             height="100%" />
+             height="100%"
+             style="paint-order:normal" />
         </g>
       </g>
     </g>
@@ -3062,7 +3070,7 @@
        inkscape:label=""
        transform="matrix(0.33094484,0,0,0.33094484,106.47232,97.129532)"
        id="g41752-4"
-       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/low-time.png"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/high-gran-time.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200">
       <g
@@ -3139,7 +3147,7 @@
        inkscape:label=""
        transform="matrix(0.54154666,0,0,0.54154666,97.635265,90.76834)"
        id="g30677-2"
-       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/low-time.png"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/high-gran-time.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200">
       <g
@@ -3205,7 +3213,7 @@
        inkscape:label=""
        transform="matrix(0.3082309,0,0,0.3082309,118.01313,99.076368)"
        id="g2456-0"
-       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/low-time.png"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/high-gran-time.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200">
       <g
@@ -3282,7 +3290,7 @@
        inkscape:label=""
        transform="matrix(0.33057505,0,0,0.33057505,124.12422,100.49479)"
        id="g42877-3"
-       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/low-time.png"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/high-gran-time.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200">
       <g
@@ -3360,14 +3368,14 @@
        d="m 158.37343,129.48364 h 1.84472 l -0.92236,1.01105 z"
        id="path8955-3-4-41"
        sodipodi:nodetypes="cccc"
-       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/low-time.png"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/high-gran-time.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200" />
     <g
        inkscape:label=""
-       transform="matrix(0.29293197,0,0,0.29293197,116.52753,125.24426)"
+       transform="matrix(0.29293197,0,0,0.29293197,122.34837,125.24426)"
        id="g44068-1"
-       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/low-time.png"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/high-gran-time.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200">
       <g
@@ -3655,5 +3663,89 @@
          x="90.180008"
          y="45.438354" />
     </g>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.272774;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.818323, 0.818323;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 56.316922,118.2918 c 0,20.98113 0,20.90194 0,20.90194"
+       id="path13097-1"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/g-lock-time.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.223033;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.669099, 0.669099;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 62.171991,124.85933 c 0,14.02685 0,13.9739 0,13.9739"
+       id="path13097-1-8"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/g-lock-time.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200" />
+    <text
+       xml:space="preserve"
+       style="font-size:2.5879px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';letter-spacing:0px;stroke-width:0.121308"
+       x="51.660572"
+       y="141.51836"
+       id="text13812-3-7"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/g-lock-time.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200"><tspan
+         sodipodi:role="line"
+         id="tspan13810-9-2"
+         style="stroke-width:0.121308"
+         x="51.660572"
+         y="141.51836">T1 start</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:2.5879px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';letter-spacing:0px;stroke-width:0.121308"
+       x="60.529358"
+       y="141.57288"
+       id="text13812-3-7-6"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/g-lock-time.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200"><tspan
+         sodipodi:role="line"
+         id="tspan13810-9-2-7"
+         style="stroke-width:0.121308"
+         x="60.529358"
+         y="141.57288">T2 start</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.258707;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.776122, 0.776122;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 134.29615,137.09995 c 0,18.87294 0,18.80171 0,18.80171"
+       id="path13097-1-2"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/high-gran-time.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.187293;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.561879, 0.561879;stroke-dashoffset:0;stroke-opacity:1"
+       d="m 140.38239,145.81574 c 0,9.89155 0,9.85421 0,9.85421"
+       id="path13097-1-8-1"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/high-gran-time.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200" />
+    <text
+       xml:space="preserve"
+       style="font-size:2.5879px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';letter-spacing:0px;stroke-width:0.121308"
+       x="130.10699"
+       y="158.09897"
+       id="text13812-3-7-8"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/high-gran-time.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200"><tspan
+         sodipodi:role="line"
+         id="tspan13810-9-2-8"
+         style="stroke-width:0.121308"
+         x="130.10699"
+         y="158.09897">T1 start</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:2.5879px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';letter-spacing:0px;stroke-width:0.121308"
+       x="138.97578"
+       y="158.15349"
+       id="text13812-3-7-6-5"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/high-gran-time.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200"><tspan
+         sodipodi:role="line"
+         id="tspan13810-9-2-7-6"
+         style="stroke-width:0.121308"
+         x="138.97578"
+         y="158.15349">T2 start</tspan></text>
   </g>
 </svg>
