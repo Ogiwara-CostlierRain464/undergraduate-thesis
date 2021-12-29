@@ -1198,6 +1198,90 @@
            id="path4740" />
       </symbol>
     </g>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="Arrow1Lend-7-7"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path838-67-1" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="Arrow1Lend-1-6"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path838-6-1" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="Arrow1Lend-7-78"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lend">
+      <path
+         transform="matrix(-0.8,0,0,-0.8,-10,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path838-67-8" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="Arrow1Lstart-8"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
+      <path
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path835-9" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="Arrow1Lstart-5"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
+      <path
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path835-8" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="Arrow1Lstart-2"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow1Lstart">
+      <path
+         transform="matrix(0.8,0,0,0.8,10,0)"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         id="path835-2" />
+    </marker>
   </defs>
   <sodipodi:namedview
      inkscape:window-maximized="0"
@@ -1209,9 +1293,9 @@
      inkscape:document-rotation="0"
      inkscape:current-layer="layer1"
      inkscape:document-units="mm"
-     inkscape:cy="821.11954"
-     inkscape:cx="384.49248"
-     inkscape:zoom="0.99741872"
+     inkscape:cy="814.73445"
+     inkscape:cx="420.56363"
+     inkscape:zoom="0.87144958"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0.0"
      borderopacity="1.0"
@@ -2105,14 +2189,14 @@
          y="37.991306">線形補間により取得可能なデータ</tspan></text>
     <path
        id="path833-7"
-       d="m 62.294094,241.62836 c 103.979486,0 103.979486,0 103.979486,0"
+       d="m 62.294094,204.58667 c 103.979486,0 103.979486,0 103.979486,0"
        style="fill:none;stroke:#000000;stroke-width:0.196223;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Lend-3)"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/sensor-sync.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200" />
     <rect
        ry="0"
-       y="215.39967"
+       y="178.35797"
        x="83.543953"
        height="6.5266671"
        width="70.402496"
@@ -2123,7 +2207,7 @@
        inkscape:export-ydpi="200" />
     <rect
        ry="0"
-       y="230.91867"
+       y="193.87697"
        x="83.547409"
        height="6.5197649"
        width="75.212845"
@@ -2138,7 +2222,7 @@
        width="1.6390691"
        height="6.2505932"
        x="-153.76721"
-       y="215.4977"
+       y="178.45599"
        transform="scale(-1,1)"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/sensor-sync.png"
        inkscape:export-xdpi="200"
@@ -2149,7 +2233,7 @@
        width="1.6390691"
        height="6.2505932"
        x="-142.3662"
-       y="215.4977"
+       y="178.45599"
        transform="scale(-1,1)"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/sensor-sync.png"
        inkscape:export-xdpi="200"
@@ -2158,7 +2242,7 @@
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
        x="104.65099"
-       y="250.72951"
+       y="213.68781"
        id="text10665-0"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/sensor-sync.png"
        inkscape:export-xdpi="200"
@@ -2167,12 +2251,12 @@
          id="tspan10663-9"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:8.46667px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
          x="104.65099"
-         y="250.72951">time</tspan></text>
+         y="213.68781">time</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
        x="168.0249"
-       y="243.54013"
+       y="206.49843"
        id="text14580-8-0"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/sensor-sync.png"
        inkscape:export-xdpi="200"
@@ -2181,12 +2265,12 @@
          id="tspan14578-1-2"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
          x="168.0249"
-         y="243.54013">future</tspan></text>
+         y="206.49843">future</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
        x="51.270699"
-       y="242.9782"
+       y="205.93649"
        id="text14580-7-9"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/sensor-sync.png"
        inkscape:export-xdpi="200"
@@ -2195,14 +2279,14 @@
          id="tspan14578-0-7"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
          x="51.270699"
-         y="242.9782">past</tspan></text>
+         y="205.93649">past</tspan></text>
     <rect
        style="fill:#000000;stroke:none;stroke-width:0.353553;stroke-miterlimit:4;stroke-dasharray:1.41421, 0.353553;stroke-dashoffset:0"
        id="rect17044-9"
        width="3.9903395"
        height="4.5223846"
        x="163.07286"
-       y="204.99509"
+       y="167.95338"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/sensor-sync.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200" />
@@ -2210,7 +2294,7 @@
        xml:space="preserve"
        style="font-size:5.64444px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';stroke-width:0.264583"
        x="169.0248"
-       y="208.70032"
+       y="171.65862"
        id="text18288-2"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/sensor-sync.png"
        inkscape:export-xdpi="200"
@@ -2219,12 +2303,12 @@
          id="tspan18286-3"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
          x="169.0248"
-         y="208.70032">登録されたデータ</tspan></text>
+         y="171.65862">登録されたデータ</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:5.64444px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';stroke-width:0.264583"
        x="8.6710491"
-       y="220.39645"
+       y="183.35475"
        id="text2591"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/sensor-sync.png"
        inkscape:export-xdpi="200"
@@ -2233,12 +2317,12 @@
          id="tspan2589"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
          x="8.6710491"
-         y="220.39645">地図座標系からロボット座標系</tspan></text>
+         y="183.35475">地図座標系からロボット座標系</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:5.64444px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';stroke-width:0.264583"
        x="8.9119062"
-       y="236.52695"
+       y="199.48524"
        id="text4869"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/sensor-sync.png"
        inkscape:export-xdpi="200"
@@ -2247,14 +2331,14 @@
          id="tspan4867"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:4.93889px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
          x="8.9119062"
-         y="236.52695">ロボット座標系から物体座標系</tspan></text>
+         y="199.48524">ロボット座標系から物体座標系</tspan></text>
     <rect
        style="fill:#000000;stroke:#000000;stroke-width:0.564931"
        id="rect1638-5-6-0-76"
        width="1.6390691"
        height="6.2505932"
        x="-130.96516"
-       y="215.54514"
+       y="178.50343"
        transform="scale(-1,1)"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/sensor-sync.png"
        inkscape:export-xdpi="200"
@@ -2265,7 +2349,7 @@
        width="1.6390691"
        height="6.2505932"
        x="-119.56415"
-       y="215.63998"
+       y="178.59828"
        transform="scale(-1,1)"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/sensor-sync.png"
        inkscape:export-xdpi="200"
@@ -2276,7 +2360,7 @@
        width="1.6390691"
        height="6.2505932"
        x="-108.16312"
-       y="215.54514"
+       y="178.50343"
        transform="scale(-1,1)"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/sensor-sync.png"
        inkscape:export-xdpi="200"
@@ -2287,7 +2371,7 @@
        width="1.6390691"
        height="6.2505932"
        x="-96.762093"
-       y="215.63998"
+       y="178.59828"
        transform="scale(-1,1)"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/sensor-sync.png"
        inkscape:export-xdpi="200"
@@ -2298,7 +2382,7 @@
        width="1.6390691"
        height="6.2505932"
        x="-85.437759"
-       y="215.37413"
+       y="178.33243"
        transform="scale(-1,1)"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/sensor-sync.png"
        inkscape:export-xdpi="200"
@@ -2309,7 +2393,7 @@
        width="1.6390691"
        height="6.2505932"
        x="-158.76025"
-       y="231.18784"
+       y="194.14613"
        transform="scale(-1,1)"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/sensor-sync.png"
        inkscape:export-xdpi="200"
@@ -2320,7 +2404,7 @@
        width="1.6390691"
        height="6.2505932"
        x="-148.17995"
-       y="231.13902"
+       y="194.09732"
        transform="scale(-1,1)"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/sensor-sync.png"
        inkscape:export-xdpi="200"
@@ -2331,7 +2415,7 @@
        width="1.6390691"
        height="6.2505932"
        x="-136.03825"
-       y="231.28133"
+       y="194.23962"
        transform="scale(-1,1)"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/sensor-sync.png"
        inkscape:export-xdpi="200"
@@ -2342,7 +2426,7 @@
        width="1.6390691"
        height="6.2505932"
        x="-124.42943"
-       y="231.04047"
+       y="193.99876"
        transform="scale(-1,1)"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/sensor-sync.png"
        inkscape:export-xdpi="200"
@@ -2353,7 +2437,7 @@
        width="1.6390691"
        height="6.2505932"
        x="-113.34974"
-       y="231.08791"
+       y="194.0462"
        transform="scale(-1,1)"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/sensor-sync.png"
        inkscape:export-xdpi="200"
@@ -2364,7 +2448,7 @@
        width="1.6390691"
        height="6.2505932"
        x="-101.93433"
-       y="231.04047"
+       y="193.99876"
        transform="scale(-1,1)"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/sensor-sync.png"
        inkscape:export-xdpi="200"
@@ -2375,21 +2459,21 @@
        width="1.6390691"
        height="6.2505932"
        x="-91.146614"
-       y="231.04047"
+       y="193.99876"
        transform="scale(-1,1)"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/sensor-sync.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200" />
     <path
        style="fill:none;stroke:#000000;stroke-width:0.322672;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.968019, 0.968019;stroke-dashoffset:0;stroke-opacity:1"
-       d="m 158.93118,213.3063 c 0,29.35938 0,29.24858 0,29.24858"
+       d="m 158.93118,176.26461 c 0,29.35938 0,29.24858 0,29.24858"
        id="path13097-1"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/sensor-sync.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200" />
     <path
        style="fill:none;stroke:#000000;stroke-width:0.322672;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.968019, 0.968019;stroke-dashoffset:0;stroke-opacity:1"
-       d="m 154.04486,213.7583 c 0,29.35938 0,29.24858 0,29.24858"
+       d="m 154.04486,176.71661 c 0,29.35938 0,29.24858 0,29.24858"
        id="path13097-1-5"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/sensor-sync.png"
        inkscape:export-xdpi="200"
@@ -2398,7 +2482,7 @@
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
        x="157.80579"
-       y="246.15845"
+       y="209.11674"
        id="text8277"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/sensor-sync.png"
        inkscape:export-xdpi="200"
@@ -2407,12 +2491,12 @@
          id="tspan8275"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
          x="157.80579"
-         y="246.15845">A</tspan></text>
+         y="209.11674">A</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
        x="152.71169"
-       y="246.30952"
+       y="209.26782"
        id="text8277-6"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/sensor-sync.png"
        inkscape:export-xdpi="200"
@@ -2421,10 +2505,10 @@
          id="tspan8275-5"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
          x="152.71169"
-         y="246.30952">B</tspan></text>
+         y="209.26782">B</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
-       d="m 130.72333,249.64125 15.81755,-12.25163"
+       d="m 130.72333,212.59956 15.81755,-12.25163"
        id="path11199"
        sodipodi:nodetypes="cc"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/sensor-sync.png"
@@ -2432,7 +2516,7 @@
        inkscape:export-ydpi="200" />
     <path
        style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
-       d="m 134.69194,250.29626 22.42925,-12.85783"
+       d="m 134.69194,213.25457 22.42925,-12.85783"
        id="path11199-8"
        sodipodi:nodetypes="cc"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/sensor-sync.png"
@@ -2442,7 +2526,7 @@
        xml:space="preserve"
        style="font-size:5.64444px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';stroke-width:0.264583"
        x="133.74666"
-       y="253.24046"
+       y="216.19876"
        id="text11870"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/sensor-sync.png"
        inkscape:export-xdpi="200"
@@ -2451,12 +2535,12 @@
          id="tspan11868"
          style="stroke-width:0.264583"
          x="133.74666"
-         y="253.24046">α</tspan></text>
+         y="216.19876">α</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:5.64444px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';stroke-width:0.264583"
        x="127.56046"
-       y="253.20564"
+       y="216.16394"
        id="text11870-5"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/sensor-sync.png"
        inkscape:export-xdpi="200"
@@ -2465,12 +2549,12 @@
          id="tspan11868-5"
          style="stroke-width:0.264583"
          x="127.56046"
-         y="253.20564">β</tspan></text>
+         y="216.16394">β</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:5.64444px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';stroke-width:0.264583"
        x="64.636131"
-       y="151.57774"
+       y="125.11939"
        id="text11870-5-1"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/general-timeline.png"
        inkscape:export-xdpi="200"
@@ -2479,12 +2563,12 @@
          id="tspan11868-5-5"
          style="stroke-width:0.264583"
          x="64.636131"
-         y="151.57774">β</tspan></text>
+         y="125.11939">β</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:5.64444px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';stroke-width:0.264583"
        x="139.65524"
-       y="210.93132"
+       y="173.88962"
        id="text11870-5-5"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/sensor-sync.png"
        inkscape:export-xdpi="200"
@@ -2493,10 +2577,10 @@
          id="tspan11868-5-1"
          style="stroke-width:0.264583"
          x="139.65524"
-         y="210.93132">θ</tspan></text>
+         y="173.88962">θ</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-end:url(#Arrow1Lend-1)"
-       d="m 144.14382,209.48541 7.98432,6.01229"
+       d="m 144.14382,172.44372 7.98432,6.01229"
        id="path11199-0"
        sodipodi:nodetypes="cc"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/sensor-sync.png"
@@ -2520,7 +2604,7 @@
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
        x="91.47937"
-       y="187.2271"
+       y="160.76874"
        id="text8277-2-8"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/general-timeline.png"
        inkscape:export-xdpi="200"
@@ -2529,12 +2613,12 @@
          id="tspan8275-7-3"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
          x="91.47937"
-         y="187.2271">A</tspan></text>
+         y="160.76874">A</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
        x="71.207741"
-       y="187.04771"
+       y="160.58936"
        id="text8277-2-3"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/general-timeline.png"
        inkscape:export-xdpi="200"
@@ -2543,17 +2627,17 @@
          id="tspan8275-7-2"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
          x="71.207741"
-         y="187.04771">B</tspan></text>
+         y="160.58936">B</tspan></text>
     <path
        id="path833-2"
-       d="m 56.889565,181.02433 c 77.416935,0 77.416935,0 77.416935,0"
+       d="m 56.889565,154.56598 c 77.416935,0 77.416935,0 77.416935,0"
        style="fill:none;stroke:#000000;stroke-width:0.169314;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Lend-7)"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/general-timeline.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200" />
     <rect
        ry="0"
-       y="139.61591"
+       y="113.15756"
        x="59.158627"
        height="6.5899839"
        width="33.854717"
@@ -2568,7 +2652,7 @@
        width="54.067192"
        height="6.5436673"
        x="65.49707"
-       y="153.31094"
+       y="126.85259"
        ry="0"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/general-timeline.png"
        inkscape:export-xdpi="200"
@@ -2579,7 +2663,7 @@
        width="49.063423"
        height="6.5573792"
        x="61.591534"
-       y="164.77361"
+       y="138.31525"
        ry="0"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/general-timeline.png"
        inkscape:export-xdpi="200"
@@ -2590,7 +2674,7 @@
        width="1.6394819"
        height="6.250525"
        x="91.252571"
-       y="139.71133"
+       y="113.253"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/general-timeline.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200" />
@@ -2600,7 +2684,7 @@
        width="1.6390691"
        height="6.2505932"
        x="-77.271332"
-       y="139.89764"
+       y="113.43931"
        transform="scale(-1,1)"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/general-timeline.png"
        inkscape:export-xdpi="200"
@@ -2611,7 +2695,7 @@
        width="1.6390691"
        height="6.2505932"
        x="-60.860935"
-       y="139.79222"
+       y="113.33389"
        transform="scale(-1,1)"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/general-timeline.png"
        inkscape:export-xdpi="200"
@@ -2622,7 +2706,7 @@
        width="1.6390691"
        height="6.2505932"
        x="-62.988407"
-       y="164.87128"
+       y="138.41292"
        transform="scale(-1,1)"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/general-timeline.png"
        inkscape:export-xdpi="200"
@@ -2633,7 +2717,7 @@
        width="1.6390691"
        height="6.2505932"
        x="-66.834076"
-       y="153.54848"
+       y="127.09013"
        transform="scale(-1,1)"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/general-timeline.png"
        inkscape:export-xdpi="200"
@@ -2644,7 +2728,7 @@
        width="1.6390691"
        height="6.2505932"
        x="-99.244415"
-       y="153.54848"
+       y="127.09013"
        transform="scale(-1,1)"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/general-timeline.png"
        inkscape:export-xdpi="200"
@@ -2655,7 +2739,7 @@
        width="1.6390691"
        height="6.2505932"
        x="-119.61659"
-       y="153.39415"
+       y="126.9358"
        transform="scale(-1,1)"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/general-timeline.png"
        inkscape:export-xdpi="200"
@@ -2666,7 +2750,7 @@
        width="1.6390691"
        height="6.2505932"
        x="-110.81951"
-       y="164.81494"
+       y="138.35658"
        transform="scale(-1,1)"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/general-timeline.png"
        inkscape:export-xdpi="200"
@@ -2677,7 +2761,7 @@
        width="1.6390691"
        height="6.2505932"
        x="-87.514954"
-       y="164.96928"
+       y="138.51093"
        transform="scale(-1,1)"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/general-timeline.png"
        inkscape:export-xdpi="200"
@@ -2686,7 +2770,7 @@
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
        x="140.28854"
-       y="182.64445"
+       y="156.1861"
        id="text14580-8-1"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/general-timeline.png"
        inkscape:export-xdpi="200"
@@ -2695,12 +2779,12 @@
          id="tspan14578-1-5"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
          x="140.28854"
-         y="182.64445">future</tspan></text>
+         y="156.1861">future</tspan></text>
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
        x="46.535637"
-       y="182.38132"
+       y="155.92296"
        id="text14580-7-1"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/general-timeline.png"
        inkscape:export-xdpi="200"
@@ -2709,14 +2793,14 @@
          id="tspan14578-0-8"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
          x="46.535637"
-         y="182.38132">past</tspan></text>
+         y="155.92296">past</tspan></text>
     <rect
        style="fill:#000000;stroke:none;stroke-width:0.353553;stroke-miterlimit:4;stroke-dasharray:1.41421, 0.353553;stroke-dashoffset:0"
        id="rect17044-2"
        width="3.9903395"
        height="4.5223846"
        x="128.9933"
-       y="129.7222"
+       y="103.26386"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/general-timeline.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200" />
@@ -2726,7 +2810,7 @@
        width="4.2563624"
        height="4.5223846"
        x="128.9933"
-       y="136.89043"
+       y="110.4321"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/general-timeline.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200" />
@@ -2734,7 +2818,7 @@
        xml:space="preserve"
        style="font-size:5.64444px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';stroke-width:0.264583"
        x="134.94524"
-       y="133.42743"
+       y="106.96911"
        id="text18288-3"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/general-timeline.png"
        inkscape:export-xdpi="200"
@@ -2743,12 +2827,12 @@
          id="tspan18286-6"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
          x="134.94524"
-         y="133.42743">登録されたデータ</tspan></text>
+         y="106.96911">登録されたデータ</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:5.64444px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';stroke-width:0.264583"
        x="134.55739"
-       y="140.3777"
+       y="113.91936"
        id="text21958-9"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/general-timeline.png"
        inkscape:export-xdpi="200"
@@ -2757,10 +2841,10 @@
          id="tspan21956-8"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
          x="134.55739"
-         y="140.3777">線形補間により取得可能なデータ</tspan></text>
+         y="113.91936">線形補間により取得可能なデータ</tspan></text>
     <g
        inkscape:label=""
-       transform="matrix(0.89852542,0,0,0.89852542,-56.45709,72.044273)"
+       transform="matrix(0.89852542,0,0,0.89852542,-56.45709,45.585938)"
        id="g2241"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/general-timeline.png"
        inkscape:export-xdpi="200"
@@ -2804,7 +2888,7 @@
     </g>
     <g
        inkscape:label=""
-       transform="matrix(0.89852542,0,0,0.89852542,-56.90715,84.848039)"
+       transform="matrix(0.89852542,0,0,0.89852542,-56.90715,58.389704)"
        id="g3254"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/general-timeline.png"
        inkscape:export-xdpi="200"
@@ -2848,7 +2932,7 @@
     </g>
     <g
        inkscape:label=""
-       transform="matrix(0.91882033,0,0,0.91882033,-58.087975,94.496151)"
+       transform="matrix(0.91882033,0,0,0.91882033,-58.087975,68.037816)"
        id="g4305"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/general-timeline.png"
        inkscape:export-xdpi="200"
@@ -2892,14 +2976,14 @@
     </g>
     <path
        style="fill:none;stroke:#000000;stroke-width:0.399648;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.19894, 1.19894;stroke-dashoffset:0;stroke-opacity:1"
-       d="m 93.013342,137.41202 c 0,45.03802 0,44.86805 0,44.86805"
+       d="m 93.013342,110.95367 c 0,45.03802 0,44.86805 0,44.86805"
        id="path13097-8"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/general-timeline.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200" />
     <path
        style="fill:none;stroke:#000000;stroke-width:0.400285;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.20086, 1.20086;stroke-dashoffset:0;stroke-opacity:1"
-       d="m 72.641931,137.27584 c 0,45.18175 0,45.01124 0,45.01124"
+       d="m 72.641931,110.81749 c 0,45.18175 0,45.01124 0,45.01124"
        id="path13097-8-2"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/general-timeline.png"
        inkscape:export-xdpi="200"
@@ -2908,7 +2992,7 @@
        xml:space="preserve"
        style="font-size:5.64444px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';stroke-width:0.264583"
        x="97.100243"
-       y="151.81517"
+       y="125.35682"
        id="text11870-9"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/general-timeline.png"
        inkscape:export-xdpi="200"
@@ -2917,12 +3001,12 @@
          id="tspan11868-3"
          style="stroke-width:0.264583"
          x="97.100243"
-         y="151.81517">α</tspan></text>
+         y="125.35682">α</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:5.64444px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';stroke-width:0.264583"
        x="117.5405"
-       y="152.2971"
+       y="125.83875"
        id="text11870-5-5-9"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/general-timeline.png"
        inkscape:export-xdpi="200"
@@ -2931,6 +3015,643 @@
          id="tspan11868-5-1-3"
          style="stroke-width:0.264583"
          x="117.5405"
-         y="152.2971">θ</tspan></text>
+         y="125.83875">θ</tspan></text>
+    <path
+       id="path833-2-26"
+       d="m 65.442311,289.68019 c 77.416939,0 77.416939,0 77.416939,0"
+       style="fill:none;stroke:#000000;stroke-width:0.169314;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Lend-7-78)"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/lookupLatestTransform.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200" />
+    <rect
+       ry="0"
+       y="248.27179"
+       x="67.711372"
+       height="6.5899839"
+       width="33.854717"
+       id="rect1155-1-2"
+       style="fill:#cccccc;stroke:#000000;stroke-width:0.145516;stroke-miterlimit:4;stroke-dasharray:none"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/lookupLatestTransform.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200" />
+    <rect
+       style="fill:#cccccc;stroke:#000000;stroke-width:0.183246;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect1155-3-2-2"
+       width="54.067192"
+       height="6.5436673"
+       x="74.049812"
+       y="261.96686"
+       ry="0"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/lookupLatestTransform.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200" />
+    <rect
+       style="fill:#cccccc;stroke:#000000;stroke-width:0.174744;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect1155-4-0-9"
+       width="49.063423"
+       height="6.5573792"
+       x="70.144279"
+       y="273.4295"
+       ry="0"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/lookupLatestTransform.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200" />
+    <rect
+       style="fill:#000000;stroke:#000000;stroke-width:0.564999"
+       id="rect1638-4-4"
+       width="1.6394819"
+       height="6.250525"
+       x="99.805313"
+       y="248.36722"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/lookupLatestTransform.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200" />
+    <rect
+       style="fill:#000000;stroke:#000000;stroke-width:0.564931"
+       id="rect1638-5-4-7"
+       width="1.6390691"
+       height="6.2505932"
+       x="-85.824074"
+       y="248.55353"
+       transform="scale(-1,1)"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/lookupLatestTransform.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200" />
+    <rect
+       style="fill:#000000;stroke:#000000;stroke-width:0.564931"
+       id="rect1638-5-9-0-0"
+       width="1.6390691"
+       height="6.2505932"
+       x="-69.413681"
+       y="248.44812"
+       transform="scale(-1,1)"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/lookupLatestTransform.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200" />
+    <rect
+       style="fill:#000000;stroke:#000000;stroke-width:0.564931"
+       id="rect1638-5-5-1-2"
+       width="1.6390691"
+       height="6.2505932"
+       x="-71.541153"
+       y="273.52719"
+       transform="scale(-1,1)"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/lookupLatestTransform.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200" />
+    <rect
+       style="fill:#000000;stroke:#000000;stroke-width:0.564931"
+       id="rect1638-5-0-9-4"
+       width="1.6390691"
+       height="6.2505932"
+       x="-75.386818"
+       y="262.20441"
+       transform="scale(-1,1)"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/lookupLatestTransform.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200" />
+    <rect
+       style="fill:#000000;stroke:#000000;stroke-width:0.564931"
+       id="rect1638-5-8-2-1"
+       width="1.6390691"
+       height="6.2505932"
+       x="-107.79716"
+       y="262.20441"
+       transform="scale(-1,1)"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/lookupLatestTransform.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200" />
+    <rect
+       style="fill:#000000;stroke:#000000;stroke-width:0.564931"
+       id="rect1638-5-6-0-0"
+       width="1.6390691"
+       height="6.2505932"
+       x="-128.16934"
+       y="262.05005"
+       transform="scale(-1,1)"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/lookupLatestTransform.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200" />
+    <rect
+       style="fill:#000000;stroke:#000000;stroke-width:0.564931"
+       id="rect1638-5-2-0-0"
+       width="1.6390691"
+       height="6.2505932"
+       x="-119.37225"
+       y="273.47086"
+       transform="scale(-1,1)"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/lookupLatestTransform.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200" />
+    <rect
+       style="fill:#000000;stroke:#000000;stroke-width:0.564931"
+       id="rect1638-5-3-5-7"
+       width="1.6390691"
+       height="6.2505932"
+       x="-96.067696"
+       y="273.62518"
+       transform="scale(-1,1)"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/lookupLatestTransform.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="148.84129"
+       y="291.30035"
+       id="text14580-8-1-1"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/lookupLatestTransform.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200"><tspan
+         sodipodi:role="line"
+         id="tspan14578-1-5-0"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+         x="148.84129"
+         y="291.30035">future</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="55.088383"
+       y="291.03723"
+       id="text14580-7-1-1"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/lookupLatestTransform.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200"><tspan
+         sodipodi:role="line"
+         id="tspan14578-0-8-5"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+         x="55.088383"
+         y="291.03723">past</tspan></text>
+    <rect
+       style="fill:#000000;stroke:none;stroke-width:0.353553;stroke-miterlimit:4;stroke-dasharray:1.41421, 0.353553;stroke-dashoffset:0"
+       id="rect17044-2-5"
+       width="3.9903395"
+       height="4.5223846"
+       x="137.54605"
+       y="238.37805"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/lookupLatestTransform.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200" />
+    <rect
+       style="fill:#999999;stroke:none;stroke-width:0.365148;stroke-miterlimit:4;stroke-dasharray:1.46059, 0.365148;stroke-dashoffset:0"
+       id="rect17044-4-7-1"
+       width="4.2563624"
+       height="4.5223846"
+       x="137.54605"
+       y="245.54633"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/lookupLatestTransform.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200" />
+    <text
+       xml:space="preserve"
+       style="font-size:5.64444px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';stroke-width:0.264583"
+       x="143.49799"
+       y="242.08333"
+       id="text18288-3-9"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/lookupLatestTransform.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200"><tspan
+         sodipodi:role="line"
+         id="tspan18286-6-7"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+         x="143.49799"
+         y="242.08333">登録されたデータ</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:5.64444px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';stroke-width:0.264583"
+       x="143.11014"
+       y="249.0336"
+       id="text21958-9-3"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/lookupLatestTransform.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200"><tspan
+         sodipodi:role="line"
+         id="tspan21956-8-1"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+         x="143.11014"
+         y="249.0336">線形補間により取得可能なデータ</tspan></text>
+    <g
+       inkscape:label=""
+       transform="matrix(0.89852542,0,0,0.89852542,-47.904344,180.70015)"
+       id="g2241-7"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/lookupLatestTransform.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200">
+      <g
+         id="g9344-6">
+        <g
+           style="fill:#000000;fill-opacity:1"
+           id="g5037-4">
+          <use
+             xlink:href="#symbol656"
+             x="91.925003"
+             y="81.962997"
+             id="use1579-0"
+             width="100%"
+             height="100%" />
+        </g>
+        <g
+           style="fill:#000000;fill-opacity:1"
+           id="g3360-3">
+          <use
+             xlink:href="#symbol1206"
+             x="100.227"
+             y="81.962997"
+             id="use6231-7"
+             width="100%"
+             height="100%" />
+        </g>
+        <g
+           style="fill:#000000;fill-opacity:1"
+           id="g8768-4">
+          <use
+             xlink:href="#symbol8366"
+             x="112.957"
+             y="81.962997"
+             id="use6442-8"
+             width="100%"
+             height="100%" />
+        </g>
+      </g>
+    </g>
+    <g
+       inkscape:label=""
+       transform="matrix(0.89852542,0,0,0.89852542,-48.354404,193.50391)"
+       id="g3254-9"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/lookupLatestTransform.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200">
+      <g
+         id="g8403-4">
+        <g
+           style="fill:#000000;fill-opacity:1"
+           id="g9839-3">
+          <use
+             xlink:href="#symbol6329"
+             x="91.925003"
+             y="81.962997"
+             id="use7226-5"
+             width="100%"
+             height="100%" />
+        </g>
+        <g
+           style="fill:#000000;fill-opacity:1"
+           id="g4594-7">
+          <use
+             xlink:href="#symbol2060"
+             x="100.227"
+             y="81.962997"
+             id="use8965-5"
+             width="100%"
+             height="100%" />
+        </g>
+        <g
+           style="fill:#000000;fill-opacity:1"
+           id="g1443-4">
+          <use
+             xlink:href="#symbol6297"
+             x="112.957"
+             y="81.962997"
+             id="use6288-9"
+             width="100%"
+             height="100%" />
+        </g>
+      </g>
+    </g>
+    <g
+       inkscape:label=""
+       transform="matrix(0.91882033,0,0,0.91882033,-49.535229,203.15203)"
+       id="g4305-6"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/lookupLatestTransform.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200">
+      <g
+         id="g287-6">
+        <g
+           style="fill:#000000;fill-opacity:1"
+           id="g9982-5">
+          <use
+             xlink:href="#symbol3460"
+             x="91.925003"
+             y="81.962997"
+             id="use8845-0"
+             width="100%"
+             height="100%" />
+        </g>
+        <g
+           style="fill:#000000;fill-opacity:1"
+           id="g5739-9">
+          <use
+             xlink:href="#symbol140"
+             x="99.120003"
+             y="81.962997"
+             id="use1785-0"
+             width="100%"
+             height="100%" />
+        </g>
+        <g
+           style="fill:#000000;fill-opacity:1"
+           id="g4156-4">
+          <use
+             xlink:href="#symbol3260"
+             x="111.85"
+             y="81.962997"
+             id="use177-6"
+             width="100%"
+             height="100%" />
+        </g>
+      </g>
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-size:5.64444px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';stroke-width:0.264583"
+       x="62.614872"
+       y="236.14438"
+       id="text11870-5-1-0"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/coming-same-time.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200"><tspan
+         sodipodi:role="line"
+         id="tspan11868-5-5-2"
+         style="stroke-width:0.264583"
+         x="62.614872"
+         y="236.14438">β</tspan></text>
+    <path
+       id="path833-2-2"
+       d="m 11.59701,241.17715 c 77.416939,0 77.416939,0 77.416939,0"
+       style="fill:none;stroke:#000000;stroke-width:0.169314;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Lend-7-7)"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/coming-same-time.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200" />
+    <rect
+       style="fill:#cccccc;stroke:#000000;stroke-width:0.192941;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect1155-3-2-6"
+       width="59.966751"
+       height="6.5407128"
+       x="16.155081"
+       y="213.46524"
+       ry="0"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/coming-same-time.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200" />
+    <rect
+       style="fill:#cccccc;stroke:#000000;stroke-width:0.173798;stroke-miterlimit:4;stroke-dasharray:none"
+       id="rect1155-4-0-1"
+       width="48.526611"
+       height="6.5583253"
+       x="16.29851"
+       y="224.92599"
+       ry="0"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/coming-same-time.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200" />
+    <rect
+       style="fill:#000000;stroke:#000000;stroke-width:0.564931"
+       id="rect1638-5-5-1-1"
+       width="1.6390691"
+       height="6.2505932"
+       x="-17.695856"
+       y="225.02414"
+       transform="scale(-1,1)"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/coming-same-time.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200" />
+    <rect
+       style="fill:#000000;stroke:#000000;stroke-width:0.556178"
+       id="rect1638-5-0-9-7"
+       width="1.6390691"
+       height="6.0584078"
+       x="-17.676989"
+       y="213.70029"
+       transform="scale(-1,1)"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/coming-same-time.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200" />
+    <rect
+       style="fill:#000000;stroke:#000000;stroke-width:0.552605"
+       id="rect1638-5-8-2-2"
+       width="1.6513952"
+       height="5.9361658"
+       x="-29.611425"
+       y="213.83786"
+       transform="scale(-1,1)"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/coming-same-time.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200" />
+    <rect
+       style="fill:#000000;stroke:#000000;stroke-width:0.560193"
+       id="rect1638-5-6-0-16"
+       width="1.6390691"
+       height="6.1461892"
+       x="-41.28223"
+       y="213.65138"
+       transform="scale(-1,1)"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/coming-same-time.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200" />
+    <rect
+       style="fill:#000000;stroke:#000000;stroke-width:0.564931"
+       id="rect1638-5-0-9-7-8"
+       width="1.6390691"
+       height="6.2505932"
+       x="-40.919514"
+       y="225.13342"
+       transform="scale(-1,1)"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/coming-same-time.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200" />
+    <rect
+       style="fill:#000000;stroke:#000000;stroke-width:0.564931"
+       id="rect1638-5-2-0-6"
+       width="1.6390691"
+       height="6.2505932"
+       x="-64.99781"
+       y="224.9678"
+       transform="scale(-1,1)"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/coming-same-time.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200" />
+    <rect
+       style="fill:#000000;stroke:#000000;stroke-width:0.564931"
+       id="rect1638-5-3-5-2"
+       width="1.6390691"
+       height="6.2505932"
+       x="-29.469419"
+       y="225.12216"
+       transform="scale(-1,1)"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/coming-same-time.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="94.995995"
+       y="242.79738"
+       id="text14580-8-1-5"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/coming-same-time.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200"><tspan
+         sodipodi:role="line"
+         id="tspan14578-1-5-1"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+         x="94.995995"
+         y="242.79738">future</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="1.2430819"
+       y="242.53423"
+       id="text14580-7-1-4"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/coming-same-time.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200"><tspan
+         sodipodi:role="line"
+         id="tspan14578-0-8-9"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+         x="1.2430819"
+         y="242.53423">past</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:5.64444px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';stroke-width:0.264583"
+       x="73.190788"
+       y="211.63126"
+       id="text11870-9-7"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/coming-same-time.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200"><tspan
+         sodipodi:role="line"
+         id="tspan11868-3-3"
+         style="stroke-width:0.264583"
+         x="73.190788"
+         y="211.63126">α</tspan></text>
+    <rect
+       style="fill:#000000;stroke:#000000;stroke-width:0.555415"
+       id="rect1638-5-0-9-7-2"
+       width="1.6390691"
+       height="6.0417857"
+       x="-52.849064"
+       y="213.69809"
+       transform="scale(-1,1)"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/coming-same-time.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200" />
+    <rect
+       style="fill:#000000;stroke:#000000;stroke-width:0.564931"
+       id="rect1638-5-0-9-7-7"
+       width="1.6390691"
+       height="6.2505932"
+       x="-52.849064"
+       y="225.08292"
+       transform="scale(-1,1)"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/coming-same-time.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200" />
+    <rect
+       style="fill:#000000;stroke:#000000;stroke-width:0.548405"
+       id="rect1638-5-0-9-7-2-2"
+       width="1.6555951"
+       height="5.8314476"
+       x="-65.030754"
+       y="213.83459"
+       transform="scale(-1,1)"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/coming-same-time.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200" />
+    <rect
+       style="fill:#000000;stroke:#000000;stroke-width:0.564931"
+       id="rect1638-5-0-9-7-2-2-3"
+       width="1.6390691"
+       height="6.2505932"
+       x="-75.919052"
+       y="213.65511"
+       transform="scale(-1,1)"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/coming-same-time.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200" />
+    <rect
+       style="fill:#000000;stroke:#000000;stroke-width:0.564931"
+       id="rect1638-5-0-9-7-2-2-3-4"
+       width="1.6390691"
+       height="6.2505932"
+       x="-86.712494"
+       y="231.24663"
+       transform="scale(-1,1)"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/coming-same-time.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.265;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#Arrow1Lstart)"
+       d="m 74.495485,228.23343 7.984317,6.01229"
+       id="path11199-0-8"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/coming-same-time.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.265;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#Arrow1Lstart-8)"
+       d="m 106.81331,252.00595 34.79133,7.96189"
+       id="path11199-0-8-3"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/lookupLatestTransform.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.265;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#Arrow1Lstart-5)"
+       d="m 123.38492,276.37595 17.24491,-5.44161"
+       id="path11199-0-8-4"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/lookupLatestTransform.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.265;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-start:url(#Arrow1Lstart-2)"
+       d="m 132.40182,265.16575 8.22802,0.16349"
+       id="path11199-0-8-5"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/lookupLatestTransform.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200" />
+    <text
+       xml:space="preserve"
+       style="font-size:5.64444px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';stroke-width:0.264583"
+       x="84.539764"
+       y="230.7339"
+       id="text11870-5-5-0"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/coming-same-time.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200"><tspan
+         sodipodi:role="line"
+         id="tspan11868-5-1-7"
+         style="stroke-width:0.264583"
+         x="84.539764"
+         y="230.7339">θ</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:5.64444px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';stroke-width:0.264583"
+       x="144.69955"
+       y="269.43799"
+       id="text18288-3-9-8"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/lookupLatestTransform.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200"><tspan
+         sodipodi:role="line"
+         id="tspan18286-6-7-3"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.52778px;font-family:sans-serif;-inkscape-font-specification:'sans-serif, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+         x="144.69955"
+         y="269.43799">で参照されるデータ</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+       x="144.56607"
+       y="263.40842"
+       id="text14580-8-1-1-9"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/lookupLatestTransform.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200"><tspan
+         sodipodi:role="line"
+         id="tspan14578-1-5-0-2"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.64444px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+         x="144.56607"
+         y="263.40842">lookupLatestTransform</tspan></text>
   </g>
 </svg>
