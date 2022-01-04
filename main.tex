@@ -148,7 +148,7 @@
 前述したようにTFはロボットシステム内部の座標系間の位置関係を一元管理する機構を提供する。しかしながら、これには以下のような問題点が挙げられる。
 
 \subsection*{問題1：ジャイアント・ロック}
-TFの森構造には複数のスレッドがアクセスするため並行性制御が必要となるが、既存のTFでは一つのスレッドが森構造にアクセスしている際は他のスレッドは森構造にアクセスできないアルゴリズムとなっている。これは、マルチコアが常識となっている現代では大きな問題となる。
+TFの森構造には複数のスレッドがアクセスするため並行性制御が必要となるが、既存のTFでは一つのスレッドが森構造にアクセスしている際は他のスレッドは森構造にアクセスできないアルゴリズムとなっており、これは、マルチコアが常識となっている現代では大きな問題となる。
 
 \subsection*{問題2：データの鮮度}
 
@@ -236,6 +236,15 @@ TFライブラリでは図\ref{fig:multitree} のように各座標系間の位�
 \section{問題点}
 \subsection*{問題1: ジャイアント・ロック}
 TFライブラリの森構造で主に使われるインターフェイスは主にlookupTransformとsetTransformである。これらは複数のスレッドからアクセスされるので、並行性制御を行う必要があるが、TFライブラリではmutexオブジェクトを用いて森構造全体を保護している。このため、一つのスレッドが森構造にアクセスしている際は他のスレッドは森構造へのアクセスを待たされてしまう。これは、マルチコアが常識となっている現代では大きな問題となる。
+
+\begin{figure}[h] 
+\centering
+\includegraphics[width=2cm]{snake}	
+\caption{ヘビ型ロボットにおける森構造}
+\label{fig:snake}
+\end{figure}
+
+例えば、ヘビ型ロボットの各関節をTFライブラリで管理する場合について考える。関節の数が1000あり、各関節をフレームとしてTFに登録する場合には図\ref{fig:snake}のよう比較的巨大な森構造になる。森構造の一部のフレーム間の座標変換情報のみ更新するスレッドと、森構想の一部のフレーム間の座標変換情報のみ取得するスレッドがそれぞれ複数あった場合、それぞれのスレッドが森構造の別の部分にアクセスするにもかかわらず、一つのスレッドが森構造にアクセスするたびに森構造全体がロックされてしまいパフォーマンスに多大な影響を及ぼす。
 
 \subsection*{問題2: データの鮮度}
 森構造が図\ref{fig:multitree}、タイムラインが図\ref{fig:general-timeline}の状況において、lookupTransformを用いてフレームcからフレームdへの最新の座標変換を計算する時には時刻Aの時点での各フレーム間の座標変換データを用いる。この時、b$\rightarrow$aにおいては最新のデータを用いるが、c$\rightarrow$bにおいては最新のデータと一つ前のデータから線形補間されるデータを用いている。d$\rightarrow$aにおいては最新のデータ$\theta$ではなく一つ前のデータ$\alpha$とそのもう一つ前のデータ$\beta$から線形補間されるデータを用いている。このように、lookupTransformは二つのフレーム間の座標変換の計算において、フレーム間のパスの全てにおいて座標変換データを提供できる時刻についての座標変換を計算するという仕様のため、b$\rightarrow$aのように座標変換情報の登録が遅れるとそれに足を引っ張られてしまい、最新の座標変換データが使われなくなるという問題がある。時刻の同期をとっているためデータの同期性はあるが、最新のデータが使われなくなる可能性があり、データの鮮度は失われる。現在、TFライブラリには最新の座標変換データをもとにフレーム間の座標変換計算をするインターフェイスは無い。
@@ -428,8 +437,42 @@ b$\rightarrow$aとa$\rightarrow$cのデータを用いてフレームbからフ�
 そこで、我々はdeadlockを未然に防ぐ方法としてNo wait\cite{2PL}を採用した。これは、書き込みロックを2つ以上かけようとしたときにすでにデータがロックされていたら、保持しているロックを全て解放し最初から処理をやり直す手法である。これにより、書き込みロックを2つ以上しているスレッドがロックの解放を待機することがなくなり、deadlockは発生しない。また、我々の手法ではcontention regulationとして保持しているロックを全て解放して1ミリ秒経過してから最初から処理をやり直す。
 
 \chapter{評価}
+TFライブラリに細粒度を実装したlookupTransform・setTransforms、及び最新の複数のデータをatomicに取得・更新できるlookupLatestTransform・setTransformsを以下の指標で評価した。
+
+\begin{enumerate}
+	\item スループット: 一秒間に何回操作(lookupTransform及びsetTransforms)ができたか
+	\item レイテンシ: 操作の応答時間
+	\item データの鮮度: lookupTransformにおいてアクセスした各座標変換データのタイムスタンプの新しさ
+	\item データの同期性: lookupTransformにおいてアクセスした各座標変換データのタイムスタンプの同一性
+\end{enumerate}
+
+以下、既存手法はold,、細粒度ロックを実装したlookupTransform・setTransformsをsnapshot、2PLを用いて複数のデータをatomicに取得・更新できるlookupLatestTransform・setTransformsをlatestと呼称する。
+
+
+
+\section{実験環境}
 
 実験にはIntel(R) Xeon(R) Platinum 8176 CPU @ 2.10GHzを4つ搭載したサーバを利用する。それぞれのコアは32KB private L1dキャッシュ、1024KB private L2キャッシュを持つ。単一プロセッサの28コアは39MB L3キャッシュを共有している。トータルキャッシュサイズはおよそ160MBである。メモリはDDR4-2666が48個接続されており、一つあたりのサイズは32GB、全体のサイズは1.5 TBである。
+
+\section{ワークロード}
+
+% Applicationはどこにかく？
+実験のワークロードは、関節数が多いヘビ型ロボットの関節情報をTFに登録することを想定し、図\ref{fig:snake}のような一直線の構造に複数のスレッドからアクセスし計測を行う。TFライブラリへのアクセスパターンとしては、主にlookupTransformのみを複数回呼び出すスレッドとsetTransformのみを複数回呼び出すスレッドに二分される。このため、lookupTransformのみを複数回呼び出すスレッド(読み込み専用スレッド)、及びsetTransformのみを複数回呼び出すスレッド(書き込み専用スレッド)をそれぞれ複数立ち上げ計測を行う。
+
+実験においては以下のパラメータが存在する。
+\begin{enumerate}
+  \item thread: 合計スレッド数
+  \item joint: フレームの数
+  \item iter: 各スレッドで操作を行う回数。操作は読み込み専用スレッドならlookupTransform(ただしlatestの場合はlookupLatestTransform)、書き込み専用スレッドならsetTransform(ただしlatestの場合はsetTransforms)を指す。
+  \item read_ratio: 合計スレッド数のうち、読み込み専用スレッドの割合
+  \item read_len: 
+\end{enumerate}
+
+
+\section{スループット}
+
+スレッド数を変更したときのold、snapshot、latestそれぞれのスループットを結果を図　、図　、図　で示している。
+
 
 
 
@@ -500,6 +543,8 @@ and Samuel Madden. Speedy transactions in multicore in-memory
 databases. In SOSP, pages 18–32. ACM, 2013
 
 \bibitem{Cicada} Hyeontaek Lim, Michael Kaminsky, and David G Andersen. Cicada: Dependably fast multi-core in-memory transactions. InProceedings of the 2017 ACM International Conference onManagement of Data, p. p. 21âĂŞ35, 2017.
+
+\bibitem{ycsb} Brian F Cooper, Adam Silberstein, Erwin Tam, Raghu Ramakrishnan, and Russell Sears. Benchmarking cloud serving systems with ycsb. InProceedings of the 1st ACM symposiumon Cloud computing, p. p. 143âĂŞ154, 2010.
 
 \end{thebibliography}
 

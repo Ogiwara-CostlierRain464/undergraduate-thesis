@@ -24,9 +24,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="1.0733967"
-     inkscape:cx="332.12324"
-     inkscape:cy="674.96014"
+     inkscape:zoom="1.0150622"
+     inkscape:cx="440.85968"
+     inkscape:cy="209.34678"
      inkscape:window-width="1440"
      inkscape:window-height="791"
      inkscape:window-x="0"
@@ -391,6 +391,62 @@
            id="path8060" />
       </symbol>
     </g>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lstart-35-0-1-1-0"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path1091-8-2-5-3-4"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lstart-35-0-1-1-0-1"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path1091-8-2-5-3-4-4"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lstart-35-0-1-1-0-1-4"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path1091-8-2-5-3-4-4-4"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lstart-35-0-1-1-0-1-4-8"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path1091-8-2-5-3-4-4-4-9"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)" />
+    </marker>
   </defs>
   <g
      inkscape:label="Layer 1"
@@ -398,7 +454,7 @@
      id="layer1">
     <g
        id="g8334-1-1"
-       transform="translate(11.822497,95.30299)"
+       transform="translate(11.822497,-5.238679)"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/deadlock.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200">
@@ -423,7 +479,7 @@
     </g>
     <g
        id="g8334-7-7-6"
-       transform="translate(-0.211166,113.48215)"
+       transform="translate(-0.211166,12.940471)"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/deadlock.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200">
@@ -450,13 +506,13 @@
        inkscape:export-ydpi="200"
        inkscape:export-xdpi="200"
        style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart-35-0-1)"
-       d="m 93.980999,167.2244 0.0164,11.87758"
+       d="m 93.980999,66.682691 0.0164,11.877574"
        id="path1032-82-5-3"
        sodipodi:nodetypes="cc"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/deadlock.png" />
     <g
        id="g8334-3-2-9"
-       transform="translate(-0.34042,133.95869)"
+       transform="translate(-0.34042,33.416999)"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/deadlock.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200">
@@ -483,7 +539,7 @@
        inkscape:export-ydpi="200"
        inkscape:export-xdpi="200"
        style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart-9-4-2)"
-       d="M 104.1527,148.64604 93.633029,158.76513"
+       d="M 104.1527,48.10434 93.633029,58.223424"
        id="path1032-0-9-8"
        sodipodi:nodetypes="cc"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/deadlock.png" />
@@ -491,13 +547,13 @@
        inkscape:export-ydpi="200"
        inkscape:export-xdpi="200"
        style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart-9-2-4-1)"
-       d="m 107.3257,148.64208 10.18113,10.11908"
+       d="m 107.3257,48.10038 10.18113,10.119074"
        id="path1032-0-6-7-4"
        sodipodi:nodetypes="cc"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/deadlock.png" />
     <g
        id="g8334-5-7-8"
-       transform="translate(23.570657,113.4793)"
+       transform="translate(23.570657,12.937621)"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/deadlock.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200">
@@ -526,7 +582,7 @@
        width="14.329677"
        height="18.180271"
        x="89.823021"
-       y="148.64606"
+       y="48.104401"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/deadlock.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200" />
@@ -536,7 +592,7 @@
        width="14.310019"
        height="18.229364"
        x="89.832848"
-       y="169.26308"
+       y="68.721397"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/deadlock.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200" />
@@ -544,13 +600,13 @@
        inkscape:export-ydpi="200"
        inkscape:export-xdpi="200"
        style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart-35-0-1-1)"
-       d="m 106.02701,128.95801 0.0164,11.87758"
+       d="m 106.02701,28.416322 0.0164,11.877574"
        id="path1032-82-5-3-1"
        sodipodi:nodetypes="cc"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/deadlock.png" />
     <g
        id="g8334-1-1-7"
-       transform="translate(11.571455,75.266584)"
+       transform="translate(11.571455,-25.275086)"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/deadlock.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200">
@@ -579,7 +635,7 @@
        width="14.314742"
        height="17.246634"
        x="99.113098"
-       y="131.41707"
+       y="30.87541"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/deadlock.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200" />
@@ -589,13 +645,13 @@
        width="14.329677"
        height="18.180271"
        x="107.61336"
-       y="148.82932"
+       y="48.28767"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/deadlock.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200" />
     <g
        inkscape:label=""
-       transform="matrix(0.8765613,0,0,0.8765613,-15.914966,109.25522)"
+       transform="matrix(0.8765613,0,0,0.8765613,-15.914966,8.7135443)"
        id="g15678"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/deadlock.png"
        inkscape:export-xdpi="200"
@@ -672,7 +728,7 @@
     </g>
     <g
        inkscape:label=""
-       transform="matrix(0.8765613,0,0,0.8765613,-15.922179,89.641459)"
+       transform="matrix(0.8765613,0,0,0.8765613,-15.922179,-10.900216)"
        id="g15909"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/deadlock.png"
        inkscape:export-xdpi="200"
@@ -749,7 +805,7 @@
     </g>
     <g
        inkscape:label=""
-       transform="matrix(0.82718582,0,0,0.82718582,0.91272549,74.392415)"
+       transform="matrix(0.82718582,0,0,0.82718582,0.91272549,-26.149257)"
        id="g16206"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/deadlock.png"
        inkscape:export-xdpi="200"
@@ -826,7 +882,7 @@
     </g>
     <g
        inkscape:label=""
-       transform="matrix(0.85187356,0,0,0.85187356,48.037745,91.097056)"
+       transform="matrix(0.85187356,0,0,0.85187356,48.037745,-9.4446158)"
        id="g16569"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/deadlock.png"
        inkscape:export-xdpi="200"
@@ -901,5 +957,155 @@
         </g>
       </g>
     </g>
+    <g
+       id="g2161"
+       transform="translate(92.137027,-31.187568)"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/snake.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200">
+      <text
+         id="text870-6-7-59-5-4"
+         y="52.139282"
+         x="80.621208"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:1.15;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+           y="52.139282"
+           x="80.621208"
+           id="tspan868-1-9-8-5-9"
+           sodipodi:role="line">link0</tspan></text>
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none"
+         id="rect8169-4-9-1-4"
+         width="21.659428"
+         height="7.3905067"
+         x="76.42527"
+         y="45.952549" />
+    </g>
+    <g
+       id="g2161-1"
+       transform="translate(91.915626,-13.984621)"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/snake.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200">
+      <text
+         id="text870-6-7-59-5-4-1"
+         y="52.139282"
+         x="80.621208"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:1.15;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+           y="52.139282"
+           x="80.621208"
+           id="tspan868-1-9-8-5-9-9"
+           sodipodi:role="line">link1</tspan></text>
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none"
+         id="rect8169-4-9-1-4-0"
+         width="21.659428"
+         height="7.3905067"
+         x="76.42527"
+         y="45.952549" />
+    </g>
+    <g
+       id="g2161-6"
+       transform="translate(91.983144,3.2612588)"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/snake.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200">
+      <text
+         id="text870-6-7-59-5-4-8"
+         y="52.139282"
+         x="80.621208"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:1.15;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+           y="52.139282"
+           x="80.621208"
+           id="tspan868-1-9-8-5-9-5"
+           sodipodi:role="line">link2</tspan></text>
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none"
+         id="rect8169-4-9-1-4-9"
+         width="21.659428"
+         height="7.3905067"
+         x="76.42527"
+         y="45.952549" />
+    </g>
+    <g
+       id="g4828"
+       transform="translate(91.759286,-12.907865)"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/snake.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200">
+      <g
+         id="g2161-6-9"
+         transform="translate(-5.7850116,48.651641)">
+        <text
+           id="text870-6-7-59-5-4-8-8"
+           y="52.139282"
+           x="80.621208"
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:1.15;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+           xml:space="preserve"><tspan
+             style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+             y="52.139282"
+             x="80.621208"
+             id="tspan868-1-9-8-5-9-5-1"
+             sodipodi:role="line">link1000</tspan></text>
+        <rect
+           style="fill:none;stroke:#000000;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none"
+           id="rect8169-4-9-1-4-9-1"
+           width="33.180534"
+           height="7.3905067"
+           x="76.236397"
+           y="45.76368" />
+      </g>
+    </g>
+    <path
+       inkscape:export-ydpi="200"
+       inkscape:export-xdpi="200"
+       style="fill:none;stroke:#000000;stroke-width:0.244423px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart-35-0-1-1-0)"
+       d="m 179.28593,22.542992 0.0174,9.572781"
+       id="path1032-82-5-3-1-5"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/snake.png" />
+    <path
+       inkscape:export-ydpi="200"
+       inkscape:export-xdpi="200"
+       style="fill:none;stroke:#000000;stroke-width:0.244423px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart-35-0-1-1-0-1)"
+       d="m 179.39901,39.496681 0.0174,9.572781"
+       id="path1032-82-5-3-1-5-7"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/snake.png" />
+    <path
+       inkscape:export-ydpi="200"
+       inkscape:export-xdpi="200"
+       style="fill:none;stroke:#000000;stroke-width:0.244423px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart-35-0-1-1-0-1-4)"
+       d="m 179.47555,56.944364 0.0174,9.572781"
+       id="path1032-82-5-3-1-5-7-9"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/snake.png" />
+    <path
+       inkscape:export-ydpi="200"
+       inkscape:export-xdpi="200"
+       style="fill:none;stroke:#000000;stroke-width:0.244423px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart-35-0-1-1-0-1-4-8)"
+       d="m 179.46751,71.980984 0.0174,9.572781"
+       id="path1032-82-5-3-1-5-7-9-3"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/snake.png" />
+    <text
+       xml:space="preserve"
+       style="font-size:5.64444px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';letter-spacing:0px;stroke-width:0.264583"
+       x="176.47736"
+       y="69.456909"
+       id="text6393"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/snake.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200"><tspan
+         sodipodi:role="line"
+         id="tspan6391"
+         style="stroke-width:0.264583"
+         x="176.47736"
+         y="69.456909">…</tspan></text>
   </g>
 </svg>
