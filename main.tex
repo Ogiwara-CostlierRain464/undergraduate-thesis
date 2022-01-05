@@ -84,6 +84,7 @@
 % 原文から引用しても良いのか？
 % ~の問題がある、は適切な表現ではない。lookupTransformについては既存のIFに問題があるわけではない
 % 座標変換、座標系といった言葉が冒頭では冗長である。
+% 「高精度なロボットにはデータベースの技術が必要だ！！！！」ということを伝えたい
 
 % ここもTFの冒頭からコピー
 ロボットを使って作業を行う場合、ロボット自身がどこにいるのか、ロボットにはどこにどんなセンサーがついており、また周りの環境のどこにどんなものがあるかをシステムが把握することが重要である。例えば、図\ref{fig:room} のように部屋の中にロボットと、ロボットから観測できる二つの物体があるケースを考える。図中にてロボットは円形、物体は星形で表現され、ロボットが向いている方向は円の中心から円の弧へつながる直線の方向で表される。途中で交わる二つの矢印は各座標系の位置と原点、姿勢を表す。ここでは、地図座標系、ロボットの座標系、二つの物体それぞれの座標系が示されている。
@@ -437,7 +438,7 @@ b$\rightarrow$aとa$\rightarrow$cのデータを用いてフレームbからフ�
 そこで、我々はdeadlockを未然に防ぐ方法としてNo wait\cite{2PL}を採用した。これは、書き込みロックを2つ以上かけようとしたときにすでにデータがロックされていたら、保持しているロックを全て解放し最初から処理をやり直す手法である。これにより、書き込みロックを2つ以上しているスレッドがロックの解放を待機することがなくなり、deadlockは発生しない。また、我々の手法ではcontention regulationとして保持しているロックを全て解放して1ミリ秒経過してから最初から処理をやり直す。
 
 \chapter{評価}
-TFライブラリに細粒度を実装したlookupTransform・setTransforms、及び最新の複数のデータをatomicに取得・更新できるlookupLatestTransform・setTransformsを以下の指標で評価した。
+TFライブラリに細粒度を実装したlookupTransform・setTransform、及び最新の複数のデータをatomicに取得・更新できるlookupLatestTransform・setTransformsを以下の指標で評価した。
 
 \begin{enumerate}
 	\item スループット: 一秒間に何回操作(lookupTransform及びsetTransforms)ができたか
@@ -457,38 +458,121 @@ TFライブラリに細粒度を実装したlookupTransform・setTransforms、�
 \section{ワークロード}
 
 % Applicationはどこにかく？
-実験のワークロードは、関節数が多いヘビ型ロボットの関節情報をTFに登録することを想定し、図\ref{fig:snake}のような一直線の構造に複数のスレッドからアクセスし計測を行う。TFライブラリへのアクセスパターンとしては、主にlookupTransformのみを複数回呼び出すスレッドとsetTransformのみを複数回呼び出すスレッドに二分される。このため、lookupTransformのみを複数回呼び出すスレッド(読み込み専用スレッド)、及びsetTransformのみを複数回呼び出すスレッド(書き込み専用スレッド)をそれぞれ複数立ち上げ計測を行う。
+実験のワークロードは、関節数が多いヘビ型ロボットの関節情報をTFに登録することを想定し、図\ref{fig:snake}のようなフレーム間の座標変換情報が一直線に与えられた構造に複数のスレッドからアクセスし計測を行う。TFライブラリへのアクセスパターンとしては、主にlookupTransformのみを複数回呼び出すスレッドとsetTransformのみを複数回呼び出すスレッドに二分される。このため、lookupTransformのみを複数回呼び出すスレッド(読み込み専用スレッド)、及びsetTransformのみを複数回呼び出すスレッド(書き込み専用スレッド)をそれぞれ複数立ち上げ計測を行う。
 
 実験においては以下のパラメータが存在する。
 \begin{enumerate}
   \item thread: 合計スレッド数
   \item joint: フレームの数
   \item iter: 各スレッドで操作を行う回数。操作は読み込み専用スレッドならlookupTransform(ただしlatestの場合はlookupLatestTransform)、書き込み専用スレッドならsetTransform(ただしlatestの場合はsetTransforms)を指す。
-  \item read_ratio: 合計スレッド数のうち、読み込み専用スレッドの割合
-  \item read_len: 
+  \item read\_ratio: 合計スレッド数のうち、読み込み専用スレッドの割合
+  \item read\_len: 読み込み専用スレッドにて一回のlookupTransform操作で読みこむフレームの数。joint個のフレームのうちランダムにi番目のフレームが選択され、そこからi+read\_len番目のフレームまでの座標変換が計算される。
+  \item write\_len: 書き込み専用スレッドにて一回の操作で座標変換情報を更新するフレームの数。joint個のフレームのうちランダムにi番目のフレームが選択され、そこからi+read\_len番目のフレームまでの座標変換が更新される。setTransformでは一度に一個のフレームしか更新できないためwrite\_len回setTransformを呼び出す操作を一つの操作とする。
+  \item frequency: 各スレッドにて操作を呼び出す周期。操作の呼び出しが完了したのち、1 / frequency秒待機してから再び操作を呼びだす。0に設定するとiter回の操作が終わるまで待機なしで操作を呼び出し続ける。
 \end{enumerate}
 
+各実験はそれぞれYCSB-A/B/C\cite{ycsb}ワークロードについて行われている。YCSB-A/B/Cはそれぞれ、読み込み操作と書き込み操作の割合が50:50、95:5、100:0のワークロードを指す。ここでは読み込み専用スレッドの数と書き込み専用スレッドの数の比でそれぞれのワークロードを再現するため、read\_ratioをそれぞれ0.5、0.95、1に設定した。
 
 \section{スループット}
 
-スレッド数を変更したときのold、snapshot、latestそれぞれのスループットを結果を図　、図　、図　で示している。
+
+\begin{figure}[h] 
+\centering
+\includegraphics[width=7cm]{throughput-a}
+\caption{YCSB-Aにおけるスレッド数とスループットの関係}
+\label{fig:throughput-a}
+\end{figure}
+
+\begin{figure}[h] 
+\centering
+\includegraphics[width=7cm]{throughput-b}
+\caption{YCSB-Bにおけるスレッド数とスループットの関係}
+\label{fig:throughput-b}
+\end{figure}
+
+\begin{figure}[h] 
+\centering
+\includegraphics[width=7cm]{throughput-c}
+\caption{YCSB-Cにおけるスレッド数とスループットの関係}
+\label{fig:throughput-c}
+\end{figure}
 
 
+YCSB-A/B/C\cite{ycsb}ワークロードを用いて、old、snapshot、latestのそれぞれにおいてスレッド数とスループットの関係について分析する。各パラメータはjoint=10000、iter=10、read\_len=16、write\_len=16、frequency=0で固定し、read\_ratioとthreadを変化させて計測を行った。
+
+% ここはもっと細かく調査しないとな〜〜
+YCSB-Aにおいては　latestはoldに比べ最大20倍のスループットとなった。
+% なぜlatestはsnapshotに大幅に勝っている？
+YCSB-Bにおいては　latestはoldに比べ最大61倍のスループットとなった。
+
+YCSB-Cにおいては　latestはoldに比べ最大140倍のスループットとなった。
+
+latestがsnapshotより高いスループットを出しているのは、snapshot  では森構造を2度読み込む必要があるからだと考えられる。
+
+これにより、細粒度ロックの導入は効果はあったと考えられる。
+
+\section{レイテンシ}
+\begin{figure}[h] 
+\centering
+\includegraphics[width=7cm]{latency-a}
+\caption{YCSB-Aにおけるスレッド数とレイテンシの関係}
+\label{fig:latency-a}
+\end{figure}
+
+\begin{figure}[h] 
+\centering
+\includegraphics[width=7cm]{latency-b}
+\caption{YCSB-Bにおけるスレッド数とレイテンシの関係}
+\label{fig:latency-b}
+\end{figure}
+
+\begin{figure}[h] 
+\centering
+\includegraphics[width=7cm]{latency-c}
+\caption{YCSB-Cにおけるスレッド数とレイテンシの関係}
+\label{fig:latency-c}
+\end{figure}
 
 
+YCSB-A/B/C\cite{ycsb}ワークロードを用いて、old、snapshot、latestのそれぞれにおいてレイテンシとスループットの関係について分析する。各パラメータはjoint=10000、iter=10、read\_len=16、write\_len=16、frequency=0で固定し、read\_ratioとthreadを変化させて計測を行った。
 
-スレッド数を上げるとスループット伸びる
-jointを増やすと緩やかにスループットが落ちる
-iterを増やすと1000以降で急激にスループットが下がる。no waitによる弊害か？lockの確保に失敗しているのかも
-read ratioは高くなるほどブロックされる可能性が減る
-read lenは安定しているように見える。なぜtrnでread lenが小さいとこうなるのか。。。2PLでロックする箇所が変わるから？
+oldはレイテンシとスレッド数が線形比例するのに対し、提案手法ではほとんど影響がない。
 
-write lenを上げるとやはりブロックされる部分が増える
+\begin{figure}[h] 
+\centering
+\includegraphics[width=7cm]{latency-frequency}
+\caption{制御周期とレイテンシ}
+\label{fig:latency-frequency}
+\end{figure}
 
 
+また、一定周期での操作。これは現実のワークロードではよくあるパターンである。
+周期を増やすと当然同時に走る操作も増えるため、こうなるのは自明である。
 
-56以上で下がる理由としてはROS timeとか
-ここはインターフェイスでは…的な話
+
+\begin{figure}[h] 
+\centering
+\includegraphics[width=7cm]{frequency-real}
+\caption{制御周期とレイテンシ}
+\label{fig:frequency-real}
+\end{figure}
+
+逆に、こういう風なシナリオだとoldでは250msになるから現実の
+
+この説明は本当にいるのか？
+
+
+\section{データの鮮度}
+
+snapshotの方がlatestよりdelayが少なくなるのは、「書き込みスレッドが少なく合計の書き込みが数ない状況において　snapshotの方が書き込みlockを一度に取る数が少なく、書き込み専用スレッドが早く書き込みを終えられ、それをすぐに読み込みスレッドが観測できるから」というread\_ratio=0.95における特別な状況だと考えます
+
+ここまで説明する必要はある？
+
+\section{データの同一性}
+
+スレッド数が増えてもそんなに
+これは偏りがないことを前提にしているのでは？
+
 
 
 \chapter{結論}
