@@ -81,10 +81,10 @@
 % 質問をここに書く
 % abstractでは\citeは使わない
 % 起承転結が二つだといいのかな
-% 原文から引用しても良いのか？
+%TODO 原文から引用しても良いのか？
 % ~の問題がある、は適切な表現ではない。lookupTransformについては既存のIFに問題があるわけではない
 % 座標変換、座標系といった言葉が冒頭では冗長である。
-% 「高精度なロボットにはデータベースの技術が必要だ！！！！」ということを伝えたい
+% 「高精度なロボットにはデータベースの技術が必要だ！！！！」
 
 % ここもTFの冒頭からコピー
 ロボットを使って作業を行う場合、ロボット自身がどこにいるのか、ロボットにはどこにどんなセンサーがついており、また周りの環境のどこにどんなものがあるかをシステムが把握することが重要である。例えば、図\ref{fig:room} のように部屋の中にロボットと、ロボットから観測できる二つの物体があるケースを考える。図中にてロボットは円形、物体は星形で表現され、ロボットが向いている方向は円の中心から円の弧へつながる直線の方向で表される。途中で交わる二つの矢印は各座標系の位置と原点、姿勢を表す。ここでは、地図座標系、ロボットの座標系、二つの物体それぞれの座標系が示されている。
@@ -168,12 +168,12 @@ TFの森構造には複数のスレッドがアクセスするため並行性制
 本論文の構成は次の通りである。第二章では関連研究について述べる。第三章では既存のTFの森構造とその問題点について述べる。第四章では提案手法である森構造への再粒度ロックの導入とデータ一貫性のためのインターフェイスの提供について述べる。第五章では提案手法の評価結果を述べる。第六章では本研究の結論を述べる。第七章では今後の課題について述べる。
 
 \chapter{関連研究}
-% もっと内容膨らませるべき？
+%TODO もっと内容膨らませるべき？
 
 データベース分野におけるロボットの研究の例としてはGAIA platform\cite{gaia}が挙げられる。GAIA platformはリレーショナルデータベースと、そのデータベースに変更が加えられた時の処理をC++で宣言的に記述できる仕組みを組み合わせることにより、イベントドリブンなフレームワークでロボットや自動運転システムを構築するものである。
 % PostgreSQLのtriggerとはちょっと違う
 
-% SSMはどこから引用すればいい？？
+%TODO SSMはどこから引用すればいい？？
 % 移動ロボット用センサ情報処理ミドルウェアの開発 か？
 TFライブラリのようにデータを時系列的に管理するライブラリとしてSSMが挙げられる。SSMでは各種センサデータを共有メモリ上のリングバッファで管理することにより、時刻の同期を取れたデータを高速に取得することができる。
 
@@ -207,6 +207,8 @@ TFライブラリでは図\ref{fig:multitree} のように各座標系間の位�
 
 \section{lookupTransform}
 二つのフレーム間の座標変換情報を取得するにはlookupTransformメソッドを使う。二つのフレームが同じ木構造に属している場合にのみフレーム間の座標変換が計算できる。
+
+% need algorithm
 
 登録されたフレームが図\ref{fig:multitree}、登録された座標変換情報のタイムラインが図\ref{fig:general-timeline}の状況において、lookupTransformメソッドを用いてフレームcからフレームdへの座標変換を計算するアルゴリズムを説明する。
 
@@ -434,8 +436,23 @@ b$\rightarrow$aとa$\rightarrow$cのデータを用いてフレームbからフ�
 図\ref{fig:deadlock}はスレッド1がa, b, cの読み込みロック、スレッド2がdの書き込みロックを確保した状態を表している。ここで、スレッド1は次にdの読み込みロックを確保したいがすでにスレッド2がdを書き込みロックしているためロックの解放を待機する必要がある。スレッド2は次にaの書き込みロックを確保したいがすでにスレッド1がaを読み込みロックしているために待機する必要がある。二つのスレッドがお互いのロック解放を待ち続けるため、deadlockとなる。これはスレッド2が森構造のルートノードへ登る方向にロックをかけているのに対し、スレッド1は逆に一時的に森構造を下る方向にロックをかけていることに起因する。
 
 % 要素のreorderによって防げるけどちょいとむずそう
-% Wound wait, nonpreemptive とかの正式名称は？
-そこで、我々はdeadlockを未然に防ぐ方法としてNo wait\cite{2PL}を採用した。これは、書き込みロックを2つ以上かけようとしたときにすでにデータがロックされていたら、保持しているロックを全て解放し最初から処理をやり直す手法である。これにより、書き込みロックを2つ以上しているスレッドがロックの解放を待機することがなくなり、deadlockは発生しない。また、我々の手法ではcontention regulationとして保持しているロックを全て解放して1ミリ秒経過してから最初から処理をやり直す。
+%TODO Wound wait, nonpreemptive とかの正式名称は？
+そこで、我々はdeadlockを未然に防ぐ方法としてNoWait\cite{2PL}を採用した。これは、書き込みロックを2つ以上かけようとしたときにすでにデータがロックされていたら、保持しているロックを全て解放し最初から処理をやり直す手法である。これにより、書き込みロックを2つ以上しているスレッドがロックの解放を待機することがなくなり、deadlockは発生しない。また、我々の手法ではcontention regulationとして保持しているロックを全て解放して1ミリ秒経過してから最初から処理をやり直す。
+dirty readによって読み込み専用スレッドも
+
+\begin{figure}[h] 
+\centering
+\includegraphics[width=10cm]{need-many-update}
+\caption{deadlock}
+\label{fig:need-many-update}
+\end{figure}
+
+
+setTransformsとlookupLatestTransformを利用すると、最新の座標変換を更新・取得できるだけではなく、無駄な座標変換の更新も減らすことができる。図\ref{fig:need-many-update}において、b$\rightarrow$aはあまり座標系間の位置関係が変わらないために座標変換はあまり更新されないが、d$\rightarrow$aの座標変換は頻繁に更新されるケースについて考える。座標変換の計算においてb$\rightarrow$aとd$\rightarrow$aのデータを用いる場合、既存のTFでは「該当する時刻の座標変換データが保存されている、もしくは前後の値を元に線形補間ができる場合にはその時刻の座標変換データを提供できると見做す」という仕様により、b$\rightarrow$aの更新が遅いためにd$\rightarrow$aでは過去の鮮度の低い$\beta$と$\theta$から座標変換の計算をしなくてはならない。これを避けるため、既存のTFではあまり座標系間の位置関係が変わらないb$\rightarrow$aにおいても、一定周期で同じ座標変換情報を登録する必要があった。このように、既存のTFでは座標変換情報が変わらないにもかかわらず一定周期で同じ座標変換情報を登録する必要があり、余計な負荷がかかっていた。しかしながら、setTransformsと
+lookupLatestTransformでは最新の座標変換のみを見るため必要な時にのみ座標変換の更新をすればよく、このような余計な負荷がかかることは無くなる。
+
+% でも、TFは同期を取ったほうがいいとされるからああいう設計にしたんじゃ？最新のデータだけ保存するようにしてればよかったじゃん
+%TODO ここ突っ込まれたら痛いなああああ
 
 \chapter{評価}
 TFライブラリに細粒度を実装したlookupTransform・setTransform、及び最新の複数のデータをatomicに取得・更新できるlookupLatestTransform・setTransformsを以下の指標で評価した。
@@ -453,7 +470,7 @@ TFライブラリに細粒度を実装したlookupTransform・setTransform、及
 
 \section{実験環境}
 
-実験にはIntel(R) Xeon(R) Platinum 8176 CPU @ 2.10GHzを4つ搭載したサーバを利用する。それぞれのコアは32KB private L1dキャッシュ、1024KB private L2キャッシュを持つ。単一プロセッサの28コアは39MB L3キャッシュを共有している。トータルキャッシュサイズはおよそ160MBである。メモリはDDR4-2666が48個接続されており、一つあたりのサイズは32GB、全体のサイズは1.5 TBである。
+実験にはIntel(R) Xeon(R) Platinum 8176 CPU @ 2.10GHzを4つ搭載したサーバを利用する。それぞれのコアは32KB private L1dキャッシュ、1024KB private L2キャッシュを持つ。単一プロセッサの28コアは39MB L3キャッシュを共有している。トータルキャッシュサイズはおよそ160MBである。メモリはDDR4-2666が48個接続されており、一つあたりのサイズは32GB、全体のサイズは1.5 TBである。全ての実験において，実行時間は 60秒という安定的な結果が得られる時間を選択している。
 
 \section{ワークロード}
 
@@ -464,79 +481,113 @@ TFライブラリに細粒度を実装したlookupTransform・setTransform、及
 \begin{enumerate}
   \item thread: 合計スレッド数
   \item joint: フレームの数
-  \item iter: 各スレッドで操作を行う回数。操作は読み込み専用スレッドならlookupTransform(ただしlatestの場合はlookupLatestTransform)、書き込み専用スレッドならsetTransform(ただしlatestの場合はsetTransforms)を指す。
   \item read\_ratio: 合計スレッド数のうち、読み込み専用スレッドの割合
   \item read\_len: 読み込み専用スレッドにて一回のlookupTransform操作で読みこむフレームの数。joint個のフレームのうちランダムにi番目のフレームが選択され、そこからi+read\_len番目のフレームまでの座標変換が計算される。
   \item write\_len: 書き込み専用スレッドにて一回の操作で座標変換情報を更新するフレームの数。joint個のフレームのうちランダムにi番目のフレームが選択され、そこからi+read\_len番目のフレームまでの座標変換が更新される。setTransformでは一度に一個のフレームしか更新できないためwrite\_len回setTransformを呼び出す操作を一つの操作とする。
-  \item frequency: 各スレッドにて操作を呼び出す周期。操作の呼び出しが完了したのち、1 / frequency秒待機してから再び操作を呼びだす。0に設定するとiter回の操作が終わるまで待機なしで操作を呼び出し続ける。
+  \item frequency: 各スレッドにて操作を呼び出す周期。操作の呼び出しが完了したのち、1 / frequency秒待機してから再び操作を呼びだす。0に設定すると待機なしで操作を呼び出し続ける。各スレッドが一定の周期にて操作を呼び出すというのは、ROSにおいて一般的なワークロードである。
 \end{enumerate}
 
 各実験はそれぞれYCSB-A/B/C\cite{ycsb}ワークロードについて行われている。YCSB-A/B/Cはそれぞれ、読み込み操作と書き込み操作の割合が50:50、95:5、100:0のワークロードを指す。ここでは読み込み専用スレッドの数と書き込み専用スレッドの数の比でそれぞれのワークロードを再現するため、read\_ratioをそれぞれ0.5、0.95、1に設定した。
+
+特に記載がない場合はjoint=10000、read\_len=16、write\_len=16、frequency=0で実験が行われている。
+%TODO ここは舛村さんのワークロードを参考にしたが、実際のロボットではreadが全てを読む、writeもたくさん、というケースはあり得そうじゃないか？つまり、一般的なDBのパタンだけじゃだめ。
+% あとabortのratioについてもまとめないと
 
 \section{スループット}
 
 
 \begin{figure}[h] 
 \centering
-\includegraphics[width=7cm]{throughput-a}
+\includegraphics[width=15cm]{data/stable/ycsb-a/throughput}
 \caption{YCSB-Aにおけるスレッド数とスループットの関係}
 \label{fig:throughput-a}
 \end{figure}
 
 \begin{figure}[h] 
 \centering
-\includegraphics[width=7cm]{throughput-b}
+\includegraphics[width=15cm]{data/stable/ycsb-b/throughput}
 \caption{YCSB-Bにおけるスレッド数とスループットの関係}
 \label{fig:throughput-b}
 \end{figure}
 
 \begin{figure}[h] 
 \centering
-\includegraphics[width=7cm]{throughput-c}
+\includegraphics[width=15cm]{data/stable/ycsb-c/throughput}
 \caption{YCSB-Cにおけるスレッド数とスループットの関係}
 \label{fig:throughput-c}
 \end{figure}
 
 
-YCSB-A/B/C\cite{ycsb}ワークロードを用いて、old、snapshot、latestのそれぞれにおいてスレッド数とスループットの関係について分析する。各パラメータはjoint=10000、iter=10、read\_len=16、write\_len=16、frequency=0で固定し、read\_ratioとthreadを変化させて計測を行った。
+YCSB-A/B/Cワークロードを用いて、old、snapshot、latestのそれぞれにおいてスレッド数とスループットの関係について分析する。
+
 
 % ここはもっと細かく調査しないとな〜〜
-YCSB-Aにおいては　latestはoldに比べ最大20倍のスループットとなった。
-% なぜlatestはsnapshotに大幅に勝っている？
-YCSB-Bにおいては　latestはoldに比べ最大61倍のスループットとなった。
+YCSB-Aにおいてはlatestはoldに比べ最大218倍のスループットとなり、210スレッドまでスケールした。snapshotはoldに比べ最大49倍のスループットとなり、96スレッドまでスケールした。
 
-YCSB-Cにおいては　latestはoldに比べ最大140倍のスループットとなった。
+YCSB-Bにおいてはlatestはoldに比べ最大339倍のスループットとなり、224スレッドまでスケールした。snapshotはoldに比べ最大101倍のスループットとなり、98スレッドまでスケールした。
 
-latestがsnapshotより高いスループットを出しているのは、snapshot  では森構造を2度読み込む必要があるからだと考えられる。
+YCSB-Cにおいてはlatestはoldに比べ最大237倍のスループットとなり、210スレッドまでスケールした。snapshotはoldに比べ最大194倍のスループットとなり、154スレッドまでスケールした。
 
-これにより、細粒度ロックの導入は効果はあったと考えられる。
+latestがsnapshotより高いスループットを出しているのは、snapshot  ではlookupTransformにおいて二つのフレーム間のパス上の全てのフレームにおいて座標変換を取得できる時刻を検索してから座標変換を計算するために、森構造を2度読み込む必要があるからだと考えられる。
+% need section ref
+
+
+%TODO 実際、len=32に設定するとlatestでも同じ結果になることを示せば良い。このデータが示せない！lenをどれだけ増やしても変わらなかった…
+%TODO 224スレッドで性能が出ないのは、223スレッドなら性能出るかも?と思ったけどあんま変わらない。214, 220, 222, 223も試したけど
+
+どのワークロードにおいてもsnapshot、latestは細粒度ロックの導入によって並行性を高め、oldよりも高いスループットを記録した。これにより、細粒度ロックの導入はスループットの向上に大幅に貢献したと考えられる。
 
 \section{レイテンシ}
+
 \begin{figure}[h] 
 \centering
-\includegraphics[width=7cm]{latency-a}
+\includegraphics[width=7cm]{data/stable/ycsb-a/latency}
 \caption{YCSB-Aにおけるスレッド数とレイテンシの関係}
 \label{fig:latency-a}
 \end{figure}
 
 \begin{figure}[h] 
 \centering
-\includegraphics[width=7cm]{latency-b}
+\includegraphics[width=7cm]{data/stable/ycsb-a/latency2}
+\caption{YCSB-Aにおけるスレッド数とレイテンシの関係 snapshotとlatestのみ}
+\label{fig:latency-a2}
+\end{figure}
+
+\begin{figure}[h] 
+\centering
+\includegraphics[width=7cm]{data/stable/ycsb-b/latency}
 \caption{YCSB-Bにおけるスレッド数とレイテンシの関係}
 \label{fig:latency-b}
 \end{figure}
 
 \begin{figure}[h] 
 \centering
-\includegraphics[width=7cm]{latency-c}
+\includegraphics[width=7cm]{data/stable/ycsb-b/latency2}
+\caption{YCSB-Bにおけるスレッド数とレイテンシの関係 snapshotとlatestのみ}
+\label{fig:latency-b2}
+\end{figure}
+
+\begin{figure}[h] 
+\centering
+\includegraphics[width=7cm]{data/stable/ycsb-c/latency}
 \caption{YCSB-Cにおけるスレッド数とレイテンシの関係}
 \label{fig:latency-c}
 \end{figure}
 
+\begin{figure}[h] 
+\centering
+\includegraphics[width=7cm]{data/stable/ycsb-c/latency-2}
+\caption{YCSB-Cにおけるスレッド数とレイテンシの関係 snapshotとlatestのみ}
+\label{fig:latency-c2}
+\end{figure}
 
-YCSB-A/B/C\cite{ycsb}ワークロードを用いて、old、snapshot、latestのそれぞれにおいてレイテンシとスループットの関係について分析する。各パラメータはjoint=10000、iter=10、read\_len=16、write\_len=16、frequency=0で固定し、read\_ratioとthreadを変化させて計測を行った。
 
-oldはレイテンシとスレッド数が線形比例するのに対し、提案手法ではほとんど影響がない。
+YCSB-A/B/Cワークロードを用いて、old、snapshot、latestのそれぞれにおいてレイテンシとスループットの関係について分析する。
+
+oldではレイテンシとスレッド数が線形比例するのに対し、提案手法ではほとんど影響がない。これは、oldにおいてはジャイアントロックによって逐次的に操作を実行する必要があったが、snapshotとlatestにおいては細粒度ロックにより並行に操作を実行することが可能だからである。
+
+どのワークロードにおいてもsnapshot、latestは細粒度ロックの導入によって並行性を高め、oldよりも低いレイテンシを記録した。これにより、細粒度ロックの導入はレイテンシの低下に大幅に貢献したと考えられる。
+
 
 \begin{figure}[h] 
 \centering
@@ -545,9 +596,7 @@ oldはレイテンシとスレッド数が線形比例するのに対し、提�
 \label{fig:latency-frequency}
 \end{figure}
 
-
-また、一定周期での操作。これは現実のワークロードではよくあるパターンである。
-周期を増やすと当然同時に走る操作も増えるため、こうなるのは自明である。
+図\ref{fig:latency-frequency}は、スレッド数200の状態でfrequencyを100から100000まで変化させた時のレイテンシを表している。制御周期を増やすと同時に走る操作も増えるため、このようになるのは自明である。
 
 
 \begin{figure}[h] 
@@ -557,22 +606,85 @@ oldはレイテンシとスレッド数が線形比例するのに対し、提�
 \label{fig:frequency-real}
 \end{figure}
 
-逆に、こういう風なシナリオだとoldでは250msになるから現実の
+%TODO 今のままだと問題になる具体的なワークロードを示す
+
+oldにおいてレイテンシが問題となるワークロードを示したのが図\ref{fig:frequency-real}である。これは、thread=200、joint=1000000、read\_ratio=0.5、read\_len=10000、write\_len=10000におけるレイテンシを表している。
+
+frequencyは100なのでかなり現実的
+snapshotとlatestでは20ms、12msなのに対し、oldでは608msとなり現実的なワークロードでは問題となる。
+ここはjoint数を増やした時のレイテンシの変化を記録する？
 
 この説明は本当にいるのか？
+ヘビ型ロボットや、センサで認識した物体をTFに登録するようなワークロードでは問題となる。
+その場合には、どんなオブジェクトがどこにあるかを統一的に扱う枠組みが必要だろう。例えば今は
+でもその情報は一つのマップには集約されていない。別々のプロセスが別々のデータ型でpublishし、内部の情報はopenではない。
+例えば障害物はmove\_baseによるcostmap、信号はカメラによるYOLO、人や車の検知は
 
 
 \section{データの鮮度}
 
-snapshotの方がlatestよりdelayが少なくなるのは、「書き込みスレッドが少なく合計の書き込みが数ない状況において　snapshotの方が書き込みlockを一度に取る数が少なく、書き込み専用スレッドが早く書き込みを終えられ、それをすぐに読み込みスレッドが観測できるから」というread\_ratio=0.95における特別な状況だと考えます
 
-ここまで説明する必要はある？
+\begin{figure}[h] 
+\centering
+\includegraphics[width=7cm]{data/stable/ycsb-a/delay}
+\caption{YCSB-A スレッド数とdelay}
+\label{fig:delay-a}
+\end{figure}
+
+\begin{figure}[h] 
+\centering
+\includegraphics[width=7cm]{data/stable/ycsb-a/delay2}
+\caption{YCSB-A スレッド数とdelay snapshotとlatestのみ}
+\label{fig:delay-a2}
+\end{figure}
+
+
+\begin{figure}[h] 
+\centering
+\includegraphics[width=7cm]{data/stable/ycsb-b/delay}
+\caption{YCSB-B スレッド数とdelay}
+\label{fig:delay-b}
+\end{figure}
+
+\begin{figure}[h] 
+\centering
+\includegraphics[width=7cm]{data/stable/ycsb-b/delay2}
+\caption{YCSB-B スレッド数とdelay}
+\label{fig:delay-b2}
+\end{figure}
+
+\begin{figure}[h] 
+\centering
+\includegraphics[width=7cm]{data/stable/ycsb-c/delay}
+\caption{YCSB-C スレッド数とdelay}
+\label{fig:delay-c}
+\end{figure}
+
+ycsb-cにおいてはデータの更新がされないため、どの手法でも同じようなdelayとなる。
+
+YCSB-A/Bのどちらにおいても、snapshotはスレッド数の増加に伴いデータの鮮度が低下しているが、latestは鮮度がスレッド数が増えるにつれ向上している。
+
+%TODO なぜoldはこのような飛び飛びの値になるのか？もしかしたら、initのタイミングが遅すぎる？
+
 
 \section{データの同一性}
 
-スレッド数が増えてもそんなに
-これは偏りがないことを前提にしているのでは？
+\begin{figure}[h] 
+\centering
+\includegraphics[width=7cm]{data/stable/ycsb-a/std-div}
+\caption{YCSB-A スレッド数とデータの同一性}
+\label{fig:std-div-a}
+\end{figure}
 
+\begin{figure}[h] 
+\centering
+\includegraphics[width=7cm]{data/stable/ycsb-b/std-div}
+\caption{YCSB-B スレッド数とデータの同一性}
+\label{fig:std-div-b}
+\end{figure}
+
+スレッド数が増えるに従って相対的に書き込み専用スレッドも増えるため、偏差も減ると考えられる。
+YCSB-Bの方が偏差が大きいのはYCSB-Aに比べて書き込み専用スレッドの相対的な割合が常に小さいから。
 
 
 \chapter{結論}
@@ -580,6 +692,18 @@ snapshotの方がlatestよりdelayが少なくなるのは、「書き込みス�
 特に、スレッド数の増加とともにスループットが下がる問題を解決できた
 
 データの一貫性は必須、というデータも示したい。
+
+を明らかにした
+
+ヘビ型ロボットや、
+60秒間のデータを取ろう！
+
+またlatestはsnapshotより高いスループット、レイテンシーを記録し、
+多くのパターンにおいてよりデータの鮮度が高い
+
+なるべく最新のデータを元に
+このようなワークロードにおいては
+
 
 \chapter{今後の課題}
 ここでは取り上げなかったTF木の問題点として、部分的に座標情報の登録に失敗するケース。rollbackなどもいれtransactionalに行う必要
@@ -590,7 +714,7 @@ snapshotの方がlatestよりdelayが少なくなるのは、「書き込みス�
 \chapter*{謝辞}
 \addcontentsline{toc}{chapter}{\numberline{}謝辞}
 
-本研究を進めるにあたり、慶應義塾大学准教授川島英之先生とサイボウズラボ株式会社星野喬様に頂きました優れた御指導により、私の研究はとても有意義で満ち足りたものとなりました。また、慶應義塾大学川島研究会秘書藤川綾様には幾多の手続きを丁寧にサポートして頂き，円滑な出張や書類作成，研究環境整備を行うことができました。そして、CCBench開発者である株式会社ノーチラス・テクノロジーズ田辺敬之様。この研究に関わっていただいたすべての方に深く感謝を申し上げます。
+本研究を進めるにあたり、慶應義塾大学准教授川島英之先生、筑波大学システム情報系情報工学域大矢晃久、筑波大学システム情報系情報工学域萬礼応先生に頂きました優れた御指導により、私の研究はとても有意義で満ち足りたものとなりました。また、慶應義塾大学川島研究会秘書藤川綾様には幾多の手続きを丁寧にサポートして頂き，円滑な出張や書類作成，研究環境整備を行うことができました。この研究に関わっていただいたすべての方に深く感謝を申し上げます。
 
 % 参考文献（References）
 \newpage
