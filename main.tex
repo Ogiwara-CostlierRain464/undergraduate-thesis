@@ -12,11 +12,11 @@
 \setcounter{tocdepth}{3}
 \setcounter{page}{-1}
 
-%TODO: タイトル直す
 %TODO: アルゴリズムで擬似コード足す
 %TODO: snapshotで低下する理由を探す
 %TODO: 学会ならもっとplotは疎にする、あるいは綺麗なデータをとる
-% 関連研究もっと増やす
+%TODO: 関連研究もっと増やす
+%TODO: abort ratioについてのレポート これはYCSB-A,Bにおいて記録しようか　それで、スレッド数が増えてもそんなに問題ないことを確認する。データ件数も増やした検証をすべきか？
 
 % 【必須】主題：\maintatile{日本語}{英語}
 \maintitle{並行性制御法におけるROS TFの高品質化}{Make ROS TF high quality in concurrency control method}
@@ -234,6 +234,73 @@ TFライブラリでは図\ref{fig:multitree} のように各座標系間の位�
 	\item フレームdから木構造のルートノードへの時刻Bにおける座標変換を取得する。フレームdから木構造のルートノードへのパスはd$\rightarrow$aとなり、座標変換は線形補間によって得られる。
 	\item フレームcからフレームaへの座標変換と、フレームaからdへの座標変換を掛け合わせる。フレームaからdへの座標変換はd$\rightarrow$aの逆変換から得られる。
 \end{enumerate}
+
+lookupTransformは次のような擬似コードで説明することもできる。
+
+もうwalkToTopがlookupTransform代わりでいいよ
+
+\begin{algorithm}[H]
+	\caption{lookupTransform(target, source, time)}
+	\begin{algorithmic}
+	\STATE // 最新のデータ
+	\IF{time == 0}
+	\STATE time = getLatestCommonTime(target, source)
+	\ENDIF
+	\STATE source\_trans\_accum = $I$
+	\STATE frame = source
+	\STATE top\_parent = frame
+	\WHILE{frame $\neq$ root}
+	\STATE (trans, parent) = frame.getTransAndParent(time) 
+	\STATE source\_trans\_accum *= trans
+	\STATE top\_parent = frame
+	\STATE frame = parent
+	\ENDWHILE
+	\STATE frame = target
+		\STATE target\_trans\_accum = $I$
+	\WHILE{frame $\neq$ top\_parent}
+	\STATE (tarns, parent)
+	\ENDWHILE
+	\RETURN 0
+	\end{algorithmic}
+	\label{algo:one}
+\end{algorithm}
+
+\begin{algorithm}[H]
+	\caption{getLatestCommonTime(target, source)}
+	\begin{algorithmic}
+	\STATE frame = source
+	\STATE common\_time = TIME\_MAX
+	\STATE // lookup tree cache
+	\STATE lct\_cache = [ ]
+	\WHILE{frame $\neq$ root}
+	\STATE (time, parent) = frame.getLatestTimeAndParent()
+	\STATE common\_time = min(time, common\_time)
+	\STATE lct\_cache.push\_back((time, parent))
+	\STATE frame = parent
+	\ENDWHILE
+	\STATE frame = target
+	\STATE common\_time = TIME\_MAX
+	\WHILE{\TRUE}
+	\STATE (time, parent) = frame.getLatestTimeAndParent()
+	\STATE common\_time = min(time, common\_time)
+	\IF{parent \textbf{in}  lct\_cache}
+	\STATE common\_parent = parent
+	\STATE \textbf{break}
+	\ENDIF
+	\STATE frame = parent
+	\ENDWHILE
+	\FOR{(time, parent) \textbf{in} lct\_cache}
+	\STATE common\_time = min(common\_time, time)
+	\IF{parent == common\_parent}
+	\STATE \textbf{break}
+	\ENDIF
+	\ENDFOR
+	\RETURN common\_time
+	\end{algorithmic}
+\end{algorithm}
+
+
+
 
 \section{setTransform}
 二つのフレーム間の座標変換情報を更新するにはsetTransformメソッドを使う。図\ref{fig:multitree}におけるフレームcからフレームbのように直接の親子関係になっているフレーム間の座標変換情報を更新でき、フレームcからフレームaのように直接の親子関係になっていないフレーム間の座標変換情報は更新できない。フレームcからフレームaへの座標変換を更新するにはフレームcからフレームbへの座標変換、及びフレームbからフレームaへの座標変換を更新すればよい。
@@ -547,42 +614,42 @@ latestがsnapshotより高いスループットを出しているのは、snapsh
 
 \begin{figure}[h] 
 \centering
-\includegraphics[width=7cm]{data/stable/ycsb-a/latency}
+\includegraphics[width=15cm]{data/stable/ycsb-a/latency}
 \caption{YCSB-Aにおけるスレッド数とレイテンシの関係}
 \label{fig:latency-a}
 \end{figure}
 
 \begin{figure}[h] 
 \centering
-\includegraphics[width=7cm]{data/stable/ycsb-a/latency2}
+\includegraphics[width=15cm]{data/stable/ycsb-a/latency2}
 \caption{YCSB-Aにおけるスレッド数とレイテンシの関係 snapshotとlatestのみ}
 \label{fig:latency-a2}
 \end{figure}
 
 \begin{figure}[h] 
 \centering
-\includegraphics[width=7cm]{data/stable/ycsb-b/latency}
+\includegraphics[width=15cm]{data/stable/ycsb-b/latency}
 \caption{YCSB-Bにおけるスレッド数とレイテンシの関係}
 \label{fig:latency-b}
 \end{figure}
 
 \begin{figure}[h] 
 \centering
-\includegraphics[width=7cm]{data/stable/ycsb-b/latency2}
+\includegraphics[width=15cm]{data/stable/ycsb-b/latency2}
 \caption{YCSB-Bにおけるスレッド数とレイテンシの関係 snapshotとlatestのみ}
 \label{fig:latency-b2}
 \end{figure}
 
 \begin{figure}[h] 
 \centering
-\includegraphics[width=7cm]{data/stable/ycsb-c/latency}
+\includegraphics[width=15cm]{data/stable/ycsb-c/latency}
 \caption{YCSB-Cにおけるスレッド数とレイテンシの関係}
 \label{fig:latency-c}
 \end{figure}
 
 \begin{figure}[h] 
 \centering
-\includegraphics[width=7cm]{data/stable/ycsb-c/latency-2}
+\includegraphics[width=15cm]{data/stable/ycsb-c/latency-2}
 \caption{YCSB-Cにおけるスレッド数とレイテンシの関係 snapshotとlatestのみ}
 \label{fig:latency-c2}
 \end{figure}
@@ -597,7 +664,7 @@ oldではレイテンシとスレッド数が線形比例するのに対し、�
 
 \begin{figure}[h] 
 \centering
-\includegraphics[width=7cm]{latency-frequency}
+\includegraphics[width=15cm]{latency-frequency}
 \caption{制御周期とレイテンシ}
 \label{fig:latency-frequency}
 \end{figure}
@@ -607,7 +674,7 @@ oldではレイテンシとスレッド数が線形比例するのに対し、�
 
 \begin{figure}[h] 
 \centering
-\includegraphics[width=7cm]{frequency-real}
+\includegraphics[width=15cm]{frequency-real}
 \caption{制御周期とレイテンシ}
 \label{fig:frequency-real}
 \end{figure}
@@ -632,14 +699,14 @@ snapshotとlatestでは20ms、12msなのに対し、oldでは608msとなり現�
 
 \begin{figure}[h] 
 \centering
-\includegraphics[width=7cm]{data/stable/ycsb-a/delay}
+\includegraphics[width=15cm]{data/stable/ycsb-a/delay}
 \caption{YCSB-A スレッド数とdelay}
 \label{fig:delay-a}
 \end{figure}
 
 \begin{figure}[h] 
 \centering
-\includegraphics[width=7cm]{data/stable/ycsb-a/delay2}
+\includegraphics[width=15cm]{data/stable/ycsb-a/delay2}
 \caption{YCSB-A スレッド数とdelay snapshotとlatestのみ}
 \label{fig:delay-a2}
 \end{figure}
@@ -647,21 +714,21 @@ snapshotとlatestでは20ms、12msなのに対し、oldでは608msとなり現�
 
 \begin{figure}[h] 
 \centering
-\includegraphics[width=7cm]{data/stable/ycsb-b/delay}
+\includegraphics[width=15cm]{data/stable/ycsb-b/delay}
 \caption{YCSB-B スレッド数とdelay}
 \label{fig:delay-b}
 \end{figure}
 
 \begin{figure}[h] 
 \centering
-\includegraphics[width=7cm]{data/stable/ycsb-b/delay2}
+\includegraphics[width=15cm]{data/stable/ycsb-b/delay2}
 \caption{YCSB-B スレッド数とdelay}
 \label{fig:delay-b2}
 \end{figure}
 
 \begin{figure}[h] 
 \centering
-\includegraphics[width=7cm]{data/stable/ycsb-c/delay}
+\includegraphics[width=15cm]{data/stable/ycsb-c/delay}
 \caption{YCSB-C スレッド数とdelay}
 \label{fig:delay-c}
 \end{figure}
@@ -677,14 +744,14 @@ YCSB-A/Bのどちらにおいても、snapshotはスレッド数の増加に伴�
 
 \begin{figure}[h] 
 \centering
-\includegraphics[width=7cm]{data/stable/ycsb-a/std-div}
+\includegraphics[width=15cm]{data/stable/ycsb-a/std-div}
 \caption{YCSB-A スレッド数とデータの同一性}
 \label{fig:std-div-a}
 \end{figure}
 
 \begin{figure}[h] 
 \centering
-\includegraphics[width=7cm]{data/stable/ycsb-b/std-div}
+\includegraphics[width=15cm]{data/stable/ycsb-b/std-div}
 \caption{YCSB-B スレッド数とデータの同一性}
 \label{fig:std-div-b}
 \end{figure}
