@@ -5,7 +5,8 @@
 \usepackage{hyperref}
 \usepackage{breakurl}
 \pagestyle{empty}
-\usepackage{algorithmic}
+\usepackage{newtxtext,newtxmath}
+\usepackage{algpseudocode}
 \usepackage{algorithm}
 \usepackage{array}
 
@@ -239,65 +240,67 @@ lookupTransformは次のような擬似コードで説明することもでき�
 
 もうwalkToTopがlookupTransform代わりでいいよ
 
-\begin{algorithm}[H]
-	\caption{lookupTransform(target, source, time)}
-	\begin{algorithmic}
-	\STATE // 最新のデータ
-	\IF{time == 0}
-	\STATE time = getLatestCommonTime(target, source)
-	\ENDIF
-	\STATE source\_trans\_accum = $I$
-	\STATE frame = source
-	\STATE top\_parent = frame
-	\WHILE{frame $\neq$ root}
-	\STATE (trans, parent) = frame.getTransAndParent(time) 
-	\STATE source\_trans\_accum *= trans
-	\STATE top\_parent = frame
-	\STATE frame = parent
-	\ENDWHILE
-	\STATE frame = target
-		\STATE target\_trans\_accum = $I$
-	\WHILE{frame $\neq$ top\_parent}
-	\STATE (tarns, parent)
-	\ENDWHILE
-	\RETURN 0
-	\end{algorithmic}
-	\label{algo:one}
-\end{algorithm}
+\begin{algorithmic}[1]
+	\Function {lookupTransform}{$target, source, time$}
+	\If{time == 0} \Comment{最新のデータを取得}
+	\State{time = getLatestCommonTime(target, source)}
+	\EndIf
+	\State source\_trans = $I$
+	\State frame = source
+	\State top\_parent = frame
+	\While{frame $\neq$ root}
+	\State (trans, parent) = frame.getTransAndParent(time) 
+	\State source\_trans *= trans
+	\State top\_parent = frame
+	\State frame = parent
+	\EndWhile
+	\State frame = target
+	\State target\_trans = $I$
+	\While{frame $\neq$ top\_parent}
+	\State (tarns, parent) = frame.getTransAndParent(time)
+	\State target\_trans *= trans
+	\State frame = parent
+	\EndWhile
+	
+	\Return source\_trans * (target\_trans)$^{-1}$
+	\EndFunction
+\end{algorithmic}
 
-\begin{algorithm}[H]
-	\caption{getLatestCommonTime(target, source)}
-	\begin{algorithmic}
-	\STATE frame = source
-	\STATE common\_time = TIME\_MAX
-	\STATE // lookup tree cache
-	\STATE lct\_cache = [ ]
-	\WHILE{frame $\neq$ root}
-	\STATE (time, parent) = frame.getLatestTimeAndParent()
-	\STATE common\_time = min(time, common\_time)
-	\STATE lct\_cache.push\_back((time, parent))
-	\STATE frame = parent
-	\ENDWHILE
-	\STATE frame = target
-	\STATE common\_time = TIME\_MAX
-	\WHILE{\TRUE}
-	\STATE (time, parent) = frame.getLatestTimeAndParent()
-	\STATE common\_time = min(time, common\_time)
-	\IF{parent \textbf{in}  lct\_cache}
-	\STATE common\_parent = parent
-	\STATE \textbf{break}
-	\ENDIF
-	\STATE frame = parent
-	\ENDWHILE
-	\FOR{(time, parent) \textbf{in} lct\_cache}
-	\STATE common\_time = min(common\_time, time)
-	\IF{parent == common\_parent}
-	\STATE \textbf{break}
-	\ENDIF
-	\ENDFOR
-	\RETURN common\_time
-	\end{algorithmic}
-\end{algorithm}
+
+
+\begin{algorithmic}[1]
+	\Function{getLatestCommonTime}{$target, source$}
+	\State frame = source
+	\State common\_time = TIME\_MAX
+	\State // lookup tree cache
+	\State lct\_cache = [ ]
+	\While{frame $\neq$ root}
+	\State (time, parent) = frame.getLatestTimeAndParent()
+	\State common\_time = min(time, common\_time)
+	\State lct\_cache.push\_back((time, parent))
+	\State frame = parent
+	\EndWhile
+	\State frame = target
+	\State common\_time = TIME\_MAX
+	\While{true}
+	\State (time, parent) = frame.getLatestTimeAndParent()
+	\State common\_time = min(time, common\_time)
+	\If{parent \textbf{in}  lct\_cache}
+	\State common\_parent = parent
+	\State \textbf{break}
+	\EndIf
+	\State frame = parent
+	\EndWhile
+	\For{(time, parent) \textbf{in} lct\_cache}
+	\State common\_time = min(common\_time, time)
+	\If{parent == common\_parent}
+	\State \textbf{break}
+	\EndIf
+	\EndFor
+	\Return common\_time
+	\EndFunction
+\end{algorithmic}
+
 
 
 
@@ -308,6 +311,8 @@ lookupTransformは次のような擬似コードで説明することもでき�
 このメソッドを呼び出すことにより新しい座標変換情報がタイムラインに追加される。
 
 % 図3.1においてc->aと貼り直すとbのdeleteが発生するが、ここではread/writeのみ扱うのでここでは記述しない。
+
+% setTransformについてはアルゴリズムは単純なのでいらない
 
 \section{問題点}
 \subsection*{問題1: ジャイアント・ロック}
@@ -424,6 +429,7 @@ TFライブラリでは森構造へのアクセスをする際、森構造全体
 
 このように、細粒度ロッキング法ではデータごとにロックをし、さらに読み込みロック・書き込みロックと区別をつけることにより並行性を上げることができる。
 
+%TODO 細粒度ロックのタイミングの説明はいる？
 
 前述した問題2については、複数の座標変換のデータをatomicに取得するインターフェース(lookupLatestTransform)、及び複数の座標変換の最新のデータをatomicに更新するインターフェース(setTransforms)を提供して解決する。setTransformsインターフェイスの必要性について説明する。
 
@@ -525,7 +531,63 @@ setTransformsとlookupLatestTransformを利用すると、最新の座標変換�
 lookupLatestTransformでは最新の座標変換のみを見るため必要な時にのみ座標変換の更新をすればよく、このような余計な負荷がかかることは無くなる。
 
 % でも、TFは同期を取ったほうがいいとされるからああいう設計にしたんじゃ？最新のデータだけ保存するようにしてればよかったじゃん
-%TODO ここ突っ込まれたら痛いなああああ
+%TODO ここ突っ込まれたら痛いなああああ、ここの回答は「この研究を通して既存のTFもそうなってくれると嬉しいですね」程度のコメントで
+
+\begin{algorithm}
+  \caption{lookupLatestTransform}\label{euclid}
+\begin{algorithmic}[1]
+	\Function {lookupLatestTransform}{target, source}
+	\State rlock\_list = [ ]
+	\State source\_trans = $I$
+	\State frame = source
+	\State top\_parent = frame
+	\While{frame $\neq$ root}
+	\State rlock\_list.push\_back(frame)
+	\State (trans, parent) = frame.getLatestTransAndParent() 
+	\State source\_trans *= trans
+	\State top\_parent = frame
+	\State frame = parent
+	\EndWhile
+	\State frame = target
+	\State target\_trans = $I$
+	\While{frame $\neq$ top\_parent}
+	\State rlock\_list.push\_back(frame)
+	\State (tarns, parent) = frame.getTransAndParent(time)
+	\State target\_trans *= trans
+	\State frame = parent
+	\EndWhile
+	\State unlock all in rlock\_list
+	
+	\Return source\_trans * (target\_trans)$^{-1}$
+	\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+
+\begin{algorithm}
+\caption{setTransforms}\label{euclid}
+\begin{algorithmic}[1]
+	\Function{setTransforms}{transforms}
+	\State wlock\_list = [ ] \label{op1}
+	\For{trans in transforms}
+	\State frame = getFrame(trans.child\_frame\_id)
+	\State lock\_success = frame.tryWLock()
+	\If{lock\_success}
+	\State wlock\_list.push\_back(frame)
+	\Else
+	\State unlock all in wlock\_list
+	\State sleep 1ms 
+	\State \textbf{goto} \ref{op1}
+	\EndIf
+	\EndFor
+	\For{trans in transforms} \Comment{Dirty readを避けるため、全てのwlockが確保できてから書き込み}
+	\State frame = getFrame(trans.child\_frame\_id)
+	\State frame.insertData(trans)
+	\EndFor
+	\State unlock all in wlock\_list
+	\EndFunction
+\end{algorithmic}
+\end{algorithm}
 
 \chapter{評価}
 TFライブラリに細粒度を実装したlookupTransform・setTransform、及び最新の複数のデータをatomicに取得・更新できるlookupLatestTransform・setTransformsを以下の指標で評価した。
