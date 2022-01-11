@@ -24,9 +24,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="0.66005251"
-     inkscape:cx="178.01614"
-     inkscape:cy="687.06655"
+     inkscape:zoom="0.79146422"
+     inkscape:cx="325.34636"
+     inkscape:cy="521.18591"
      inkscape:window-width="1440"
      inkscape:window-height="791"
      inkscape:window-x="0"
@@ -1165,7 +1165,7 @@
          y="69.456909">…</tspan></text>
     <g
        id="g2161-5"
-       transform="translate(-14.616883,62.579824)"
+       transform="translate(-56.950219,-27.378513)"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/snake.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200">
@@ -1190,7 +1190,7 @@
     </g>
     <g
        id="g2161-1-4"
-       transform="translate(-14.838284,79.782762)"
+       transform="translate(-57.17162,-10.175576)"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/snake.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200">
@@ -1215,7 +1215,7 @@
     </g>
     <g
        id="g2161-6-7"
-       transform="translate(-14.770766,97.028633)"
+       transform="translate(-57.104102,7.0702943)"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/snake.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200">
@@ -1240,7 +1240,7 @@
     </g>
     <g
        id="g4828-4"
-       transform="translate(-14.994624,80.859512)"
+       transform="translate(-57.32796,-9.0988258)"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/snake.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200">
@@ -1276,7 +1276,7 @@
        inkscape:export-ydpi="200"
        inkscape:export-xdpi="200"
        style="fill:none;stroke:#000000;stroke-width:0.244423px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart-35-0-1-1-0-7)"
-       d="m 72.53202,116.31036 0.0174,9.57278"
+       d="m 30.198684,26.352012 0.0174,9.572777"
        id="path1032-82-5-3-1-5-0"
        sodipodi:nodetypes="cc"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/snake.png" />
@@ -1284,7 +1284,7 @@
        inkscape:export-ydpi="200"
        inkscape:export-xdpi="200"
        style="fill:none;stroke:#000000;stroke-width:0.244423px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart-35-0-1-1-0-1-9)"
-       d="m 72.6451,133.26405 0.0174,9.57278"
+       d="m 30.311764,43.305693 0.0174,9.572774"
        id="path1032-82-5-3-1-5-7-6"
        sodipodi:nodetypes="cc"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/snake.png" />
@@ -1292,7 +1292,7 @@
        inkscape:export-ydpi="200"
        inkscape:export-xdpi="200"
        style="fill:none;stroke:#000000;stroke-width:0.244423px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart-35-0-1-1-0-1-4-1)"
-       d="m 72.72164,150.71173 0.0174,9.57278"
+       d="m 30.388304,60.753364 0.0174,9.572774"
        id="path1032-82-5-3-1-5-7-9-2"
        sodipodi:nodetypes="cc"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/snake.png" />
@@ -1300,15 +1300,15 @@
        inkscape:export-ydpi="200"
        inkscape:export-xdpi="200"
        style="fill:none;stroke:#000000;stroke-width:0.244423px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart-35-0-1-1-0-1-4-8-4)"
-       d="m 72.7136,165.74835 0.0174,9.57278"
+       d="m 30.380264,75.789975 0.0174,9.572774"
        id="path1032-82-5-3-1-5-7-9-3-4"
        sodipodi:nodetypes="cc"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/snake.png" />
     <text
        xml:space="preserve"
        style="font-size:5.64444px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';letter-spacing:0px;stroke-width:0.264583"
-       x="69.72345"
-       y="163.22426"
+       x="27.390112"
+       y="73.265923"
        id="text6393-7"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/snake.png"
        inkscape:export-xdpi="200"
@@ -1316,7 +1316,7 @@
          sodipodi:role="line"
          id="tspan6391-4"
          style="stroke-width:0.264583"
-         x="69.72345"
-         y="163.22426">…</tspan></text>
+         x="27.390112"
+         y="73.265923">…</tspan></text>
   </g>
 </svg>

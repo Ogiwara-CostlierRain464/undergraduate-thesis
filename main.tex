@@ -13,8 +13,7 @@
 \setcounter{tocdepth}{3}
 \setcounter{page}{-1}
 
-%TODO: アルゴリズムで擬似コード足す
-%TODO: snapshotで低下する理由を探す
+
 %TODO: 学会ならもっとplotは疎にする、あるいは綺麗なデータをとる
 %TODO: 関連研究もっと増やす
 %TODO: abort ratioについてのレポート これはYCSB-A,Bにおいて記録しようか　それで、スレッド数が増えてもそんなに問題ないことを確認する。データ件数も増やした検証をすべきか？
@@ -175,7 +174,6 @@ TFの森構造には複数のスレッドがアクセスするため並行性制
 本論文の構成は次の通りである。第二章では関連研究について述べる。第三章では既存のTFの森構造とその問題点について述べる。第四章では提案手法である森構造への再粒度ロックの導入とデータ一貫性のためのインターフェイスの提供について述べる。第五章では提案手法の評価結果を述べる。第六章では本研究の結論を述べる。第七章では今後の課題について述べる。
 
 \chapter{関連研究}
-%TODO もっと内容膨らませるべき？
 
 データベース分野におけるロボットの研究の例としてはGAIA platform\cite{gaia}が挙げられる。GAIA platformはリレーショナルデータベースと、そのデータベースに変更が加えられた時の処理をC++で宣言的に記述できる仕組みを組み合わせることにより、イベントドリブンなフレームワークでロボットや自動運転システムを構築するものである。
 % PostgreSQLのtriggerとはちょっと違う
@@ -236,16 +234,16 @@ TFライブラリでは図\ref{fig:multitree} のように各座標系間の位�
 	\item フレームcからフレームaへの座標変換と、フレームaからdへの座標変換を掛け合わせる。フレームaからdへの座標変換はd$\rightarrow$aの逆変換から得られる。
 \end{enumerate}
 
-lookupTransformは次のような擬似コードで説明することもできる。
+lookupTransformはアルゴリズム\ref{algo:lookupTransform}のような擬似コードで説明することもできる。
 
-もうwalkToTopがlookupTransform代わりでいいよ
-
+\begin{algorithm}
+\caption{lookupTransform} \label{algo:lookupTransform}
 \begin{algorithmic}[1]
-	\Function {lookupTransform}{$target, source, time$}
-	\If{time == 0} \Comment{最新のデータを取得}
+	\Function {lookupTransform}{target, source, time} \Comment{フレームsourceからフレームtargetへの時刻timeでの座標変換を計算する}
+	\If{time == 0} \Comment{time=0を指定すると、最新の座標変換を計算できる時刻を取得する}
 	\State{time = getLatestCommonTime(target, source)}
 	\EndIf
-	\State source\_trans = $I$
+	\State source\_trans = $I$ \Comment{$I$は座標変換の単位元}
 	\State frame = source
 	\State top\_parent = frame
 	\While{frame $\neq$ root}
@@ -265,15 +263,16 @@ lookupTransformは次のような擬似コードで説明することもでき�
 	\Return source\_trans * (target\_trans)$^{-1}$
 	\EndFunction
 \end{algorithmic}
+\end{algorithm}
 
 
-
+\begin{algorithm}
+\caption{getLatestCommonTime}
 \begin{algorithmic}[1]
-	\Function{getLatestCommonTime}{$target, source$}
+	\Function{getLatestCommonTime}{target, source} \Comment{フレームsourceからフレームtargetへの最新の座標変換を計算できる時刻を取得する}
 	\State frame = source
 	\State common\_time = TIME\_MAX
-	\State // lookup tree cache
-	\State lct\_cache = [ ]
+	\State lct\_cache = [ ] \Comment{lookup tree cache}
 	\While{frame $\neq$ root}
 	\State (time, parent) = frame.getLatestTimeAndParent()
 	\State common\_time = min(time, common\_time)
@@ -300,9 +299,7 @@ lookupTransformは次のような擬似コードで説明することもでき�
 	\Return common\_time
 	\EndFunction
 \end{algorithmic}
-
-
-
+\end{algorithm}
 
 
 \section{setTransform}
@@ -310,9 +307,19 @@ lookupTransformは次のような擬似コードで説明することもでき�
 
 このメソッドを呼び出すことにより新しい座標変換情報がタイムラインに追加される。
 
+setTransformの擬似アルゴリズムをアルゴリズム\ref{algo:setTransform}で示す。
+
 % 図3.1においてc->aと貼り直すとbのdeleteが発生するが、ここではread/writeのみ扱うのでここでは記述しない。
 
-% setTransformについてはアルゴリズムは単純なのでいらない
+\begin{algorithm}
+\caption{setTransform}\label{algo:setTransform}
+\begin{algorithmic}[1]
+	\Function{setTransform}{transform} \Comment{座標変換transformを登録}
+	\State frame = getFrame(transform.child\_frame\_id)
+	\State frame.insertData(transform)
+	\EndFunction
+\end{algorithmic}
+\end{algorithm}
 
 \section{問題点}
 \subsection*{問題1: ジャイアント・ロック}
@@ -429,7 +436,80 @@ TFライブラリでは森構造へのアクセスをする際、森構造全体
 
 このように、細粒度ロッキング法ではデータごとにロックをし、さらに読み込みロック・書き込みロックと区別をつけることにより並行性を上げることができる。
 
-%TODO 細粒度ロックのタイミングの説明はいる？
+、細粒度ロックを実装したlookupTransform、getLatestCommonTimeの擬似アルゴリズムをそれぞれアルゴリズム\ref{algo:lookupTransform2}、アルゴリズム\ref{algo:getLatestCommonTime2}にて示す。
+
+\begin{algorithm}
+  \caption{細粒度ロックを実装したlookupTransform}\label{algo:lookupTransform2}
+\begin{algorithmic}[1]
+	\Function {lookupTransform}{target, source, time} 
+	\If{time == 0}
+	\State{time = getLatestCommonTime(target, source)}
+	\EndIf
+	\State source\_trans = $I$
+	\State frame = source
+	\State top\_parent = frame
+	\While{frame $\neq$ root}
+	\State frame.rLock()
+	\State (trans, parent) = frame.getLatestTransAndParent() 
+	\State frame.rUnlock()
+	\State source\_trans *= trans
+	\State top\_parent = frame
+	\State frame = parent
+	\EndWhile
+	\State frame = target
+	\State target\_trans = $I$
+	\While{frame $\neq$ top\_parent}
+	\State frame.rLock()
+	\State (tarns, parent) = frame.getTransAndParent(time)
+	\State frame.rUnlock()
+	\State target\_trans *= trans
+	\State frame = parent
+	\EndWhile
+	
+	\Return source\_trans * (target\_trans)$^{-1}$
+	\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+\begin{algorithm}
+\caption{細粒度ロックを実装したgetLatestCommonTime} \label{algo:getLatestCommonTime2}
+\begin{algorithmic}[1]
+	\Function{getLatestCommonTime}{target, source} 
+	\State frame = source
+	\State common\_time = TIME\_MAX
+	\State lct\_cache = [ ] 
+	\While{frame $\neq$ root}
+	\State frame.rLock()
+	\State (time, parent) = frame.getLatestTimeAndParent()
+	\State frame.rUnLock()
+	\State common\_time = min(time, common\_time)
+	\State lct\_cache.push\_back((time, parent))
+	\State frame = parent
+	\EndWhile
+	\State frame = target
+	\State common\_time = TIME\_MAX
+	\While{true}
+	\State frame.rLock()
+	\State (time, parent) = frame.getLatestTimeAndParent()
+	\State frame.rUnLock()
+	\State common\_time = min(time, common\_time)
+	\If{parent \textbf{in}  lct\_cache}
+	\State common\_parent = parent
+	\State \textbf{break}
+	\EndIf
+	\State frame = parent
+	\EndWhile
+	\For{(time, parent) \textbf{in} lct\_cache}
+	\State common\_time = min(common\_time, time)
+	\If{parent == common\_parent}
+	\State \textbf{break}
+	\EndIf
+	\EndFor
+	\Return common\_time
+	\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
 
 前述した問題2については、複数の座標変換のデータをatomicに取得するインターフェース(lookupLatestTransform)、及び複数の座標変換の最新のデータをatomicに更新するインターフェース(setTransforms)を提供して解決する。setTransformsインターフェイスの必要性について説明する。
 
@@ -465,7 +545,9 @@ b$\rightarrow$aとa$\rightarrow$cのデータを用いてフレームbからフ�
 
 % ただの細粒度ロックだとSerializabilityがなくなる、けどgiant lockだとパフォーマンスがまずいという話を説明する必要はある？
 
-そこで、複数の座標変換を2PLによってatomicに森構造に登録するsetTransformsを提供し、またlookupLatestTransformも2PLを使うように変更する。2PL\cite{2PL}とは、複数のデータに対するロック・アンロックを二つのフェーズに分けることによって並行処理の結果が直列処理と同じ結果になることを保証する、データベースにおけるトランザクション技術である。
+そこで、複数の座標変換を2PLによってatomicに森構造に登録するsetTransformsを提供し、またlookupLatestTransformも2PLを使うように変更する。2PL\cite{2PL}とは、複数のデータに対するロック・アンロックを二つのフェーズに分けることによって並行処理の結果が直列処理と同じ結果になることを保証する、データベースにおけるトランザクション技術である。このような性質は、Serializabilityと呼ばれる。
+
+%TODO Serializabilityはどこから引用?
 
 2PLによって並行性制御をしたときのsetTransformsとlookupLatestTransformの動作について説明する。スレッド1がsetTransformsを用いてb$\rightarrow$a、d$\rightarrow$aの情報を更新し、スレッド2がlookupLatestTransformを用いてb$\rightarrow$a、d$\rightarrow$aの情報を元にフレームbからフレームdへの座標変換を計算し、スレッド1の処理中にスレッド2の処理が開始するケースについて考える。それぞれのスレッドの処理は$w_1(b)w_1(d)$、$r_2(b)r_2(d)$と表現できる。
 
@@ -515,9 +597,20 @@ b$\rightarrow$aとa$\rightarrow$cのデータを用いてフレームbからフ�
 図\ref{fig:deadlock}はスレッド1がa, b, cの読み込みロック、スレッド2がdの書き込みロックを確保した状態を表している。ここで、スレッド1は次にdの読み込みロックを確保したいがすでにスレッド2がdを書き込みロックしているためロックの解放を待機する必要がある。スレッド2は次にaの書き込みロックを確保したいがすでにスレッド1がaを読み込みロックしているために待機する必要がある。二つのスレッドがお互いのロック解放を待ち続けるため、deadlockとなる。これはスレッド2が森構造のルートノードへ登る方向にロックをかけているのに対し、スレッド1は逆に一時的に森構造を下る方向にロックをかけていることに起因する。
 
 % 要素のreorderによって防げるけどちょいとむずそう
-%TODO Wound wait, nonpreemptive とかの正式名称は？
-そこで、我々はdeadlockを未然に防ぐ方法としてNoWait\cite{2PL}を採用した。これは、書き込みロックを2つ以上かけようとしたときにすでにデータがロックされていたら、保持しているロックを全て解放し最初から処理をやり直す手法である。これにより、書き込みロックを2つ以上しているスレッドがロックの解放を待機することがなくなり、deadlockは発生しない。また、我々の手法ではcontention regulationとして保持しているロックを全て解放して1ミリ秒経過してから最初から処理をやり直す。
-dirty readによって読み込み専用スレッドも
+
+そこで、我々はdeadlockを未然に防ぐ方法としてNoWait\cite{nowait}を採用した。これは、書き込みロックを2つ以上かけようとしたときにすでにデータがロックされていたら、保持しているロックを全て解放し最初から処理をやり直す手法である。これにより、書き込みロックを2つ以上しているスレッドがロックの解放を待機することがなくなり、deadlockは発生しない。また、我々の手法ではcontention regulationとして保持しているロックを全て解放して1ミリ秒経過してから最初から処理をやり直す。
+
+\begin{figure}[h] 
+\centering
+\includegraphics[width=10cm]{dirty-read}
+\caption{Dirty Read}
+\label{fig:dirty-read}
+\end{figure}
+
+
+NoWaitによって処理のやり直しが発生するため、setTransformsでは書き込みを行うタイミングに注意する必要がある。T1がsetTransformsを用いて$w_1(a)w_1(b)$、T2がlookupLatestTransformを用いて$r_2(b)r_2(a)$を実行する時、図\ref{fig:dirty-read}のようなスケジュールになったケースについて考える。T1が$a$の書き込みを終えた後に$b$への書き込みロックを取ろうとするが、すでにT2によって$b$への読み込みロックは取られているので、NoWaitによって$a$へのロックを外してから処理をやり直す。T1による処理のやり直しの前にT2が$a$を読み込んでしまうと、T2は$a$についてはT1による更新後のデータ、$b$についてはT1による更新前のデータを読んでしまい、並行処理の結果が直列処理と同じ結果にならなくなってしまう。この問題は、トランザクション理論においてはDirty readと呼ばれる。
+
+Dirty readを避けるため、我々の手法では全ての書き込みロックが確保できてから座標変換の書き込みを行うようにした。これにより、書き込みが一部行われた状態を読み込み専用スレッドが観測することはなくなる。
 
 \begin{figure}[h] 
 \centering
@@ -533,8 +626,10 @@ lookupLatestTransformでは最新の座標変換のみを見るため必要な�
 % でも、TFは同期を取ったほうがいいとされるからああいう設計にしたんじゃ？最新のデータだけ保存するようにしてればよかったじゃん
 %TODO ここ突っ込まれたら痛いなああああ、ここの回答は「この研究を通して既存のTFもそうなってくれると嬉しいですね」程度のコメントで
 
+lookupLatestTransform、setTransformsの擬似アルゴリズムをそれぞれアルゴリズム\ref{algo:lookupLatestTransform}、\ref{algo:setTransforms}にて示す。
+
 \begin{algorithm}
-  \caption{lookupLatestTransform}\label{euclid}
+  \caption{lookupLatestTransform}\label{algo:lookupLatestTransform}
 \begin{algorithmic}[1]
 	\Function {lookupLatestTransform}{target, source}
 	\State rlock\_list = [ ]
@@ -565,7 +660,7 @@ lookupLatestTransformでは最新の座標変換のみを見るため必要な�
 
 
 \begin{algorithm}
-\caption{setTransforms}\label{euclid}
+\caption{setTransforms}\label{algo:setTransforms}
 \begin{algorithmic}[1]
 	\Function{setTransforms}{transforms}
 	\State wlock\_list = [ ] \label{op1}
@@ -599,7 +694,7 @@ TFライブラリに細粒度を実装したlookupTransform・setTransform、及
 	\item データの同期性: lookupTransformにおいてアクセスした各座標変換データのタイムスタンプの同一性
 \end{enumerate}
 
-以下、既存手法はold,、細粒度ロックを実装したlookupTransform・setTransformsをsnapshot、2PLを用いて複数のデータをatomicに取得・更新できるlookupLatestTransform・setTransformsをlatestと呼称する。
+以下、既存手法はold、細粒度ロックを実装したlookupTransform・setTransformsをsnapshot、2PLを用いて複数のデータをatomicに取得・更新できるlookupLatestTransform・setTransformsをlatestと呼称する。
 
 
 
@@ -659,6 +754,8 @@ YCSB-A/B/Cワークロードを用いて、old、snapshot、latestのそれぞ�
 % ここはもっと細かく調査しないとな〜〜
 YCSB-Aにおいてはlatestはoldに比べ最大218倍のスループットとなり、210スレッドまでスケールした。snapshotはoldに比べ最大49倍のスループットとなり、96スレッドまでスケールした。
 
+% latestにおいてこうなるのは、二回read lockをかける必要があるのと逆に遡るから。実際、getCommonの後でreturnすると〜
+
 YCSB-Bにおいてはlatestはoldに比べ最大339倍のスループットとなり、224スレッドまでスケールした。snapshotはoldに比べ最大101倍のスループットとなり、98スレッドまでスケールした。
 
 YCSB-Cにおいてはlatestはoldに比べ最大237倍のスループットとなり、210スレッドまでスケールした。snapshotはoldに比べ最大194倍のスループットとなり、154スレッドまでスケールした。
@@ -666,9 +763,6 @@ YCSB-Cにおいてはlatestはoldに比べ最大237倍のスループットと�
 latestがsnapshotより高いスループットを出しているのは、snapshot  ではlookupTransformにおいて二つのフレーム間のパス上の全てのフレームにおいて座標変換を取得できる時刻を検索してから座標変換を計算するために、森構造を2度読み込む必要があるからだと考えられる。
 % need section ref
 
-
-%TODO 実際、len=32に設定するとlatestでも同じ結果になることを示せば良い。このデータが示せない！lenをどれだけ増やしても変わらなかった…
-%TODO 224スレッドで性能が出ないのは、223スレッドなら性能出るかも?と思ったけどあんま変わらない。214, 220, 222, 223も試したけど
 
 どのワークロードにおいてもsnapshot、latestは細粒度ロックの導入によって並行性を高め、oldよりも高いスループットを記録した。これにより、細粒度ロックの導入はスループットの向上に大幅に貢献したと考えられる。
 
@@ -799,7 +893,7 @@ ycsb-cにおいてはデータの更新がされないため、どの手法で�
 
 YCSB-A/Bのどちらにおいても、snapshotはスレッド数の増加に伴いデータの鮮度が低下しているが、latestは鮮度がスレッド数が増えるにつれ向上している。
 
-%TODO なぜoldはこのような飛び飛びの値になるのか？もしかしたら、initのタイミングが遅すぎる？
+%TODO なぜoldはこのような飛び飛びの値になるのか？もしかしたら、initのタイミングが遅すぎる？でも別にoldはいじれないからしゃーない
 
 
 \section{データの同一性}
@@ -845,6 +939,10 @@ YCSB-Bの方が偏差が大きいのはYCSB-Aに比べて書き込み専用ス�
 
 また、insert/deleteが大量に発生するケースも考える。
 
+Silo
+
+優先順位
+
 
 \chapter*{謝辞}
 \addcontentsline{toc}{chapter}{\numberline{}謝辞}
@@ -888,6 +986,9 @@ databases. In SOSP, pages 18–32. ACM, 2013
 \bibitem{Cicada} Hyeontaek Lim, Michael Kaminsky, and David G Andersen. Cicada: Dependably fast multi-core in-memory transactions. InProceedings of the 2017 ACM International Conference onManagement of Data, p. p. 21âĂŞ35, 2017.
 
 \bibitem{ycsb} Brian F Cooper, Adam Silberstein, Erwin Tam, Raghu Ramakrishnan, and Russell Sears. Benchmarking cloud serving systems with ycsb. InProceedings of the 1st ACM symposiumon Cloud computing, p. p. 143âĂŞ154, 2010.
+
+\bibitem{nowait} Guna Prasaad, Alvin Cheung and Dan Suciu. Improving High Contention OLTP Performance via Transaction Scheduling. 
+
 
 \end{thebibliography}
 
