@@ -36,7 +36,7 @@
 　Robot Operating System(ROS)はロボットソフトウェア用のミドルウェアソフトプラットフォームであり、近年多くの研究用ロボットで用いられている。TFライブラリはROSで頻繁に使用されるパッケージであり、ロボットシステム内の座標変換を追跡し、データを変換する標準的な方法を提供するために設計されたものである。ROSの開発初期には複数の座標変換の管理が開発者共通の悩みの種であると認識されていた。このタスクは複雑なために、開発者がデータに不適切な変換を適用した場合にバグが発生しやすい場所となっていた。また、この問題は異なる座標系同士の変換に関する情報が分散していることが多いことが課題となっていた。そこで、TFライブラリは各座標系間の変換を有向森構造として管理し、効率的な座標変換情報の登録、座標変換の計算を可能にした。  
 
 
-しかしながら、この有向森構造には非効率な並行性制御によりアクセスするスレッドが増えるに従ってパフォーマンスが低下する問題、及び座標変換の計算時に最新のデータを参照することができないという問題があることがわかった。そこで、我々はデータベースのトランザクション技術における細粒度ロッキング法、及び並行性制御のアルゴリズムの一種である2PLを応用することにより、この問題を解決した。提案手法では既存手法と比べ最大140倍のスループットを出すことを示した。
+しかしながら、この有向森構造には非効率な並行性制御によりアクセスするスレッドが増えるに従ってパフォーマンスが低下する問題、及び座標変換の計算時に最新のデータを参照することができないという問題があることがわかった。そこで、我々はデータベースのトランザクション技術における細粒度ロッキング法、及び並行性制御のアルゴリズムの一種である2PLを応用することにより、この問題を解決した。提案手法では既存手法と比べ最大455倍のスループットを出すことを示した。
 }
 
 % 【必須】研究指導教員（氏名の間は1文字空ける）：\advisors{主研究指導教員}{副研究指導教員}
@@ -692,6 +692,7 @@ TFライブラリに細粒度を実装したlookupTransform・setTransform、及
 	\item レイテンシ: 操作の応答時間
 	\item データの鮮度: lookupTransformにおいてアクセスした各座標変換データのタイムスタンプの新しさ
 	\item データの同期性: lookupTransformにおいてアクセスした各座標変換データのタイムスタンプの同一性
+	\item abort率(setTransformsのみ): setTransformsにおいて、NoWaitによって操作をやり直した回数の比率。(やり直した回数 / setTransformsを呼び出した回数) で求める。
 \end{enumerate}
 
 以下、既存手法はold、細粒度ロックを実装したlookupTransform・setTransformsをsnapshot、2PLを用いて複数のデータをatomicに取得・更新できるlookupLatestTransform・setTransformsをlatestと呼称する。
@@ -700,7 +701,7 @@ TFライブラリに細粒度を実装したlookupTransform・setTransform、及
 
 \section{実験環境}
 
-実験にはIntel(R) Xeon(R) Platinum 8176 CPU @ 2.10GHzを4つ搭載したサーバを利用する。それぞれのコアは32KB private L1dキャッシュ、1024KB private L2キャッシュを持つ。単一プロセッサの28コアは39MB L3キャッシュを共有している。トータルキャッシュサイズはおよそ160MBである。メモリはDDR4-2666が48個接続されており、一つあたりのサイズは32GB、全体のサイズは1.5 TBである。全ての実験において，実行時間は 60秒という安定的な結果が得られる時間を選択している。
+実験にはIntel(R) Xeon(R) Platinum 8176 CPU @ 2.10GHzを4つ搭載したサーバを利用する。それぞれのコアは32KB private L1dキャッシュ、1024KB private L2キャッシュを持つ。単一プロセッサの28コアは39MB L3キャッシュを共有し、ハイパー・スレッディングを有効化している。トータルキャッシュサイズはおよそ160MBである。メモリはDDR4-2666が48個接続されており、一つあたりのサイズは32GB、全体のサイズは1.5 TBである。全ての実験において，実行時間は 60秒という安定的な結果が得られる時間を選択している。
 
 \section{ワークロード}
 
@@ -715,7 +716,16 @@ TFライブラリに細粒度を実装したlookupTransform・setTransform、及
   \item read\_len: 読み込み専用スレッドにて一回のlookupTransform操作で読みこむフレームの数。joint個のフレームのうちランダムにi番目のフレームが選択され、そこからi+read\_len番目のフレームまでの座標変換が計算される。
   \item write\_len: 書き込み専用スレッドにて一回の操作で座標変換情報を更新するフレームの数。joint個のフレームのうちランダムにi番目のフレームが選択され、そこからi+read\_len番目のフレームまでの座標変換が更新される。setTransformでは一度に一個のフレームしか更新できないためwrite\_len回setTransformを呼び出す操作を一つの操作とする。
   \item frequency: 各スレッドにて操作を呼び出す周期。操作の呼び出しが完了したのち、1 / frequency秒待機してから再び操作を呼びだす。0に設定すると待機なしで操作を呼び出し続ける。各スレッドが一定の周期にて操作を呼び出すというのは、ROSにおいて一般的なワークロードである。
+  \item opposite\_write: 本実験において、読み込み専用スレッドは図\ref{fig:opposite-write}のように下から上に順に読み込みロックをとる。このフラグをtrueにすると、上から下の方向に書き込みロックをとり、読み込みロックとは逆方向にロックをとる。falseにすると下から上の方向に書き込みロックをとる。
 \end{enumerate}
+
+\begin{figure}[h] 
+\centering
+\includegraphics[width=15cm]{opposite-write}
+\caption{opposite\_writeフラグ}
+\label{fig:opposite-write}
+\end{figure}
+
 
 各実験はそれぞれYCSB-A/B/C\cite{ycsb}ワークロードについて行われている。YCSB-A/B/Cはそれぞれ、読み込み操作と書き込み操作の割合が50:50、95:5、100:0のワークロードを指す。ここでは読み込み専用スレッドの数と書き込み専用スレッドの数の比でそれぞれのワークロードを再現するため、read\_ratioをそれぞれ0.5、0.95、1に設定した。
 
@@ -723,77 +733,16 @@ TFライブラリに細粒度を実装したlookupTransform・setTransform、及
 %TODO ここは舛村さんのワークロードを参考にしたが、実際のロボットではreadが全てを読む、writeもたくさん、というケースはあり得そうじゃないか？つまり、一般的なDBのパタンだけじゃだめ。
 % あとabortのratioについてもまとめないと
 
-\section{スループット}
+%YCSB-A/B/Cそれぞれで説明した方がわかりやすいかも。C->A->Bとか
 
 
-\begin{figure}[h] 
-\centering
-\includegraphics[width=15cm]{data/stable/ycsb-a/throughput}
-\caption{YCSB-Aにおけるスレッド数とスループットの関係}
-\label{fig:throughput-a}
-\end{figure}
-
-\begin{figure}[h] 
-\centering
-\includegraphics[width=15cm]{data/stable/ycsb-b/throughput}
-\caption{YCSB-Bにおけるスレッド数とスループットの関係}
-\label{fig:throughput-b}
-\end{figure}
+\section{YCSB-C}
 
 \begin{figure}[h] 
 \centering
 \includegraphics[width=15cm]{data/stable/ycsb-c/throughput}
 \caption{YCSB-Cにおけるスレッド数とスループットの関係}
 \label{fig:throughput-c}
-\end{figure}
-
-
-YCSB-A/B/Cワークロードを用いて、old、snapshot、latestのそれぞれにおいてスレッド数とスループットの関係について分析する。
-
-
-% ここはもっと細かく調査しないとな〜〜
-YCSB-Aにおいてはlatestはoldに比べ最大218倍のスループットとなり、210スレッドまでスケールした。snapshotはoldに比べ最大49倍のスループットとなり、96スレッドまでスケールした。
-
-% latestにおいてこうなるのは、二回read lockをかける必要があるのと逆に遡るから。実際、getCommonの後でreturnすると〜
-
-YCSB-Bにおいてはlatestはoldに比べ最大339倍のスループットとなり、224スレッドまでスケールした。snapshotはoldに比べ最大101倍のスループットとなり、98スレッドまでスケールした。
-
-YCSB-Cにおいてはlatestはoldに比べ最大237倍のスループットとなり、210スレッドまでスケールした。snapshotはoldに比べ最大194倍のスループットとなり、154スレッドまでスケールした。
-
-latestがsnapshotより高いスループットを出しているのは、snapshot  ではlookupTransformにおいて二つのフレーム間のパス上の全てのフレームにおいて座標変換を取得できる時刻を検索してから座標変換を計算するために、森構造を2度読み込む必要があるからだと考えられる。
-% need section ref
-
-
-どのワークロードにおいてもsnapshot、latestは細粒度ロックの導入によって並行性を高め、oldよりも高いスループットを記録した。これにより、細粒度ロックの導入はスループットの向上に大幅に貢献したと考えられる。
-
-\section{レイテンシ}
-
-\begin{figure}[h] 
-\centering
-\includegraphics[width=15cm]{data/stable/ycsb-a/latency}
-\caption{YCSB-Aにおけるスレッド数とレイテンシの関係}
-\label{fig:latency-a}
-\end{figure}
-
-\begin{figure}[h] 
-\centering
-\includegraphics[width=15cm]{data/stable/ycsb-a/latency2}
-\caption{YCSB-Aにおけるスレッド数とレイテンシの関係 snapshotとlatestのみ}
-\label{fig:latency-a2}
-\end{figure}
-
-\begin{figure}[h] 
-\centering
-\includegraphics[width=15cm]{data/stable/ycsb-b/latency}
-\caption{YCSB-Bにおけるスレッド数とレイテンシの関係}
-\label{fig:latency-b}
-\end{figure}
-
-\begin{figure}[h] 
-\centering
-\includegraphics[width=15cm]{data/stable/ycsb-b/latency2}
-\caption{YCSB-Bにおけるスレッド数とレイテンシの関係 snapshotとlatestのみ}
-\label{fig:latency-b2}
 \end{figure}
 
 \begin{figure}[h] 
@@ -809,6 +758,218 @@ latestがsnapshotより高いスループットを出しているのは、snapsh
 \caption{YCSB-Cにおけるスレッド数とレイテンシの関係 snapshotとlatestのみ}
 \label{fig:latency-c2}
 \end{figure}
+
+スループットについては図\ref{fig:throughput-c}のように、oldに比べてsnapshotは最大455倍、latestは最大393倍のスループットとなった。
+
+レイテンシについては図\ref{fig:latency-c}、図\ref{fig:latency-c2}のように、どの手法においても線形比例しているがoldに比べsnapshot、latestは非常に小さいレイテンシとなった。
+
+スループット、レイテンシのどちらにおいてもsnapshotとlatestが優れているのはlatestは2PLによって一度に複数のデータにロックをかけるのに対し、snapshotでは最大一個のデータしかロックしか取らないため、より並行性が高くなると考えられる。
+
+スレッドが112の部分にて、snapshot及びlatestのグラフに傾きが生じているのは、ハイパー・スレッディングによるものだと考えられる。
+
+書き込みが発生しないため、YCSB-Cにおけるデータの鮮度、データの同期性、abort率については説明しない。
+
+\section{YCSB-A}
+
+%Aでは、まずは総合のスループットをoppositeと逆で示す　細かな解析のためにそれぞれ分けて表示してみる　writeはreadに比べて時間がかかるため、書き込み順序をぎゃくにするとabortしやすくなるけど逆にreadが増えて全体のスループットは上がる
+% まず、書き込み操作というのは時間がかかる。snapshotではたくさん呼び出ししなきゃいけない。だからレイテンシは低いけどスループットは下がる。
+
+\begin{figure}[h] 
+\centering
+\includegraphics[width=15cm]{data/stable/ycsb-a/news/opposite-throughput}
+\caption{opposite\_writeフラグを有効にした場合}
+\label{fig:throughput-a-opposite}
+\end{figure}
+
+\begin{figure}[h] 
+\centering
+\includegraphics[width=15cm]{data/stable/ycsb-a/news/direct-throughput}
+\caption{opposite\_writeフラグを無効にした場合}
+\label{fig:throughput-a-direct}
+\end{figure}
+
+YCSB-Cとは異なり、YCSB-Aでは書き込み操作が発生するため、opposite\_writeフラグを有効にした場合とそうでない場合に差が生じた。
+
+opposite\_writeフラグを有効にした場合ではスループットについては図\ref{fig:throughput-a-opposite}のようにoldに比べてsnapshotは最大91.3倍、latestは最大203倍のスループットとなり、latestのスループットがsnapshotよりも高くなった。
+
+これに対し、opposite\_writeフラグを無効にした場合ではスループットについては図\ref{fig:throughput-a-direct}のようにoldに比べてsnapshotは最大92倍、latestは最大94倍のスループットとなった。
+
+どちらの場合においてもsnapshotはほとんど変わらないが、latestのスループットには大きな変化が現れた。
+
+\begin{figure}[h] 
+\centering
+\includegraphics[width=15cm]{data/stable/ycsb-a/news/opposite-abort}
+\caption{opposite\_writeフラグを有効にした場合}
+\label{fig:a-opposite-abort}
+\end{figure}
+
+\begin{figure}[h] 
+\centering
+\includegraphics[width=15cm]{data/stable/ycsb-a/news/direct-abort}
+\caption{opposite\_writeを無効にした場合}
+\label{fig:a-direct-abort}
+\end{figure}
+
+なぜこのようになったかを調べるために、まずはabort率について図\ref{fig:a-opposite-abort}、\ref{fig:a-direct-abort}に表示した。どちらもスレッド数に比例してabort率が上がっているが、opposite\_writeが有効になっている方が全体的にabort率が高く、書き込みロックを読み込みロックの逆方向に確保していくとabortしやすいことがわかる。
+
+% ここもっと詳しく？
+これは、読み込みロックと同じ方向に書き込みロックをかけた場合には、一番最初の要素に書き込みロックができればその上の要素にabortなしで書き込みロックを取れる可能性が高いのに対し、逆方向に書き込みロックをかけた場合にはいくつかの要素の書き込みロックが取れていても、他の読み込み専用スレッドと衝突し、全ての書き込みロックを外す必要があるため、このようなabort率の差が生じたと考えられる。
+
+読み込みロックと同じ方向に書き込みロックをかけた場合には読み込み専用スレッドは書き込み専用スレッドの完了を待機する必要があるが、逆方向に書き込みロックをかけた場合には書き込み専用スレッドがabortするために待機の必要はなくなると考えられる。
+
+
+\begin{figure}[h] 
+\centering
+\includegraphics[width=15cm]{data/stable/ycsb-a/news/opposite-read-latency}
+\caption{opposite\_writeフラグを有効にした場合}
+\label{fig:a-opposite-latency-read}
+\end{figure}
+
+\begin{figure}[h] 
+\centering
+\includegraphics[width=15cm]{data/stable/ycsb-a/news/opposite-read-latency2}
+\caption{opposite\_writeフラグを有効にした場合 snapshotとlatestのみ}
+\label{fig:a-opposite-latency-read2}
+\end{figure}
+
+\begin{figure}[h] 
+\centering
+\includegraphics[width=15cm]{data/stable/ycsb-a/news/opposite-write-latency}
+\caption{opposite\_writeフラグを有効にした場合}
+\label{fig:a-opposite-latency-write}
+\end{figure}
+
+\begin{figure}[h] 
+\centering
+\includegraphics[width=15cm]{data/stable/ycsb-a/news/opposite-write-latency2}
+\caption{opposite\_writeフラグを有効にした場合 snapshotとlatestのみ}
+\label{fig:a-opposite-latency-write2}
+\end{figure}
+
+\begin{figure}[h] 
+\centering
+\includegraphics[width=15cm]{data/stable/ycsb-a/news/direct-read-latency}
+\caption{opposite\_writeフラグを無効にした場合}
+\label{fig:a-direct-latency-read}
+\end{figure}
+
+\begin{figure}[h] 
+\centering
+\includegraphics[width=15cm]{data/stable/ycsb-a/news/direct-read-latency2}
+\caption{opposite\_writeフラグを無効にした場合 snapshotとlatestのみ}
+\label{fig:a-direct-latency-read2}
+\end{figure}
+
+\begin{figure}[h] 
+\centering
+\includegraphics[width=15cm]{data/stable/ycsb-a/news/direct-write-latency}
+\caption{opposite\_writeフラグを無効にした場合}
+\label{fig:a-direct-latency-write}
+\end{figure}
+
+\begin{figure}[h] 
+\centering
+\includegraphics[width=15cm]{data/stable/ycsb-a/news/direct-write-latency2}
+\caption{opposite\_writeフラグを無効にした場合 snapshotとlatestのみ}
+\label{fig:a-direct-latency-write2}
+\end{figure}
+
+次に、読み込み・書き込み専用スレッドそれぞれのレイテンシについて図\ref{fig:a-opposite-latency-read}〜\ref{fig:a-direct-latency-write2}に表示した。
+
+どのケースにおいてもoldに勝ってる
+oppositeにてreadでlatestがsnapshotより早いのは、snapshotでは森構造を2度読む必要があるから
+
+oppositeにてwriteがsnapshotがlatestより早いのは、latestでは複数の要素にロックをかける必要がある、またabortするから
+
+oppositeと異なり、directにてreadでlatestがsnapshotと差がないのは、abortがなくなってlatestの待機時間が増えたからだと考えられる。
+
+latestがsnapshotより早いのは、snapshotでは森構造を2度読む必要があるから
+
+abort数が少なくなったので、oppositeと比べdirectではwrite latencyが小さくなっている。
+
+さて、latestのread latencyはoppositeでは最大0.007ms、directでは最大0.02msなのに対し、write latencyは0.8ms、0.3ms
+トレードオフの関係。
+また、readに比べwriteは10倍程度大きなレイテンシとなる。
+
+
+\begin{figure}[h] 
+\centering
+\includegraphics[width=15cm]{data/stable/ycsb-a/news/opposite-read-throughput}
+\caption{opposite\_writeフラグを有効にした場合}
+\label{fig:a-opposite-throughput-read}
+\end{figure}
+
+\begin{figure}[h] 
+\centering
+\includegraphics[width=15cm]{data/stable/ycsb-a/news/opposite-write-throughput}
+\caption{opposite\_writeフラグを有効にした場合}
+\label{fig:a-opposite-throughput-write}
+\end{figure}
+
+\begin{figure}[h] 
+\centering
+\includegraphics[width=15cm]{data/stable/ycsb-a/news/direct-read-throughput}
+\caption{opposite\_writeフラグを無効にした場合}
+\label{fig:a-direct-throughput-read}
+\end{figure}
+
+\begin{figure}[h] 
+\centering
+\includegraphics[width=15cm]{data/stable/ycsb-a/news/direct-write-throughput}
+\caption{opposite\_writeフラグを無効にした場合}
+\label{fig:a-direct-throughput-write}
+\end{figure}
+
+
+最後にスループットについて
+
+writeのスループットが上がる代わりにreadのスループットが下がると考えられる。
+
+
+なぜこのようになったか調べるために、まずは読み込み・書き込み専用スレッドそれぞれのスループットを
+
+
+
+最後にレイテンシについて
+
+これにより、writeはreadに比べて時間がかかるため、書き込み順序をぎゃくにするとabortしやすくなるけど逆にreadが増えて全体のスループットは上がる
+snapshotではたくさん呼び出ししなきゃいけない。だからレイテンシは低いけどスループットは下がる。
+
+と考えられる。
+
+データの鮮度はこう
+
+データの同期性についてはこうなった。
+
+
+
+
+\section{スループット}
+
+
+
+
+
+YCSB-A/B/Cワークロードを用いて、old、snapshot、latestのそれぞれにおいてスレッド数とスループットの関係について分析する。
+
+
+% ここはもっと細かく調査しないとな〜〜
+YCSB-Aにおいてはlatestはoldに比べ最大218倍のスループットとなり、210スレッドまでスケールした。snapshotはoldに比べ最大49倍のスループットとなり、96スレッドまでスケールした。
+
+% latestにおいてこうなるのは、二回read lockをかける必要があるのと逆に遡るから。実際、getCommonの後でreturnすると〜
+
+YCSB-Bにおいてはlatestはoldに比べ最大339倍のスループットとなり、224スレッドまでスケールした。snapshotはoldに比べ最大101倍のスループットとなり、98スレッドまでスケールした。
+
+
+
+latestがsnapshotより高いスループットを出しているのは、snapshot  ではlookupTransformにおいて二つのフレーム間のパス上の全てのフレームにおいて座標変換を取得できる時刻を検索してから座標変換を計算するために、森構造を2度読み込む必要があるからだと考えられる。
+% need section ref
+
+
+どのワークロードにおいてもsnapshot、latestは細粒度ロックの導入によって並行性を高め、oldよりも高いスループットを記録した。これにより、細粒度ロックの導入はスループットの向上に大幅に貢献したと考えられる。
+
+\section{レイテンシ}
+
 
 
 YCSB-A/B/Cワークロードを用いて、old、snapshot、latestのそれぞれにおいてレイテンシとスループットの関係について分析する。
@@ -882,12 +1043,6 @@ snapshotとlatestでは20ms、12msなのに対し、oldでは608msとなり現�
 \label{fig:delay-b2}
 \end{figure}
 
-\begin{figure}[h] 
-\centering
-\includegraphics[width=15cm]{data/stable/ycsb-c/delay}
-\caption{YCSB-C スレッド数とdelay}
-\label{fig:delay-c}
-\end{figure}
 
 ycsb-cにおいてはデータの更新がされないため、どの手法でも同じようなdelayとなる。
 
@@ -939,9 +1094,9 @@ YCSB-Bの方が偏差が大きいのはYCSB-Aに比べて書き込み専用ス�
 
 また、insert/deleteが大量に発生するケースも考える。
 
-Silo
+Siloの実装
 
-優先順位
+優先順位キューの実装も検討
 
 
 \chapter*{謝辞}
