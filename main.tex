@@ -204,7 +204,7 @@ TFライブラリでは図\ref{fig:multitree} のように各座標系間の位�
 
 \begin{figure}[h] 
 \centering
-\includegraphics[width=10cm]{general-timeline.png}
+\includegraphics[width=15cm]{general-timeline.png}
 \caption{タイムライン}
 \label{fig:general-timeline}
 \end{figure}
@@ -876,21 +876,23 @@ opposite\_writeフラグを有効にした場合ではスループットにつ�
 
 次に、読み込み・書き込み専用スレッドそれぞれのレイテンシについて図\ref{fig:a-opposite-latency-read}〜\ref{fig:a-direct-latency-write2}に表示した。
 
-どのケースにおいてもoldに勝ってる
-oppositeにてreadでlatestがsnapshotより早いのは、snapshotでは森構造を2度読む必要があるから
+% ここもっと上手くまとめたら？
+% グラフを一つにまとめよう！でも厳密にはsetTransformを使っても書き込み順番は変わるし…
+% 説明が冗長。
 
-oppositeにてwriteがsnapshotがlatestより早いのは、latestでは複数の要素にロックをかける必要がある、またabortするから
+opposite\_writeフラグの有効・無効、読み込み・書き込みに関わらず、どのケースにおいてもsnapshot、latestの方がレイテンシが低いことがわかる。また、opposite\_writeフラグの有効・無効に関わらず、大きな変化がないことがわかる。
 
-oppositeと異なり、directにてreadでlatestがsnapshotと差がないのは、abortがなくなってlatestの待機時間が増えたからだと考えられる。
+図\ref{fig:a-opposite-latency-read2}のように、opposite\_writeフラグが有効な時に読み込みスレッドのレイテンシがlatestがsnapshotより早いのは、snapshotのlookupTransformにおいて二つのフレーム間のパス上の全てのフレームにおいて座標変換を取得できる時刻を検索してから座標変換を計算するために、森構造を2度読み込む必要があるからだと考えられる。
 
-latestがsnapshotより早いのは、snapshotでは森構造を2度読む必要があるから
+図\ref{fig:a-opposite-latency-write2}のように、opposite\_writeフラグが有効な時に書き込みスレッドのレイテンシがsnapshotがlatestより早いのは、latestのsetTransformsでは一度に複数の要素のロック、書き込みを行い、またNoWaitによってabortし処理をやり直す可能性があるからだと考えられる。
 
-abort数が少なくなったので、oppositeと比べdirectではwrite latencyが小さくなっている。
+図\ref{fig:a-direct-latency-read2}のように、opposite\_writeフラグが無効な時に読み込みスレッドのレイテンシがlatestがsnapshotとあまり変わらないのは、latestにて書き込みスレッドによるabortが減り、代わりに読み込みスレッドの待機時間が増えたからだと考えられる。これはopposite\_writeフラグが有効な時とは対照的である。
 
-さて、latestのread latencyはoppositeでは最大0.007ms、directでは最大0.02msなのに対し、write latencyは0.8ms、0.3ms
-トレードオフの関係。
-また、readに比べwriteは10倍程度大きなレイテンシとなる。
+図\ref{fig:a-direct-latency-write2}のように、opposite\_writeフラグが無効な時に書き込みスレッドのレイテンシがlatestがsnapshotとあまり変わらないのは、latestのabortが減ったからだと考えられる。これもopposite\_writeフラグが有効な時とは対照的である。
 
+latestの読み込みスレッドのレイテンシはopposite\_writeフラグが有効な時には最大0.007ms程度、opposite\_writeフラグが無効な時には最大0.02ms程度となる。これに対し、書き込みスレッドのレイテンシはopposite\_writeフラグが有効な時には最大0.8ms程度、opposite\_writeフラグが無効な時には最大0.3ms程度となる。
+
+書き込みのレイテンシと読み込みのレイテンシの倍率はopposite\_writeフラグが有効な時には約100倍、無効な時には約10倍となり、書き込みの方が読み込みよりも時間がかかることがわかる。また、opposite\_writeフラグを有効にすると読み込みのレイテンシは減るが書き込みのレイテンシが増えることがわかる。このことから、opposite\_writeフラグの有効・無効化の選択は読み込みのレイテンシを下げるか、それとも書き込みのレイテンシを下げるかのトレードオフとなると考えられる。
 
 \begin{figure}[h] 
 \centering
@@ -919,6 +921,8 @@ abort数が少なくなったので、oppositeと比べdirectではwrite latency
 \caption{opposite\_writeフラグを無効にした場合}
 \label{fig:a-direct-throughput-write}
 \end{figure}
+
+読み込み・書き込み専用スレッドそれぞれのスループットについて図\ref{fig:a-opposite-throughput-read}〜\ref{fig:a-direct-throughput-write}に表示した。
 
 
 最後にスループットについて
