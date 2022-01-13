@@ -1,4 +1,3 @@
-
 for name in opposite direct; do
   gnuplot -e "data='./${name}.dat'; filename='./${name}-throughput.png'; var=1; out_offset=7; only=0" plot.plg
   gnuplot -e "data='./${name}.dat'; filename='./${name}-read-throughput.png'; var=1; out_offset=21; only=0" plot.plg
