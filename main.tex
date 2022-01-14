@@ -16,7 +16,6 @@
 
 %TODO: 学会ならもっとplotは疎にする、あるいは綺麗なデータをとる
 %TODO: 関連研究もっと増やす
-%TODO: abort ratioについてのレポート これはYCSB-A,Bにおいて記録しようか　それで、スレッド数が増えてもそんなに問題ないことを確認する。データ件数も増やした検証をすべきか？
 
 % 【必須】主題：\maintatile{日本語}{英語}
 \maintitle{並行性制御法におけるROS TFの高品質化}{Make ROS TF high quality in concurrency control method}
@@ -36,7 +35,7 @@
 　Robot Operating System(ROS)はロボットソフトウェア用のミドルウェアソフトプラットフォームであり、近年多くの研究用ロボットで用いられている。TFライブラリはROSで頻繁に使用されるパッケージであり、ロボットシステム内の座標変換を追跡し、データを変換する標準的な方法を提供するために設計されたものである。ROSの開発初期には複数の座標変換の管理が開発者共通の悩みの種であると認識されていた。このタスクは複雑なために、開発者がデータに不適切な変換を適用した場合にバグが発生しやすい場所となっていた。また、この問題は異なる座標系同士の変換に関する情報が分散していることが多いことが課題となっていた。そこで、TFライブラリは各座標系間の変換を有向森構造として管理し、効率的な座標変換情報の登録、座標変換の計算を可能にした。  
 
 
-しかしながら、この有向森構造には非効率な並行性制御によりアクセスするスレッドが増えるに従ってパフォーマンスが低下する問題、及び座標変換の計算時に最新のデータを参照することができないという問題があることがわかった。そこで、我々はデータベースのトランザクション技術における細粒度ロッキング法、及び並行性制御のアルゴリズムの一種である2PLを応用することにより、この問題を解決した。提案手法では既存手法と比べ最大455倍のスループットを出すことを示した。
+しかしながら、この有向森構造には非効率な並行性制御によりアクセスするスレッドが増えるに従ってパフォーマンスが低下する問題、及び座標変換の計算時に最新のデータを参照することができないという問題があることがわかった。そこで、我々はデータベースの並行性制御技術における細粒度ロッキング法、及び2PLを応用することにより、この問題を解決した。提案手法では既存手法と比べ最大455倍のスループットを出すことを示した。
 }
 
 % 【必須】研究指導教員（氏名の間は1文字空ける）：\advisors{主研究指導教員}{副研究指導教員}
@@ -164,11 +163,11 @@ TFの森構造には複数のスレッドがアクセスするため並行性制
 \section{研究方針}
 前述した問題1については、データベースの並行性制御技術における細粒度ロッキング法を適用して解決する。細粒度ロッキング法は、並行性制御においてロックするデータの単位をなるべく小さくし、並行性を向上させる手法である。
 
-問題2については、データベースのトランザクション技術における2PLを適用し、複数の座標変換の最新のデータをatomicに取得するインターフェース、及び複数の座標変換の最新のデータをatomicに更新するインターフェースを提供する。2PLとは、複数のデータに対するロック・アンロックのタイミングを二つのフェーズに分けることにより並行性を向上させつつデータ操作の一貫性を確保する手法である。
+問題2については、データベースの並行性制御技術における2PLを適用し、複数の座標変換の最新のデータをatomicに取得するインターフェース、及び複数の座標変換の最新のデータをatomicに更新するインターフェースを提供する。2PLとは、複数のデータに対するロック・アンロックのタイミングを二つのフェーズに分けることにより並行性を向上させつつデータ操作の一貫性を確保する手法である。
 
 \section{貢献}
 
-本研究ではデータベースのトランザクション技術における再粒度ロッキング法、及び並行性制アルゴリズムの一種である2PLを応用することにより、問題1および問題2を解決した。
+本研究ではデータベースの並行性制御技術における再粒度ロッキング法、及び2PLを応用することにより、問題1および問題2を解決した。
 
 \section{構成}
 本論文の構成は次の通りである。第二章では関連研究について述べる。第三章では既存のTFの森構造とその問題点について述べる。第四章では提案手法である森構造への再粒度ロックの導入とデータ一貫性のためのインターフェイスの提供について述べる。第五章では提案手法の評価結果を述べる。第六章では本研究の結論を述べる。第七章では今後の課題について述べる。
@@ -338,7 +337,9 @@ TFライブラリの森構造で主に使われるインターフェイスは主
 森構造が図\ref{fig:multitree}、タイムラインが図\ref{fig:general-timeline}の状況において、lookupTransformを用いてフレームcからフレームdへの最新の座標変換を計算する時には時刻Aの時点での各フレーム間の座標変換データを用いる。この時、b$\rightarrow$aにおいては最新のデータを用いるが、c$\rightarrow$bにおいては最新のデータと一つ前のデータから線形補間されるデータを用いている。d$\rightarrow$aにおいては最新のデータ$\theta$ではなく一つ前のデータ$\alpha$とそのもう一つ前のデータ$\beta$から線形補間されるデータを用いている。このように、lookupTransformは二つのフレーム間の座標変換の計算において、フレーム間のパスの全てにおいて座標変換データを提供できる時刻についての座標変換を計算するという仕様のため、b$\rightarrow$aのように座標変換情報の登録が遅れるとそれに足を引っ張られてしまい、最新の座標変換データが使われなくなるという問題がある。時刻の同期をとっているためデータの同期性はあるが、最新のデータが使われなくなる可能性があり、データの鮮度は失われる。現在、TFライブラリには最新の座標変換データをもとにフレーム間の座標変換計算をするインターフェイスは無い。
 
 \chapter{提案手法}
-本研究では、データベースの並行性制御技術における細粒度ロッキング法及びトランザクション技術における2PLを適用し、これらの問題を解決する。
+本研究では、データベースの並行性制御技術における細粒度ロッキング法及び2PLを適用し、これらの問題を解決する。
+
+\section{細粒度ロックの導入}
 
 前述した問題1については、データベースの並行性制御技術における細粒度ロッキング法を適用して解決する。
 
@@ -510,6 +511,8 @@ TFライブラリでは森構造へのアクセスをする際、森構造全体
 \end{algorithmic}
 \end{algorithm}
 
+\section{2PLの導入}
+\label{section:intro-2pl}
 
 前述した問題2については、複数の座標変換のデータをatomicに取得するインターフェース(lookupLatestTransform)、及び複数の座標変換の最新のデータをatomicに更新するインターフェース(setTransforms)を提供して解決する。setTransformsインターフェイスの必要性について説明する。
 
@@ -545,7 +548,7 @@ b$\rightarrow$aとa$\rightarrow$cのデータを用いてフレームbからフ�
 
 % ただの細粒度ロックだとSerializabilityがなくなる、けどgiant lockだとパフォーマンスがまずいという話を説明する必要はある？
 
-そこで、複数の座標変換を2PLによってatomicに森構造に登録するsetTransformsを提供し、またlookupLatestTransformも2PLを使うように変更する。2PL\cite{2PL}とは、複数のデータに対するロック・アンロックを二つのフェーズに分けることによって並行処理の結果が直列処理と同じ結果になることを保証する、データベースにおけるトランザクション技術である。このような性質は、Serializabilityと呼ばれる。
+そこで、複数の座標変換を2PLによってatomicに森構造に登録するsetTransformsを提供し、またlookupLatestTransformも2PLを使うように変更する。2PL\cite{2PL}とは、複数のデータに対するロック・アンロックを二つのフェーズに分けることによって並行処理の結果が直列処理と同じ結果になることを保証する、データベースにおける並行性制御技術である。このような性質は、並行性制御技術においてはSerializabilityと呼ばれる。
 
 %TODO Serializabilityはどこから引用?
 
@@ -776,14 +779,14 @@ TFライブラリに細粒度を実装したlookupTransform・setTransform、及
 \begin{figure}[h] 
 \centering
 \includegraphics[width=15cm]{data/stable/ycsb-a/news/opposite-throughput}
-\caption{opposite\_writeフラグを有効にした場合}
+\caption{YCSB-Aにおけるスレッド数とスループットの関係 opposite\_writeフラグを有効にした場合}
 \label{fig:throughput-a-opposite}
 \end{figure}
 
 \begin{figure}[h] 
 \centering
 \includegraphics[width=15cm]{data/stable/ycsb-a/news/direct-throughput}
-\caption{opposite\_writeフラグを無効にした場合}
+\caption{YCSB-Aにおけるスレッド数とスループットの関係 opposite\_writeフラグを無効にした場合}
 \label{fig:throughput-a-direct}
 \end{figure}
 
@@ -798,14 +801,14 @@ opposite\_writeフラグを有効にした場合ではスループットにつ�
 \begin{figure}[h] 
 \centering
 \includegraphics[width=15cm]{data/stable/ycsb-a/news/opposite-abort}
-\caption{opposite\_writeフラグを有効にした場合}
+\caption{YCSB-Aにおけるスレッド数とabort率の関係 opposite\_writeフラグを有効にした場合}
 \label{fig:a-opposite-abort}
 \end{figure}
 
 \begin{figure}[h] 
 \centering
 \includegraphics[width=15cm]{data/stable/ycsb-a/news/direct-abort}
-\caption{opposite\_writeを無効にした場合}
+\caption{YCSB-Aにおけるスレッド数とabort率の関係 opposite\_writeを無効にした場合}
 \label{fig:a-direct-abort}
 \end{figure}
 
@@ -818,56 +821,56 @@ opposite\_writeフラグを有効にした場合ではスループットにつ�
 \begin{figure}[h] 
 \centering
 \includegraphics[width=15cm]{data/stable/ycsb-a/news/opposite-read-latency}
-\caption{opposite\_writeフラグを有効にした場合}
+\caption{YCSB-Aにおけるスレッド数と読み込みレイテンシの関係 opposite\_writeフラグを有効にした場合}
 \label{fig:a-opposite-latency-read}
 \end{figure}
 
 \begin{figure}[h] 
 \centering
 \includegraphics[width=15cm]{data/stable/ycsb-a/news/opposite-read-latency2}
-\caption{opposite\_writeフラグを有効にした場合 snapshotとlatestのみ}
+\caption{YCSB-Aにおけるスレッド数と読み込みレイテンシの関係 opposite\_writeフラグを有効にした場合 snapshotとlatestのみ}
 \label{fig:a-opposite-latency-read2}
 \end{figure}
 
 \begin{figure}[h] 
 \centering
 \includegraphics[width=15cm]{data/stable/ycsb-a/news/opposite-write-latency}
-\caption{opposite\_writeフラグを有効にした場合}
+\caption{YCSB-Aにおけるスレッド数と書き込みレイテンシの関係 opposite\_writeフラグを有効にした場合}
 \label{fig:a-opposite-latency-write}
 \end{figure}
 
 \begin{figure}[h] 
 \centering
 \includegraphics[width=15cm]{data/stable/ycsb-a/news/opposite-write-latency2}
-\caption{opposite\_writeフラグを有効にした場合 snapshotとlatestのみ}
+\caption{YCSB-Aにおけるスレッド数と書き込みレイテンシの関係 opposite\_writeフラグを有効にした場合 snapshotとlatestのみ}
 \label{fig:a-opposite-latency-write2}
 \end{figure}
 
 \begin{figure}[h] 
 \centering
 \includegraphics[width=15cm]{data/stable/ycsb-a/news/direct-read-latency}
-\caption{opposite\_writeフラグを無効にした場合}
+\caption{YCSB-Aにおけるスレッド数と読み込みレイテンシの関係 opposite\_writeフラグを無効にした場合}
 \label{fig:a-direct-latency-read}
 \end{figure}
 
 \begin{figure}[h] 
 \centering
 \includegraphics[width=15cm]{data/stable/ycsb-a/news/direct-read-latency2}
-\caption{opposite\_writeフラグを無効にした場合 snapshotとlatestのみ}
+\caption{YCSB-Aにおけるスレッド数と読み込みレイテンシの関係 opposite\_writeフラグを無効にした場合 snapshotとlatestのみ}
 \label{fig:a-direct-latency-read2}
 \end{figure}
 
 \begin{figure}[h] 
 \centering
 \includegraphics[width=15cm]{data/stable/ycsb-a/news/direct-write-latency}
-\caption{opposite\_writeフラグを無効にした場合}
+\caption{YCSB-Aにおけるスレッド数と書き込みレイテンシの関係 opposite\_writeフラグを無効にした場合}
 \label{fig:a-direct-latency-write}
 \end{figure}
 
 \begin{figure}[h] 
 \centering
 \includegraphics[width=15cm]{data/stable/ycsb-a/news/direct-write-latency2}
-\caption{opposite\_writeフラグを無効にした場合 snapshotとlatestのみ}
+\caption{YCSB-Aにおけるスレッド数と書き込みレイテンシの関係 opposite\_writeフラグを無効にした場合 snapshotとlatestのみ}
 \label{fig:a-direct-latency-write2}
 \end{figure}
 
@@ -894,61 +897,63 @@ latestの読み込みスレッドのレイテンシはopposite\_writeフラグ�
 \begin{figure}[h] 
 \centering
 \includegraphics[width=15cm]{data/stable/ycsb-a/news/opposite-read-throughput}
-\caption{opposite\_writeフラグを有効にした場合}
+\caption{YCSB-Aにおけるスレッド数と読み込みスループットの関係 opposite\_writeフラグを有効にした場合}
 \label{fig:a-opposite-throughput-read}
 \end{figure}
 
 \begin{figure}[h] 
 \centering
 \includegraphics[width=15cm]{data/stable/ycsb-a/news/opposite-write-throughput}
-\caption{opposite\_writeフラグを有効にした場合}
+\caption{YCSB-Aにおけるスレッド数と書き込みスループットの関係 opposite\_writeフラグを有効にした場合}
 \label{fig:a-opposite-throughput-write}
 \end{figure}
 
 \begin{figure}[h] 
 \centering
 \includegraphics[width=15cm]{data/stable/ycsb-a/news/direct-read-throughput}
-\caption{opposite\_writeフラグを無効にした場合}
+\caption{YCSB-Aにおけるスレッド数と読み込みスループットの関係 opposite\_writeフラグを無効にした場合}
 \label{fig:a-direct-throughput-read}
 \end{figure}
 
 \begin{figure}[h] 
 \centering
 \includegraphics[width=15cm]{data/stable/ycsb-a/news/direct-write-throughput}
-\caption{opposite\_writeフラグを無効にした場合}
+\caption{YCSB-Aにおけるスレッド数と書き込みスループットの関係 opposite\_writeフラグを無効にした場合}
 \label{fig:a-direct-throughput-write}
 \end{figure}
 
 読み込み・書き込み専用スレッドそれぞれのスループットについて図\ref{fig:a-opposite-throughput-read}〜\ref{fig:a-direct-throughput-write}に表示した。
 
 図\ref{fig:a-opposite-throughput-write}、図\ref{fig:a-direct-throughput-write}を見ると、opposite\_writeフラグの有効・無効に関わらず、書き込みのスループットはsnapshotではスレッド数の増加とともに減るのに対し、latestではあまり変化が見られないことがわかる。これは、snapshotではスレッド数の増加に伴い、書き込みロックを取ると他のロックとの競合が発生し、待機する時間が増加するのに対し、latestはNoWaitにより書き込みロックによる待機が発生しないからだと考えられる。また、opposite\_writeフラグを無効にした場合には有効にした場合と比べてlatestの書き込みスループットは二倍程度になっている。これは、先程説明したように読み込みロックと同じ方向に書き込みロックを取ることにより、abortが発生しにくくなったからだと考えている。また、図\ref{fig:a-opposite-throughput-read}、図\ref{fig:a-direct-throughput-read}に示されているように、latestでは書き込みスループットが増えると読み込み専用スレッドの待機時間が増えることにより、読み込みスループットは低下することがわかる。
+% ここでの先程、は同じ§内。
+
 %TODO §の説明のように〜と引用！二箇所あるよね
 
 \begin{figure}[h] 
 \centering
 \includegraphics[width=15cm]{data/stable/ycsb-a/news/opposite-delay}
-\caption{opposite\_writeフラグを有効にした場合}
+\caption{YCSB-Aにおけるスレッド数とdelayの関係  opposite\_writeフラグを有効にした場合}
 \label{fig:a-opposite-delay}
 \end{figure}
 
 \begin{figure}[h] 
 \centering
 \includegraphics[width=15cm]{data/stable/ycsb-a/news/opposite-delay2}
-\caption{opposite\_writeフラグを有効にした場合 snapshotとlatestのみ}
+\caption{YCSB-Aにおけるスレッド数とdelayの関係 opposite\_writeフラグを有効にした場合 snapshotとlatestのみ}
 \label{fig:a-opposite-delay2}
 \end{figure}
 
 \begin{figure}[h] 
 \centering
 \includegraphics[width=15cm]{data/stable/ycsb-a/news/direct-delay}
-\caption{opposite\_writeフラグを無効にした場合}
+\caption{YCSB-Aにおけるスレッド数とdelayの関係 opposite\_writeフラグを無効にした場合}
 \label{fig:a-direct-delay}
 \end{figure}
 
 \begin{figure}[h] 
 \centering
 \includegraphics[width=15cm]{data/stable/ycsb-a/news/direct-delay2}
-\caption{opposite\_writeフラグを無効にした場合 snapshotとlatestのみ}
+\caption{YCSB-Aにおけるスレッド数とdelayの関係 opposite\_writeフラグを無効にした場合 snapshotとlatestのみ}
 \label{fig:a-direct-delay2}
 \end{figure}
 
@@ -956,7 +961,7 @@ latestの読み込みスレッドのレイテンシはopposite\_writeフラグ�
 
 データの鮮度について図\ref{fig:a-opposite-delay}〜図\ref{fig:a-direct-delay2}に表示した。　
 
-opposite\_writeフラグの有効・無効に関わらず、snapshotよりlatestの方がデータの鮮度が高いことがわかった。これは、セクションほにゃららで説明したように、latestのlookupLatestTransformでは時刻の同期を取ることなく最新の座標変換データを取得するからだと考えられる。
+opposite\_writeフラグの有効・無効に関わらず、snapshotよりlatestの方がデータの鮮度が高いことがわかった。これは、§\ref{section:intro-2pl}で説明したように、latestのlookupLatestTransformでは時刻の同期を取ることなく最新の座標変換データを取得するからだと考えられる。
 
 latestについては、opposite\_writeフラグを無効にした方がdelayが小さく、より鮮度の高いデータが取れていることがわかった。これは、先程説明したようにopposite\_writeフラグを無効にすることにより書き込み専用スレッドのabort率が低くなり、書き込みのレイテンシが低下したからだと考えられる。
 %TODO 提案手法のとこ
@@ -964,14 +969,14 @@ latestについては、opposite\_writeフラグを無効にした方がdelayが
 \begin{figure}[h] 
 \centering
 \includegraphics[width=15cm]{data/stable/ycsb-a/news/opposite-stddiv}
-\caption{opposite\_writeフラグを有効にした場合}
+\caption{YCSB-Aにおけるスレッド数と同期性の関係 opposite\_writeフラグを有効にした場合}
 \label{fig:a-opposite-stddiv}
 \end{figure}
 
 \begin{figure}[h] 
 \centering
 \includegraphics[width=15cm]{data/stable/ycsb-a/news/direct-stddiv}
-\caption{opposite\_writeフラグを無効にした場合}
+\caption{YCSB-Aにおけるスレッド数と同期性の関係 opposite\_writeフラグを無効にした場合}
 \label{fig:a-direct-stddiv}
 \end{figure}
 
