@@ -256,8 +256,7 @@ lookupTransformはアルゴリズム\ref{algo:lookupTransform}のような擬似
 	\State target\_trans *= trans
 	\State frame = parent
 	\EndWhile
-	
-	\Return source\_trans * (target\_trans)$^{-1}$
+	\State \Return source\_trans * (target\_trans)$^{-1}$
 	\EndFunction
 \end{algorithmic}
 \end{algorithm}
@@ -293,7 +292,7 @@ lookupTransformはアルゴリズム\ref{algo:lookupTransform}のような擬似
 	\State \textbf{break}
 	\EndIf
 	\EndFor
-	\Return common\_time
+	\State \Return common\_time
 	\EndFunction
 \end{algorithmic}
 \end{algorithm}
@@ -311,10 +310,10 @@ setTransformの擬似アルゴリズムをアルゴリズム\ref{algo:setTransfo
 \begin{algorithm}
 \caption{setTransform}\label{algo:setTransform}
 \begin{algorithmic}[1]
-	\Function{setTransform}{transform} \Comment{座標変換transformを登録}
+	\Procedure{setTransform}{transform} \Comment{座標変換transformを登録}
 	\State frame = getFrame(transform.child\_frame\_id)
 	\State frame.insertData(transform)
-	\EndFunction
+	\EndProcedure
 \end{algorithmic}
 \end{algorithm}
 
@@ -465,8 +464,7 @@ TFライブラリでは森構造へのアクセスをする際、森構造全体
 	\State target\_trans *= trans
 	\State frame = parent
 	\EndWhile
-	
-	\Return source\_trans * (target\_trans)$^{-1}$
+	\State \Return source\_trans * (target\_trans)$^{-1}$
 	\EndFunction
 \end{algorithmic}
 \end{algorithm}
@@ -505,7 +503,7 @@ TFライブラリでは森構造へのアクセスをする際、森構造全体
 	\State \textbf{break}
 	\EndIf
 	\EndFor
-	\Return common\_time
+	\State \Return common\_time
 	\EndFunction
 \end{algorithmic}
 \end{algorithm}
@@ -654,8 +652,7 @@ lookupLatestTransform、setTransformsの擬似アルゴリズムをそれぞれ�
 	\State frame = parent
 	\EndWhile
 	\State unlock all in rlock\_list
-	
-	\Return source\_trans * (target\_trans)$^{-1}$
+	\State \Return source\_trans * (target\_trans)$^{-1}$
 	\EndFunction
 \end{algorithmic}
 \end{algorithm}
@@ -664,7 +661,7 @@ lookupLatestTransform、setTransformsの擬似アルゴリズムをそれぞれ�
 \begin{algorithm}
 \caption{setTransforms}\label{algo:setTransforms}
 \begin{algorithmic}[1]
-	\Function{setTransforms}{transforms}
+	\Procedure{setTransforms}{transforms}
 	\State wlock\_list = [ ] \label{op1}
 	\For{trans in transforms}
 	\State frame = getFrame(trans.child\_frame\_id)
@@ -682,7 +679,7 @@ lookupLatestTransform、setTransformsの擬似アルゴリズムをそれぞれ�
 	\State frame.insertData(trans)
 	\EndFor
 	\State unlock all in wlock\_list
-	\EndFunction
+	\EndProcedure
 \end{algorithmic}
 \end{algorithm}
 
