@@ -127,6 +127,7 @@ Robot Operating System(ROS) はロボットソフトウェア用のミドルウ�
 	\mathbf{q}_{\mathrm{map \rightarrow object}} &= \mathbf{q}_{\mathrm{robot \rightarrow object}} 
 	\mathbf{q}_{\mathrm{map \rightarrow  robot}}
 \end{aligned}
+\label{equation:cross}
 \end{equation}
 
 で与えられる。このように、二つの座標系間の位置関係はその座標系どうしを繋ぐような座標変換を平行移動成分、回転成分それぞれ掛け合わせることによって計算できる。
@@ -139,6 +140,7 @@ Robot Operating System(ROS) はロボットソフトウェア用のミドルウ�
 	\\
 	\mathbf{p}_{\mathrm{robot \rightarrow map}} &= \mathbf{q}_{\mathrm{robot \rightarrow map}}(-\mathbf{p}_{\mathrm{map \rightarrow robot}}){\mathbf{q}_{\mathrm{robot \rightarrow map}}}^{-1}
 \end{aligned}
+\label{equation:inv}
 \end{equation}
 
 で与えられる。
@@ -266,6 +268,7 @@ TFライブラリでは図\ref{fig:sample-tree}のように各座標系間の位
 \end{figure}
 
 \section{TFの木構造のインターフェイス}
+\label{section:tf-interface}
 
 TFライブラリの木構造のインターフェイスは\cite{buffer-core}に公開されており、このうち主に以下の表\ref{table:tf-interface}のインターフェイスが使われている。
 
@@ -292,7 +295,8 @@ TFライブラリの木構造のインターフェイスは\cite{buffer-core}に
 \label{table:tf-interface}
 \end{table}
 
-この中でも頻繁に使用されるのが\textit{lookupTransform}と\textit{setTransform}であり、本研究ではこの二つのインターフェイスの改善を行う。
+この中でも頻繁に使用されるのが\textit{lookupTransform}と\textit{setTransform}であり、TFの木構造へのアクセスは主に、高頻度で\textit{lookupTransform}のみ呼び出す読み込み専用スレッドと、高頻度で\textit{setTransform}のみ呼び出す書き込み専用スレッドで構成される。
+本研究ではこの二つのインターフェイスの改善を行う。
 
 %TODO lookupTransform、setTransformのフォントの変更
 
@@ -307,7 +311,6 @@ TFライブラリの木構造のインターフェイスは\cite{buffer-core}に
 	\item 時刻Aにおける各エッジの座標変換データを計算する。b$\rightarrow$aについては登録されたデータを利用でき、c$\rightarrow$bとd$\rightarrow$aについては線形補間でデータを生成する。
 	\item フレームcからフレームaへの座標変換と、フレームaからdへの座標変換を掛け合わせる。フレームcからフレームaへの座標変換はc$\rightarrow$bとb$\rightarrow$aの座標変換をかけ合わせれば得られ、フレームaからdへの座標変換はd$\rightarrow$aの逆変換から得られる。
 \end{enumerate}
-%TODO メソッドを消す
 また、\textit{lookupTransform}は指定した時刻のデータを取得することもできる。時刻Bにおけるフレームcからフレームdへの座標変換は次のアルゴリズムで得られる。
 
 \begin{enumerate}
@@ -316,32 +319,39 @@ TFライブラリの木構造のインターフェイスは\cite{buffer-core}に
 	\item フレームcからフレームaへの座標変換と、フレームaからdへの座標変換を掛け合わせる。フレームaからdへの座標変換はd$\rightarrow$aの逆変換から得られる。
 \end{enumerate}
 
-\textit{lookupTransform}はアルゴリズム\ref{algo:lookupTransform}のような擬似コードで説明することもできる。
+%TODO delete 擬似アルゴリズム
+\textit{lookupTransform}の疑似コードをアルゴリズム\ref{algo:lookupTransform}で説明する。\textit{lookupTransform}にて最新の座標変換を計算するには\ref{code:getLatest}行目のように、まず\textit{getLatestCommonTime}インターフェイスを呼び出し、sourceフレームからtargetフレームへの最新の座標変換を計算できる時刻を取得する。
+
+\textit{getLatestCommonTime}ではまず、sourceフレームからルートフレームへのエッジをたどり、各エッジで最新の座標変換を提供できる時刻の最小値を取る(\ref{code:getLatest-s-r}〜\ref{code:getLatest-s-r2}行目)。これにより、sourceフレームからルートフレームへの最新の座標変換を取得できる時刻を取得できる。続いて、targetフレームからルートフレームへのエッジをたどり、同じようにしてtargetフレームからルートフレームへの最新の座標変換を取得できる時刻を取得する(\ref{code:getLatest-t-r}〜\ref{code:getLatest-t-r2}行目)。最後に、sourceフレームからルートフレームへの最新の座標変換を取得できる時刻、targetフレームからルートフレームへの最新の座標変換を取得できる時刻から、sourceフレームからtargetフレームへの最新の座標変換を取得できる時刻を取得する(\ref{code:getLatest-min} 〜\ref{code:getLatest-min2}行目)。
+
+sourceフレームからtargetフレームへの最新の座標変換を計算できる時刻を取得できたため、取得できた時刻はtime変数に代入され、処理は\textit{lookupTransform}に戻る。まず、sourceフレームからルートフレームへのエッジをたどり、sourceフレームからルートフレームへの座標変換を計算する(\label{code:lookupTrans-s-r}〜\label{code:lookupTrans-s-r2}行目)。続いて、targetフレームからルートフレームへのエッジをたどり、targetフレームからルートフレームへの座標変換を計算する(\label{code:lookupTrans-t-r}〜\label{code:lookupTrans-t-r2}行目)。最後に、sourceフレームからルートフレームへの座標変換にルートフレームからtargetフレームへの座標変換を掛け合わせることにより、sourceフレームからtargetフレームへの座標変換を取得できる。ルートフレームからtargetフレームへの座標変換は、targetフレームからルートフレームへの座標変換の逆変換を取ることにより取得できる。
+%TODO: ここは、例外パターンへの対処のためにこうしているけれど…もっと説明すべき？
+\textit{lookupTransform}で最新の座標変換情報を得る場合には内部で\textit{getLatestCommonTime}を呼び出しているため、同じフレームに2度アクセスすることになる。
 
 \begin{algorithm}
 \caption{lookupTransform} \label{algo:lookupTransform}
 \begin{algorithmic}[1]
 	\Function {lookupTransform}{target, source, time} \Comment{フレームsourceからフレームtargetへの時刻timeでの座標変換を計算する}
 	\If{time == 0} \Comment{time=0を指定すると、最新の座標変換を計算できる時刻を取得する}
-	\State{time = getLatestCommonTime(target, source)}
+	\State{time = getLatestCommonTime(target, source)} \label{code:getLatest}
 	\EndIf
 	\State source\_trans = $I$ \Comment{$I$は座標変換の単位元}
 	\State frame = source
 	\State top\_parent = frame
-	\While{frame $\neq$ root}
+	\While{frame $\neq$ root} \Comment{sourceからrootまで辿る} \label{code:lookupTrans-s-r}
 	\State (trans, parent) = frame.getTransAndParent(time) 
-	\State source\_trans *= trans
+	\State source\_trans *= trans \Comment{座標変換の掛け合わせ}
 	\State top\_parent = frame
 	\State frame = parent
-	\EndWhile
+	\EndWhile \label{code:lookupTrans-s-r2}
 	\State frame = target
 	\State target\_trans = $I$
-	\While{frame $\neq$ top\_parent}
+	\While{frame $\neq$ top\_parent}　\Comment{targetからrootまで辿る} \label{code:lookupTrans-t-r}
 	\State (tarns, parent) = frame.getTransAndParent(time)
 	\State target\_trans *= trans
 	\State frame = parent
-	\EndWhile
-	\State \Return source\_trans * (target\_trans)$^{-1}$
+	\EndWhile \label{code:lookupTrans-t-r2}
+	\State \Return source\_trans * (target\_trans)$^{-1}$ \Comment{sourceからrootへの変換 * rootからsourceへの変換}
 	\EndFunction
 \end{algorithmic}
 \end{algorithm}
@@ -354,15 +364,15 @@ TFライブラリの木構造のインターフェイスは\cite{buffer-core}に
 	\State frame = source
 	\State common\_time = TIME\_MAX
 	\State lct\_cache = [ ] \Comment{lookup tree cache}
-	\While{frame $\neq$ root}
+	\While{frame $\neq$ root} \Comment{sourceからrootまで辿る} \label{code:getLatest-s-r}
 	\State (time, parent) = frame.getLatestTimeAndParent()
 	\State common\_time = min(time, common\_time)
 	\State lct\_cache.push\_back((time, parent))
 	\State frame = parent
-	\EndWhile
+	\EndWhile \label{code:getLatest-s-r2}
 	\State frame = target
 	\State common\_time = TIME\_MAX
-	\While{true}
+	\While{true}　\Comment{targetからrootまで辿る} \label{code:getLatest-t-r}
 	\State (time, parent) = frame.getLatestTimeAndParent()
 	\State common\_time = min(time, common\_time)
 	\If{parent \textbf{in}  lct\_cache}
@@ -370,13 +380,13 @@ TFライブラリの木構造のインターフェイスは\cite{buffer-core}に
 	\State \textbf{break}
 	\EndIf
 	\State frame = parent
-	\EndWhile
-	\For{(time, parent) \textbf{in} lct\_cache}
+	\EndWhile \label{code:getLatest-t-r2}
+	\For{(time, parent) \textbf{in} lct\_cache} \Comment{lookup tree cacheを元に、最新の時刻を取得する} \label{code:getLatest-min}
 	\State common\_time = min(common\_time, time)
 	\If{parent == common\_parent}
 	\State \textbf{break}
 	\EndIf
-	\EndFor
+	\EndFor \label{code:getLatest-min2}
 	\State \Return common\_time
 	\EndFunction
 \end{algorithmic}
@@ -388,7 +398,7 @@ TFライブラリの木構造のインターフェイスは\cite{buffer-core}に
 
 このインターフェイスを呼び出すことにより新しい座標変換情報がタイムラインに追加される。
 
-\textit{setTransform}の擬似アルゴリズムをアルゴリズム\ref{algo:setTransform}で示す。
+\textit{setTransform}の擬似コードをアルゴリズム\ref{algo:setTransform}に示す。
 
 % 図3.1においてc->aと貼り直すとbのdeleteが発生するが、ここではread/writeのみ扱うのでここでは記述しない。
 
@@ -404,7 +414,14 @@ TFライブラリの木構造のインターフェイスは\cite{buffer-core}に
 
 \section{問題点}
 \subsection*{問題1: ジャイアント・ロック}
-TFライブラリの木構造で主に使われるインターフェイスは主に\textit{lookupTransform}と\textit{setTransform}である。これらは複数のスレッドからアクセスされるので、並行性制御を行う必要があるが、TFライブラリではmutexオブジェクトを用いて木構造全体を保護している。このため、一つのスレッドが木構造にアクセスしている際は他のスレッドは木構造にアクセスできないアルゴリズムとなっている。複数スレッドが木構造の別々の部分にアクセスするケース、及び複数スレッドが木構造の同じ部分のアクセスしているが全て読み込みアクセスのケースなど、排他制御が必要ではないケースにおいてもアクセスが完全に逐次化されおり、マルチコアが常識となっている現代ではスループットやレイテンシに問題が生じる可能性がある。
+上述のように、TFライブラリの木構造で主に使われるインターフェイスは主に\textit{lookupTransform}と\textit{setTransform}である。これらは複数のスレッドからアクセスされるので並行性制御を行う必要があるが、TFライブラリではmutexオブジェクトを用いて木構造全体を保護している。このため、一つのスレッドが木構造にアクセスしている際は他のスレッドは木構造にアクセスできないアルゴリズムとなっている。複数スレッドが木構造の別々の部分にアクセスするケース、及び複数スレッドが木構造の同じ部分のアクセスしているが全て読み込みアクセスのケースなど、排他制御が必要ではないケースにおいてもアクセスが逐次化されおり、マルチコアが常識となっている現代ではスループットやレイテンシに問題が生じる可能性がある。
+
+\begin{figure}[h] 
+\centering
+\includegraphics[width=10cm]{snake-sim}	
+\caption{シミュレータ上で動作するヘビ型ロボット}
+\label{fig:snake-sim}
+\end{figure}
 
 \begin{figure}[h] 
 \centering
@@ -413,10 +430,18 @@ TFライブラリの木構造で主に使われるインターフェイスは主
 \label{fig:snake}
 \end{figure}
 
-例えば、ヘビ型ロボットの各関節をTFライブラリで管理する場合について考える。関節の数が1000あり、各関節をフレームとしてTFに登録する場合には図\ref{fig:snake}のよう比較的巨大な木構造になる。木構造の一部のフレーム間の座標変換情報のみ更新するスレッドと、木構想の一部のフレーム間の座標変換情報のみ取得するスレッドがそれぞれ複数あった場合、それぞれのスレッドが木構造の別の部分にアクセスするにもかかわらず、一つのスレッドが木構造にアクセスするたびに木構造全体がロックされてしまいパフォーマンスに問題が生じる可能性がある。
 
-\subsection*{問題2: データの鮮度}
+例えば、ヘビ型ロボットの各関節をTFライブラリで管理する場合について考える。ヘビ型ロボットとはは生物のヘビを模倣したロボットであり、ヘビのように関節を動かすことにより狭い場所の点検や災害現場での被災者探索に用いられている。図\ref{fig:snake-sim}はシミュレータ上で操作する関節数が30のヘビ型ロボットを示す。
+%TODO ヘビ型ロボットの掲載許可をいただく
+% 地面に接触するリンクの位置情報を用いたヘビ型ロボットの自己位置推定
+% ヘビ型ロボットのオドメトリと遠隔操作支援
+
+関節の数が1000あり、各関節をフレームとしてTFに登録する場合には図\ref{fig:snake}のように比較的巨大な木構造になる。§\ref{section:tf-interface}にて述べたように、TFの木構造へのアクセスパターンは主に木構造の一部のフレーム間の座標変換情報のみ更新するスレッドと、木構想の一部のフレーム間の座標変換情報のみ取得するスレッドがそれぞれ複数ある状況なので、それぞれのスレッドが木構造の別の部分にアクセスするにもかかわらず、一つのスレッドが木構造にアクセスするたびに木構造全体がロックされてしまいパフォーマンスに問題が生じる可能性がある。
+
+\subsection*{問題2a: データの鮮度}
 木構造が図\ref{fig:sample-tree}、タイムラインが図\ref{fig:general-timeline}の状況において、\textit{lookupTransform}を用いてフレームcからフレームdへの最新の座標変換を計算する時には時刻Aの時点での各フレーム間の座標変換データを用いる。この時、b$\rightarrow$aにおいては最新のデータを用いるが、c$\rightarrow$bにおいては最新のデータと一つ前のデータから線形補間されるデータを用いている。d$\rightarrow$aにおいては最新のデータ$\theta$ではなく一つ前のデータ$\alpha$とそのもう一つ前のデータ$\beta$から線形補間されるデータを用いている。このように、\textit{lookupTransform}は二つのフレーム間の座標変換の計算において、フレーム間のエッジの全てにおいて座標変換データを提供できる時刻についての座標変換を計算するという仕様のため、b$\rightarrow$aのように座標変換情報の登録が遅れるとそれに足を引っ張られてしまい、最新の座標変換データが使われなくなるという問題がある。時刻の同期をとっているためデータの同期性はあるが、最新のデータが使われなくなる可能性があり、データの鮮度は失われる。現在、TFライブラリには最新の座標変換データをもとにフレーム間の座標変換計算をするインターフェイスは無い。
+
+\subsection*{問題2a: データの一貫性}
 
 \chapter{提案手法}
 本研究では、データベースの並行性制御法における細粒度ロッキング法及び2PLを適用し、これらの問題を解決する。
@@ -448,15 +473,15 @@ TFライブラリでは木構造へのアクセスをする際、木構造全体
 \end{figure}
 
 そこで、本研究ではデータベースの並行性制御法における細粒度ロッキング法を適用する。
-細粒度ロッキング法ではアクセスするデータにのみロックをかけ、さらにロックの種類を読み込みロックと書き込みロックに分ける。
-複数のスレッドが同じデータにアクセスする際に発生するデータ競合を避けるために、排他制御では一つのスレッドからのみデータにアクセスできるようにするため、ロックをかける。しかしながら、複数のスレッドが同じデータにアクセスする際、データの読み込みのみ行うのであればデータ競合は発生しない。そこで、データの読み込みのみを行う時には読み込みロック、データの書き込みを行う時には書き込みロックを使い、次のようなルールを設ける。
+細粒度ロッキング法ではアクセスするデータにのみロックを確保し、さらにロックの種類を読み込みロックと書き込みロックに分ける。
+複数のスレッドが同じデータにアクセスする際に発生するデータ競合を避けるために、排他制御では一つのスレッドからのみデータにアクセスできるようにするため、ロックを確保する。しかしながら、複数のスレッドが同じデータにアクセスする際、データの読み込みのみ行うのであればデータ競合は発生しない。そこで、データの読み込みのみを行う時には読み込みロック、データの書き込みを行う時には書き込みロックを使い、次のルールを設ける。
 
 \begin{itemize}
- \item 読み込みを行う前に読み込みロック、書き込みを行う前に書き込みロックを行う必要がある
- \item ロックされていないデータには読み込みロック、及び書き込みロックをかけられる
- \item すでに読み込みロックされたデータにも他のスレッドが読み込みロックをかけることができる
- \item すでに読み込みロックされたデータには他のスレッドが書き込みロックをかけることはできない
- \item すでに書き込みロックされたデータには他のスレッドは読み込みロックも書き込みロックもかけることはできない
+ \item 読み込みを行う前に読み込みロック、書き込みを行う前に書き込みロックを確保する必要がある
+ \item ロックされていないデータには読み込みロック、及び書き込みロックを確保できる
+ \item すでに読み込みロックされたデータにも他のスレッドが読み込みロックを確保することができる
+ \item すでに読み込みロックされたデータには他のスレッドが書き込みロックを確保することはできない
+ \item すでに書き込みロックされたデータには他のスレッドは読み込みロックも書き込みロックも確保することはできない
 \end{itemize}
 
 
@@ -475,8 +500,9 @@ TFライブラリでは木構造へのアクセスをする際、木構造全体
 \label{table:lock-table}
 \end{table}
 
+%TODO 「ロックの確保、解放」でまとめる。
 
-このルールは、表\ref{table:lock-table}のような表形式で説明することもできる。表中ではスレッド$i$のデータ$x$に対する読み込みロック操作を$rl_i(x)$、スレッド$i$のデータ$x$に対する書き込みロック操作を$wl_i(x)$と表記する。表は一行目がスレッド$i$によってロックがかけられている状態を表し、その状態に読み込みロック、または書き込みロックをスレッド$j(i \neq j)$がかけられるかどうかを2、3行目で表している。$\circ$はすでにロックがかかっていても別のスレッドがロックをかけられることを表し、$\times$はそうでないことを表す。例えば、2行2列目はすでに$rl_i(x)$がかかっていても$rl_j(x)$がかけられることを表し、2行3列目はすでに$wl_i(x)$がかかっていると$rl_j(x)$はかけられないことを表す。
+このルールを表\ref{table:lock-table}にまとめる。表中ではスレッド$i$のデータ$x$に対する読み込みロック操作を$rl_i(x)$、スレッド$i$のデータ$x$に対する書き込みロック操作を$wl_i(x)$と表記する。表は一行目がスレッド$i$によってロックが確保された状態を表し、その状態に読み込みロック、または書き込みロックをスレッド$j(i \neq j)$が確保できるかどうかを2、3行目で表している。$\circ$はすでにロックが確保されていても別のスレッドがロックを確保できることを表し、$\times$はそうでないことを表す。例えば、2行2列目はすでに$rl_i(x)$が確保されていても$rl_j(x)$が確保できることを表し、2行3列目はすでに$wl_i(x)$が確保されていると$rl_j(x)$は確保できないことを表す。
 
 \begin{figure}[h] 
 \centering
@@ -515,7 +541,7 @@ TFライブラリでは木構造へのアクセスをする際、木構造全体
 \label{fig:two-read-lock-time}
 \end{figure}
 
-スレッド1の処理の途中に、\textit{lookupTransform}を用いてフレームdのデータを読み込むスレッド3が開始するケースについて考える。細粒度ロッキングを用いた場合のスレッド1とスレッド3の保護範囲は図\ref{fig:two-read-lock}で、スケジュールは図\ref{fig:two-read-lock-time}で表記される。スレッド1にてデータbに対して読み込みロックを取るときすでにスレッド3がbを読み込みロックしているが、表\ref{table:lock-table}が表すようにすでに読み込みロックがかけられていても他のスレッドが読み込みロックをかけることができる。このスケジュールは$rl_1(c)r_1(c)rl_3(b)r_3(b)ru_1(c)rl_1(b)r_1(b)ru_3(b)ru_1(b)$と書ける。
+スレッド1の処理の途中に、\textit{lookupTransform}を用いてフレームdのデータを読み込むスレッド3が開始するケースについて考える。細粒度ロッキングを用いた場合のスレッド1とスレッド3の保護範囲は図\ref{fig:two-read-lock}で、スケジュールは図\ref{fig:two-read-lock-time}で表記される。スレッド1にてデータbに対して読み込みロックを確保するときすでにスレッド3がbを読み込みロックしているが、表\ref{table:lock-table}が表すようにすでに読み込みロックが確保されていても他のスレッドが読み込みロックをかけることができる。このスケジュールは$rl_1(c)r_1(c)rl_3(b)r_3(b)ru_1(c)rl_1(b)r_1(b)ru_3(b)ru_1(b)$と書ける。
 
 
 このように、細粒度ロッキング法ではデータごとにロックをし、さらに読み込みロック・書き込みロックと区別をつけることにより並行性を上げることができる。
