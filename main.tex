@@ -154,7 +154,7 @@ Robot Operating System(ROS) はロボットソフトウェア用のミドルウ�
 \section{TFライブラリ}
 \label{section:intro-tf}
 
-この問題を解決するためにTFライブラリが提案された。TFライブラリは各座標系間の変換を有向木構造として一元管理し、効率的な座標系間の変換情報の登録、座標系間の変換の計算を可能にした\cite{tf}。図\ref{fig:room}を表す木構造は図\ref{fig:room-tree}で表現できる。ノードが各座標系を表し、エッジは子ノードから親ノードへの変換データが存在することを表す。
+この問題を解決するためにTFライブラリが提案された。TFライブラリはROS上で動作し、各座標系間の変換を有向木構造として一元管理し、効率的な座標系間の変換情報の登録、座標系間の変換の計算を可能にした\cite{tf}。図\ref{fig:room}を表す木構造は図\ref{fig:room-tree}で表現できる。ノードが各座標系を表し、エッジは子ノードから親ノードへの変換データが存在することを表す。
 
 \begin{figure}[h] 
 \centering
@@ -433,15 +433,27 @@ sourceフレームからtargetフレームへの最新の座標変換を計算�
 
 例えば、ヘビ型ロボットの各関節をTFライブラリで管理する場合について考える。ヘビ型ロボットとはは生物のヘビを模倣したロボットであり、ヘビのように関節を動かすことにより狭い場所の点検や災害現場での被災者探索に用いられている。図\ref{fig:snake-sim}はシミュレータ上で操作する関節数が30のヘビ型ロボットを示す。
 %TODO ヘビ型ロボットの掲載許可をいただく
-% 地面に接触するリンクの位置情報を用いたヘビ型ロボットの自己位置推定
+% 地面に接触するリンクの位置情報を用いたヘビ型ロボットの自己位置推定
 % ヘビ型ロボットのオドメトリと遠隔操作支援
 
 関節の数が1000あり、各関節をフレームとしてTFに登録する場合には図\ref{fig:snake}のように比較的巨大な木構造になる。§\ref{section:tf-interface}にて述べたように、TFの木構造へのアクセスパターンは主に木構造の一部のフレーム間の座標変換情報のみ更新するスレッドと、木構想の一部のフレーム間の座標変換情報のみ取得するスレッドがそれぞれ複数ある状況なので、それぞれのスレッドが木構造の別の部分にアクセスするにもかかわらず、一つのスレッドが木構造にアクセスするたびに木構造全体がロックされてしまいパフォーマンスに問題が生じる可能性がある。
 
 \subsection*{問題2a: データの鮮度}
-木構造が図\ref{fig:sample-tree}、タイムラインが図\ref{fig:general-timeline}の状況において、\textit{lookupTransform}を用いてフレームcからフレームdへの最新の座標変換を計算する時には時刻Aの時点での各フレーム間の座標変換データを用いる。この時、b$\rightarrow$aにおいては最新のデータを用いるが、c$\rightarrow$bにおいては最新のデータと一つ前のデータから線形補間されるデータを用いている。d$\rightarrow$aにおいては最新のデータ$\theta$ではなく一つ前のデータ$\alpha$とそのもう一つ前のデータ$\beta$から線形補間されるデータを用いている。このように、\textit{lookupTransform}は二つのフレーム間の座標変換の計算において、フレーム間のエッジの全てにおいて座標変換データを提供できる時刻についての座標変換を計算するという仕様のため、b$\rightarrow$aのように座標変換情報の登録が遅れるとそれに足を引っ張られてしまい、最新の座標変換データが使われなくなるという問題がある。時刻の同期をとっているためデータの同期性はあるが、最新のデータが使われなくなる可能性があり、データの鮮度は失われる。現在、TFライブラリには最新の座標変換データをもとにフレーム間の座標変換計算をするインターフェイスは無い。
+\label{section:prob-2a}
+木構造が図\ref{fig:sample-tree}、タイムラインが図\ref{fig:general-timeline}の状況において、\textit{lookupTransform}を用いてフレームcからフレームdへの最新の座標変換を計算する時には時刻Aの時点での各フレーム間の座標変換データを用いる。この時、b$\rightarrow$aにおいては最新のデータを用いるが、c$\rightarrow$bにおいては最新のデータと一つ前のデータから線形補間されるデータを用いている。d$\rightarrow$aにおいては最新のデータ$\theta$ではなく一つ前のデータ$\alpha$とそのもう一つ前のデータ$\beta$から線形補間されるデータを用いている。このように、\textit{lookupTransform}は二つのフレーム間の座標変換の計算において、フレーム間のエッジの全てにおいて座標変換データを提供できる時刻についての座標変換を計算するという仕様のため、b$\rightarrow$aのように座標変換情報の登録が遅れるとそれに足を引っ張られてしまい、最新の座標変換データが使われなくなるという問題がある。同時刻のデータを元に座標変換を計算するためデータの同期性はあるが、最新の座標変換データを使わないためデータの鮮度は失われる。これにより、ロボットの制御や自己位置推定に問題が生じる可能性がある。現在、TFライブラリには最新の座標変換データをもとにフレーム間の座標変換計算をするインターフェイスは無い。
+また、次に説明するようにこの仕様によって座標系間の位置関係があまり変わらない場合についても頻繁にデータを登録する必要があり、無駄な処理が発生する。
 
-\subsection*{問題2a: データの一貫性}
+\begin{figure}[h] 
+\centering
+\includegraphics[width=10cm]{need-many-update}
+\caption{不必要な更新が必要な例}
+\label{fig:need-many-update}
+\end{figure}
+
+図\ref{fig:need-many-update}において、b$\rightarrow$aはあまり座標系間の位置関係が変わらないために座標変換はあまり更新されないが、d$\rightarrow$aの座標変換は頻繁に更新されるケースについて考える。座標変換の計算においてb$\rightarrow$aとd$\rightarrow$aのデータを用いる場合、既存のTFでは「ある時刻の座標変換データが保存されているか線形補間で取得できる時に、その時刻の座標変換データを提供できると見做す」という仕様により、b$\rightarrow$aの更新が遅いためにd$\rightarrow$aでは過去の鮮度の低い$\beta$と$\theta$から座標変換の計算をしなくてはならない。これを避けるため、既存のTFではあまり座標系間の位置関係が変わらないb$\rightarrow$aにおいても、一定周期で同じ座標変換情報を登録する必要がある。このように、既存のTFでは座標変換情報が変わらないにもかかわらず一定周期で同じ座標変換情報を登録する必要があり、余計な負荷がかかっている。
+
+\subsection*{問題2b: データの一貫性}
+問題2aの解決策として、最新の座標変換データをもとにフレーム間の座標変換計算をするインターフェイスを提供するだけでは不十分である。これは、複数の座標変換データを登録している途中に最新の座標変換データをもとにフレーム間の座標変換計算をすると、ユーザーが期待するデータの一貫性がなくなる可能性があるからである。
 
 \chapter{提案手法}
 本研究では、データベースの並行性制御法における細粒度ロッキング法及び2PLを適用し、これらの問題を解決する。
@@ -523,7 +535,12 @@ TFライブラリでは木構造へのアクセスをする際、木構造全体
 
 細粒度ロッキングを用いた場合のスレッド1、スレッド2の保護範囲は図\ref{fig:high-gran-lock}、スケジュールは図\ref{fig:high-gran-time}で表せる。図\ref{fig:high-gran-time}ではスレッド$i$がデータ$x$を読み込みアンロック、書き込みアンロックする時にはそれぞれ$ru_i(x), wu_i(x)$と表記される。
 
-スレッド1の実行中にスレッド2の処理が開始しても、図\ref{fig:high-gran-lock}で表されるようにスレッド1とスレッド2でアクセスするデータは異なるため、スレッド2はスレッド1の処理完了を待機する必要がなくなる。このスケジュールは各操作を時系列順に表記することにより$rl_1(c)r_1(c)wl_2(d)w_2(d)ru_1(c)rl_1(b)r_1(b)wu_2(d)ru_1(b)$と書ける。
+スレッド1の実行中にスレッド2の処理が開始しても、図\ref{fig:high-gran-lock}で表されるようにスレッド1とスレッド2でアクセスするデータは異なるため、スレッド2はスレッド1の処理完了を待機する必要がなくなる。このスケジュールは各操作を時系列順に表記することにより
+
+\begin{equation}
+rl_1(c)r_1(c)wl_2(d)w_2(d)ru_1(c)rl_1(b)r_1(b)wu_2(d)ru_1(b)
+\end{equation}
+と書ける。
 
 
 \begin{figure}[h] 
@@ -541,12 +558,16 @@ TFライブラリでは木構造へのアクセスをする際、木構造全体
 \label{fig:two-read-lock-time}
 \end{figure}
 
-スレッド1の処理の途中に、\textit{lookupTransform}を用いてフレームdのデータを読み込むスレッド3が開始するケースについて考える。細粒度ロッキングを用いた場合のスレッド1とスレッド3の保護範囲は図\ref{fig:two-read-lock}で、スケジュールは図\ref{fig:two-read-lock-time}で表記される。スレッド1にてデータbに対して読み込みロックを確保するときすでにスレッド3がbを読み込みロックしているが、表\ref{table:lock-table}が表すようにすでに読み込みロックが確保されていても他のスレッドが読み込みロックをかけることができる。このスケジュールは$rl_1(c)r_1(c)rl_3(b)r_3(b)ru_1(c)rl_1(b)r_1(b)ru_3(b)ru_1(b)$と書ける。
+スレッド1の処理の途中に、\textit{lookupTransform}を用いてフレームdのデータを読み込むスレッド3が開始するケースについて考える。細粒度ロッキングを用いた場合のスレッド1とスレッド3の保護範囲は図\ref{fig:two-read-lock}で、スケジュールは図\ref{fig:two-read-lock-time}で表記される。スレッド1にてデータbに対して読み込みロックを確保するときすでにスレッド3がbを読み込みロックしているが、表\ref{table:lock-table}が表すようにすでに読み込みロックが確保されていても他のスレッドが読み込みロックをかけることができる。このスケジュールは
+\begin{equation}
+	rl_1(c)r_1(c)rl_3(b)r_3(b)ru_1(c)rl_1(b)r_1(b)ru_3(b)ru_1(b)
+\end{equation}
+と書ける。
 
 
 このように、細粒度ロッキング法ではデータごとにロックをし、さらに読み込みロック・書き込みロックと区別をつけることにより並行性を上げることができる。
 
-、細粒度ロックを実装した\textit{lookupTransform}、getLatestCommonTimeの擬似アルゴリズムをそれぞれアルゴリズム\ref{algo:lookupTransform2}、アルゴリズム\ref{algo:getLatestCommonTime2}にて示す。
+、細粒度ロックを実装した\textit{lookupTransform}、\textit{getLatestCommonTime}、\textit{setTransform}の擬似コードをそれぞれアルゴリズム\ref{algo:lookupTransform2}、アルゴリズム\ref{algo:getLatestCommonTime2}、アルゴリズム\ref{algo:setTransform2}にて示す。アルゴリズム\ref{algo:lookupTransform2}にて\ref{code:lookup-fine-rlock}〜\ref{code:lookup-fine-runlock}行目にて示されるように、木構造全体ではなくframe.rLock()で一つのフレームの読み込みロックのみ確保することにより、細粒度ロックを実装している。アルゴリズム\ref{algo:setTransform2}も同様に、一つのフレームにのみ書き込みロックを確保することにより細粒度ロックを実装している。
 
 \begin{algorithm}
   \caption{細粒度ロックを実装したlookupTransform}\label{algo:lookupTransform2}
@@ -559,9 +580,9 @@ TFライブラリでは木構造へのアクセスをする際、木構造全体
 	\State frame = source
 	\State top\_parent = frame
 	\While{frame $\neq$ root}
-	\State frame.rLock()
-	\State (trans, parent) = frame.getLatestTransAndParent() 
-	\State frame.rUnlock()
+	\State frame.rLock() \label{code:lookup-fine-rlock}
+	\State (trans, parent) = frame.getTransAndParent(time) 
+	\State frame.rUnlock() \label{code:lookup-fine-runlock}
 	\State source\_trans *= trans
 	\State top\_parent = frame
 	\State frame = parent
@@ -619,12 +640,27 @@ TFライブラリでは木構造へのアクセスをする際、木構造全体
 \end{algorithmic}
 \end{algorithm}
 
+\begin{algorithm}
+\caption{細粒度ロックを実装したsetTransform}\label{algo:setTransform2}
+\begin{algorithmic}[1]
+	\Procedure{setTransform}{transform}
+	\State frame = getFrame(transform.child\_frame\_id)
+	\State frame.wLock()
+	\State frame.insertData(transform)
+	\State frame.wUnlock()
+	\EndProcedure
+\end{algorithmic}
+\end{algorithm}
+
+
+
 \section{2PLの導入}
 \label{section:intro-2pl}
 
-前述した問題2については、複数の座標変換のデータをatomicに取得するインターフェース(\textit{lookupLatestTransform})、及び複数の座標変換の最新のデータをatomicに更新するインターフェース(\textit{setTransforms})を提供して解決する。setTransformsインターフェイスの必要性について説明する。
+前述した問題2a、2bについては、複数の座標変換のデータをatomicに取得するインターフェース(\textit{lookupLatestTransformXact})、及び複数の座標変換の最新のデータをatomicに更新するインターフェース(\textit{setTransformsXact})を提供して解決する。
 
-まず、二つのフレーム間の座標変換を計算する際に線形補間を行わずにフレーム間のエッジの最新の座標変換データを使うインターフェイスとして\textit{lookupLatestTransform}を導入する。これは木構造が図\ref{fig:sample-tree}、タイムラインが図\ref{fig:general-timeline}における状況でフレームcからフレームdへの座標変換は次のように計算される。
+\subsection{データの鮮度の確保}
+まず、二つのフレーム間の座標変換に線形補間を行わずにフレーム間のエッジの最新の座標変換データを使うインターフェイスとして\textit{lookupLatestTransform}を導入する。これは木構造が図\ref{fig:sample-tree}、タイムラインが図\ref{fig:general-timeline}における状況でフレームcからフレームdへの座標変換は次のように計算される。
 
 \begin{enumerate}
 	\item フレームcから木構造のルートフレームへエッジをたどりながら、各フレーム間の最新の座標変換を掛け合わせてフレームから木構造のルートフレームへの座標変換を計算する。ここでは、フレームcから木構造のルートフレームへのエッジはc$\rightarrow$b、b$\rightarrow$aとなり、それぞれの座標変換は最新のものを使う。
@@ -641,6 +677,44 @@ TFライブラリでは木構造へのアクセスをする際、木構造全体
 
 \textit{lookupLatestTransform}にて取得する座標変換データは、図\ref{fig:lookupLatestTransform}のように図示できる。
 
+\textit{lookupLatestTransform}を用いることにより、§\ref{section:prob-2a}で説明した余計な負荷がかかる問題も解決できる。これは、\textit{lookupLatestTransform}は\textit{lookupTransform}とは異なり、最新の座標変換のみを見るため必要な時にのみ座標変換の更新をすればよく、§\ref{section:prob-2a}で説明した余計な負荷がかかることはなくなる。
+
+\textit{lookupLatestTransform}の疑似コードをアルゴリズム\ref{algo:lookupLatestTransform}にて示す。
+
+\begin{algorithm}
+  \caption{lookupLatestTransform}\label{algo:lookupLatestTransform}
+\begin{algorithmic}[1]
+	\Function {lookupLatestTransform}{target, source}
+	\State source\_trans = $I$
+	\State frame = source
+	\State top\_parent = frame
+	\While{frame $\neq$ root}
+	\State frame.rLock()
+	\State (trans, parent) = frame.getLatestTransAndParent() 
+	\State frame.rUnlock()
+	\State source\_trans *= trans
+	\State top\_parent = frame
+	\State frame = parent
+	\EndWhile
+	\State frame = target
+	\State target\_trans = $I$
+	\While{frame $\neq$ top\_parent}
+	\State frame.rLock()
+	\State (tarns, parent) = frame.getTransAndParent(time)
+	\State frame.rUnlock()
+	\State target\_trans *= trans
+	\State frame = parent
+	\EndWhile
+	\State \Return source\_trans * (target\_trans)$^{-1}$
+	\EndFunction
+\end{algorithmic}
+\end{algorithm}
+
+
+% でも、TFは同期を取ったほうがいいとされるからああいう設計にしたんじゃ？最新のデータだけ保存するようにしてればよかったじゃん
+%TODO ここ突っ込まれたら痛いなああああ、ここの回答は「この研究を通して既存のTFもそうなってくれると嬉しいですね」程度のコメントで
+
+\subsection{データの一貫性の確保}
 \textit{lookupLatestTransform}を新たに提供することにより、暗黙的な線形補間をさけ、最新の座標変換データをもとにしたフレーム間の座標変換が計算できる。しかし、これには次のようなケースでは問題となる。
 
 \begin{figure}[h] 
@@ -656,16 +730,18 @@ b$\rightarrow$aとa$\rightarrow$cのデータを用いてフレームbからフ�
 
 % ただの細粒度ロックだとSerializabilityがなくなる、けどgiant lockだとパフォーマンスがまずいという話を説明する必要はある？
 
-そこで、複数の座標変換を2PLによってatomicに木構造に登録する\textit{setTransforms}を提供し、また\textit{lookupLatestTransform}も2PLを使うように変更する。2PL\cite{2PL}とは、複数のデータに対するロック・アンロックを二つのフェーズに分けることによって並行処理の結果が直列処理と同じ結果になることを保証する、データベースにおける並行性制御法である。このような性質は、並行性制御法においてはSerializabilityと呼ばれる。
+そこで、複数の座標変換を2PLによってatomicに木構造に登録する\textit{setTransformsXact}を提供し、また
+\textit{lookupLatestTransform}を2PLを使うように変更した\textit{lookupLatestTransformXact}を提供する。
+2PL\cite{2PL}とは、複数のデータに対するロック・アンロックを二つのフェーズに分けることによって並行処理の結果が直列処理と同じ結果になることを保証する、データベースにおける並行性制御法である。このような性質は、並行性制御法においてはSerializabilityと呼ばれる。
 
 %TODO Serializabilityはどこから引用?
 
-2PLによって並行性制御をしたときの\textit{setTransforms}と\textit{lookupLatestTransform}の動作について説明する。スレッド1が\textit{setTransforms}を用いてb$\rightarrow$a、d$\rightarrow$aの情報を更新し、スレッド2が\textit{lookupLatestTransform}を用いてb$\rightarrow$a、d$\rightarrow$aの情報を元にフレームbからフレームdへの座標変換を計算し、スレッド1の処理中にスレッド2の処理が開始するケースについて考える。それぞれのスレッドの処理は$w_1(b)w_1(d)$、$r_2(b)r_2(d)$と表現できる。
+2PLによって並行性制御をしたときの\textit{setTransformsXact}と\textit{lookupLatestTransformXact}の動作について説明する。スレッド1が\textit{setTransformsXact}を用いてb$\rightarrow$a、d$\rightarrow$aの情報を更新し、スレッド2が\textit{lookupLatestTransformXact}を用いてb$\rightarrow$a、d$\rightarrow$aの情報を元にフレームbからフレームdへの座標変換を計算し、スレッド1の処理中にスレッド2の処理が開始するケースについて考える。それぞれのスレッドの処理は$w_1(b)w_1(d)$、$r_2(b)r_2(d)$と表現できる。
 
 \begin{figure}[h] 
 \centering
 \includegraphics[width=12cm]{setTransforms1}
-\caption{setTransformsとlookupLatestTransform 1}
+\caption{setTransformsXactとlookupLatestTransformXact 1}
 \label{fig:setTransforms1}
 \end{figure}
 
@@ -674,7 +750,7 @@ b$\rightarrow$aとa$\rightarrow$cのデータを用いてフレームbからフ�
 \begin{figure}[h] 
 \centering
 \includegraphics[width=12cm]{setTransforms2}
-\caption{setTransformsとlookupLatestTransform 2}
+\caption{setTransformsXactとlookupLatestTransformXact 2}
 \label{fig:setTransforms2}
 \end{figure}
 
@@ -684,32 +760,37 @@ b$\rightarrow$aとa$\rightarrow$cのデータを用いてフレームbからフ�
 \begin{figure}[h] 
 \centering
 \includegraphics[width=12cm]{setTransforms3}
-\caption{setTransformsとlookupLatestTransform 3}
+\caption{setTransformsXactとlookupLatestTransformXact 3}
 \label{fig:setTransforms3}
 \end{figure}
 
 
 図\ref{fig:setTransforms3}はスレッド1の処理が完了してデータ$\theta$が登録され、スレッド1によるフレームb,dへのロックが開放され、スレッド2が$r_2(b)$と$r_2(d)$をするために$rl_2(b)$と$rl_2(d)$のロックを確保した時の様子である。2PLによりスレッド1の処理が完了してからスレッド2は木構造へアクセスできるため、スレッド2が中間の状態を観測することはなくなる。
 
-この一連のスケジュールは$wl_1(b)w_1(b)wl_1(d)w_1(d)wu_1(b)wu_1(d)rl_2(b)r_2(b)rl_2(d)r_2(d)ru_2(b)ru_2(d)$と表記できる。
+この一連のスケジュールは
+\begin{equation}
+	wl_1(b)w_1(b)wl_1(d)w_1(d)wu_1(b)wu_1(d)rl_2(b)r_2(b)rl_2(d)r_2(d)ru_2(b)ru_2(d)
+\end{equation}
+と表記できる。
 
-さて、2PLによって複数のデータに対する読み込み・書き込みがatomicに行えるようになったが、複数のデータに対してロックを取ることによりdeadlockの可能性が生じる。
+\subsection{Deadlockの回避}
+さて、2PLの導入によって複数のデータに対する読み込み・書き込みがatomicに行えるようになったが、複数のデータに対してロックを取ることによりdeadlockの可能性が生じる。
 
 
 \begin{figure}[h] 
 \centering
-\includegraphics[width=5cm]{deadlock}
+\includegraphics[width=7cm]{deadlock}
 \caption{deadlock}
 \label{fig:deadlock}
 \end{figure}
 
-図\ref{fig:deadlock}のような木構造において、スレッド1がフレームcからフレームdへの座標変換を\textit{lookupLatestTransform}を用いて計算し、スレッド2が\textit{setTransforms}を用いてd$\rightarrow$a及びa$\rightarrow$eの座標変換を更新する場合について考える。それぞれのスレッドの操作は$r_1(c)r_1(b)r_1(a)r_1(d)$、$w_2(d)w_2(a)$と表記できる。
+図\ref{fig:deadlock}のような木構造において、スレッド1がフレームcからフレームdへの座標変換を\textit{lookupLatestTransformXact}を用いて計算し、スレッド2が\textit{setTransformsXact}を用いてd$\rightarrow$a及びa$\rightarrow$eの座標変換を更新する場合について考える。それぞれのスレッドの操作は$r_1(c)r_1(b)r_1(a)r_1(d)$、$w_2(d)w_2(a)$と表記できる。
 
 図\ref{fig:deadlock}はスレッド1がa, b, cの読み込みロック、スレッド2がdの書き込みロックを確保した状態を表している。ここで、スレッド1は次にdの読み込みロックを確保したいがすでにスレッド2がdを書き込みロックしているためロックの解放を待機する必要がある。スレッド2は次にaの書き込みロックを確保したいがすでにスレッド1がaを読み込みロックしているために待機する必要がある。二つのスレッドがお互いのロック解放を待ち続けるため、deadlockとなる。これはスレッド2が木構造のルートフレームへ登る方向にロックをかけているのに対し、スレッド1は逆に一時的に木構造を下る方向にロックをかけていることに起因する。
 
 % 要素のreorderによって防げるけどちょいとむずそう
 
-そこで、我々はdeadlockを未然に防ぐ方法としてNoWait\cite{nowait}を採用した。これは、書き込みロックを2つ以上かけようとしたときにすでにデータがロックされていたら、保持しているロックを全て解放し最初から処理をやり直す手法である。これにより、書き込みロックを2つ以上しているスレッドがロックの解放を待機することがなくなり、deadlockは発生しない。また、我々の手法ではcontention regulationとして保持しているロックを全て解放して1ミリ秒経過してから最初から処理をやり直す。
+そこで、我々はdeadlockを防ぐ方法としてNoWait\cite{nowait}を採用した。これは、書き込みロックを2つ以上かけようとしたときにすでにデータがロックされていたら、保持しているロックを全て解放し最初から処理をやり直す手法である。これにより、書き込みロックを2つ以上しているスレッドがロックの解放を待機することがなくなり、deadlockは発生しない。また、我々の手法ではcontention regulationとして保持しているロックを全て解放して1ミリ秒経過してから最初から処理をやり直す。
 
 \begin{figure}[h] 
 \centering
@@ -719,35 +800,23 @@ b$\rightarrow$aとa$\rightarrow$cのデータを用いてフレームbからフ�
 \end{figure}
 
 
-NoWaitによって処理のやり直しが発生するため、\textit{setTransforms}では書き込みを行うタイミングに注意する必要がある。T1が\textit{setTransforms}を用いて$w_1(a)w_1(b)$、T2が\textit{lookupLatestTransform}を用いて$r_2(b)r_2(a)$を実行する時、図\ref{fig:dirty-read}のようなスケジュールになったケースについて考える。T1が$a$の書き込みを終えた後に$b$への書き込みロックを取ろうとするが、すでにT2によって$b$への読み込みロックは取られているので、NoWaitによって$a$へのロックを外してから処理をやり直す。図中の$\times$印は全てのロックを外し、処理を最初からやり直す事を表している。T1による処理のやり直しの前にT2が$a$を読み込んでしまうと、T2は$a$についてはT1による更新後のデータ、$b$についてはT1による更新前のデータを読んでしまい、並行処理の結果が直列処理と同じ結果にならなくなってしまう。この問題は、トランザクション理論においてはDirty readと呼ばれる。
+NoWaitによって処理のやり直しが発生するため、\textit{setTransformsXact}では書き込みを行うタイミングに注意する必要がある。T1が\textit{setTransformsXact}を用いて$w_1(a)w_1(b)$、T2が\textit{lookupLatestTransformXact}を用いて$r_2(b)r_2(a)$を実行する時、図\ref{fig:dirty-read}のようなスケジュールになったケースについて考える。T1が$a$の書き込みを終えた後に$b$への書き込みロックを取ろうとするが、すでにT2によって$b$への読み込みロックは取られているので、NoWaitによって$a$へのロックを外してから処理をやり直す。図中の$\times$印は全てのロックを外し、処理を最初からやり直す事を表している。
 
-Dirty readを避けるため、我々の手法では全ての書き込みロックが確保できてから座標変換の書き込みを行うようにした。これにより、書き込みが一部行われた状態を読み込み専用スレッドが観測することはなくなる。
+T1による処理のやり直しの前にT2が$a$を読み込んでしまうと、T2は$a$についてはT1による更新後のデータ、$b$についてはT1による更新前のデータを読んでしまい、並行処理の結果が直列処理と同じ結果にならなくなってしまう。この問題は、トランザクション理論においてはDirty readと呼ばれる。Dirty readを避けるため、我々の手法では全ての書き込みロックが確保できてから座標変換の書き込みを行うようにした。これにより、書き込みが一部行われた状態を読み込み専用スレッドが観測することはなくなる。
 
-\begin{figure}[h] 
-\centering
-\includegraphics[width=10cm]{need-many-update}
-\caption{不必要な更新が必要な例}
-\label{fig:need-many-update}
-\end{figure}
-
-
-\textit{setTransforms}と\textit{lookupLatestTransform}を利用すると、最新の座標変換を更新・取得できるだけではなく、無駄な座標変換の更新も減らすことができる。図\ref{fig:need-many-update}において、b$\rightarrow$aはあまり座標系間の位置関係が変わらないために座標変換はあまり更新されないが、d$\rightarrow$aの座標変換は頻繁に更新されるケースについて考える。座標変換の計算においてb$\rightarrow$aとd$\rightarrow$aのデータを用いる場合、既存のTFでは「ある時刻の座標変換データが保存されているか線形補間で取得できる時に、その時刻の座標変換データを提供できると見做す」という仕様により、b$\rightarrow$aの更新が遅いためにd$\rightarrow$aでは過去の鮮度の低い$\beta$と$\theta$から座標変換の計算をしなくてはならない。これを避けるため、既存のTFではあまり座標系間の位置関係が変わらないb$\rightarrow$aにおいても、一定周期で同じ座標変換情報を登録する必要があった。このように、既存のTFでは座標変換情報が変わらないにもかかわらず一定周期で同じ座標変換情報を登録する必要があり、余計な負荷がかかっていた。しかしながら、\textit{setTransforms}と\textit{lookupLatestTransform}では最新の座標変換のみを見るため必要な時にのみ座標変換の更新をすればよく、このような余計な負荷がかかることは無くなる。
-
-% でも、TFは同期を取ったほうがいいとされるからああいう設計にしたんじゃ？最新のデータだけ保存するようにしてればよかったじゃん
-%TODO ここ突っ込まれたら痛いなああああ、ここの回答は「この研究を通して既存のTFもそうなってくれると嬉しいですね」程度のコメントで
-
-\textit{lookupLatestTransform}、\textit{setTransforms}の擬似アルゴリズムをそれぞれアルゴリズム\ref{algo:lookupLatestTransform}、\ref{algo:setTransforms}にて示す。
+\textit{lookupLatestTransformXact}、\textit{setTransformsXact}の擬似アルゴリズムをそれぞれアルゴリズム\ref{algo:lookupLatestTransformXact}、\ref{algo:setTransformsXact}に示す。\textit{lookupLatestTransform}とは異なり、\textit{lookupLatestTransformXact}では読み込みロックを取った後は\ref{code:lookupXact-add}行目のように読み込みロックのリストに追加し、\ref{code:lookupXact-unlockall}行目のように座標変換を取得した後にリスト内のフレームのロックを解放することにより、2PLを実装している。\textit{setTransformsXact}も同じように書き込みロックが取れたら書き込みロックのリストに追加し、座標変換の登録ができてからリスト内のフレームのロックを解放する。\ref{code:setXact-trylock}行目ではもし他のスレッドが読み込みロックも書き込みロックも確保していない場合に書き込みロックを確保できる。もし他のスレッドがロックを確保していた場合には待機を行わず、リスト内のフレームのロックを解放し、1ms待機してから処理をやり直す。
 
 \begin{algorithm}
-  \caption{lookupLatestTransform}\label{algo:lookupLatestTransform}
+  \caption{lookupLatestTransformXact}\label{algo:lookupLatestTransformXact}
 \begin{algorithmic}[1]
-	\Function {lookupLatestTransform}{target, source}
+	\Function {lookupLatestTransformXact}{target, source}
 	\State rlock\_list = [ ]
 	\State source\_trans = $I$
 	\State frame = source
 	\State top\_parent = frame
 	\While{frame $\neq$ root}
-	\State rlock\_list.push\_back(frame)
+   \State frame.rLock()
+	\State rlock\_list.push\_back(frame) \Comment{読み込みロックのリストに追加} \label{code:lookupXact-add}
 	\State (trans, parent) = frame.getLatestTransAndParent() 
 	\State source\_trans *= trans
 	\State top\_parent = frame
@@ -756,12 +825,15 @@ Dirty readを避けるため、我々の手法では全ての書き込みロッ�
 	\State frame = target
 	\State target\_trans = $I$
 	\While{frame $\neq$ top\_parent}
-	\State rlock\_list.push\_back(frame)
+   \State frame.rLock()	
+	\State rlock\_list.push\_back(frame)　\Comment{読み込みロックのリストに追加}
 	\State (tarns, parent) = frame.getTransAndParent(time)
 	\State target\_trans *= trans
 	\State frame = parent
 	\EndWhile
-	\State unlock all in rlock\_list
+   \For{f in rlock\_list} \label{code:lookupXact-unlockall}  \Comment{リスト内の全ての要素のロックを解放}
+   \State f.rUnlock()
+   \EndFor	
 	\State \Return source\_trans * (target\_trans)$^{-1}$
 	\EndFunction
 \end{algorithmic}
@@ -769,48 +841,75 @@ Dirty readを避けるため、我々の手法では全ての書き込みロッ�
 
 
 \begin{algorithm}
-\caption{setTransforms}\label{algo:setTransforms}
+\caption{setTransformsXact}\label{algo:setTransformsXact}
 \begin{algorithmic}[1]
-	\Procedure{setTransforms}{transforms}
+	\Procedure{setTransformsXact}{transforms}
 	\State wlock\_list = [ ] \label{op1}
 	\For{trans in transforms}
 	\State frame = getFrame(trans.child\_frame\_id)
-	\State lock\_success = frame.tryWLock()
+	\State lock\_success = frame.tryWLock() \Comment{書き込みロックの確保を試みる} \label{code:setXact-trylock}
 	\If{lock\_success}
 	\State wlock\_list.push\_back(frame)
 	\Else
-	\State unlock all in wlock\_list
+	\For{f in wlock\_list} \label{code:setXact-unlockall}  \Comment{リスト内の全ての要素のロックを解放}
+   \State f.wUnlock()
+   \EndFor
 	\State sleep 1ms 
-	\State \textbf{goto} \ref{op1}
+	\State \textbf{goto} \ref{op1} \Comment{処理をやり直す}
 	\EndIf
 	\EndFor
 	\For{trans in transforms} \Comment{Dirty readを避けるため、全てのwlockが確保できてから書き込み}
 	\State frame = getFrame(trans.child\_frame\_id)
 	\State frame.insertData(trans)
 	\EndFor
-	\State unlock all in wlock\_list
+	\For{f in wlock\_list} \Comment{リスト内の全ての要素のロックを解放}
+   \State f.wUnlock()
+   \EndFor
 	\EndProcedure
 \end{algorithmic}
 \end{algorithm}
 
 \chapter{評価}
-TFライブラリに細粒度を実装した\textit{lookupTransform}・\textit{setTransform}、及び最新の複数のデータをatomicに取得・更新できる\textit{lookupLatestTransform}・\textit{setTransforms}を以下の指標で評価した。
+TFライブラリに細粒度を実装した\textit{lookupTransform}・\textit{setTransform}、及び最新の複数のデータをatomicに取得・更新できる\textit{lookupLatestTransformXact}・\textit{setTransformsXact}を以下の指標で評価した。
 
 \begin{enumerate}
 	\item スループット: 一秒間に何回操作(\textit{lookupTransform}及び\textit{setTransforms})ができたか
 	\item レイテンシ: 操作の応答時間
 	\item データの鮮度: \textit{lookupTransform}においてアクセスした各座標変換データのタイムスタンプの新しさを表す。アクセスした各座標変換データのタイムスタンプの平均とアクセス時の時刻の差をdelayとし、delayが少ない方がデータの鮮度が高いとみなす。
-	\item データの同期性(\textit{lookupLatestTransform}のみ): \textit{lookupTransform}においてアクセスした各座標変換データのタイムスタンプの同一性を表す。アクセスした各座標変換データのタイムスタンプの標準偏差を計算し、これが小さい方がデータの同期性があるとみなす。
-	\item abort率(\textit{setTransforms}のみ): \textit{setTransforms}において、NoWaitによって操作をやり直した回数の比率。(やり直した回数 / \textit{setTransforms}を呼び出した回数) で求める。
+	\item データの同期性(\textit{lookupLatestTransformXact}のみ): \textit{lookupLatestTransformXact}においてアクセスした各座標変換データのタイムスタンプの同一性を表す。アクセスした各座標変換データのタイムスタンプの標準偏差を計算し、これが小さい方がデータの同期性があるとみなす。
+	\item abort率(\textit{setTransformsXact}のみ): \textit{setTransformsXact}において、NoWaitによって操作をやり直した回数の比率。(やり直した回数 / \textit{setTransformsXact}を呼び出した回数) で求める。
 \end{enumerate}
 
-以下、既存手法はold、細粒度ロックを実装した\textit{lookupTransform}・\textit{setTransforms}をsnapshot、2PLを用いて複数のデータをatomicに取得・更新できる\textit{lookupLatestTransform}・\textit{setTransforms}をlatestと呼称する。
+以下、既存手法はold、細粒度ロックを実装した\textit{lookupTransform}・\textit{setTransforms}をsnapshot、2PLを用いて複数のデータをatomicに取得・更新できる\textit{lookupLatestTransformXact}・\textit{setTransformsXact}をlatestと呼称する。
 
+\section{実装}
+§\ref{section:intro-tf}で述べたように、TFライブラリはROS上で動作する。ROSはUbuntu上で動作し、Ubuntuのバージョンごとに別のディストリビューションが公開されている。これに合わせ、TFライブラリもROSのディストリビューション毎に提供されている。TFライブラリの実装はGithubのリポジトリ\cite{ros-geometry2}で公開され、ブランチ毎に各ROSのディストリビューション向けの実装がされている。この対応関係を表\ref{table:ubuntu-ros-branch}に示す。
 
+\begin{table}[ht]
+\centering
+\begin{tabular}[t]{lcc}
+\hline
+Ubuntuのバージョン & 対応するROSのディストリビューション & 対応するgeometry2のブランチ名\\
+\hline
+20.04(Focal) & ROS Noetic Ninjemys & noetic-devel \\
+18.04(Bionic) & ROS Melodic Morenia & melodic-devel \\
+14.04(Trusty) & ROS Indigo Igloo & indigo-devel \\
+\hline
+\end{tabular}
+\caption{Ubuntuのバージョンと対応するブランチ名}
+\label{table:ubuntu-ros-branch}
+\end{table}%
+
+このリポジトリのデフォルトブランチはmelodic-develであるが、TFの木構造の並行性制御アルゴリズムはどのブランチでも変わらない。また、ROS2向けのTFライブラリの実装は\cite{ros2-geometry2}で公開されているが、こちらも木構造の並行性制御アルゴリズムはROS向けのものと変わらない。
+
+このため、本研究ではUbuntu18.04を搭載したマシンにROS Melodic Moreniaをインストールし、TFライブラリのGithubのリポジトリ\cite{ros-geometry2}のmelodic-develの実装を変更して実験を行った。C++言語で実装をし、1236行分の変更を行った。この実装は\cite{ogiwara-geometry2}で公開されている。
+%src +534 -254
+%include +397 -51
+%total +5073 -327
 
 \section{実験環境}
 
-実験にはIntel(R) Xeon(R) Platinum 8176 CPU @ 2.10GHzを4つ搭載したサーバを利用する。それぞれのコアは32KB private L1dキャッシュ、1024KB private L2キャッシュを持つ。単一プロセッサの28コアは39MB L3キャッシュを共有し、ハイパー・スレッディングを有効化している。トータルキャッシュサイズはおよそ160MBである。メモリはDDR4-2666が48個接続されており、一つあたりのサイズは32GB、全体のサイズは1.5 TBである。全ての実験において，実行時間は 60秒という安定的な結果が得られる時間を選択している。
+実験にはIntel(R) Xeon(R) Platinum 8176 CPU @ 2.10GHzを4つ搭載したサーバを利用する。それぞれのコアは32KB private L1dキャッシュ、1024KB private L2キャッシュを持つ。単一プロセッサの28コアは39MB L3キャッシュを共有し、ハイパー・スレッディングを有効化している。トータルキャッシュサイズはおよそ160MBである。メモリはDDR4-2666が48個接続されており、一つあたりのサイズは32GB、全体のサイズは1.5 TBである。全ての実験において，実行時間は 60秒という安定的な結果が得られる時間を選択した。
 
 \section{ワークロード}
 
@@ -837,14 +936,14 @@ TFライブラリに細粒度を実装した\textit{lookupTransform}・\textit{s
 %\end{figure}
 
 
-各実験はそれぞれYCSB-A/B/C\cite{ycsb}ワークロードについて行われている。YCSB-A/B/Cはそれぞれ、読み込み操作と書き込み操作の割合が50:50、95:5、100:0のワークロードを指す。ここでは読み込み専用スレッドの数と書き込み専用スレッドの数の比でそれぞれのワークロードを再現するため、read\_ratioをそれぞれ0.5、0.95、1に設定した。
+各実験はそれぞれYCSB-A/B/C\cite{ycsb}ワークロードについて行った。YCSB-A/B/Cはそれぞれ、読み込み操作と書き込み操作の割合が50:50、95:5、100:0のワークロードを指す。ここでは読み込み専用スレッドの数と書き込み専用スレッドの数の比でそれぞれのワークロードを再現するため、read\_ratioをそれぞれ0.5、0.95、1に設定した。
 
 特に記載がない場合はjoint=1000000、read\_len=16、write\_len=16、frequency=0で実験が行われている。
 %TODO ここは舛村さんのワークロードを参考にしたが、実際のロボットではreadが全てを読む、writeもたくさん、というケースはあり得そうじゃないか？つまり、一般的なDBのパタンだけじゃだめ。
 % あとabortのratioについてもまとめないと
 
 %YCSB-A/B/Cそれぞれで説明した方がわかりやすいかも。C->A->Bとか
-
+%Skewについてはきく
 
 \section{YCSB-C}
 
@@ -870,8 +969,9 @@ TFライブラリに細粒度を実装した\textit{lookupTransform}・\textit{s
 \end{figure}
 
 スループットについては図\ref{fig:throughput-c}のように、oldに比べてsnapshotは最大243倍、latestは最大257倍のスループットとなった。
+224倍以上の差になったのは、oldでは
 
-レイテンシについては図\ref{fig:latency-c}、図\ref{fig:latency-c2}のように、どの手法においてもレイテンシとスレッド数が線形比例しているが、oldに比べsnapshot、latestは非常に小さいレイテンシとなった。
+レイテンシについては図\ref{fig:latency-c}、図\ref{fig:latency-c2}のように、どの手法においてもレイテンシとスレッド数が線形比例しているが、oldに比べsnapshot、latestは小さいレイテンシとなった。
 
 スループット、レイテンシのどちらにおいても提案手法が既存手法より優れているのは、既存手法ではジャイアントロックにより操作を並行に行えないが、提案手法では細粒度ロックと2PLによって操作を並行に行えるからだと考えられる。また、latestの方がsnapshotより優れた性能をしてしているのは、§\ref{section:intro-high-gran-lock}で説明したようにsnapshotのlookupTransformでは、木構造を2度読み込む必要があるからだと考えられる。
 
@@ -1048,7 +1148,7 @@ YCSB-Aではスループットについては図\ref{fig:a-throughput}のよう�
 \label{fig:b-write-latency2}
 \end{figure}
 
-読み込み・書き込み専用スレッドそれぞれのレイテンシについて図\ref{fig:b-read-latency}〜\ref{fig:b-read-latency2}に表示した。図\ref{fig:b-write-latency2}をみてわかるように、snapshotの方がlatestより書き込みレイテンシが優れていることがわかる。これは、latestはsetTransformsにて16の要素の書き込み、書き込みロックをする必要があるのに対し、setTransformでは一つの要素の書き込み及び書き込みロックを行えばよく、さらに§\ref{section:ycsb-a}で説明したようなキャッシュミス率の変化も発生していないからだと考えられる。
+読み込み・書き込み専用スレッドそれぞれのレイテンシについて図\ref{fig:b-read-latency}〜\ref{fig:b-read-latency2}に表示した。図\ref{fig:b-write-latency2}をみてわかるように、snapshotの方がlatestより書き込みレイテンシが優れていることがわかる。これは、latestはsetTransformsXactにて16の要素の書き込み、書き込みロックをする必要があるのに対し、setTransformでは一つの要素の書き込み及び書き込みロックを行えばよく、さらに§\ref{section:ycsb-a}で説明したようなキャッシュミス率の変化も発生していないからだと考えられる。
 
 
 \begin{figure}[h] 
@@ -1119,7 +1219,7 @@ YCSB-Aではスループットについては図\ref{fig:a-throughput}のよう�
 既存のTFライブラリはジャイアンロックにより、アクセスが完全に逐次化されアクセスするスレッドが増えるに従ってパフォーマンスが低下する問題があった。マルチコア化が進む現在のハードウェアの性能を活かせるよう、本研究ではTFライブラリにデータベースの並行性制御法における細粒度ロッキング法を用いてこの問題を解決した。その結果、既存手法と比べて最大243倍のスループット、最大172倍高速なレイテンシとなり、細粒度ロッキング法を導入した提案手法はマルチコアの性能を活かせ、優れた応答性能をもつ事が示せた。
 
 
-また、既存のTFライブラリはその仕様によって座標変換の計算時に最新のデータを参照せず、さらにジャイアントロックによりアクセスが逐次化されていることによってデータの鮮度が落ちるという問題があった。本研究ではデータベースの並行性制御法における2PLを適用することにより、複数の座標変換の最新のデータをatomicに取得できるインターフェイス(\textit{lookupLatestTransform})、及び複数の座標変換の最新のデータをatomicに更新するインターフェイス(\textit{setTransforms})を提供することによって解決した。これにより、複数のデータの最新の座標変換情報の読み込み・書き込みを効率的にatomicに行えるようになった。その結果、既存手法と比べて最大132倍のデータ鮮度となり、2PLを導入した提案手法はデータの鮮度を向上させる事ができる事を示した。また、既存手法と比べ最大257倍のスループット、最大282倍高速化したレイテンシとなり、このインターフェイスはスループットとレイテンシにおいても既存手法より優れている事を示した。
+また、既存のTFライブラリはその仕様によって座標変換の計算時に最新のデータを参照せず、さらにジャイアントロックによりアクセスが逐次化されていることによってデータの鮮度が落ちるという問題があった。本研究ではデータベースの並行性制御法における2PLを適用することにより、複数の座標変換の最新のデータをatomicに取得できるインターフェイス(\textit{lookupLatestTransformXact})、及び複数の座標変換の最新のデータをatomicに更新するインターフェイス(\textit{setTransformsXact})を提供することによって解決した。これにより、複数のデータの最新の座標変換情報の読み込み・書き込みを効率的にatomicに行えるようになった。その結果、既存手法と比べて最大132倍のデータ鮮度となり、2PLを導入した提案手法はデータの鮮度を向上させる事ができる事を示した。また、既存手法と比べ最大257倍のスループット、最大282倍高速化したレイテンシとなり、このインターフェイスはスループットとレイテンシにおいても既存手法より優れている事を示した。
 
 本研究のようにロボットにおいてデータベースの並行性制御法を導入する研究アプローチは他になく、ロボットの高性能化のためには並行性制御法の導入が必要である事を示した。
 
@@ -1171,9 +1271,9 @@ YCSB-Aではスループットについては図\ref{fig:a-throughput}のよう�
 
 \bibitem{2PL} Philip A. Bernstein and Nathan Goodman, "Concurrency Control in Distributed Database Systems" in ACM Computing Surveys, 1981, pp. 185-221
 
-\bibitem{buffer-core} "BufferCore.h", \url{https://github.com/ros/geometry2/blob/noetic-devel/tf2/include/tf2/buffer_core.h}
+\bibitem{buffer-core} "BufferCore.h", \url{https://github.com/ros/geometry2/blob/melodic-devel/tf2/include/tf2/buffer_core.h}
 
-\bibitem{lookupTransform} "BufferCore.cpp lookupTransform", \url{https://github.com/ros/geometry2/blob/noetic-devel/tf2/include/tf2/buffer_core.h}
+\bibitem{lookupTransform} "BufferCore.cpp lookupTransform", \url{https://github.com/ros/geometry2/blob/melodic-devel/tf2/include/tf2/buffer_core.h}
 
 \bibitem{gaia} "GAIA platform", \url{https://www.gaiaplatform.io}
 
@@ -1193,6 +1293,11 @@ databases. In SOSP, pages 18–32. ACM, 2013
 
 \bibitem{nowait} Guna Prasaad, Alvin Cheung and Dan Suciu. Improving High Contention OLTP Performance via Transaction Scheduling. 
 
+\bibitem{ros-geometry2} "ros/geometry github repository", \url{https://github.com/ros/geometry2} 
+
+\bibitem{ros2-geometry2} "ros2/geometry2 github repository", \url{https://github.com/ros2/geometry2}
+
+\bibitem{ogiwara-geometry2} "Ogiwara-CostlierRain464/geometry2 github repository", \url{https://github.com/Ogiwara-CostlierRain464/geometry2}
 
 \end{thebibliography}
 

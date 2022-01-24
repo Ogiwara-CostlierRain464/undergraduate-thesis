@@ -103,6 +103,9 @@
 \newlabel{fig:snake-sim}{{3.5}{14}{シミュレータ上で動作するヘビ型ロボット}{figure.3.5}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {3.6}{\ignorespaces ヘビ型ロボットにおける木構造}}{15}{figure.3.6}\protected@file@percent }
 \newlabel{fig:snake}{{3.6}{15}{ヘビ型ロボットにおける木構造}{figure.3.6}{}}
+\newlabel{section:prob-2a}{{3.6}{15}{問題2a: データの鮮度}{section*.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3.7}{\ignorespaces 不必要な更新が必要な例}}{16}{figure.3.7}\protected@file@percent }
+\newlabel{fig:need-many-update}{{3.7}{16}{不必要な更新が必要な例}{figure.3.7}{}}
 \@writefile{toc}{\contentsline {chapter}{\numberline {第4章}提案手法}{17}{chapter.4}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
@@ -118,29 +121,141 @@
 \newlabel{fig:high-gran-lock}{{4.3}{19}{細粒度ロッキング}{figure.4.3}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.4}{\ignorespaces 細粒度ロックにおけるスケジュール}}{19}{figure.4.4}\protected@file@percent }
 \newlabel{fig:high-gran-time}{{4.4}{19}{細粒度ロックにおけるスケジュール}{figure.4.4}{}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {4}{\ignorespaces 細粒度ロックを実装したlookupTransform}}{20}{algorithm.4}\protected@file@percent }
-\newlabel{algo:lookupTransform2}{{4}{20}{細粒度ロックの導入}{algorithm.4}{}}
-\@writefile{loa}{\contentsline {algorithm}{\numberline {5}{\ignorespaces 細粒度ロックを実装したgetLatestCommonTime}}{21}{algorithm.5}\protected@file@percent }
-\newlabel{algo:getLatestCommonTime2}{{5}{21}{細粒度ロックの導入}{algorithm.5}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces 二つの読み込みロック}}{22}{figure.4.5}\protected@file@percent }
-\newlabel{fig:two-read-lock}{{4.5}{22}{二つの読み込みロック}{figure.4.5}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces 二つの読み込みロックにおけるスケジュール}}{22}{figure.4.6}\protected@file@percent }
-\newlabel{fig:two-read-lock-time}{{4.6}{22}{二つの読み込みロックにおけるスケジュール}{figure.4.6}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {4.2}2PLの導入}{22}{section.4.2}\protected@file@percent }
-\newlabel{section:intro-2pl}{{4.2}{22}{2PLの導入}{section.4.2}{}}
-\citation{2PL}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.5}{\ignorespaces 二つの読み込みロック}}{20}{figure.4.5}\protected@file@percent }
+\newlabel{fig:two-read-lock}{{4.5}{20}{二つの読み込みロック}{figure.4.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.6}{\ignorespaces 二つの読み込みロックにおけるスケジュール}}{20}{figure.4.6}\protected@file@percent }
+\newlabel{fig:two-read-lock-time}{{4.6}{20}{二つの読み込みロックにおけるスケジュール}{figure.4.6}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4.2}2PLの導入}{20}{section.4.2}\protected@file@percent }
+\newlabel{section:intro-2pl}{{4.2}{20}{2PLの導入}{section.4.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}データの鮮度の確保}{20}{subsection.4.2.1}\protected@file@percent }
+\@writefile{loa}{\contentsline {algorithm}{\numberline {4}{\ignorespaces 細粒度ロックを実装したlookupTransform}}{21}{algorithm.4}\protected@file@percent }
+\newlabel{algo:lookupTransform2}{{4}{21}{細粒度ロックの導入}{algorithm.4}{}}
+\newlabel{code:lookup-fine-rlock}{{9}{21}{細粒度ロックの導入}{algorithm.4}{}}
+\newlabel{code:lookup-fine-runlock}{{11}{21}{細粒度ロックの導入}{algorithm.4}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {5}{\ignorespaces 細粒度ロックを実装したgetLatestCommonTime}}{22}{algorithm.5}\protected@file@percent }
+\newlabel{algo:getLatestCommonTime2}{{5}{22}{細粒度ロックの導入}{algorithm.5}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {6}{\ignorespaces 細粒度ロックを実装したsetTransform}}{22}{algorithm.6}\protected@file@percent }
+\newlabel{algo:setTransform2}{{6}{22}{細粒度ロックの導入}{algorithm.6}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {4.7}{\ignorespaces lookupLatestTransformで取得するデータ}}{23}{figure.4.7}\protected@file@percent }
 \newlabel{fig:lookupLatestTransform}{{4.7}{23}{lookupLatestTransformで取得するデータ}{figure.4.7}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.8}{\ignorespaces 同時に座標変換が登録されるケース}}{23}{figure.4.8}\protected@file@percent }
-\newlabel{fig:coming-same-time}{{4.8}{23}{同時に座標変換が登録されるケース}{figure.4.8}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.9}{\ignorespaces setTransformsとlookupLatestTransform 1}}{24}{figure.4.9}\protected@file@percent }
-\newlabel{fig:setTransforms1}{{4.9}{24}{setTransformsとlookupLatestTransform 1}{figure.4.9}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.10}{\ignorespaces setTransformsとlookupLatestTransform 2}}{24}{figure.4.10}\protected@file@percent }
-\newlabel{fig:setTransforms2}{{4.10}{24}{setTransformsとlookupLatestTransform 2}{figure.4.10}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.11}{\ignorespaces setTransformsとlookupLatestTransform 3}}{24}{figure.4.11}\protected@file@percent }
-\newlabel{fig:setTransforms3}{{4.11}{24}{setTransformsとlookupLatestTransform 3}{figure.4.11}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}データの一貫性の確保}{23}{subsection.4.2.2}\protected@file@percent }
+\@writefile{loa}{\contentsline {algorithm}{\numberline {7}{\ignorespaces lookupLatestTransform}}{24}{algorithm.7}\protected@file@percent }
+\newlabel{algo:lookupLatestTransform}{{7}{24}{データの鮮度の確保}{algorithm.7}{}}
+\citation{2PL}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.8}{\ignorespaces 同時に座標変換が登録されるケース}}{25}{figure.4.8}\protected@file@percent }
+\newlabel{fig:coming-same-time}{{4.8}{25}{同時に座標変換が登録されるケース}{figure.4.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.9}{\ignorespaces setTransformsXactとlookupLatestTransformXact 1}}{25}{figure.4.9}\protected@file@percent }
+\newlabel{fig:setTransforms1}{{4.9}{25}{setTransformsXactとlookupLatestTransformXact 1}{figure.4.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.10}{\ignorespaces setTransformsXactとlookupLatestTransformXact 2}}{25}{figure.4.10}\protected@file@percent }
+\newlabel{fig:setTransforms2}{{4.10}{25}{setTransformsXactとlookupLatestTransformXact 2}{figure.4.10}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.11}{\ignorespaces setTransformsXactとlookupLatestTransformXact 3}}{26}{figure.4.11}\protected@file@percent }
+\newlabel{fig:setTransforms3}{{4.11}{26}{setTransformsXactとlookupLatestTransformXact 3}{figure.4.11}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2.3}Deadlockの回避}{26}{subsection.4.2.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {4.12}{\ignorespaces deadlock}}{26}{figure.4.12}\protected@file@percent }
+\newlabel{fig:deadlock}{{4.12}{26}{deadlock}{figure.4.12}{}}
 \citation{nowait}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.12}{\ignorespaces deadlock}}{25}{figure.4.12}\protected@file@percent }
-\newlabel{fig:deadlock}{{4.12}{25}{deadlock}{figure.4.12}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.13}{\ignorespaces Dirty Read}}{25}{figure.4.13}\protected@file@percent }
-\newlabel{fig:dirty-read}{{4.13}{25}{D
+\@writefile{lof}{\contentsline {figure}{\numberline {4.13}{\ignorespaces Dirty Read}}{27}{figure.4.13}\protected@file@percent }
+\newlabel{fig:dirty-read}{{4.13}{27}{Dirty Read}{figure.4.13}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {8}{\ignorespaces lookupLatestTransformXact}}{28}{algorithm.8}\protected@file@percent }
+\newlabel{algo:lookupLatestTransformXact}{{8}{28}{Deadlockの回避}{algorithm.8}{}}
+\newlabel{code:lookupXact-add}{{8}{28}{Deadlockの回避}{algorithm.8}{}}
+\newlabel{code:lookupXact-unlockall}{{23}{28}{Deadlockの回避}{algorithm.8}{}}
+\@writefile{loa}{\contentsline {algorithm}{\numberline {9}{\ignorespaces setTransformsXact}}{29}{algorithm.9}\protected@file@percent }
+\newlabel{algo:setTransformsXact}{{9}{29}{Deadlockの回避}{algorithm.9}{}}
+\newlabel{op1}{{2}{29}{Deadlockの回避}{algorithm.9}{}}
+\newlabel{code:setXact-trylock}{{5}{29}{Deadlockの回避}{algorithm.9}{}}
+\newlabel{code:setXact-unlockall}{{9}{29}{Deadlockの回避}{algorithm.9}{}}
+\citation{ros-geometry2}
+\citation{ros2-geometry2}
+\@writefile{toc}{\contentsline {chapter}{\numberline {第5章}評価}{30}{chapter.5}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {5.1}実装}{30}{section.5.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5.1}{\ignorespaces Ubuntuのバージョンと対応するブランチ名}}{30}{table.5.1}\protected@file@percent }
+\newlabel{table:ubuntu-ros-branch}{{5.1}{30}{Ubuntuのバージョンと対応するブランチ名}{table.5.1}{}}
+\citation{ros-geometry2}
+\citation{ogiwara-geometry2}
+\@writefile{toc}{\contentsline {section}{\numberline {5.2}実験環境}{31}{section.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.3}ワークロード}{31}{section.5.3}\protected@file@percent }
+\citation{ycsb}
+\@writefile{toc}{\contentsline {section}{\numberline {5.4}YCSB-C}{32}{section.5.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces YCSB-Cにおけるスレッド数と読み込みスループットの関係}}{32}{figure.5.1}\protected@file@percent }
+\newlabel{fig:throughput-c}{{5.1}{32}{YCSB-Cにおけるスレッド数と読み込みスループットの関係}{figure.5.1}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces YCSB-Cにおけるスレッド数とレイテンシの関係}}{33}{figure.5.2}\protected@file@percent }
+\newlabel{fig:latency-c}{{5.2}{33}{YCSB-Cにおけるスレッド数とレイテンシの関係}{figure.5.2}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.5}YCSB-A}{33}{section.5.5}\protected@file@percent }
+\newlabel{section:ycsb-a}{{5.5}{33}{YCSB-A}{section.5.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.3}{\ignorespaces YCSB-Cにおけるスレッド数とレイテンシの関係 snapshotとlatestのみ}}{34}{figure.5.3}\protected@file@percent }
+\newlabel{fig:latency-c2}{{5.3}{34}{YCSB-Cにおけるスレッド数とレイテンシの関係 snapshotとlatestのみ}{figure.5.3}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.6}YCSB-B}{34}{section.5.6}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.4}{\ignorespaces YCSB-Aにおけるスレッド数とスループットの関係}}{35}{figure.5.4}\protected@file@percent }
+\newlabel{fig:a-throughput}{{5.4}{35}{YCSB-Aにおけるスレッド数とスループットの関係}{figure.5.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.7}制御周期}{35}{section.5.7}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.5}{\ignorespaces YCSB-Aにおけるスレッド数と読み込みスループットの関係}}{36}{figure.5.5}\protected@file@percent }
+\newlabel{fig:a-throughput-read}{{5.5}{36}{YCSB-Aにおけるスレッド数と読み込みスループットの関係}{figure.5.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces YCSB-Aにおけるスレッド数と書き込みスループットの関係}}{37}{figure.5.6}\protected@file@percent }
+\newlabel{fig:a-throughput-write}{{5.6}{37}{YCSB-Aにおけるスレッド数と書き込みスループットの関係}{figure.5.6}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.7}{\ignorespaces YCSB-Aにおけるスレッド数とキャッシュミス率の関係}}{38}{figure.5.7}\protected@file@percent }
+\newlabel{fig:a-cache}{{5.7}{38}{YCSB-Aにおけるスレッド数とキャッシュミス率の関係}{figure.5.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.8}{\ignorespaces YCSB-Aにおけるスレッド数と読み込みレイテンシの関係}}{39}{figure.5.8}\protected@file@percent }
+\newlabel{fig:a-read-latency}{{5.8}{39}{YCSB-Aにおけるスレッド数と読み込みレイテンシの関係}{figure.5.8}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.9}{\ignorespaces YCSB-Aにおけるスレッド数と読み込みレイテンシの関係 snapshotとlatestのみ}}{40}{figure.5.9}\protected@file@percent }
+\newlabel{fig:a-read-latency2}{{5.9}{40}{YCSB-Aにおけるスレッド数と読み込みレイテンシの関係 snapshotとlatestのみ}{figure.5.9}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.10}{\ignorespaces YCSB-Aにおけるスレッド数と書き込みレイテンシの関係}}{41}{figure.5.10}\protected@file@percent }
+\newlabel{fig:a-write-latency}{{5.10}{41}{YCSB-Aにおけるスレッド数と書き込みレイテンシの関係}{figure.5.10}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.11}{\ignorespaces YCSB-Aにおけるスレッド数と書き込みレイテンシの関係 snapshotとlatestのみ}}{42}{figure.5.11}\protected@file@percent }
+\newlabel{fig:a-write-latency2}{{5.11}{42}{YCSB-Aにおけるスレッド数と書き込みレイテンシの関係 snapshotとlatestのみ}{figure.5.11}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.12}{\ignorespaces YCSB-Aにおけるスレッド数とabort率の関係}}{43}{figure.5.12}\protected@file@percent }
+\newlabel{fig:a-abort}{{5.12}{43}{YCSB-Aにおけるスレッド数とabort率の関係}{figure.5.12}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.13}{\ignorespaces YCSB-Aにおけるスレッド数とデータの鮮度の関係}}{44}{figure.5.13}\protected@file@percent }
+\newlabel{fig:a-delay}{{5.13}{44}{YCSB-Aにおけるスレッド数とデータの鮮度の関係}{figure.5.13}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.14}{\ignorespaces YCSB-Aにおけるスレッド数とデータの同期性の関係}}{45}{figure.5.14}\protected@file@percent }
+\newlabel{fig:a-stddiv}{{5.14}{45}{YCSB-Aにおけるスレッド数とデータの同期性の関係}{figure.5.14}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.15}{\ignorespaces YCSB-Bにおけるスレッド数とスループットの関係}}{46}{figure.5.15}\protected@file@percent }
+\newlabel{fig:b-throughput}{{5.15}{46}{YCSB-Bにおけるスレッド数とスループットの関係}{figure.5.15}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.16}{\ignorespaces YCSB-Bにおけるスレッド数と読み込みスループットの関係}}{47}{figure.5.16}\protected@file@percent }
+\newlabel{fig:b-throughput-read}{{5.16}{47}{YCSB-Bにおけるスレッド数と読み込みスループットの関係}{figure.5.16}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.17}{\ignorespaces YCSB-Bにおけるスレッド数と書き込みスループットの関係}}{48}{figure.5.17}\protected@file@percent }
+\newlabel{fig:b-throughput-write}{{5.17}{48}{YCSB-Bにおけるスレッド数と書き込みスループットの関係}{figure.5.17}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.18}{\ignorespaces YCSB-Bにおけるスレッド数とキャッシュミス率の関係}}{49}{figure.5.18}\protected@file@percent }
+\newlabel{fig:b-cache}{{5.18}{49}{YCSB-Bにおけるスレッド数とキャッシュミス率の関係}{figure.5.18}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.19}{\ignorespaces YCSB-Bにおけるスレッド数と読み込みレイテンシの関係}}{50}{figure.5.19}\protected@file@percent }
+\newlabel{fig:b-read-latency}{{5.19}{50}{YCSB-Bにおけるスレッド数と読み込みレイテンシの関係}{figure.5.19}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.20}{\ignorespaces YCSB-Bにおけるスレッド数と読み込みレイテンシの関係 snapshotとlatestのみ}}{51}{figure.5.20}\protected@file@percent }
+\newlabel{fig:b-read-latency2}{{5.20}{51}{YCSB-Bにおけるスレッド数と読み込みレイテンシの関係 snapshotとlatestのみ}{figure.5.20}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.21}{\ignorespaces YCSB-Bにおけるスレッド数と書き込みレイテンシの関係}}{52}{figure.5.21}\protected@file@percent }
+\newlabel{fig:b-write-latency}{{5.21}{52}{YCSB-Bにおけるスレッド数と書き込みレイテンシの関係}{figure.5.21}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.22}{\ignorespaces YCSB-Bにおけるスレッド数と書き込みレイテンシの関係 snapshotとlatestのみ}}{53}{figure.5.22}\protected@file@percent }
+\newlabel{fig:b-write-latency2}{{5.22}{53}{YCSB-Bにおけるスレッド数と書き込みレイテンシの関係 snapshotとlatestのみ}{figure.5.22}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.23}{\ignorespaces YCSB-Bにおけるスレッド数とabort率の関係}}{54}{figure.5.23}\protected@file@percent }
+\newlabel{fig:b-abort}{{5.23}{54}{YCSB-Bにおけるスレッド数とabort率の関係}{figure.5.23}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.24}{\ignorespaces YCSB-Bにおけるスレッド数とデータの鮮度の関係}}{55}{figure.5.24}\protected@file@percent }
+\newlabel{fig:b-delay}{{5.24}{55}{YCSB-Bにおけるスレッド数とデータの鮮度の関係}{figure.5.24}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.25}{\ignorespaces YCSB-Bにおけるスレッド数とデータの同期性の関係}}{56}{figure.5.25}\protected@file@percent }
+\newlabel{fig:b-stddiv}{{5.25}{56}{YCSB-Bにおけるスレッド数とデータの同期性の関係}{figure.5.25}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.26}{\ignorespaces 制御周期とレイテンシ}}{57}{figure.5.26}\protected@file@percent }
+\newlabel{fig:latency-frequency}{{5.26}{57}{制御周期とレイテンシ}{figure.5.26}{}}
+\@writefile{toc}{\contentsline {chapter}{\numberline {第6章}結論と今後の課題}{58}{chapter.6}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {chapter}{\hbox to\@lnumwidth {\hfil }謝辞}{60}{chapter*.9}\protected@file@percent }
+\bibcite{report1}{1}
+\bibcite{report2}{2}
+\bibcite{tf}{3}
+\bibcite{ros}{4}
+\bibcite{2PL}{5}
+\bibcite{buffer-core}{6}
+\bibcite{lookupTransform}{7}
+\bibcite{gaia}{8}
+\bibcite{ros2}{9}
+\bibcite{autoware}{10}
+\bibcite{ndt_matching}{11}
+\bibcite{silo}{12}
+\bibcite{Cicada}{13}
+\bibcite{ycsb}{14}
+\bibcite{nowait}{15}
+\bibcite{ros-geometry2}{16}
+\bibcite{ros2-geometry2}{17}
+\@writefile{toc}{\contentsline {chapter}{\hbox to\@lnumwidth {\hfil }参考文献}{61}{chapter*.9}\protected@file@percent }
+\bibcite{ogiwara-geometry2}{18}
+\gdef \@abspage@last{68}
