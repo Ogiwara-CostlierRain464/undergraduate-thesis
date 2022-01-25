@@ -5,6 +5,9 @@
 \contentsline {section}{\numberline {1.4}貢献}{5}{section.1.4}%
 \contentsline {section}{\numberline {1.5}構成}{6}{section.1.5}%
 \contentsline {chapter}{\numberline {第2章}関連研究}{7}{chapter.2}%
+\contentsline {section}{\numberline {2.1}データベース分野におけるロボット研究}{7}{section.2.1}%
+\contentsline {section}{\numberline {2.2}ロボット分野におけるデータベース研究}{7}{section.2.2}%
+\contentsline {section}{\numberline {2.3}トランザクション研究}{7}{section.2.3}%
 \contentsline {chapter}{\numberline {第3章}既存のTFの木構造とその問題点}{8}{chapter.3}%
 \contentsline {section}{\numberline {3.1}TFライブラリの使用例}{8}{section.3.1}%
 \contentsline {section}{\numberline {3.2}構造}{9}{section.3.2}%
@@ -24,8 +27,10 @@
 \contentsline {section}{\numberline {5.3}ワークロード}{31}{section.5.3}%
 \contentsline {section}{\numberline {5.4}YCSB-C}{32}{section.5.4}%
 \contentsline {section}{\numberline {5.5}YCSB-A}{33}{section.5.5}%
-\contentsline {section}{\numberline {5.6}YCSB-B}{34}{section.5.6}%
-\contentsline {section}{\numberline {5.7}制御周期}{35}{section.5.7}%
-\contentsline {chapter}{\numberline {第6章}結論と今後の課題}{58}{chapter.6}%
+\contentsline {section}{\numberline {5.6}YCSB-B}{35}{section.5.6}%
+\contentsline {section}{\numberline {5.7}制御周期}{36}{section.5.7}%
+\contentsline {chapter}{\numberline {第6章}結論}{58}{chapter.6}%
+\contentsline {section}{\numberline {6.1}結論}{58}{section.6.1}%
+\contentsline {section}{\numberline {6.2}今後の課題}{58}{section.6.2}%
 \contentsline {chapter}{\hbox to\@lnumwidth {\hfil }謝辞}{60}{chapter*.9}%
 \contentsline {chapter}{\hbox to\@lnumwidth {\hfil }参考文献}{61}{chapter*.9}%

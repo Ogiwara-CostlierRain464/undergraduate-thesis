@@ -73,13 +73,13 @@ Robot Operating System(ROS) はロボットソフトウェア用のミドルウ�
 % プレースホルダ
 \section{研究背景}
 
-%TODO これじゃあまずそう…ネットの記事を持ってきただけ
+%TODO これじゃあまずそう…ネットの記事を持ってきただけ ok
 
-2022年01月14日にREPORTOCEANが発行した新しいレポートによると、自律移動型ロボットの世界市場は予測期間2021-2027年にかけて19.6％以上の健全な成長率で成長すると予測されている\cite{report1}。操縦者を必要とせず、自律的な移動が可能な自律移動型ロボットは、作業負担の大きい業務の代替や、労働力不足を解消する手段の一つとして関心が高まっている。小売・卸売倉庫ではインターネットショッピングによる受発注作業の継続的な増加と人手不足が深刻化している。企業は、こうした課題解決のために、商品棚やパレットを運ぶ自律移動型ロボットの導入を加速させており、さらに商品管理から出荷前の棚出し梱包までを自動化することで、作業員の作業量削減と能力に依存しないオペレーションの構築を目指している。このような自動化の実現に向けて、自律移動型ロボットが積極的に活用されていくとされる\cite{report2}。
+2022年01月14日にREPORTOCEANが発行した新しいレポートによると、自律移動型ロボットの世界市場は予測期間2021-2027年にかけて19.6％以上の健全な成長率で成長すると予測されている~\cite{report1}。操縦者を必要とせず、自律的な移動が可能な自律移動型ロボットは、作業負担の大きい業務の代替や、労働力不足を解消する手段の一つとして関心が高まっている。小売・卸売倉庫ではインターネットショッピングによる受発注作業の継続的な増加と人手不足が深刻化している。企業は、こうした課題解決のために、商品棚やパレットを運ぶ自律移動型ロボットの導入を加速させており、さらに商品管理から出荷前の棚出し梱包までを自動化することで、作業員の作業量削減と能力に依存しないオペレーションの構築を目指している。このような自動化の実現に向けて、自律移動型ロボットが積極的に活用されていくとされる~\cite{report2}。
 
-ロボットを使って作業を行う場合、ロボット自身がどこにいるのか、ロボットにはどこにどんなセンサーがついており、また周りの環境のどこにどんなものがあるかをシステムが把握することが重要である\cite{tf}。例えば、図\ref{fig:room} のように部屋の中にロボットと、ロボットから観測できる二つの物体があるケースを考える。図中にてロボットは円形、物体は星形で表現され、ロボットが向いている方向は円の中心から円の弧へつながる直線の方向で表される。直角に交わる二つの矢印は座標系を表し、交点が座標系の原点、二つの矢印が反時計回りにそれぞれX・Y軸を表す。座標系とは空間中の物体の座標を定める方法を与えるものであり、座標系内の物体は原点からのX・Y軸方向の距離の組で座標が与えられる。空間全体の座標系をグローバル座標系と呼び、その中にある個別の物体それぞれにローカル座標系を設定することによって、全体空間の中でのそれぞれのオブジェクトの変化を扱いやすくする。ここでは地図、ロボット、オブジェクトそれぞれに座標系が与えられ、グローバル座標系として地図座標系、ローカル座標系としてロボット座標系・オブジェクト座標系として扱う。地図座標系の原点は地図の左下端に設定され、ロボット座標系・オブジェクト座標系はそれぞれロボット・オブジェクトの中心点と向きから決められる。
+ロボットを使って作業を行う場合、ロボット自身がどこにいるのか、ロボットにはどこにどんなセンサーがついており、また周りの環境のどこにどんなものがあるかをシステムが把握することが重要である~\cite{tf}。例えば、図\ref{fig:room} のように部屋の中にロボットと、ロボットから観測できる二つの物体があるケースを考える。図中にてロボットは円形、物体は星形で表現され、ロボットが向いている方向は円の中心から円の弧へつながる直線の方向で表される。直角に交わる二つの矢印は座標系を表し、交点が座標系の原点、二つの矢印が反時計回りにそれぞれX・Y軸を表す。座標系とは空間中の物体の座標を定める方法を与えるものであり、座標系内の物体は原点からのX・Y軸方向の距離の組で座標が与えられる。空間全体の座標系をグローバル座標系と呼び、その中にある個別の物体それぞれにローカル座標系を設定することによって、全体空間の中でのそれぞれのオブジェクトの変化を扱いやすくする。ここでは地図、ロボット、オブジェクトそれぞれに座標系が与えられ、グローバル座標系として地図座標系、ローカル座標系としてロボット座標系・オブジェクト座標系として扱う。地図座標系の原点は地図の左下端に設定され、ロボット座標系・オブジェクト座標系はそれぞれロボット・オブジェクトの中心点と向きから決められる。
 
-システムはロボットに搭載されたセンサーからのデータを元に各座標系間の位置関係を随時更新し、この位置関係は三次元ベクトルで表現される平行移動成分と、四元数で表現される回転成分で表現できる。例えば、自己位置推定プログラムはLiDARから点群データが送られてくるたびにそれを地図データと比較して自己位置を計算し、ロボットが地図座標系にてどの座標に位置するか、ロボットがどの方向を向いているかといった、地図座標系からロボット座標系への位置関係を更新する\cite{tf}。物体認識プログラムはカメラからの画像データが送られてくるたびに画像中の物体の位置を計算し、ロボット座標系から物体座標系への位置関係を更新する。これを表\ref{table:sensor-prog}にまとめた。
+システムはロボットに搭載されたセンサーからのデータを元に各座標系間の位置関係を随時更新し、この位置関係は三次元ベクトルで表現される平行移動成分と、四元数で表現される回転成分で表現できる。例えば、自己位置推定プログラムはLiDARから点群データが送られてくるたびにそれを地図データと比較して自己位置を計算し、ロボットが地図座標系にてどの座標に位置するか、ロボットがどの方向を向いているかといった、地図座標系からロボット座標系への位置関係を更新する~\cite{tf}。物体認識プログラムはカメラからの画像データが送られてくるたびに画像中の物体の位置を計算し、ロボット座標系から物体座標系への位置関係を更新する。これを表\ref{table:sensor-prog}にまとめた。
 
 \begin{table}[h]
 	\centering
@@ -149,12 +149,12 @@ Robot Operating System(ROS) はロボットソフトウェア用のミドルウ�
 図\ref{fig:sensor-sync}のように各変換データは異なるタイミングで来るため、最新の変換データを取得するプログラムは次のように複雑なものとなる。Aの時刻で地図座標系から物体座標系への変換データを計算しようとするとロボット座標系から物体座標系への最新の変換データを取得できるが、地図座標系からロボット座標系への変換データは少し古くなる。このため、最新の変換データ$\theta$を取得する、もしくは過去のデータを元にデータの補外をする必要がある。Bの時刻で地図座標系から物体座標系への変換データを計算しようとすると地図座標系からロボット座標系への最新の変換データを取得できるが、ロボット座標系から物体座標系への変換データはその時間には提供されていない。このため、$\alpha$と$\beta$のデータから線形補間を行う、もしくは最新の変換データ$\beta$を取得する必要がある。
 また、地図座標系からロボット座標系への位置関係、ロボット座標系から物体座標系への位置関係はそれぞれ表\ref{table:sensor-prog}のように別のプログラムで計算されているため、座標系同士の位置関係に関する情報は分散した状態となっている。
 
-このように、ROSの開発初期には複数の座標変換の管理が開発者共通の悩みの種であると認識されていた。このタスクは複雑なために、開発者がデータに不適切な変換を適用した場合にバグが発生しやすい場所となっていた。また、この問題は異なる座標系同士の変換に関する情報が分散していることが多いことが課題となっていた\cite{tf}。
+このように、ROSの開発初期には複数の座標変換の管理が開発者共通の悩みの種であると認識されていた。このタスクは複雑なために、開発者がデータに不適切な変換を適用した場合にバグが発生しやすい場所となっていた。また、この問題は異なる座標系同士の変換に関する情報が分散していることが多いことが課題となっていた~\cite{tf}。
 
 \section{TFライブラリ}
 \label{section:intro-tf}
 
-この問題を解決するためにTFライブラリが提案された。TFライブラリはROS上で動作し、各座標系間の変換を有向木構造として一元管理し、効率的な座標系間の変換情報の登録、座標系間の変換の計算を可能にした\cite{tf}。図\ref{fig:room}を表す木構造は図\ref{fig:room-tree}で表現できる。ノードが各座標系を表し、エッジは子ノードから親ノードへの変換データが存在することを表す。
+この問題を解決するためにTFライブラリが提案された。TFライブラリはROS上で動作し、各座標系間の変換を有向木構造として一元管理し、効率的な座標系間の変換情報の登録、座標系間の変換の計算を可能にした~\cite{tf}。図\ref{fig:room}を表す木構造は図\ref{fig:room-tree}で表現できる。ノードが各座標系を表し、エッジは子ノードから親ノードへの変換データが存在することを表す。
 
 \begin{figure}[h] 
 \centering
@@ -200,7 +200,8 @@ TFの木構造には複数のスレッドが同時にアクセスするため並
 
 %くわしい話をここでもすべきだろうか？
 
-%TODO 反証:問題1に適用したのは2PLではなく細粒度ロック
+%TODO 反証:問題1に適用したのは2PLではなく細粒度ロック ok
+%TODO introにも実装した旨を書く
 \section{貢献}
 問題1については、並行性制御法における細粒度ロッキング法を適用することによって解決した。細粒度ロッキング法は、並行性制御においてロックするデータの単位をなるべく小さくし、並行性を向上させる手法である。これにより、既存手法ではジャイアントロックによってTFへのアクセスは完全に逐次化されていたが、提案手法では細粒度ロックによってフレーム単位でのロックとなり、複数のフレームに並行にアクセスが可能になった。細粒度ロックを実装した場合のスループットは最大で11,574,200tps、レイテンシは高々0.7msとなった。また既存手法と比べ細粒度ロックを実装した場合はスループットは最大243倍、レイテンシは最大172倍高速化した。
 %TODO lookupLatestTransform -> lookupLatestTransformXact
@@ -211,19 +212,22 @@ TFの木構造には複数のスレッドが同時にアクセスするため並
 
 \chapter{関連研究}
 
-データベース分野におけるロボットの研究の例としてはGAIA platform\cite{gaia}が挙げられる。GAIA platformはリレーショナルデータベースと、そのデータベースに変更が加えられた時の処理をC++で宣言的に記述できる仕組みを組み合わせることにより、イベントドリブンなフレームワークでロボットや自動運転システムを構築するものである。
-% PostgreSQLのtriggerとはちょっと違う
+%TODO もっと内容膨らませるべき？
+\section{データベース分野におけるロボット研究}
+%
+筆者の知る限り、データベース分野ではロボットを対象にした研究論文はトップ会議、トップジャーナルでは発表されたことがない。
+%
+他方、産業界における珍しい例としてはGAIA platform~\cite{gaia}が挙げられる。GAIA platformはリレーショナルデータベースと、そのデータベースに変更が加えられた時の処理をC++で宣言的に記述できる仕組みを組み合わせることにより、イベントドリブンなフレームワークでロボットや自動運転システムを構築するものである。
+このデータベースアクセスはトランザクションを用いて実行される。GAIAチームにはsnapshot isolation提案者も含まれており、そのトランザクションアーキテクチャには一定の頑健性があることが期待される。
 
-%TODO SSMはどこから引用すればいい？？
+\section{ロボット分野におけるデータベース研究}
+TFライブラリのようにデータを時系列的に管理するライブラリとしてSSM~\cite{ssm}が挙げられる。SSMでは各種センサデータを共有メモリ上のリングバッファで管理することにより、時刻の同期を取れたデータを高速に取得することができる。
 % 移動ロボット用センサ情報処理ミドルウェアの開発 か？
-TFライブラリのようにデータを時系列的に管理するライブラリとしてSSMが挙げられる。SSMでは各種センサデータを共有メモリ上のリングバッファで管理することにより、時刻の同期を取れたデータを高速に取得することができる。
-
-% 移動ロボット用センサ情報処理ミドルウェアの開発 か？
-
-ROSはロボットソフトウェア用のミドルウェアソフトプラットフォームであり、近年多くの研究用ロボットで用いられている。産業用途にも利用可能にするためにROSの次世代バージョンであるROS2\cite{ros2}の開発が進んでいるが、並行性制御アルゴリズムはROSから変わっておらず、本研究のようなアプローチはない。
-
-データベース分野における高速並行性研究におけるトランザクション処理システムとして2PL、Silo、Cicadaが挙げられる。従来のトランザクション処理システムはハードウェアのコア数が少なく、メモリが小さい中でいかに効率的に処理を行うかに重きが置かれてきたため、2PLなどの悲観的ロッキング法が主に使われていた。
-しかしながら、近年のハードウェアはメニーコア化と大容量メモリが前提のシステムとなっており、従来手法では必ずしも性能が最大限出るとは言えない。そこでSilo\cite{silo}やCicada\cite{Cicada}などの楽観的並行性制御法が提案された。これらは近年のハードウェアを前提に設計されているため、それまでのシステムと比べ非常に高い性能を実現する。
+ROSはロボットソフトウェア用のミドルウェアソフトプラットフォームであり、近年多くの研究用ロボットで用いられている。産業用途にも利用可能にするためにROSの次世代バージョンであるROS2~\cite{ros2}の開発が進んでいるが、並行性制御アルゴリズムはROSから変わっておらず、本研究のようなアプローチはない。
+\section{トランザクション研究}
+データベース分野における高速並行性研究におけるトランザクション処理システムとして2PL~\cite{2PL}、Silo~\cite{silo}、MOCC~\cite{MOCC}、Cicada~\cite{Cicada}が挙げられる。古典的なトランザクション処理システムはハードウェアのコア数が少なく、メモリが小さい中でいかに効率的に処理を行うかに重きが置かれてきたため、2PLなどの悲観的ロッキング法が主に使われていた。
+しかしながら、近年のハードウェアはメニーコア化と大容量メモリが前提のシステムとなっており、従来手法では必ずしも性能が最大限出るとは言えない。そこでSilo~\cite{silo}やCicada~\cite{Cicada}などの楽観的並行性制御法が提案された。これらは近年のハードウェアを前提に設計されているため、それまでのシステムと比べ劇的に高い性能を実現する。
+具体的な理由はcontetion pointの消失である。Multi-version concurrency control (MVCC)の場合、single shared counter を用いるため、メニーコア環境では性能が劇的に劣化する。そのため、snapshot isolationやmulti-version timestamp orderingのようなscheduling spaceの広大な手法であっても、高い性能を出すことは難しい。メニーコア環境ではMVCCよりも2PLの方が高い性能を有することが知られている~\cite{ccbench}.
 
 \chapter{既存のTFの木構造とその問題点}
 \section{TFライブラリの使用例}
@@ -235,6 +239,8 @@ ROSはロボットソフトウェア用のミドルウェアソフトプラッ�
 \label{fig:aqua}
 \end{figure}
 
+%TODO https://sice-si.org/conf/si2021/files/SI2021_program_detail_16Dec2021.pdf
+
 ロボット「Aqua」は筑波大学知能ロボット研究室で開発された自律移動ロボットであり、前輪2輪が駆動輪、後輪のキャスタによる従動輪で構成される差動2輪駆動方式のロボットである。制御にはT-frog ProjectのモータドライバTF-2MD3-R6を使用し、本ロボットの移動制御を行う。計算機部分についてはCPUはIntel Core i7-9700K Processor、GPUはGeForce GTX 1050 Ti、RAMは32GBで構成されている。機体の上部、旋回中心に自己位置推定に使用するVelodyne社製のVLP-16が1台、前後方の障害物の検出に使用する北陽電機社製のUTM--30LXを機体下部前方と後方に2台搭載している。また、BUFFALO社製のWebカメラBSK200MBKが3台、PointGray社製のGrasshopper3カメラGS3-U3-123S6M-Cを用いて構築したステレオカメラと北陽電機社製YVT--X002をそれぞれ1台搭載している。Aquaの外観を図\ref{fig:aqua}に示す。
 
 \begin{figure}[h] 
@@ -244,7 +250,7 @@ ROSはロボットソフトウェア用のミドルウェアソフトプラッ�
 \label{fig:aqua-tf}
 \end{figure}
 
-Aquaのシステムではロボットの自己位置とセンサーの位置を管理するためにTFライブラリを用いている。AquaにおけるTFの木構造を図\ref{fig:aqua-tf}に示す。エッジの横に書かれているのはフレーム間の座標変換を更新するプログラム名である。Aquaでは、VLP-16からの三次元点群データを元に、Autoware\cite{autoware}のndt\_matchingモジュール\cite{ndt_matching}を用いて自己位置推定を行う。ndt\_matchingによって与えられる自己位置推定は三次元空間での自己位置のため、Aquaではその三次元空間での自己位置を二次元空間での自己位置に変換するpose\_filterパッケージを自作して、ロボットの自己位置をTFライブラリに登録する。
+Aquaのシステムではロボットの自己位置とセンサーの位置を管理するためにTFライブラリを用いている。AquaにおけるTFの木構造を図\ref{fig:aqua-tf}に示す。エッジの横に書かれているのはフレーム間の座標変換を更新するプログラム名である。Aquaでは、VLP-16からの三次元点群データを元に、Autoware~\cite{autoware}のndt\_matchingモジュール~\cite{ndt_matching}を用いて自己位置推定を行う。ndt\_matchingによって与えられる自己位置推定は三次元空間での自己位置のため、Aquaではその三次元空間での自己位置を二次元空間での自己位置に変換するpose\_filterパッケージを自作して、ロボットの自己位置をTFライブラリに登録する。
 
 このように、TFライブラリは自律移動ロボットでは広く利用されている。
 
@@ -270,7 +276,7 @@ TFライブラリでは図\ref{fig:sample-tree}のように各座標系間の位
 \section{TFの木構造のインターフェイス}
 \label{section:tf-interface}
 
-TFライブラリの木構造のインターフェイスは\cite{buffer-core}に公開されており、このうち主に以下の表\ref{table:tf-interface}のインターフェイスが使われている。
+TFライブラリの木構造のインターフェイスは~\cite{buffer-core}に公開されており、このうち主に以下の表\ref{table:tf-interface}のインターフェイスが使われている。
 
 \begin{table}[h!]
 \centering
@@ -302,7 +308,9 @@ TFライブラリの木構造のインターフェイスは\cite{buffer-core}に
 
 
 \section{lookupTransform}
-二つのフレーム間の座標変換情報を取得するには\textit{lookupTransform}を使う。lookupTransformの実装は\cite{lookupTransform}に公開されており、登録されたフレームが図\ref{fig:sample-tree}、登録された座標変換情報のタイムラインが図\ref{fig:general-timeline}の状況において、\textit{lookupTransform}を用いてフレームcからフレームdへの座標変換を計算する動作例を説明する\cite{lookupTransform}。
+\label{section:lookupTrnasform}
+
+二つのフレーム間の座標変換情報を取得するには\textit{lookupTransform}を使う。lookupTransformの実装は~\cite{lookupTransform}に公開されており、登録されたフレームが図\ref{fig:sample-tree}、登録された座標変換情報のタイムラインが図\ref{fig:general-timeline}の状況において、\textit{lookupTransform}を用いてフレームcからフレームdへの座標変換を計算する動作例を説明する~\cite{lookupTransform}。
 
 \begin{enumerate}
 	\item フレームcから木構造のルートフレームへのエッジを取得する。ここではルートフレームはaであり、フレームcからフレームaへのエッジはc$\rightarrow$bとb$\rightarrow$aである。
@@ -325,7 +333,8 @@ TFライブラリの木構造のインターフェイスは\cite{buffer-core}に
 \textit{getLatestCommonTime}ではまず、sourceフレームからルートフレームへのエッジをたどり、各エッジで最新の座標変換を提供できる時刻の最小値を取る(\ref{code:getLatest-s-r}〜\ref{code:getLatest-s-r2}行目)。これにより、sourceフレームからルートフレームへの最新の座標変換を取得できる時刻を取得できる。続いて、targetフレームからルートフレームへのエッジをたどり、同じようにしてtargetフレームからルートフレームへの最新の座標変換を取得できる時刻を取得する(\ref{code:getLatest-t-r}〜\ref{code:getLatest-t-r2}行目)。最後に、sourceフレームからルートフレームへの最新の座標変換を取得できる時刻、targetフレームからルートフレームへの最新の座標変換を取得できる時刻から、sourceフレームからtargetフレームへの最新の座標変換を取得できる時刻を取得する(\ref{code:getLatest-min} 〜\ref{code:getLatest-min2}行目)。
 
 sourceフレームからtargetフレームへの最新の座標変換を計算できる時刻を取得できたため、取得できた時刻はtime変数に代入され、処理は\textit{lookupTransform}に戻る。まず、sourceフレームからルートフレームへのエッジをたどり、sourceフレームからルートフレームへの座標変換を計算する(\label{code:lookupTrans-s-r}〜\label{code:lookupTrans-s-r2}行目)。続いて、targetフレームからルートフレームへのエッジをたどり、targetフレームからルートフレームへの座標変換を計算する(\label{code:lookupTrans-t-r}〜\label{code:lookupTrans-t-r2}行目)。最後に、sourceフレームからルートフレームへの座標変換にルートフレームからtargetフレームへの座標変換を掛け合わせることにより、sourceフレームからtargetフレームへの座標変換を取得できる。ルートフレームからtargetフレームへの座標変換は、targetフレームからルートフレームへの座標変換の逆変換を取ることにより取得できる。
-%TODO: ここは、例外パターンへの対処のためにこうしているけれど…もっと説明すべき？
+%TODO: ここは、例外パターンへの対処のためにこうしているけれど…もっと説明すべき？ 4つのパターン
+
 \textit{lookupTransform}で最新の座標変換情報を得る場合には内部で\textit{getLatestCommonTime}を呼び出しているため、同じフレームに2度アクセスすることになる。
 
 \begin{algorithm}
@@ -732,7 +741,7 @@ b$\rightarrow$aとa$\rightarrow$cのデータを用いてフレームbからフ�
 
 そこで、複数の座標変換を2PLによってatomicに木構造に登録する\textit{setTransformsXact}を提供し、また
 \textit{lookupLatestTransform}を2PLを使うように変更した\textit{lookupLatestTransformXact}を提供する。
-2PL\cite{2PL}とは、複数のデータに対するロック・アンロックを二つのフェーズに分けることによって並行処理の結果が直列処理と同じ結果になることを保証する、データベースにおける並行性制御法である。このような性質は、並行性制御法においてはSerializabilityと呼ばれる。
+2PL~\cite{2PL}とは、複数のデータに対するロック・アンロックを二つのフェーズに分けることによって並行処理の結果が直列処理と同じ結果になることを保証する、データベースにおける並行性制御法である。このような性質は、並行性制御法においてはSerializabilityと呼ばれる。
 
 %TODO Serializabilityはどこから引用?
 
@@ -790,7 +799,7 @@ b$\rightarrow$aとa$\rightarrow$cのデータを用いてフレームbからフ�
 
 % 要素のreorderによって防げるけどちょいとむずそう
 
-そこで、我々はdeadlockを防ぐ方法としてNoWait\cite{nowait}を採用した。これは、書き込みロックを2つ以上かけようとしたときにすでにデータがロックされていたら、保持しているロックを全て解放し最初から処理をやり直す手法である。これにより、書き込みロックを2つ以上しているスレッドがロックの解放を待機することがなくなり、deadlockは発生しない。また、我々の手法ではcontention regulationとして保持しているロックを全て解放して1ミリ秒経過してから最初から処理をやり直す。
+そこで、我々はdeadlockを防ぐ方法としてNoWait~\cite{nowait}を採用した。これは、書き込みロックを2つ以上かけようとしたときにすでにデータがロックされていたら、保持しているロックを全て解放し最初から処理をやり直す手法である。これにより、書き込みロックを2つ以上しているスレッドがロックの解放を待機することがなくなり、deadlockは発生しない。また、我々の手法ではcontention regulationとして保持しているロックを全て解放して1ミリ秒経過してから最初から処理をやり直す。
 
 \begin{figure}[h] 
 \centering
@@ -883,7 +892,7 @@ TFライブラリに細粒度を実装した\textit{lookupTransform}・\textit{s
 以下、既存手法はold、細粒度ロックを実装した\textit{lookupTransform}・\textit{setTransforms}をsnapshot、2PLを用いて複数のデータをatomicに取得・更新できる\textit{lookupLatestTransformXact}・\textit{setTransformsXact}をlatestと呼称する。
 
 \section{実装}
-§\ref{section:intro-tf}で述べたように、TFライブラリはROS上で動作する。ROSはUbuntu上で動作し、Ubuntuのバージョンごとに別のディストリビューションが公開されている。これに合わせ、TFライブラリもROSのディストリビューション毎に提供されている。TFライブラリの実装はGithubのリポジトリ\cite{ros-geometry2}で公開され、ブランチ毎に各ROSのディストリビューション向けの実装がされている。この対応関係を表\ref{table:ubuntu-ros-branch}に示す。
+§\ref{section:intro-tf}で述べたように、TFライブラリはROS上で動作する。ROSはUbuntu上で動作し、Ubuntuのバージョンごとに別のディストリビューションが公開されている。これに合わせ、TFライブラリもROSのディストリビューション毎に提供されている。TFライブラリの実装はGithubのリポジトリ~\cite{ros-geometry2}で公開され、ブランチ毎に各ROSのディストリビューション向けの実装がされている。この対応関係を表\ref{table:ubuntu-ros-branch}に示す。
 
 \begin{table}[ht]
 \centering
@@ -900,9 +909,9 @@ Ubuntuのバージョン & 対応するROSのディストリビューション &
 \label{table:ubuntu-ros-branch}
 \end{table}%
 
-このリポジトリのデフォルトブランチはmelodic-develであるが、TFの木構造の並行性制御アルゴリズムはどのブランチでも変わらない。また、ROS2向けのTFライブラリの実装は\cite{ros2-geometry2}で公開されているが、こちらも木構造の並行性制御アルゴリズムはROS向けのものと変わらない。
+このリポジトリのデフォルトブランチはmelodic-develであるが、TFの木構造の並行性制御アルゴリズムはどのブランチでも変わらない。また、ROS2向けのTFライブラリの実装は~\cite{ros2-geometry2}で公開されているが、こちらも木構造の並行性制御アルゴリズムはROS向けのものと変わらない。
 
-このため、本研究ではUbuntu18.04を搭載したマシンにROS Melodic Moreniaをインストールし、TFライブラリのGithubのリポジトリ\cite{ros-geometry2}のmelodic-develの実装を変更して実験を行った。C++言語で実装をし、1236行分の変更を行った。この実装は\cite{ogiwara-geometry2}で公開されている。
+このため、本研究ではUbuntu18.04を搭載したマシンにROS Melodic Moreniaをインストールし、TFライブラリのGithubのリポジトリ~\cite{ros-geometry2}のmelodic-develの実装を変更して実験を行った。C++言語で実装をし、1236行分の変更を行った。この実装は~\cite{ogiwara-geometry2}で公開されている。
 %src +534 -254
 %include +397 -51
 %total +5073 -327
@@ -936,7 +945,8 @@ Ubuntuのバージョン & 対応するROSのディストリビューション &
 %\end{figure}
 
 
-各実験はそれぞれYCSB-A/B/C\cite{ycsb}ワークロードについて行った。YCSB-A/B/Cはそれぞれ、読み込み操作と書き込み操作の割合が50:50、95:5、100:0のワークロードを指す。ここでは読み込み専用スレッドの数と書き込み専用スレッドの数の比でそれぞれのワークロードを再現するため、read\_ratioをそれぞれ0.5、0.95、1に設定した。
+各実験はそれぞれYCSB-A/B/C~\cite{ycsb}ワークロードについて行った。YCSB-A/B/Cはそれぞれ、読み込み操作と書き込み操作の割合が50:50、95:5、100:0のワークロードを指す。ここでは読み込み専用スレッドの数と書き込み専用スレッドの数の比でそれぞれのワークロードを再現するため、read\_ratioをそれぞれ0.5、0.95、1に設定した。
+%Skewについて0
 
 特に記載がない場合はjoint=1000000、read\_len=16、write\_len=16、frequency=0で実験が行われている。
 %TODO ここは舛村さんのワークロードを参考にしたが、実際のロボットではreadが全てを読む、writeもたくさん、というケースはあり得そうじゃないか？つまり、一般的なDBのパタンだけじゃだめ。
@@ -968,19 +978,28 @@ Ubuntuのバージョン & 対応するROSのディストリビューション &
 \label{fig:latency-c2}
 \end{figure}
 
-スループットについては図\ref{fig:throughput-c}のように、oldに比べてsnapshotは最大243倍、latestは最大257倍のスループットとなった。
-224倍以上の差になったのは、oldでは
+スループットについては図\ref{fig:throughput-c}のように、oldに比べてsnapshotは最大243倍、latestは最大257倍のスループットとなった。oldと比べ、論理コア数である224倍以上の性能差が出たのはsnapshotとlatestでは読み込みロックの利用により待機が発生しないのに対し、oldではmutexでアクセスを逐次化しており、mutexのロック解放を待機する際にidle waitが発生しているからだと考えられる。
+
+%TODO 224倍以上になる理由がわからない！複合的要因？
+
+%224倍以上の差になったのは、同じフレームに対する複数スレッドからの
+%キャッシュの取り合いが発生しなくなったから
+%既存手法ではshared\_ptrを使っていたが、
+%なぜ？joint=10000の時には実際に500倍の差が出ていた
+%mutexよりRWLockの方が早いから？実際、こういう計測を行ってみた
+%idle waitをする。これに対し、
+%mutex vs busy
+%idleが発生しないから、という説明でいい？
+
 
 レイテンシについては図\ref{fig:latency-c}、図\ref{fig:latency-c2}のように、どの手法においてもレイテンシとスレッド数が線形比例しているが、oldに比べsnapshot、latestは小さいレイテンシとなった。
 
-スループット、レイテンシのどちらにおいても提案手法が既存手法より優れているのは、既存手法ではジャイアントロックにより操作を並行に行えないが、提案手法では細粒度ロックと2PLによって操作を並行に行えるからだと考えられる。また、latestの方がsnapshotより優れた性能をしてしているのは、§\ref{section:intro-high-gran-lock}で説明したようにsnapshotのlookupTransformでは、木構造を2度読み込む必要があるからだと考えられる。
+スループット、レイテンシのどちらにおいても提案手法が既存手法より優れているのは、既存手法ではジャイアントロックにより操作を並行に行えないが、提案手法では細粒度ロックと2PLによって操作を並行に行えるからだと考えられる。また、latestの方がsnapshotより優れた性能をしてしているのは、§\ref{section:intro-high-gran-lock}で説明したようにsnapshotのlookupTransformでは、§\ref{section:lookupTrnasform}で説明したように木構造を2度読み込む必要があるからだと考えられる。
 
-書き込みが発生しないため、YCSB-Cにおける書き込みスループット、書き込みレイテンシ、データの鮮度、データの同期性、abort率については説明しない。
+書き込みが発生しないため、YCSB-Cにおける書き込みスループット、書き込みレイテンシ、データの鮮度、データの同期性、abort率については記述しない。
 
 \section{YCSB-A}
 \label{section:ycsb-a}
-
-%TODO 急にスループット下がるのは、キャッシュの取り合い？実際、getLatestCommonのあとで抜けるとこれは改善する
 
 \begin{figure}[h] 
 \centering
@@ -1081,6 +1100,8 @@ YCSB-Aではスループットについては図\ref{fig:a-throughput}のよう�
 スレッド数とデータの同期性の関係について図\ref{fig:a-stddiv}に示した。ここからわかるように、latestではスレッド数に関係なくデータの同期性が安定していることがわかる。
 
 %TODO opposite directionの話は面白いからやりたいかも。skew周りで？
+% joint=100, 60Hz, 
+thread数を変えて
 
 \section{YCSB-B}
 
@@ -1189,7 +1210,7 @@ YCSB-Aではスループットについては図\ref{fig:a-throughput}のよう�
 \label{fig:latency-frequency}
 \end{figure}
 
-
+%TODO frequencyパラメータのところで説明は十分？
 
 図\ref{fig:latency-frequency}は、スレッド数200の状態でfrequencyを100から100000まで変化させた時の読み込みレイテンシを表している。frequencyを上げるとレイテンシも増えることがわかる。これは、制御周期を増やすことにより並行に実行される操作が増え、スレッド間の競合が増加するからだと考えられる。
 
@@ -1214,13 +1235,14 @@ YCSB-Aではスループットについては図\ref{fig:a-throughput}のよう�
 %でもその情報は一つのマップには集約されていない。別々のプロセスが別々のデータ型でpublishし、内部の情報はopenではない。
 %例えば障害物はmove\_baseによるcostmap、信号はカメラによるYOLO、人や車の検知はLiDARのPointNetのようにデータが分散しており、今は一つにまとまってない！
 
-\chapter{結論と今後の課題}
-
+\chapter{結論}
+\section{結論}
 既存のTFライブラリはジャイアンロックにより、アクセスが完全に逐次化されアクセスするスレッドが増えるに従ってパフォーマンスが低下する問題があった。マルチコア化が進む現在のハードウェアの性能を活かせるよう、本研究ではTFライブラリにデータベースの並行性制御法における細粒度ロッキング法を用いてこの問題を解決した。その結果、既存手法と比べて最大243倍のスループット、最大172倍高速なレイテンシとなり、細粒度ロッキング法を導入した提案手法はマルチコアの性能を活かせ、優れた応答性能をもつ事が示せた。
 
 
 また、既存のTFライブラリはその仕様によって座標変換の計算時に最新のデータを参照せず、さらにジャイアントロックによりアクセスが逐次化されていることによってデータの鮮度が落ちるという問題があった。本研究ではデータベースの並行性制御法における2PLを適用することにより、複数の座標変換の最新のデータをatomicに取得できるインターフェイス(\textit{lookupLatestTransformXact})、及び複数の座標変換の最新のデータをatomicに更新するインターフェイス(\textit{setTransformsXact})を提供することによって解決した。これにより、複数のデータの最新の座標変換情報の読み込み・書き込みを効率的にatomicに行えるようになった。その結果、既存手法と比べて最大132倍のデータ鮮度となり、2PLを導入した提案手法はデータの鮮度を向上させる事ができる事を示した。また、既存手法と比べ最大257倍のスループット、最大282倍高速化したレイテンシとなり、このインターフェイスはスループットとレイテンシにおいても既存手法より優れている事を示した。
 
+\section{今後の課題}
 本研究のようにロボットにおいてデータベースの並行性制御法を導入する研究アプローチは他になく、ロボットの高性能化のためには並行性制御法の導入が必要である事を示した。
 
 本研究ではTFライブラリの木構造は変化しないと仮定したが、実際には時間とともにフレームが追加・削除され、またフレーム間の親子関係が変わることがある。データベースの並行性制御法においてはこのような要素の追加・削除はIDMモデルで扱われ、高度な並行性制御にはphantom anomalyを避ける必要がある。要素の追加・削除についても扱うことが今後の課題である。
@@ -1271,23 +1293,29 @@ YCSB-Aではスループットについては図\ref{fig:a-throughput}のよう�
 
 \bibitem{2PL} Philip A. Bernstein and Nathan Goodman, "Concurrency Control in Distributed Database Systems" in ACM Computing Surveys, 1981, pp. 185-221
 
-\bibitem{buffer-core} "BufferCore.h", \url{https://github.com/ros/geometry2/blob/melodic-devel/tf2/include/tf2/buffer_core.h}
-
-\bibitem{lookupTransform} "BufferCore.cpp lookupTransform", \url{https://github.com/ros/geometry2/blob/melodic-devel/tf2/include/tf2/buffer_core.h}
-
-\bibitem{gaia} "GAIA platform", \url{https://www.gaiaplatform.io}
-
-\bibitem{ros2} "ROS2", \url{https://docs.ros.org/en/rolling/}
-
-\bibitem{autoware} "Autoware", \url{https://tier4.jp/en/autoware/}
-
-\bibitem{ndt_matching} "ndt\_matching", \url{https://github.com/Autoware-AI/core_perception/tree/master/lidar_localizer/nodes/ndt_matching}
+\bibitem{MOCC} Tianzheng Wang and Hideaki Kimura. Mostly-optimistic concurrency control for high- lycontended dynamic workloads on a thousand cores. Proceedings of the VLDB En- dowment, Vol. 10, No. 2, p. p. 49âĂŞ60, 2016.
 
 \bibitem{silo} Stephen Tu, Wenting Zheng, Eddie Kohler †, Barbara Liskov,
 and Samuel Madden. Speedy transactions in multicore in-memory
 databases. In SOSP, pages 18–32. ACM, 2013
 
 \bibitem{Cicada} Hyeontaek Lim, Michael Kaminsky, and David G Andersen. Cicada: Dependably fast multi-core in-memory transactions. InProceedings of the 2017 ACM International Conference onManagement of Data, p. p. 21âĂŞ35, 2017.
+
+\bibitem{ccbench} Takayuki Tanabe, Takashi Hoshino, Hideyuki Kawashima, Osamu Tatebe: An Analysis of Concurrency Control Protocols for In-Memory Databases with CCBench. Proc. VLDB Endowment 13(13): 3531-3544 (2020).
+
+\bibitem{buffer-core} "BufferCore.h", \url{https://github.com/ros/geometry2/blob/melodic-devel/tf2/include/tf2/buffer_core.h}
+
+\bibitem{lookupTransform} "BufferCore.cpp lookupTransform", \url{https://github.com/ros/geometry2/blob/melodic-devel/tf2/include/tf2/buffer_core.h}
+
+\bibitem{gaia} "GAIA platform", \url{https://www.gaiaplatform.io}
+
+\bibitem{ssm} 竹内栄二朗(2008). 移動ロボットの基本機能のモジュール化と環境地図生成に関する研究, 筑波大学博士 (工学) 学位論文.
+
+\bibitem{ros2} "ROS2", \url{https://docs.ros.org/en/rolling/}
+
+\bibitem{autoware} "Autoware", \url{https://tier4.jp/en/autoware/}
+
+\bibitem{ndt_matching} "ndt\_matching", \url{https://github.com/Autoware-AI/core_perception/tree/master/lidar_localizer/nodes/ndt_matching}
 
 \bibitem{ycsb} Brian F Cooper, Adam Silberstein, Erwin Tam, Raghu Ramakrishnan, and Russell Sears. Benchmarking cloud serving systems with ycsb. InProceedings of the 1st ACM symposiumon Cloud computing, p. p. 143âĂŞ154, 2010.
 
@@ -1298,6 +1326,8 @@ databases. In SOSP, pages 18–32. ACM, 2013
 \bibitem{ros2-geometry2} "ros2/geometry2 github repository", \url{https://github.com/ros2/geometry2}
 
 \bibitem{ogiwara-geometry2} "Ogiwara-CostlierRain464/geometry2 github repository", \url{https://github.com/Ogiwara-CostlierRain464/geometry2}
+
+\bibitem{Teseo} Dean De Leo and Peter Boncz. Teseo and the Analysis of Structural Dynamic Graphs. Proc. VLDB Endowment 13(13): 3531-3544 (2020).
 
 \end{thebibliography}
 

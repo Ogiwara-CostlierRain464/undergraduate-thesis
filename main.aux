@@ -23,7 +23,7 @@
 \citation{report2}
 \citation{tf}
 \citation{tf}
-\HyPL@Entry{6<</S/D>>}
+\HyPL@Entry{7<</S/D>>}
 \@writefile{toc}{\contentsline {chapter}{\numberline {第1章}はじめに}{1}{chapter.1}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
@@ -48,12 +48,21 @@
 \@writefile{toc}{\contentsline {section}{\numberline {1.4}貢献}{5}{section.1.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {1.5}構成}{6}{section.1.5}\protected@file@percent }
 \citation{gaia}
+\citation{ssm}
 \citation{ros2}
+\citation{2PL}
+\citation{silo}
+\citation{MOCC}
+\citation{Cicada}
 \citation{silo}
 \citation{Cicada}
+\citation{ccbench}
 \@writefile{toc}{\contentsline {chapter}{\numberline {第2章}関連研究}{7}{chapter.2}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {2.1}データベース分野におけるロボット研究}{7}{section.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2.2}ロボット分野におけるデータベース研究}{7}{section.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2.3}トランザクション研究}{7}{section.2.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {chapter}{\numberline {第3章}既存のTFの木構造とその問題点}{8}{chapter.3}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
@@ -75,6 +84,7 @@
 \@writefile{toc}{\contentsline {section}{\numberline {3.3}TFの木構造のインターフェイス}{10}{section.3.3}\protected@file@percent }
 \newlabel{section:tf-interface}{{3.3}{10}{TFの木構造のインターフェイス}{section.3.3}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {3.4}lookupTransform}{10}{section.3.4}\protected@file@percent }
+\newlabel{section:lookupTrnasform}{{3.4}{10}{lookupTransform}{section.3.4}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {3.1}{\ignorespaces TFの木構造のインターフェイス}}{11}{table.3.1}\protected@file@percent }
 \newlabel{table:tf-interface}{{3.1}{11}{TFの木構造のインターフェイス}{table.3.1}{}}
 \newlabel{code:lookupTrans-s-r}{{3.4}{12}{lookupTransform}{Item.8}{}}
@@ -187,12 +197,12 @@
 \newlabel{section:ycsb-a}{{5.5}{33}{YCSB-A}{section.5.5}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5.3}{\ignorespaces YCSB-Cにおけるスレッド数とレイテンシの関係 snapshotとlatestのみ}}{34}{figure.5.3}\protected@file@percent }
 \newlabel{fig:latency-c2}{{5.3}{34}{YCSB-Cにおけるスレッド数とレイテンシの関係 snapshotとlatestのみ}{figure.5.3}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.6}YCSB-B}{34}{section.5.6}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {5.4}{\ignorespaces YCSB-Aにおけるスレッド数とスループットの関係}}{35}{figure.5.4}\protected@file@percent }
 \newlabel{fig:a-throughput}{{5.4}{35}{YCSB-Aにおけるスレッド数とスループットの関係}{figure.5.4}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.7}制御周期}{35}{section.5.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {5.6}YCSB-B}{35}{section.5.6}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {5.5}{\ignorespaces YCSB-Aにおけるスレッド数と読み込みスループットの関係}}{36}{figure.5.5}\protected@file@percent }
 \newlabel{fig:a-throughput-read}{{5.5}{36}{YCSB-Aにおけるスレッド数と読み込みスループットの関係}{figure.5.5}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.7}制御周期}{36}{section.5.7}\protected@file@percent }
 \@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces YCSB-Aにおけるスレッド数と書き込みスループットの関係}}{37}{figure.5.6}\protected@file@percent }
 \newlabel{fig:a-throughput-write}{{5.6}{37}{YCSB-Aにおけるスレッド数と書き込みスループットの関係}{figure.5.6}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5.7}{\ignorespaces YCSB-Aにおけるスレッド数とキャッシュミス率の関係}}{38}{figure.5.7}\protected@file@percent }
@@ -235,27 +245,33 @@
 \newlabel{fig:b-stddiv}{{5.25}{56}{YCSB-Bにおけるスレッド数とデータの同期性の関係}{figure.5.25}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {5.26}{\ignorespaces 制御周期とレイテンシ}}{57}{figure.5.26}\protected@file@percent }
 \newlabel{fig:latency-frequency}{{5.26}{57}{制御周期とレイテンシ}{figure.5.26}{}}
-\@writefile{toc}{\contentsline {chapter}{\numberline {第6章}結論と今後の課題}{58}{chapter.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {第6章}結論}{58}{chapter.6}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {6.1}結論}{58}{section.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.2}今後の課題}{58}{section.6.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {chapter}{\hbox to\@lnumwidth {\hfil }謝辞}{60}{chapter*.9}\protected@file@percent }
 \bibcite{report1}{1}
 \bibcite{report2}{2}
 \bibcite{tf}{3}
 \bibcite{ros}{4}
 \bibcite{2PL}{5}
-\bibcite{buffer-core}{6}
-\bibcite{lookupTransform}{7}
-\bibcite{gaia}{8}
-\bibcite{ros2}{9}
-\bibcite{autoware}{10}
-\bibcite{ndt_matching}{11}
-\bibcite{silo}{12}
-\bibcite{Cicada}{13}
-\bibcite{ycsb}{14}
-\bibcite{nowait}{15}
-\bibcite{ros-geometry2}{16}
-\bibcite{ros2-geometry2}{17}
+\bibcite{MOCC}{6}
+\bibcite{silo}{7}
+\bibcite{Cicada}{8}
+\bibcite{ccbench}{9}
+\bibcite{buffer-core}{10}
+\bibcite{lookupTransform}{11}
+\bibcite{gaia}{12}
+\bibcite{ssm}{13}
+\bibcite{ros2}{14}
+\bibcite{autoware}{15}
+\bibcite{ndt_matching}{16}
 \@writefile{toc}{\contentsline {chapter}{\hbox to\@lnumwidth {\hfil }参考文献}{61}{chapter*.9}\protected@file@percent }
-\bibcite{ogiwara-geometry2}{18}
-\gdef \@abspage@last{68}
+\bibcite{ycsb}{17}
+\bibcite{nowait}{18}
+\bibcite{ros-geometry2}{19}
+\bibcite{ros2-geometry2}{20}
+\bibcite{ogiwara-geometry2}{21}
+\bibcite{Teseo}{22}
+\gdef \@abspage@last{69}
