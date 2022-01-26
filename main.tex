@@ -9,7 +9,6 @@
 \usepackage{algpseudocode}
 \usepackage{algorithm}
 \usepackage{array}
-
 \setcounter{tocdepth}{3}
 \setcounter{page}{-1}
 
@@ -326,10 +325,65 @@ TFライブラリの木構造のインターフェイスは~\cite{buffer-core}�
 
 \textit{lookupTransform}の疑似コードをアルゴリズム\ref{algo:lookupTransform}で説明する。\textit{lookupTransform}にて最新の座標変換を計算するには\ref{code:getLatest}行目のように、まず\textit{getLatestCommonTime}インターフェイスを呼び出し、sourceフレームからtargetフレームへの最新の座標変換を計算できる時刻を取得する。
 
-\textit{getLatestCommonTime}ではまず、sourceフレームからルートフレームへのエッジをたどり、各エッジで最新の座標変換を提供できる時刻の最小値を取る(\ref{code:getLatest-s-r}〜\ref{code:getLatest-s-r2}行目)。これにより、sourceフレームからルートフレームへの最新の座標変換を取得できる時刻を取得できる。続いて、targetフレームからルートフレームへのエッジをたどり、同じようにしてtargetフレームからルートフレームへの最新の座標変換を取得できる時刻を取得する(\ref{code:getLatest-t-r}〜\ref{code:getLatest-t-r2}行目)。最後に、sourceフレームからルートフレームへの最新の座標変換を取得できる時刻、targetフレームからルートフレームへの最新の座標変換を取得できる時刻から、sourceフレームからtargetフレームへの最新の座標変換を取得できる時刻を取得する(\ref{code:getLatest-min} 〜\ref{code:getLatest-min2}行目)。
+\begin{figure}[h] 
+\centering
+\includegraphics[width=5cm]{same-root}	
+\caption{sourceとtargetの祖先がrootのみのパターン}
+\label{fig:same-root}
+\end{figure}
 
-sourceフレームからtargetフレームへの最新の座標変換を計算できる時刻を取得できたため、取得できた時刻はtime変数に代入され、処理は\textit{lookupTransform}に戻る。まず、sourceフレームからルートフレームへのエッジをたどり、sourceフレームからルートフレームへの座標変換を計算する(\label{code:lookupTrans-s-r}〜\label{code:lookupTrans-s-r2}行目)。続いて、targetフレームからルートフレームへのエッジをたどり、targetフレームからルートフレームへの座標変換を計算する(\label{code:lookupTrans-t-r}〜\label{code:lookupTrans-t-r2}行目)。最後に、sourceフレームからルートフレームへの座標変換にルートフレームからtargetフレームへの座標変換を掛け合わせることにより、sourceフレームからtargetフレームへの座標変換を取得できる。ルートフレームからtargetフレームへの座標変換は、targetフレームからルートフレームへの座標変換の逆変換を取ることにより取得できる。
-%TODO: ここは、例外パターンへの対処のためにこうしているけれど…もっと説明すべき？ 4つのパターン
+\begin{figure}[h] 
+\centering
+\includegraphics[width=5cm]{s-t}	
+\caption{sourceの祖先がtargetのパターン}
+\label{fig:s-t}
+\end{figure}
+
+\begin{figure}[h] 
+\centering
+\includegraphics[width=5cm]{t-s}	
+\caption{targetの祖先がsourceのパターン}
+\label{fig:t-s}
+\end{figure}
+
+
+\begin{figure}[h] 
+\centering
+\includegraphics[width=5cm]{same-parent}
+\caption{sourceとtargetの祖先がrootだけではないパターン}
+\label{fig:same-parent}
+\end{figure}
+
+sourceフレームとtargetフレームの位置関係には以下の四パターンがあり、それぞれ図\ref{fig:same-root}〜図\ref{fig:same-parent}で示す。図中のsはsourceフレームを、tはtargetフレームを表す。
+
+\begin{enumerate}
+	\item sourceとtargetの祖先がrootのみのパターン
+	\item sourceの祖先がtargetのパターン
+	\item targetの祖先がsourceのパターン
+	\item sourceとtargetの祖先がrootだけではないパターン
+\end{enumerate}
+
+このうち、2~4のパターンについてはsourceフレームからtargetフレームへの最新の座標変換を計算できる時刻を取得する際に、次に説明するようにsourceからrootへ、もしくはtargetからrootへ辿る処理を省略できる。
+
+パターン2ではsourceからrootへのパスを辿る際に途中でtargetを見つけ、rootまで辿ること無しにその時点で取得できたデータから最新の座標変換を計算できる時刻を取得できる。同じように、パターン3ではtargetからrootへのパスを辿る際に途中でsourceを見つけ、その時点で取得できたデータから最新の座標変換を計算できる時刻を取得できる。
+
+1と4との違いについて説明する。図\ref{fig:same-parent}はパターン4の状況を表し、pがsourceとtarget共通の祖先のフレーム、rがrootフレーム、$t_1$、$t_2$、$t_3$がそれぞれp$\rightarrow$r、s$\rightarrow$p、t$\rightarrow$pの座標変換を取得できる最新の時刻を表す。sourceフレームからtargetフレームへの最新の座標変換を計算できる時刻は$\min(t_2, t_3)$なので$t_1$は無視できる。このため、sourceからrootへ辿る時にアクセスしたフレームを記憶しておき、次にtargetからrootへ辿る時にrootでない共通の祖先を見つけられれば、targetからrootへ辿る処理を省略できる。
+
+\textit{getLatestCommonTime}ではまず、sourceフレームからルートフレームへのエッジをたどり、各エッジで最新の座標変換を提供できる時刻の最小値を取る(\ref{code:getLatest-s-r}〜\ref{code:getLatest-s-r2}行目)。これにより、sourceフレームからルートフレームへの最新の座標変換を取得できる時刻を取得できる。sourceフレームからルートフレームへのエッジをたどるときに各エッジの情報をlct\_cache変数に記録しておく(\ref{code:getLatest-add-history}行目)。\ref{code:getLatest-t-is-p-of-s}行目は上述のパターン2の、targetがsourceの祖先である場合の処理を示している。
+
+続いて、targetフレームからルートフレームへのエッジをたどり、同じようにしてtargetフレームからルートフレームへの最新の座標変換を取得できる時刻を取得する(\ref{code:getLatest-t-r}〜\ref{code:getLatest-t-r2}行目)。\ref{code:getLatest-s-and-t-have-parent}行目はsourceとtargetがroot以外にも同じ祖先を持つ場合の処理を示し、targetフレームからルートフレームへ辿る処理を省略している。\ref{code:getLatest-s-is-p-of-t}行目は上述のパターン3の、targetがsourceの祖先である場合の処理を示している。
+
+最後に、sourceフレームからルートフレームへの最新の座標変換を取得できる時刻、targetフレームからルートフレームへの最新の座標変換を取得できる時刻から、sourceフレームからtargetフレームへの最新の座標変換を取得できる時刻を取得する(\ref{code:getLatest-min} 〜\ref{code:getLatest-min2}行目)。上述のパターン4に対応するために、lct\_cache変数内の記録から最新の座標変換を取得できる時刻を取得している。
+
+sourceフレームからtargetフレームへの最新の座標変換を計算できる時刻を取得できたため、取得できた時刻はtime変数に代入され、処理は\textit{lookupTransform}に戻る。
+
+\textit{lookupTransform}においても、\textit{getLatestCommonTime}と同じように各パターンへの最適化ができる。上述のパターン2と3ではrootまで辿ること無しにその時点で取得できた座標変換情報を利用できる。パターン4においては最適化は行わず、パターン1と同じようにsourceフレームからルートフレームへの座標変換と、ルートフレームからtargetフレームへの座標変換を掛け合わせる。
+
+まず、sourceフレームからルートフレームへのエッジをたどり、sourceフレームからルートフレームへの座標変換を計算する(\ref{code:lookupTrans-s-r}〜\ref{code:lookupTrans-s-r2}行目)。\ref{code:lookupTrans-s-p-of-t}行目は上述のパターン2の、targetがsourceの祖先である場合の処理を示している。
+
+続いて、targetフレームからルートフレームへのエッジをたどり、targetフレームからルートフレームへの座標変換を計算する(\ref{code:lookupTrans-t-r}〜\ref{code:lookupTrans-t-r2}行目)。\ref{code:lookupTrans-t-p-of-s}行目は上述のパターン3の、sourceがtargetの祖先である場合の処理を示している。
+
+最後に、sourceフレームからルートフレームへの座標変換にルートフレームからtargetフレームへの座標変換を掛け合わせることにより、sourceフレームからtargetフレームへの座標変換を取得できる。ルートフレームからtargetフレームへの座標変換は、targetフレームからルートフレームへの座標変換の逆変換を取ることにより取得できる。
 
 \textit{lookupTransform}で最新の座標変換情報を得る場合には内部で\textit{getLatestCommonTime}を呼び出しているため、同じフレームに2度アクセスすることになる。
 
@@ -344,7 +398,10 @@ sourceフレームからtargetフレームへの最新の座標変換を計算�
 	\State frame = source
 	\State top\_parent = frame
 	\While{frame $\neq$ root} \Comment{sourceからrootまで辿る} \label{code:lookupTrans-s-r}
-	\State (trans, parent) = frame.getTransAndParent(time) 
+	\State (trans, parent) = frame.getTransAndParent(time)
+	\If{frame == target} \Comment{targetがsourceの祖先の場合} \label{code:lookupTrans-t-p-of-s}
+	\State \Return source\_trans
+	\EndIf 
 	\State source\_trans *= trans \Comment{座標変換の掛け合わせ}
 	\State top\_parent = frame
 	\State frame = parent
@@ -353,6 +410,9 @@ sourceフレームからtargetフレームへの最新の座標変換を計算�
 	\State target\_trans = $I$
 	\While{frame $\neq$ top\_parent}　\Comment{targetからrootまで辿る} \label{code:lookupTrans-t-r}
 	\State (tarns, parent) = frame.getTransAndParent(time)
+	\If{frame == source} \Comment{sourceがtargetの祖先の場合}  \label{code:lookupTrans-s-p-of-t}
+	\State \Return (target\_trans)$^{-1}$
+	\EndIf 
 	\State target\_trans *= trans
 	\State frame = parent
 	\EndWhile \label{code:lookupTrans-t-r2}
@@ -368,23 +428,29 @@ sourceフレームからtargetフレームへの最新の座標変換を計算�
 	\Function{getLatestCommonTime}{target, source} \Comment{フレームsourceからフレームtargetへの最新の座標変換を計算できる時刻を取得する}
 	\State frame = source
 	\State common\_time = TIME\_MAX
-	\State lct\_cache = [ ] \Comment{lookup tree cache}
+	\State lct\_cache = [ ] \Comment{sourceからrootへ辿るときの履歴}
 	\While{frame $\neq$ root} \Comment{sourceからrootまで辿る} \label{code:getLatest-s-r}
 	\State (time, parent) = frame.getLatestTimeAndParent()
 	\State common\_time = min(time, common\_time)
-	\State lct\_cache.push\_back((time, parent))
+	\State lct\_cache.push\_back((time, parent)) \label{code:getLatest-add-history}
 	\State frame = parent
+	\If{ frame == target } \Comment{ targetがsourceの祖先の時 } \label{code:getLatest-t-is-p-of-s}
+	\State \Return common\_time
+	\EndIf
 	\EndWhile \label{code:getLatest-s-r2}
 	\State frame = target
 	\State common\_time = TIME\_MAX
 	\While{true}　\Comment{targetからrootまで辿る} \label{code:getLatest-t-r}
 	\State (time, parent) = frame.getLatestTimeAndParent()
 	\State common\_time = min(time, common\_time)
-	\If{parent \textbf{in}  lct\_cache}
+	\If{parent \textbf{in}  lct\_cache} \Comment{ sourceとtargetが同じ祖先を持つとき } \label{code:getLatest-s-and-t-have-parent}
 	\State common\_parent = parent
 	\State \textbf{break}
 	\EndIf
 	\State frame = parent
+	\If{ frame == source } \Comment{ sourceがtargetの祖先の時 } \label{code:getLatest-s-is-p-of-t}
+	\State \Return common\_time
+	\EndIf
 	\EndWhile \label{code:getLatest-t-r2}
 	\For{(time, parent) \textbf{in} lct\_cache} \Comment{lookup tree cacheを元に、最新の時刻を取得する} \label{code:getLatest-min}
 	\State common\_time = min(common\_time, time)

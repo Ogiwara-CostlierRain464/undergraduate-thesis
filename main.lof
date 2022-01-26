@@ -9,48 +9,52 @@
 \contentsline {figure}{\numberline {3.2}{\ignorespaces AquaにおけるTFの木構造}}{9}{figure.3.2}%
 \contentsline {figure}{\numberline {3.3}{\ignorespaces TFの木構造}}{10}{figure.3.3}%
 \contentsline {figure}{\numberline {3.4}{\ignorespaces タイムライン}}{10}{figure.3.4}%
-\contentsline {figure}{\numberline {3.5}{\ignorespaces シミュレータ上で動作するヘビ型ロボット}}{14}{figure.3.5}%
-\contentsline {figure}{\numberline {3.6}{\ignorespaces ヘビ型ロボットにおける木構造}}{15}{figure.3.6}%
-\contentsline {figure}{\numberline {3.7}{\ignorespaces 不必要な更新が必要な例}}{16}{figure.3.7}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces sourceとtargetの祖先がrootのみのパターン}}{12}{figure.3.5}%
+\contentsline {figure}{\numberline {3.6}{\ignorespaces sourceの祖先がtargetのパターン}}{12}{figure.3.6}%
+\contentsline {figure}{\numberline {3.7}{\ignorespaces targetの祖先がsourceのパターン}}{13}{figure.3.7}%
+\contentsline {figure}{\numberline {3.8}{\ignorespaces sourceとtargetの祖先がrootだけではないパターン}}{13}{figure.3.8}%
+\contentsline {figure}{\numberline {3.9}{\ignorespaces シミュレータ上で動作するヘビ型ロボット}}{17}{figure.3.9}%
+\contentsline {figure}{\numberline {3.10}{\ignorespaces ヘビ型ロボットにおける木構造}}{17}{figure.3.10}%
+\contentsline {figure}{\numberline {3.11}{\ignorespaces 不必要な更新が必要な例}}{18}{figure.3.11}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Giant lock}}{17}{figure.4.1}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces ジャイアントロックにおけるスケジュール}}{18}{figure.4.2}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces 細粒度ロッキング}}{19}{figure.4.3}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces 細粒度ロックにおけるスケジュール}}{19}{figure.4.4}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces 二つの読み込みロック}}{20}{figure.4.5}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces 二つの読み込みロックにおけるスケジュール}}{20}{figure.4.6}%
-\contentsline {figure}{\numberline {4.7}{\ignorespaces lookupLatestTransformで取得するデータ}}{23}{figure.4.7}%
-\contentsline {figure}{\numberline {4.8}{\ignorespaces 同時に座標変換が登録されるケース}}{25}{figure.4.8}%
-\contentsline {figure}{\numberline {4.9}{\ignorespaces setTransformsXactとlookupLatestTransformXact 1}}{25}{figure.4.9}%
-\contentsline {figure}{\numberline {4.10}{\ignorespaces setTransformsXactとlookupLatestTransformXact 2}}{25}{figure.4.10}%
-\contentsline {figure}{\numberline {4.11}{\ignorespaces setTransformsXactとlookupLatestTransformXact 3}}{26}{figure.4.11}%
-\contentsline {figure}{\numberline {4.12}{\ignorespaces deadlock}}{26}{figure.4.12}%
-\contentsline {figure}{\numberline {4.13}{\ignorespaces Dirty Read}}{27}{figure.4.13}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Giant lock}}{20}{figure.4.1}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces ジャイアントロックにおけるスケジュール}}{21}{figure.4.2}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces 細粒度ロッキング}}{22}{figure.4.3}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces 細粒度ロックにおけるスケジュール}}{22}{figure.4.4}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces 二つの読み込みロック}}{23}{figure.4.5}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces 二つの読み込みロックにおけるスケジュール}}{23}{figure.4.6}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces lookupLatestTransformで取得するデータ}}{26}{figure.4.7}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces 同時に座標変換が登録されるケース}}{28}{figure.4.8}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces setTransformsXactとlookupLatestTransformXact 1}}{28}{figure.4.9}%
+\contentsline {figure}{\numberline {4.10}{\ignorespaces setTransformsXactとlookupLatestTransformXact 2}}{28}{figure.4.10}%
+\contentsline {figure}{\numberline {4.11}{\ignorespaces setTransformsXactとlookupLatestTransformXact 3}}{29}{figure.4.11}%
+\contentsline {figure}{\numberline {4.12}{\ignorespaces deadlock}}{29}{figure.4.12}%
+\contentsline {figure}{\numberline {4.13}{\ignorespaces Dirty Read}}{30}{figure.4.13}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces YCSB-Cにおけるスレッド数と読み込みスループットの関係}}{32}{figure.5.1}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces YCSB-Cにおけるスレッド数とレイテンシの関係}}{33}{figure.5.2}%
-\contentsline {figure}{\numberline {5.3}{\ignorespaces YCSB-Cにおけるスレッド数とレイテンシの関係 snapshotとlatestのみ}}{34}{figure.5.3}%
-\contentsline {figure}{\numberline {5.4}{\ignorespaces YCSB-Aにおけるスレッド数とスループットの関係}}{35}{figure.5.4}%
-\contentsline {figure}{\numberline {5.5}{\ignorespaces YCSB-Aにおけるスレッド数と読み込みスループットの関係}}{36}{figure.5.5}%
-\contentsline {figure}{\numberline {5.6}{\ignorespaces YCSB-Aにおけるスレッド数と書き込みスループットの関係}}{37}{figure.5.6}%
-\contentsline {figure}{\numberline {5.7}{\ignorespaces YCSB-Aにおけるスレッド数とキャッシュミス率の関係}}{38}{figure.5.7}%
-\contentsline {figure}{\numberline {5.8}{\ignorespaces YCSB-Aにおけるスレッド数と読み込みレイテンシの関係}}{39}{figure.5.8}%
-\contentsline {figure}{\numberline {5.9}{\ignorespaces YCSB-Aにおけるスレッド数と読み込みレイテンシの関係 snapshotとlatestのみ}}{40}{figure.5.9}%
-\contentsline {figure}{\numberline {5.10}{\ignorespaces YCSB-Aにおけるスレッド数と書き込みレイテンシの関係}}{41}{figure.5.10}%
-\contentsline {figure}{\numberline {5.11}{\ignorespaces YCSB-Aにおけるスレッド数と書き込みレイテンシの関係 snapshotとlatestのみ}}{42}{figure.5.11}%
-\contentsline {figure}{\numberline {5.12}{\ignorespaces YCSB-Aにおけるスレッド数とabort率の関係}}{43}{figure.5.12}%
-\contentsline {figure}{\numberline {5.13}{\ignorespaces YCSB-Aにおけるスレッド数とデータの鮮度の関係}}{44}{figure.5.13}%
-\contentsline {figure}{\numberline {5.14}{\ignorespaces YCSB-Aにおけるスレッド数とデータの同期性の関係}}{45}{figure.5.14}%
-\contentsline {figure}{\numberline {5.15}{\ignorespaces YCSB-Bにおけるスレッド数とスループットの関係}}{46}{figure.5.15}%
-\contentsline {figure}{\numberline {5.16}{\ignorespaces YCSB-Bにおけるスレッド数と読み込みスループットの関係}}{47}{figure.5.16}%
-\contentsline {figure}{\numberline {5.17}{\ignorespaces YCSB-Bにおけるスレッド数と書き込みスループットの関係}}{48}{figure.5.17}%
-\contentsline {figure}{\numberline {5.18}{\ignorespaces YCSB-Bにおけるスレッド数とキャッシュミス率の関係}}{49}{figure.5.18}%
-\contentsline {figure}{\numberline {5.19}{\ignorespaces YCSB-Bにおけるスレッド数と読み込みレイテンシの関係}}{50}{figure.5.19}%
-\contentsline {figure}{\numberline {5.20}{\ignorespaces YCSB-Bにおけるスレッド数と読み込みレイテンシの関係 snapshotとlatestのみ}}{51}{figure.5.20}%
-\contentsline {figure}{\numberline {5.21}{\ignorespaces YCSB-Bにおけるスレッド数と書き込みレイテンシの関係}}{52}{figure.5.21}%
-\contentsline {figure}{\numberline {5.22}{\ignorespaces YCSB-Bにおけるスレッド数と書き込みレイテンシの関係 snapshotとlatestのみ}}{53}{figure.5.22}%
-\contentsline {figure}{\numberline {5.23}{\ignorespaces YCSB-Bにおけるスレッド数とabort率の関係}}{54}{figure.5.23}%
-\contentsline {figure}{\numberline {5.24}{\ignorespaces YCSB-Bにおけるスレッド数とデータの鮮度の関係}}{55}{figure.5.24}%
-\contentsline {figure}{\numberline {5.25}{\ignorespaces YCSB-Bにおけるスレッド数とデータの同期性の関係}}{56}{figure.5.25}%
-\contentsline {figure}{\numberline {5.26}{\ignorespaces 制御周期とレイテンシ}}{57}{figure.5.26}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces YCSB-Cにおけるスレッド数と読み込みスループットの関係}}{35}{figure.5.1}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces YCSB-Cにおけるスレッド数とレイテンシの関係}}{36}{figure.5.2}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces YCSB-Cにおけるスレッド数とレイテンシの関係 snapshotとlatestのみ}}{37}{figure.5.3}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces YCSB-Aにおけるスレッド数とスループットの関係}}{38}{figure.5.4}%
+\contentsline {figure}{\numberline {5.5}{\ignorespaces YCSB-Aにおけるスレッド数と読み込みスループットの関係}}{39}{figure.5.5}%
+\contentsline {figure}{\numberline {5.6}{\ignorespaces YCSB-Aにおけるスレッド数と書き込みスループットの関係}}{40}{figure.5.6}%
+\contentsline {figure}{\numberline {5.7}{\ignorespaces YCSB-Aにおけるスレッド数とキャッシュミス率の関係}}{41}{figure.5.7}%
+\contentsline {figure}{\numberline {5.8}{\ignorespaces YCSB-Aにおけるスレッド数と読み込みレイテンシの関係}}{42}{figure.5.8}%
+\contentsline {figure}{\numberline {5.9}{\ignorespaces YCSB-Aにおけるスレッド数と読み込みレイテンシの関係 snapshotとlatestのみ}}{43}{figure.5.9}%
+\contentsline {figure}{\numberline {5.10}{\ignorespaces YCSB-Aにおけるスレッド数と書き込みレイテンシの関係}}{44}{figure.5.10}%
+\contentsline {figure}{\numberline {5.11}{\ignorespaces YCSB-Aにおけるスレッド数と書き込みレイテンシの関係 snapshotとlatestのみ}}{45}{figure.5.11}%
+\contentsline {figure}{\numberline {5.12}{\ignorespaces YCSB-Aにおけるスレッド数とabort率の関係}}{46}{figure.5.12}%
+\contentsline {figure}{\numberline {5.13}{\ignorespaces YCSB-Aにおけるスレッド数とデータの鮮度の関係}}{47}{figure.5.13}%
+\contentsline {figure}{\numberline {5.14}{\ignorespaces YCSB-Aにおけるスレッド数とデータの同期性の関係}}{48}{figure.5.14}%
+\contentsline {figure}{\numberline {5.15}{\ignorespaces YCSB-Bにおけるスレッド数とスループットの関係}}{49}{figure.5.15}%
+\contentsline {figure}{\numberline {5.16}{\ignorespaces YCSB-Bにおけるスレッド数と読み込みスループットの関係}}{50}{figure.5.16}%
+\contentsline {figure}{\numberline {5.17}{\ignorespaces YCSB-Bにおけるスレッド数と書き込みスループットの関係}}{51}{figure.5.17}%
+\contentsline {figure}{\numberline {5.18}{\ignorespaces YCSB-Bにおけるスレッド数とキャッシュミス率の関係}}{52}{figure.5.18}%
+\contentsline {figure}{\numberline {5.19}{\ignorespaces YCSB-Bにおけるスレッド数と読み込みレイテンシの関係}}{53}{figure.5.19}%
+\contentsline {figure}{\numberline {5.20}{\ignorespaces YCSB-Bにおけるスレッド数と読み込みレイテンシの関係 snapshotとlatestのみ}}{54}{figure.5.20}%
+\contentsline {figure}{\numberline {5.21}{\ignorespaces YCSB-Bにおけるスレッド数と書き込みレイテンシの関係}}{55}{figure.5.21}%
+\contentsline {figure}{\numberline {5.22}{\ignorespaces YCSB-Bにおけるスレッド数と書き込みレイテンシの関係 snapshotとlatestのみ}}{56}{figure.5.22}%
+\contentsline {figure}{\numberline {5.23}{\ignorespaces YCSB-Bにおけるスレッド数とabort率の関係}}{57}{figure.5.23}%
+\contentsline {figure}{\numberline {5.24}{\ignorespaces YCSB-Bにおけるスレッド数とデータの鮮度の関係}}{58}{figure.5.24}%
+\contentsline {figure}{\numberline {5.25}{\ignorespaces YCSB-Bにおけるスレッド数とデータの同期性の関係}}{59}{figure.5.25}%
+\contentsline {figure}{\numberline {5.26}{\ignorespaces 制御周期とレイテンシ}}{60}{figure.5.26}%
 \addvspace {10\p@ }

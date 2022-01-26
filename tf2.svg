@@ -27,9 +27,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:document-units="mm"
      showgrid="false"
-     inkscape:zoom="1.2735352"
-     inkscape:cx="284.64074"
-     inkscape:cy="283.07031"
+     inkscape:zoom="1.280055"
+     inkscape:cx="108.97969"
+     inkscape:cy="305.06501"
      inkscape:window-width="1440"
      inkscape:window-height="791"
      inkscape:window-x="0"
@@ -2106,6 +2106,279 @@
          style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
          transform="matrix(0.8,0,0,0.8,10,0)" />
     </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lstart-9-2-6-4"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path1091-7-2-8-3"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lstart-35-3-6"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path1091-8-0-6"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lstart-9-9-4"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path1091-7-07-8"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lstart-9-2-6-3"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path1091-7-2-8-4"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lstart-9-2-6-4-8"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path1091-7-2-8-3-6"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lstart-35-3-6-8"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path1091-8-0-6-1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lstart-9-9-4-4"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path1091-7-07-8-3"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lstart-9-2-4-5"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path1091-7-2-3-0"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lstart-35-3-0"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path1091-8-0-2"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lstart-9-9-6"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path1091-7-07-4"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lstart-9-2-6-4-87"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path1091-7-2-8-3-5"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Lstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Lstart-9-2-4-5-2"
+       style="overflow:visible"
+       inkscape:isstock="true">
+      <path
+         id="path1091-7-2-3-0-1"
+         d="M 0,0 5,-5 -12.5,0 5,5 Z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:1pt;stroke-opacity:1"
+         transform="matrix(0.8,0,0,0.8,10,0)" />
+    </marker>
+    <g
+       id="g8713">
+      <symbol
+         overflow="visible"
+         id="symbol3187">
+        <path
+           style="stroke:none;"
+           d=""
+           id="path5320" />
+      </symbol>
+      <symbol
+         overflow="visible"
+         id="symbol4353">
+        <path
+           style="stroke:none;"
+           d="M 2.046875 -3.984375 L 2.984375 -3.984375 C 3.1875 -3.984375 3.296875 -3.984375 3.296875 -4.1875 C 3.296875 -4.296875 3.1875 -4.296875 3.015625 -4.296875 L 2.140625 -4.296875 C 2.5 -5.71875 2.546875 -5.90625 2.546875 -5.96875 C 2.546875 -6.140625 2.421875 -6.234375 2.25 -6.234375 C 2.21875 -6.234375 1.9375 -6.234375 1.859375 -5.875 L 1.46875 -4.296875 L 0.53125 -4.296875 C 0.328125 -4.296875 0.234375 -4.296875 0.234375 -4.109375 C 0.234375 -3.984375 0.3125 -3.984375 0.515625 -3.984375 L 1.390625 -3.984375 C 0.671875 -1.15625 0.625 -0.984375 0.625 -0.8125 C 0.625 -0.265625 1 0.109375 1.546875 0.109375 C 2.5625 0.109375 3.125 -1.34375 3.125 -1.421875 C 3.125 -1.53125 3.046875 -1.53125 3.015625 -1.53125 C 2.921875 -1.53125 2.90625 -1.5 2.859375 -1.390625 C 2.4375 -0.34375 1.90625 -0.109375 1.5625 -0.109375 C 1.359375 -0.109375 1.25 -0.234375 1.25 -0.5625 C 1.25 -0.8125 1.28125 -0.875 1.3125 -1.046875 Z M 2.046875 -3.984375 "
+           id="path5673" />
+      </symbol>
+      <symbol
+         overflow="visible"
+         id="symbol7254">
+        <path
+           style="stroke:none;"
+           d=""
+           id="path4967" />
+      </symbol>
+      <symbol
+         overflow="visible"
+         id="symbol4835">
+        <path
+           style="stroke:none;"
+           d="M 2.328125 -4.4375 C 2.328125 -4.625 2.328125 -4.625 2.125 -4.625 C 1.671875 -4.1875 1.046875 -4.1875 0.765625 -4.1875 L 0.765625 -3.9375 C 0.921875 -3.9375 1.390625 -3.9375 1.765625 -4.125 L 1.765625 -0.578125 C 1.765625 -0.34375 1.765625 -0.25 1.078125 -0.25 L 0.8125 -0.25 L 0.8125 0 C 0.9375 0 1.796875 -0.03125 2.046875 -0.03125 C 2.265625 -0.03125 3.140625 0 3.296875 0 L 3.296875 -0.25 L 3.03125 -0.25 C 2.328125 -0.25 2.328125 -0.34375 2.328125 -0.578125 Z M 2.328125 -4.4375 "
+           id="path4611" />
+      </symbol>
+    </g>
+    <g
+       id="g5890">
+      <symbol
+         overflow="visible"
+         id="symbol7718">
+        <path
+           style="stroke:none;"
+           d=""
+           id="path5701" />
+      </symbol>
+      <symbol
+         overflow="visible"
+         id="symbol8604">
+        <path
+           style="stroke:none;"
+           d="M 2.046875 -3.984375 L 2.984375 -3.984375 C 3.1875 -3.984375 3.296875 -3.984375 3.296875 -4.1875 C 3.296875 -4.296875 3.1875 -4.296875 3.015625 -4.296875 L 2.140625 -4.296875 C 2.5 -5.71875 2.546875 -5.90625 2.546875 -5.96875 C 2.546875 -6.140625 2.421875 -6.234375 2.25 -6.234375 C 2.21875 -6.234375 1.9375 -6.234375 1.859375 -5.875 L 1.46875 -4.296875 L 0.53125 -4.296875 C 0.328125 -4.296875 0.234375 -4.296875 0.234375 -4.109375 C 0.234375 -3.984375 0.3125 -3.984375 0.515625 -3.984375 L 1.390625 -3.984375 C 0.671875 -1.15625 0.625 -0.984375 0.625 -0.8125 C 0.625 -0.265625 1 0.109375 1.546875 0.109375 C 2.5625 0.109375 3.125 -1.34375 3.125 -1.421875 C 3.125 -1.53125 3.046875 -1.53125 3.015625 -1.53125 C 2.921875 -1.53125 2.90625 -1.5 2.859375 -1.390625 C 2.4375 -0.34375 1.90625 -0.109375 1.5625 -0.109375 C 1.359375 -0.109375 1.25 -0.234375 1.25 -0.5625 C 1.25 -0.8125 1.28125 -0.875 1.3125 -1.046875 Z M 2.046875 -3.984375 "
+           id="path3410" />
+      </symbol>
+      <symbol
+         overflow="visible"
+         id="symbol5952">
+        <path
+           style="stroke:none;"
+           d=""
+           id="path6" />
+      </symbol>
+      <symbol
+         overflow="visible"
+         id="symbol9483">
+        <path
+           style="stroke:none;"
+           d="M 3.515625 -1.265625 L 3.28125 -1.265625 C 3.265625 -1.109375 3.1875 -0.703125 3.09375 -0.640625 C 3.046875 -0.59375 2.515625 -0.59375 2.40625 -0.59375 L 1.125 -0.59375 C 1.859375 -1.234375 2.109375 -1.4375 2.515625 -1.765625 C 3.03125 -2.171875 3.515625 -2.609375 3.515625 -3.265625 C 3.515625 -4.109375 2.78125 -4.625 1.890625 -4.625 C 1.03125 -4.625 0.4375 -4.015625 0.4375 -3.375 C 0.4375 -3.03125 0.734375 -2.984375 0.8125 -2.984375 C 0.96875 -2.984375 1.171875 -3.109375 1.171875 -3.359375 C 1.171875 -3.484375 1.125 -3.734375 0.765625 -3.734375 C 0.984375 -4.21875 1.453125 -4.375 1.78125 -4.375 C 2.484375 -4.375 2.84375 -3.828125 2.84375 -3.265625 C 2.84375 -2.65625 2.40625 -2.1875 2.1875 -1.9375 L 0.515625 -0.265625 C 0.4375 -0.203125 0.4375 -0.1875 0.4375 0 L 3.3125 0 Z M 3.515625 -1.265625 "
+           id="path6157" />
+      </symbol>
+    </g>
+    <g
+       id="g9883">
+      <symbol
+         overflow="visible"
+         id="symbol8291">
+        <path
+           style="stroke:none;"
+           d=""
+           id="path5918" />
+      </symbol>
+      <symbol
+         overflow="visible"
+         id="symbol6032">
+        <path
+           style="stroke:none;"
+           d="M 2.046875 -3.984375 L 2.984375 -3.984375 C 3.1875 -3.984375 3.296875 -3.984375 3.296875 -4.1875 C 3.296875 -4.296875 3.1875 -4.296875 3.015625 -4.296875 L 2.140625 -4.296875 C 2.5 -5.71875 2.546875 -5.90625 2.546875 -5.96875 C 2.546875 -6.140625 2.421875 -6.234375 2.25 -6.234375 C 2.21875 -6.234375 1.9375 -6.234375 1.859375 -5.875 L 1.46875 -4.296875 L 0.53125 -4.296875 C 0.328125 -4.296875 0.234375 -4.296875 0.234375 -4.109375 C 0.234375 -3.984375 0.3125 -3.984375 0.515625 -3.984375 L 1.390625 -3.984375 C 0.671875 -1.15625 0.625 -0.984375 0.625 -0.8125 C 0.625 -0.265625 1 0.109375 1.546875 0.109375 C 2.5625 0.109375 3.125 -1.34375 3.125 -1.421875 C 3.125 -1.53125 3.046875 -1.53125 3.015625 -1.53125 C 2.921875 -1.53125 2.90625 -1.5 2.859375 -1.390625 C 2.4375 -0.34375 1.90625 -0.109375 1.5625 -0.109375 C 1.359375 -0.109375 1.25 -0.234375 1.25 -0.5625 C 1.25 -0.8125 1.28125 -0.875 1.3125 -1.046875 Z M 2.046875 -3.984375 "
+           id="path2848" />
+      </symbol>
+      <symbol
+         overflow="visible"
+         id="symbol5593">
+        <path
+           style="stroke:none;"
+           d=""
+           id="path6397" />
+      </symbol>
+      <symbol
+         overflow="visible"
+         id="symbol4114">
+        <path
+           style="stroke:none;"
+           d="M 1.90625 -2.328125 C 2.453125 -2.328125 2.84375 -1.953125 2.84375 -1.203125 C 2.84375 -0.34375 2.328125 -0.078125 1.9375 -0.078125 C 1.65625 -0.078125 1.03125 -0.15625 0.75 -0.578125 C 1.078125 -0.578125 1.15625 -0.8125 1.15625 -0.96875 C 1.15625 -1.1875 0.984375 -1.34375 0.765625 -1.34375 C 0.578125 -1.34375 0.375 -1.21875 0.375 -0.9375 C 0.375 -0.28125 1.09375 0.140625 1.9375 0.140625 C 2.90625 0.140625 3.578125 -0.515625 3.578125 -1.203125 C 3.578125 -1.75 3.140625 -2.296875 2.375 -2.453125 C 3.09375 -2.71875 3.359375 -3.234375 3.359375 -3.671875 C 3.359375 -4.21875 2.734375 -4.625 1.953125 -4.625 C 1.1875 -4.625 0.59375 -4.25 0.59375 -3.6875 C 0.59375 -3.453125 0.75 -3.328125 0.953125 -3.328125 C 1.171875 -3.328125 1.3125 -3.484375 1.3125 -3.671875 C 1.3125 -3.875 1.171875 -4.03125 0.953125 -4.046875 C 1.203125 -4.34375 1.671875 -4.421875 1.9375 -4.421875 C 2.25 -4.421875 2.6875 -4.265625 2.6875 -3.671875 C 2.6875 -3.375 2.59375 -3.046875 2.40625 -2.84375 C 2.1875 -2.578125 1.984375 -2.5625 1.640625 -2.53125 C 1.46875 -2.515625 1.453125 -2.515625 1.421875 -2.515625 C 1.40625 -2.515625 1.34375 -2.5 1.34375 -2.421875 C 1.34375 -2.328125 1.40625 -2.328125 1.53125 -2.328125 Z M 1.90625 -2.328125 "
+           id="path2183" />
+      </symbol>
+    </g>
   </defs>
   <g
      inkscape:label="Layer 1"
@@ -2652,7 +2925,7 @@
     </g>
     <g
        id="g8411"
-       transform="translate(0.12039616,1.2039616)"
+       transform="translate(5.4120628,43.537297)"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/g-lock-time.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200">
@@ -2784,7 +3057,7 @@
     </g>
     <g
        id="g8411-2"
-       transform="matrix(0.63658547,0,0,1.0085058,40.15091,7.2588955)"
+       transform="matrix(0.63658547,0,0,1.0085058,45.442577,49.592231)"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/g-lock-time.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200">
@@ -2799,8 +3072,8 @@
     <text
        xml:space="preserve"
        style="font-size:5.64444px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';letter-spacing:0px;stroke-width:0.264583"
-       x="43.703808"
-       y="123.16528"
+       x="48.995476"
+       y="165.49866"
        id="text6497"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/g-lock-time.png"
        inkscape:export-xdpi="200"
@@ -2808,13 +3081,13 @@
          sodipodi:role="line"
          id="tspan6495"
          style="stroke-width:0.264583"
-         x="43.703808"
-         y="123.16528">T1</tspan></text>
+         x="48.995476"
+         y="165.49866">T1</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:5.64444px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';letter-spacing:0px;stroke-width:0.264583"
-       x="43.570805"
-       y="131.65915"
+       x="48.862473"
+       y="173.99252"
        id="text6497-6"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/g-lock-time.png"
        inkscape:export-xdpi="200"
@@ -2822,11 +3095,11 @@
          sodipodi:role="line"
          id="tspan6495-0"
          style="stroke-width:0.264583"
-         x="43.570805"
-         y="131.65915">T2</tspan></text>
+         x="48.862473"
+         y="173.99252">T2</tspan></text>
     <path
        style="fill:#000000;stroke:#000000;stroke-width:0.073664;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 55.394559,117.28075 h 1.844725 l -0.922362,1.01105 z"
+       d="m 60.686226,159.61411 h 1.844725 l -0.922362,1.01105 z"
        id="path8955-3"
        sodipodi:nodetypes="cccc"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/g-lock-time.png"
@@ -2834,7 +3107,7 @@
        inkscape:export-ydpi="200" />
     <path
        style="fill:none;stroke:#000000;stroke-width:0.073664;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 75.030293,117.28075 h 1.844725 l -0.922362,1.01105 z"
+       d="m 80.32196,159.61411 h 1.844725 l -0.922362,1.01105 z"
        id="path8955-3-4"
        sodipodi:nodetypes="cccc"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/g-lock-time.png"
@@ -2842,7 +3115,7 @@
        inkscape:export-ydpi="200" />
     <path
        style="fill:#000000;stroke:#000000;stroke-width:0.073664;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 75.030294,132.93112 h 1.844725 l -0.922362,-1.01105 z"
+       d="m 80.321961,175.26448 h 1.844725 l -0.922362,-1.01105 z"
        id="path8955-3-2"
        sodipodi:nodetypes="cccc"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/g-lock-time.png"
@@ -2850,7 +3123,7 @@
        inkscape:export-ydpi="200" />
     <path
        style="fill:none;stroke:#000000;stroke-width:0.073664;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
-       d="m 87.502262,132.95897 h 1.844725 l -0.922362,-1.01105 z"
+       d="m 92.793929,175.29233 h 1.844725 l -0.922362,-1.01105 z"
        id="path8955-3-4-4"
        sodipodi:nodetypes="cccc"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/g-lock-time.png"
@@ -2858,70 +3131,7 @@
        inkscape:export-ydpi="200" />
     <g
        inkscape:label=""
-       transform="translate(11.987227,90.269902)"
-       id="g12113">
-      <g
-         id="g8125">
-        <g
-           style="fill:#000000;fill-opacity:1"
-           id="g87">
-          <use
-             xlink:href="#symbol7858"
-             x="91.925003"
-             y="81.962997"
-             id="use6987"
-             width="100%"
-             height="100%" />
-        </g>
-        <g
-           style="fill:#000000;fill-opacity:1"
-           id="g3638">
-          <use
-             xlink:href="#symbol7938"
-             x="99.057999"
-             y="83.457001"
-             id="use8145"
-             width="100%"
-             height="100%" />
-        </g>
-        <g
-           style="fill:#000000;fill-opacity:1"
-           id="g5776">
-          <use
-             xlink:href="#symbol2726"
-             x="103.527"
-             y="81.962997"
-             id="use5188"
-             width="100%"
-             height="100%" />
-        </g>
-        <g
-           style="fill:#000000;fill-opacity:1"
-           id="g4656">
-          <use
-             xlink:href="#symbol2249"
-             x="107.401"
-             y="81.962997"
-             id="use5233"
-             width="100%"
-             height="100%" />
-        </g>
-        <g
-           style="fill:#000000;fill-opacity:1"
-           id="g9667">
-          <use
-             xlink:href="#symbol5253"
-             x="112.587"
-             y="81.962997"
-             id="use9675"
-             width="100%"
-             height="100%" />
-        </g>
-      </g>
-    </g>
-    <g
-       inkscape:label=""
-       transform="matrix(0.44640163,0,0,0.44640163,35.823371,93.335284)"
+       transform="matrix(0.44640163,0,0,0.44640163,41.115038,135.66864)"
        id="g12113-3"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/g-lock-time.png"
        inkscape:export-xdpi="200"
@@ -2988,8 +3198,8 @@
     <text
        xml:space="preserve"
        style="font-size:2.5879px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';letter-spacing:0px;stroke-width:0.121308"
-       x="52.965488"
-       y="116.72757"
+       x="58.257156"
+       y="159.06093"
        id="text13812"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/g-lock-time.png"
        inkscape:export-xdpi="200"
@@ -2997,13 +3207,13 @@
          sodipodi:role="line"
          id="tspan13810"
          style="stroke-width:0.121308"
-         x="52.965488"
-         y="116.72757">Glock</tspan></text>
+         x="58.257156"
+         y="159.06093">Glock</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:2.5879px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';letter-spacing:0px;stroke-width:0.121308"
-       x="72.887352"
-       y="135.31502"
+       x="78.179016"
+       y="177.64839"
        id="text13812-3"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/g-lock-time.png"
        inkscape:export-xdpi="200"
@@ -3011,13 +3221,13 @@
          sodipodi:role="line"
          id="tspan13810-9"
          style="stroke-width:0.121308"
-         x="72.887352"
-         y="135.31502">Glock</tspan></text>
+         x="78.179016"
+         y="177.64839">Glock</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:2.5879px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';letter-spacing:0px;stroke-width:0.121308"
-       x="72.684052"
-       y="116.75992"
+       x="77.975716"
+       y="159.09328"
        id="text13812-34"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/g-lock-time.png"
        inkscape:export-xdpi="200"
@@ -3025,13 +3235,13 @@
          sodipodi:role="line"
          id="tspan13810-99"
          style="stroke-width:0.121308"
-         x="72.684052"
-         y="116.75992">Gunlock</tspan></text>
+         x="77.975716"
+         y="159.09328">Gunlock</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:2.5879px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';letter-spacing:0px;stroke-width:0.121308"
-       x="83.994705"
-       y="135.17949"
+       x="89.286369"
+       y="177.51286"
        id="text13812-34-8"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/g-lock-time.png"
        inkscape:export-xdpi="200"
@@ -3039,11 +3249,11 @@
          sodipodi:role="line"
          id="tspan13810-99-2"
          style="stroke-width:0.121308"
-         x="83.994705"
-         y="135.17949">Gunlock</tspan></text>
+         x="89.286369"
+         y="177.51286">Gunlock</tspan></text>
     <path
        id="path833"
-       d="m 55.163937,137.86369 c 39.005372,0 39.005372,0 39.005372,0"
+       d="m 60.455604,180.19705 c 39.005372,0 39.005372,0 39.005372,0"
        style="fill:none;stroke:#000000;stroke-width:0.120182;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#Arrow1Lend)"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/g-lock-time.png"
        inkscape:export-xdpi="200"
@@ -3051,8 +3261,8 @@
     <text
        xml:space="preserve"
        style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.23387px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.163558"
-       x="69.4804"
-       y="146.11783"
+       x="74.772064"
+       y="188.4512"
        id="text10665"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/g-lock-time.png"
        inkscape:export-xdpi="200"
@@ -3060,8 +3270,8 @@
          sodipodi:role="line"
          id="tspan10663"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:5.23387px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.163558"
-         x="69.4804"
-         y="146.11783">time</tspan></text>
+         x="74.772064"
+         y="188.4512">time</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:5.64444px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';letter-spacing:0px;stroke-width:0.264583"
@@ -3871,7 +4081,7 @@
     </g>
     <g
        id="g8334-1"
-       transform="translate(-50.200298,130.97527)"
+       transform="translate(-50.200298,146.85028)"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/multitree.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200">
@@ -3896,7 +4106,7 @@
     </g>
     <g
        id="g8334-7-7"
-       transform="translate(-62.233961,149.15443)"
+       transform="translate(-62.233961,165.02944)"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/multitree.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200">
@@ -3921,7 +4131,7 @@
     </g>
     <g
        id="g8334-7-7-3"
-       transform="translate(-20.177241,148.28632)"
+       transform="translate(-20.177241,164.16133)"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/multitree.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200">
@@ -3948,13 +4158,13 @@
        inkscape:export-ydpi="200"
        inkscape:export-xdpi="200"
        style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart-35-0)"
-       d="m 31.958199,202.89667 0.0164,11.87759"
+       d="m 31.958199,218.77168 0.0164,11.87759"
        id="path1032-82-5"
        sodipodi:nodetypes="cc"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/multitree.png" />
     <g
        id="g8334-3-2"
-       transform="translate(-62.363215,169.63097)"
+       transform="translate(-62.363215,185.50598)"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/multitree.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200">
@@ -3981,7 +4191,7 @@
        inkscape:export-ydpi="200"
        inkscape:export-xdpi="200"
        style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart-9-4)"
-       d="M 42.129899,184.31832 31.610235,194.43741"
+       d="M 42.129899,200.19333 31.610235,210.31242"
        id="path1032-0-9"
        sodipodi:nodetypes="cc"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/multitree.png" />
@@ -3989,7 +4199,7 @@
        inkscape:export-ydpi="200"
        inkscape:export-xdpi="200"
        style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart-9-2-4)"
-       d="m 45.302897,184.31436 10.18113,10.11908"
+       d="m 45.302897,200.18937 10.18113,10.11908"
        id="path1032-0-6-7"
        sodipodi:nodetypes="cc"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/multitree.png" />
@@ -3997,7 +4207,7 @@
        inkscape:export-ydpi="200"
        inkscape:export-xdpi="200"
        style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart-9-2-4-3)"
-       d="m 78.340007,183.68493 10.18113,10.11908"
+       d="m 78.340007,199.55994 10.18113,10.11908"
        id="path1032-0-6-7-9"
        sodipodi:nodetypes="cc"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/multitree.png" />
@@ -4005,13 +4215,13 @@
        inkscape:export-ydpi="200"
        inkscape:export-xdpi="200"
        style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart-9-2-4-9)"
-       d="m 74.605965,183.86171 -0.850656,9.86207"
+       d="m 74.605965,199.73672 -0.850656,9.86207"
        id="path1032-0-6-7-6"
        sodipodi:nodetypes="cc"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/multitree.png" />
     <g
        id="g8334-5-7"
-       transform="translate(-38.452138,149.15158)"
+       transform="translate(-38.452138,165.02659)"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/multitree.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200">
@@ -4036,7 +4246,7 @@
     </g>
     <g
        id="g8334-1-9"
-       transform="translate(-17.512234,130.20234)"
+       transform="translate(-17.512234,146.07735)"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/multitree.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200">
@@ -4061,7 +4271,7 @@
     </g>
     <g
        id="g8334-7-7-1"
-       transform="translate(-2.9932283,148.23549)"
+       transform="translate(-2.9932283,164.1105)"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/multitree.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200">
@@ -4086,14 +4296,14 @@
     </g>
     <path
        style="fill:none;stroke:#000000;stroke-width:0.272774;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.818323, 0.818323;stroke-dashoffset:0;stroke-opacity:1"
-       d="m 56.316922,118.2918 c 0,20.98113 0,20.90194 0,20.90194"
+       d="m 61.608589,160.62516 c 0,20.98113 0,20.90194 0,20.90194"
        id="path13097-1"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/g-lock-time.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200" />
     <path
        style="fill:none;stroke:#000000;stroke-width:0.223033;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.669099, 0.669099;stroke-dashoffset:0;stroke-opacity:1"
-       d="m 62.171991,124.85933 c 0,14.02685 0,13.9739 0,13.9739"
+       d="m 67.463658,167.19269 c 0,14.02685 0,13.9739 0,13.9739"
        id="path13097-1-8"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/g-lock-time.png"
        inkscape:export-xdpi="200"
@@ -4101,8 +4311,8 @@
     <text
        xml:space="preserve"
        style="font-size:2.5879px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';letter-spacing:0px;stroke-width:0.121308"
-       x="51.660572"
-       y="141.51836"
+       x="56.95224"
+       y="183.85173"
        id="text13812-3-7"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/g-lock-time.png"
        inkscape:export-xdpi="200"
@@ -4110,13 +4320,13 @@
          sodipodi:role="line"
          id="tspan13810-9-2"
          style="stroke-width:0.121308"
-         x="51.660572"
-         y="141.51836">T1 start</tspan></text>
+         x="56.95224"
+         y="183.85173">T1 start</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:2.5879px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';letter-spacing:0px;stroke-width:0.121308"
-       x="60.529358"
-       y="141.57288"
+       x="65.821022"
+       y="183.90625"
        id="text13812-3-7-6"
        inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/g-lock-time.png"
        inkscape:export-xdpi="200"
@@ -4124,8 +4334,8 @@
          sodipodi:role="line"
          id="tspan13810-9-2-7"
          style="stroke-width:0.121308"
-         x="60.529358"
-         y="141.57288">T2 start</tspan></text>
+         x="65.821022"
+         y="183.90625">T2 start</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:0.258707;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:0.776122, 0.776122;stroke-dashoffset:0;stroke-opacity:1"
        d="m 134.29615,137.09995 c 0,18.87294 0,18.80171 0,18.80171"
@@ -5853,8 +6063,8 @@
     </g>
     <g
        id="g8334-38"
-       transform="translate(-49.72185,-14.79635)"
-       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/sample-tree.png"
+       transform="translate(-55.013517,-41.254685)"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/same-parent.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200">
       <text
@@ -5867,7 +6077,7 @@
            y="50.982342"
            x="92.447708"
            id="tspan868-1-96"
-           sodipodi:role="line">a</tspan></text>
+           sodipodi:role="line" /></text>
       <rect
          style="fill:none;stroke:#000000;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none"
          id="rect8169-7"
@@ -5878,8 +6088,8 @@
     </g>
     <g
        id="g8334-7-8"
-       transform="translate(-61.755514,3.3828143)"
-       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/sample-tree.png"
+       transform="translate(-67.047181,-23.07552)"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/same-parent.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200">
       <text
@@ -5892,7 +6102,7 @@
            y="50.982342"
            x="92.447708"
            id="tspan868-1-3-7"
-           sodipodi:role="line">b</tspan></text>
+           sodipodi:role="line" /></text>
       <rect
          style="fill:none;stroke:#000000;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none"
          id="rect8169-3-55"
@@ -5905,14 +6115,14 @@
        inkscape:export-ydpi="200"
        inkscape:export-xdpi="200"
        style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart-35-3)"
-       d="m 32.436646,57.12505 0.0164,11.87759"
+       d="M 25.351175,30.666715 14.923906,41.220459"
        id="path1032-82-2"
        sodipodi:nodetypes="cc"
-       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/sample-tree.png" />
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/same-parent.png" />
     <g
        id="g8334-3-4"
-       transform="translate(-61.884764,23.859355)"
-       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/sample-tree.png"
+       transform="translate(-79.620206,-3.9515003)"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/same-parent.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200">
       <text
@@ -5925,10 +6135,35 @@
            y="50.982342"
            x="92.447708"
            id="tspan868-1-53-4"
-           sodipodi:role="line">c</tspan></text>
+           sodipodi:role="line">s</tspan></text>
       <rect
          style="fill:none;stroke:#000000;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none"
          id="rect8169-6-47"
+         width="7.9047027"
+         height="7.9047027"
+         x="90.180008"
+         y="45.438354" />
+    </g>
+    <g
+       id="g8334-3-4-0"
+       transform="translate(-55.681637,-4.026568)"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/same-parent.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200">
+      <text
+         id="text870-6-9-9-8"
+         y="50.982342"
+         x="92.447708"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:1.15;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+           y="50.982342"
+           x="92.447708"
+           id="tspan868-1-53-4-6"
+           sodipodi:role="line">t</tspan></text>
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none"
+         id="rect8169-6-47-9"
          width="7.9047027"
          height="7.9047027"
          x="90.180008"
@@ -5938,26 +6173,26 @@
        inkscape:export-ydpi="200"
        inkscape:export-xdpi="200"
        style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart-9-9)"
-       d="M 42.608346,38.546706 32.088682,48.665787"
+       d="M 37.316679,12.088371 26.797015,22.207452"
        id="path1032-0-95"
        sodipodi:nodetypes="cc"
-       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/sample-tree.png" />
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/same-parent.png" />
     <path
        inkscape:export-ydpi="200"
        inkscape:export-xdpi="200"
-       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart-9-2-6)"
-       d="M 45.781344,38.542746 55.962475,48.661827"
-       id="path1032-0-6-56"
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart-9-2-6-4)"
+       d="M 28.13924,30.848948 38.320371,40.968029"
+       id="path1032-0-6-56-3"
        sodipodi:nodetypes="cc"
-       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/sample-tree.png" />
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/same-parent.png" />
     <g
-       id="g8334-5-1"
-       transform="translate(-37.97369,3.3799593)"
-       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/sample-tree.png"
+       id="g8334-38-1"
+       transform="translate(-57.389377,13.083895)"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/s-t.png"
        inkscape:export-xdpi="200"
        inkscape:export-ydpi="200">
       <text
-         id="text870-6-6-5"
+         id="text870-6-61-8"
          y="50.982342"
          x="92.447708"
          style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:1.15;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
@@ -5965,15 +6200,434 @@
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
            y="50.982342"
            x="92.447708"
-           id="tspan868-1-5-9"
-           sodipodi:role="line">d</tspan></text>
+           id="tspan868-1-96-7"
+           sodipodi:role="line">t</tspan></text>
       <rect
          style="fill:none;stroke:#000000;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none"
-         id="rect8169-5-13"
+         id="rect8169-7-4"
          width="7.9047027"
          height="7.9047027"
          x="90.180008"
          y="45.438354" />
     </g>
+    <g
+       id="g8334-7-8-0"
+       transform="translate(-69.423041,31.26306)"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/s-t.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200">
+      <text
+         id="text870-6-2-9-5"
+         y="50.982342"
+         x="92.447708"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:1.15;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+           y="50.982342"
+           x="92.447708"
+           id="tspan868-1-3-7-1"
+           sodipodi:role="line" /></text>
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none"
+         id="rect8169-3-55-6"
+         width="7.9047027"
+         height="7.9047027"
+         x="90.180008"
+         y="45.438354" />
+    </g>
+    <path
+       inkscape:export-ydpi="200"
+       inkscape:export-xdpi="200"
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart-35-3-6)"
+       d="M 22.975315,85.005295 12.548046,95.559039"
+       id="path1032-82-2-4"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/s-t.png" />
+    <g
+       id="g8334-3-4-7"
+       transform="translate(-81.996066,50.38708)"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/s-t.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200">
+      <text
+         id="text870-6-9-9-81"
+         y="50.982342"
+         x="92.447708"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:1.15;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+           y="50.982342"
+           x="92.447708"
+           id="tspan868-1-53-4-4"
+           sodipodi:role="line">s</tspan></text>
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none"
+         id="rect8169-6-47-7"
+         width="7.9047027"
+         height="7.9047027"
+         x="90.180008"
+         y="45.438354" />
+    </g>
+    <path
+       inkscape:export-ydpi="200"
+       inkscape:export-xdpi="200"
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart-9-9-4)"
+       d="M 34.940819,66.426951 24.421155,76.546032"
+       id="path1032-0-95-8"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/s-t.png" />
+    <g
+       id="g8334-38-1-2"
+       transform="translate(-56.888994,60.01037)"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/t-s.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200">
+      <text
+         id="text870-6-61-8-9"
+         y="50.982342"
+         x="92.447708"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:1.15;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+           y="50.982342"
+           x="92.447708"
+           id="tspan868-1-96-7-6"
+           sodipodi:role="line">s</tspan></text>
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none"
+         id="rect8169-7-4-8"
+         width="7.9047027"
+         height="7.9047027"
+         x="90.180008"
+         y="45.438354" />
+    </g>
+    <g
+       id="g8334-7-8-0-7"
+       transform="translate(-68.922658,78.189535)"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/t-s.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200">
+      <text
+         id="text870-6-2-9-5-4"
+         y="50.982342"
+         x="92.447708"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:1.15;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+           y="50.982342"
+           x="92.447708"
+           id="tspan868-1-3-7-1-2"
+           sodipodi:role="line" /></text>
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none"
+         id="rect8169-3-55-6-4"
+         width="7.9047027"
+         height="7.9047027"
+         x="90.180008"
+         y="45.438354" />
+    </g>
+    <path
+       inkscape:export-ydpi="200"
+       inkscape:export-xdpi="200"
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart-35-3-6-8)"
+       d="M 23.475698,131.93177 13.048429,142.48552"
+       id="path1032-82-2-4-8"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/t-s.png" />
+    <g
+       id="g8334-3-4-7-8"
+       transform="translate(-81.495683,97.313555)"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/t-s.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200">
+      <text
+         id="text870-6-9-9-81-1"
+         y="50.982342"
+         x="92.447708"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:1.15;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+           y="50.982342"
+           x="92.447708"
+           id="tspan868-1-53-4-4-1"
+           sodipodi:role="line">t</tspan></text>
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none"
+         id="rect8169-6-47-7-7"
+         width="7.9047027"
+         height="7.9047027"
+         x="90.180008"
+         y="45.438354" />
+    </g>
+    <path
+       inkscape:export-ydpi="200"
+       inkscape:export-xdpi="200"
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart-9-9-4-4)"
+       d="M 35.441202,113.35343 24.921538,123.47251"
+       id="path1032-0-95-8-9"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/t-s.png" />
+    <g
+       id="g8334-38-9"
+       transform="translate(-6.3479193,59.417892)"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/same-root.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200">
+      <text
+         id="text870-6-61-2"
+         y="50.982342"
+         x="92.447708"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:1.15;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+           y="50.982342"
+           x="92.447708"
+           id="tspan868-1-96-4"
+           sodipodi:role="line" /></text>
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none"
+         id="rect8169-7-1"
+         width="7.9047027"
+         height="7.9047027"
+         x="90.180008"
+         y="45.438354" />
+    </g>
+    <g
+       id="g8334-7-8-1"
+       transform="translate(-18.381583,77.597057)"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/same-root.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200">
+      <text
+         id="text870-6-2-9-6"
+         y="50.982342"
+         x="92.447708"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:1.15;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+           y="50.982342"
+           x="92.447708"
+           id="tspan868-1-3-7-9"
+           sodipodi:role="line" /></text>
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none"
+         id="rect8169-3-55-2"
+         width="7.9047027"
+         height="7.9047027"
+         x="90.180008"
+         y="45.438354" />
+    </g>
+    <path
+       inkscape:export-ydpi="200"
+       inkscape:export-xdpi="200"
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart-35-3-0)"
+       d="M 74.016773,131.33929 63.589504,141.89304"
+       id="path1032-82-2-2"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/same-root.png" />
+    <g
+       id="g8334-3-4-1"
+       transform="translate(-30.954608,96.721077)"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/same-root.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200">
+      <text
+         id="text870-6-9-9-1"
+         y="50.982342"
+         x="92.447708"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:1.15;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+           y="50.982342"
+           x="92.447708"
+           id="tspan868-1-53-4-7"
+           sodipodi:role="line">s</tspan></text>
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none"
+         id="rect8169-6-47-1"
+         width="7.9047027"
+         height="7.9047027"
+         x="90.180008"
+         y="45.438354" />
+    </g>
+    <path
+       inkscape:export-ydpi="200"
+       inkscape:export-xdpi="200"
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart-9-9-6)"
+       d="M 85.982277,112.76095 75.462613,122.88003"
+       id="path1032-0-95-9"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/same-root.png" />
+    <path
+       inkscape:export-ydpi="200"
+       inkscape:export-xdpi="200"
+       style="fill:none;stroke:#000000;stroke-width:0.264583px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#Arrow1Lstart-9-2-4-5-2)"
+       d="m 89.577313,112.76277 10.18113,10.11908"
+       id="path1032-0-6-7-8-7"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/same-root.png" />
+    <g
+       id="g8334-5-7-1-9"
+       transform="translate(5.8222777,77.599991)"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/same-root.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200">
+      <text
+         id="text870-6-6-2-0-7"
+         y="50.982342"
+         x="92.447708"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;line-height:1.15;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.264583"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.05556px;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-variant-east-asian:normal;stroke-width:0.264583"
+           y="50.982342"
+           x="92.447708"
+           id="tspan868-1-5-0-4-3"
+           sodipodi:role="line">t</tspan></text>
+      <rect
+         style="fill:none;stroke:#000000;stroke-width:0.3;stroke-miterlimit:4;stroke-dasharray:none"
+         id="rect8169-5-9-6-5"
+         width="7.9047027"
+         height="7.9047027"
+         x="90.180008"
+         y="45.438354" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-size:5.64444px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';letter-spacing:0px;stroke-width:0.264583"
+       x="25.691904"
+       y="27.429789"
+       id="text5203"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/same-parent.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200"><tspan
+         sodipodi:role="line"
+         id="tspan5201"
+         style="stroke-width:0.264583"
+         x="25.691904"
+         y="27.429789">p</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:5.64444px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';letter-spacing:0px;stroke-width:0.264583"
+       x="37.574257"
+       y="9.0437698"
+       id="text5203-9"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/same-parent.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200"><tspan
+         sodipodi:role="line"
+         id="tspan5201-8"
+         style="stroke-width:0.264583"
+         x="37.574257"
+         y="9.0437698">r</tspan></text>
+    <g
+       inkscape:label=""
+       transform="matrix(0.53834366,0,0,0.53834366,-23.179215,-27.192937)"
+       id="g4657"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/same-parent.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200">
+      <g
+         id="g4795">
+        <g
+           style="fill:#000000;fill-opacity:1"
+           id="g9983">
+          <use
+             xlink:href="#symbol4353"
+             x="91.925003"
+             y="81.962997"
+             id="use2419"
+             width="100%"
+             height="100%" />
+        </g>
+        <g
+           style="fill:#000000;fill-opacity:1"
+           id="g3018">
+          <use
+             xlink:href="#symbol4835"
+             x="95.523003"
+             y="83.457001"
+             id="use1991"
+             width="100%"
+             height="100%" />
+        </g>
+      </g>
+    </g>
+    <g
+       inkscape:label=""
+       transform="matrix(0.53692846,0,0,0.53692846,-35.319533,-8.2767299)"
+       id="g7120"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/same-parent.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200">
+      <g
+         id="g6403">
+        <g
+           style="fill:#000000;fill-opacity:1"
+           id="g3429">
+          <use
+             xlink:href="#symbol8604"
+             x="91.925003"
+             y="81.962997"
+             id="use1165"
+             width="100%"
+             height="100%" />
+        </g>
+        <g
+           style="fill:#000000;fill-opacity:1"
+           id="g7574">
+          <use
+             xlink:href="#symbol9483"
+             x="95.523003"
+             y="83.457001"
+             id="use7642"
+             width="100%"
+             height="100%" />
+        </g>
+      </g>
+    </g>
+    <g
+       inkscape:label=""
+       transform="matrix(0.54109772,0,0,0.54109772,-14.675459,-8.4664322)"
+       id="g9613"
+       inkscape:export-filename="/Users/ogiwara/Documents/undergraduate-thesis/same-parent.png"
+       inkscape:export-xdpi="200"
+       inkscape:export-ydpi="200">
+      <g
+         id="g5564">
+        <g
+           style="fill:#000000;fill-opacity:1"
+           id="g4407">
+          <use
+             xlink:href="#symbol6032"
+             x="91.925003"
+             y="81.962997"
+             id="use4927"
+             width="100%"
+             height="100%" />
+        </g>
+        <g
+           style="fill:#000000;fill-opacity:1"
+           id="g2095">
+          <use
+             xlink:href="#symbol4114"
+             x="95.523003"
+             y="83.457001"
+             id="use5972"
+             width="100%"
+             height="100%" />
+        </g>
+      </g>
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-size:5.64444px;line-height:1.25;font-family:'Times New Roman';-inkscape-font-specification:'Times New Roman, Normal';letter-spacing:0px;stroke-width:0.264583"
+       x="47.953667"
+       y="85.159096"
+       id="text13803"><tspan
+         sodipodi:role="line"
+         id="tspan13801"
+         style="stroke-width:0.264583"
+         x="47.953667"
+         y="85.159096" /></text>
   </g>
 </svg>
