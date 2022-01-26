@@ -1,4 +1,4 @@
-This is e-pTeX, Version 3.141592653-p3.9.0-210218-2.6 (utf8.euc) (TeX Live 2021) (preloaded format=platex 2021.6.8)  26 JAN 2022 12:16
+This is e-pTeX, Version 3.141592653-p3.9.0-210218-2.6 (utf8.euc) (TeX Live 2021) (preloaded format=platex 2021.6.8)  26 JAN 2022 21:27
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -684,19 +684,20 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [3]
 File: room-timeline.png Graphic file (type bmp)
 <room-timeline.png>
+ [4]
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 12.0pt on input line 188.
+(Font)              scaled to size 12.0pt on input line 192.
 LaTeX Font Info:    Font shape `JT1/mc/b/n' in size <12> not available
-(Font)              Font shape `JT1/mc/bx/n' tried instead on input line 188.
+(Font)              Font shape `JT1/mc/bx/n' tried instead on input line 192.
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 188.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 192.
 LaTeX Font Info:    Font shape `JY1/mc/b/n' in size <12> not available
-(Font)              Font shape `JY1/mc/bx/n' tried instead on input line 188.
+(Font)              Font shape `JY1/mc/bx/n' tried instead on input line 192.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <12> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 188.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 192.
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 12.0pt on input line 188.
- [4] [5] [6]
+(Font)              scaled to size 12.0pt on input line 192.
+ [5] [6]
 第 2 章
 [7
 
@@ -721,38 +722,38 @@ File: general-timeline.png Graphic file (type bmp)
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 10.0pt on input line 281.
+(Font)              scaled to size 10.0pt on input line 280.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 7.3pt on input line 281.
+(Font)              scaled to size 7.3pt on input line 280.
 LaTeX Font Info:    Font shape `OT1/ntxtlf/b/n' will be
-(Font)              scaled to size 5.5pt on input line 281.
+(Font)              scaled to size 5.5pt on input line 280.
 [9]
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 302.
+(Font)              No change on input line 301.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/it' will be
-(Font)              scaled to size 11.0pt on input line 302.
+(Font)              scaled to size 11.0pt on input line 301.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 302.
+(Font)              No change on input line 301.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 302.
+(Font)              No change on input line 301.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 302.
+(Font)              No change on input line 301.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 309.
+(Font)              No change on input line 308.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 309.
+(Font)              No change on input line 308.
 [10]
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 318.
+(Font)              No change on input line 317.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 326.
+(Font)              No change on input line 325.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 326.
+(Font)              No change on input line 325.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 326.
+(Font)              No change on input line 325.
 File: same-root.png Graphic file (type bmp)
 <same-root.png>
 
@@ -776,47 +777,47 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 [11] [12]
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 372.
+(Font)              No change on input line 371.
  [13]
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 378.
+(Font)              No change on input line 377.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 380.
+(Font)              No change on input line 379.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 380.
+(Font)              No change on input line 379.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 388.
+(Font)              No change on input line 387.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 388.
-Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 391.
+(Font)              No change on input line 387.
+Package hyperref Info: bookmark level for unknown algorithm defaults to 0 on input line 390.
 LaTeX Font Info:    Font shape `JT1/mc/b/n' in size <10> not available
-(Font)              Font shape `JT1/mc/bx/n' tried instead on input line 391.
+(Font)              Font shape `JT1/mc/bx/n' tried instead on input line 390.
 LaTeX Font Info:    Font shape `JT1/mc/bx/n' in size <10> not available
-(Font)              Font shape `JT1/gt/m/n' tried instead on input line 391.
+(Font)              Font shape `JT1/gt/m/n' tried instead on input line 390.
 LaTeX Font Info:    Font shape `JY1/mc/b/n' in size <10> not available
-(Font)              Font shape `JY1/mc/bx/n' tried instead on input line 391.
+(Font)              Font shape `JY1/mc/bx/n' tried instead on input line 390.
 LaTeX Font Info:    Font shape `JY1/mc/bx/n' in size <10> not available
-(Font)              Font shape `JY1/gt/m/n' tried instead on input line 391.
+(Font)              Font shape `JY1/gt/m/n' tried instead on input line 390.
 LaTeX Font Info:    Font shape `T1/ntxtlf/b/n' will be
-(Font)              scaled to size 10.0pt on input line 391.
+(Font)              scaled to size 10.0pt on input line 390.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/n' will be
-(Font)              scaled to size 8.0pt on input line 393.
+(Font)              scaled to size 8.0pt on input line 392.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/sc' undefined
-(Font)              No change on input line 393.
+(Font)              No change on input line 392.
 LaTeX Font Info:    Font shape `T1/ntxtlf/m/sc' will be
-(Font)              scaled to size 10.0pt on input line 393.
+(Font)              scaled to size 10.0pt on input line 392.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/sc' undefined
-(Font)              No change on input line 428.
+(Font)              No change on input line 427.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 470.
+(Font)              No change on input line 467.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 474.
+(Font)              No change on input line 471.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/sc' undefined
-(Font)              No change on input line 481.
+(Font)              No change on input line 478.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 490.
+(Font)              No change on input line 487.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 490.
+(Font)              No change on input line 487.
  [14] [15] [16]
 File: snake-sim.png Graphic file (type bmp)
 <snake-sim.png>
@@ -824,17 +825,17 @@ File: snake.png Graphic file (type bmp)
 <snake.png>
  [17]
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 516.
+(Font)              No change on input line 513.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 516.
+(Font)              No change on input line 513.
 File: need-many-update.png Graphic file (type bmp)
 <need-many-update.png>
  [18] [19]
 第 4 章
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 539.
+(Font)              No change on input line 536.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 539.
+(Font)              No change on input line 536.
 File: gaint-lock.png Graphic file (type bmp)
 <gaint-lock.png>
 File: g-lock-time.png Graphic file (type bmp)
@@ -845,12 +846,12 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 [20
 
 ]
-LaTeX Font Info:    Trying to load font information for TS1+ntxtlf on input line 565.
+LaTeX Font Info:    Trying to load font information for TS1+ntxtlf on input line 562.
  (/usr/local/texlive/2021/texmf-dist/tex/latex/newtx/ts1ntxtlf.fd
 File: ts1ntxtlf.fd 2015/01/18 v1.0 fd file for TS1/ntxtlf
 )
 LaTeX Font Info:    Font shape `TS1/ntxtlf/m/n' will be
-(Font)              scaled to size 11.0pt on input line 565.
+(Font)              scaled to size 11.0pt on input line 562.
 File: high-gran-lock.png Graphic file (type bmp)
 <high-gran-lock.png>
 
@@ -875,165 +876,170 @@ File: two-read-lock-time.png Graphic file (type bmp)
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 634.
+(Font)              No change on input line 629.
 [22]
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 643.
+(Font)              No change on input line 638.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 643.
+(Font)              No change on input line 638.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
+(Font)              No change on input line 638.
+LaTeX Font Info:    Kanji font shape `JY1/mc/m/sc' undefined
 (Font)              No change on input line 643.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/sc' undefined
-(Font)              No change on input line 648.
+(Font)              No change on input line 681.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/sc' undefined
-(Font)              No change on input line 680.
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/sc' undefined
-(Font)              No change on input line 719.
+(Font)              No change on input line 726.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 733.
+(Font)              No change on input line 740.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 733.
+(Font)              No change on input line 740.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 736.
+(Font)              No change on input line 743.
  [23] [24] [25]
 File: lookupLatestTransform.png Graphic file (type bmp)
 <lookupLatestTransform.png>
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 751.
+(Font)              No change on input line 758.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 753.
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 753.
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 753.
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 755.
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/sc' undefined
 (Font)              No change on input line 760.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 791.
+(Font)              No change on input line 760.
+LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
+(Font)              No change on input line 760.
+LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
+(Font)              No change on input line 762.
+LaTeX Font Info:    Kanji font shape `JY1/mc/m/sc' undefined
+(Font)              No change on input line 767.
+LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
+(Font)              No change on input line 804.
 File: coming-same-time.png Graphic file (type bmp)
 <coming-same-time.png>
+ [26] [27]
+LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
+(Font)              No change on input line 815.
+LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
+(Font)              No change on input line 815.
+LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
+(Font)              No change on input line 815.
+LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
+(Font)              No change on input line 815.
+LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
+(Font)              No change on input line 819.
+LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
+(Font)              No change on input line 820.
+LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
+(Font)              No change on input line 820.
+LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
+(Font)              No change on input line 823.
+LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
+(Font)              No change on input line 823.
+LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
+(Font)              No change on input line 823.
+LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
+(Font)              No change on input line 823.
+File: setTransforms1.png Graphic file (type bmp)
+<setTransforms1.png>
+File: setTransforms2.png Graphic file (type bmp)
+<setTransforms2.png>
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[28]
+File: setTransforms3.png Graphic file (type bmp)
+<setTransforms3.png>
+File: deadlock.png Graphic file (type bmp)
+<deadlock.png>
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 802.
+(Font)              No change on input line 871.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 802.
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 802.
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 802.
-[26] [27]
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 806.
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 807.
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 807.
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 812.
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 812.
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 812.
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 812.
-File: setTransforms1.png Graphic file (type bmp)
-<setTransforms1.png>
-File: setTransforms2.png Graphic file (type bmp)
-<setTransforms2.png>
- [28]
-File: setTransforms3.png Graphic file (type bmp)
-<setTransforms3.png>
-File: deadlock.png Graphic file (type bmp)
-<deadlock.png>
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 860.
-LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 860.
- [29]
+(Font)              No change on input line 871.
+[29]
 File: dirty-read.png Graphic file (type bmp)
 <dirty-read.png>
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 876.
+(Font)              No change on input line 887.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 876.
+(Font)              No change on input line 887.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 876.
+(Font)              No change on input line 887.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 880.
+(Font)              No change on input line 891.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 880.
+(Font)              No change on input line 891.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 880.
+(Font)              No change on input line 891.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 880.
+(Font)              No change on input line 891.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 880.
+(Font)              No change on input line 891.
+ [30]
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/sc' undefined
-(Font)              No change on input line 885.
+(Font)              No change on input line 896.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/sc' undefined
-(Font)              No change on input line 919.
- [30] [31] [32]
+(Font)              No change on input line 942.
+ [31] [32] [33]
 第 5 章
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 946.
+(Font)              No change on input line 969.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 946.
+(Font)              No change on input line 969.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 946.
+(Font)              No change on input line 969.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 946.
+(Font)              No change on input line 969.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 949.
+(Font)              No change on input line 972.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 949.
+(Font)              No change on input line 972.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 951.
+(Font)              No change on input line 974.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 952.
+(Font)              No change on input line 975.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 952.
+(Font)              No change on input line 975.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 953.
+(Font)              No change on input line 976.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 953.
+(Font)              No change on input line 976.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 953.
+(Font)              No change on input line 976.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 956.
+(Font)              No change on input line 979.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 956.
+(Font)              No change on input line 979.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 956.
+(Font)              No change on input line 979.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 956.
+(Font)              No change on input line 979.
 
-Overfull \hbox (20.86552pt too wide) in paragraph at lines 963--972
+Overfull \hbox (20.86552pt too wide) in paragraph at lines 986--995
  [][] 
  []
 
-[33
+[34
 
 ]
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 990.
+(Font)              No change on input line 1013.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 990.
+(Font)              No change on input line 1013.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 990.
+(Font)              No change on input line 1013.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 990.
+(Font)              No change on input line 1013.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 997.
+(Font)              No change on input line 1020.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 998.
+(Font)              No change on input line 1021.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 998.
- [34]
+(Font)              No change on input line 1021.
+ [35]
 File: ycsb-c/opposite-read-throughput.pdf Graphic file (type pdf)
 <ycsb-c/opposite-read-throughput.pdf>
 File: ycsb-c/opposite-read-latency.pdf Graphic file (type pdf)
@@ -1047,7 +1053,7 @@ File: ycsb-c/opposite-read-latency2.pdf Graphic file (type pdf)
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[35]
+[36]
 File: ycsb-a/opposite-throughput.pdf Graphic file (type pdf)
 <ycsb-a/opposite-throughput.pdf>
 
@@ -1064,15 +1070,19 @@ File: ycsb-a/opposite-write-throughput.pdf Graphic file (type pdf)
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+[37]
 File: cache-a.png Graphic file (type bmp)
 <cache-a.png>
 
+
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[36]
+LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
+(Font)              No change on input line 1113.
+LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
+(Font)              No change on input line 1113.
 File: ycsb-a/opposite-read-latency.pdf Graphic file (type pdf)
 <ycsb-a/opposite-read-latency.pdf>
-
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -1101,8 +1111,10 @@ File: ycsb-a/opposite-delay.pdf Graphic file (type pdf)
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
+[38]
 File: ycsb-a/opposite-stddiv.pdf Graphic file (type pdf)
 <ycsb-a/opposite-stddiv.pdf>
+
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -1126,10 +1138,8 @@ File: cache-b.png Graphic file (type bmp)
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[37]
 File: ycsb-b/opposite-read-latency.pdf Graphic file (type pdf)
 <ycsb-b/opposite-read-latency.pdf>
-
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -1155,6 +1165,7 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 
 File: ycsb-b/opposite-delay.pdf Graphic file (type pdf)
 <ycsb-b/opposite-delay.pdf>
+[39]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -1163,67 +1174,66 @@ File: ycsb-b/opposite-stddiv.pdf Graphic file (type pdf)
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[38]
 File: latency-frequency.pdf Graphic file (type pdf)
 <latency-frequency.pdf>
 
-Overfull \hbox (56.90549pt too wide) in paragraph at lines 1269--1270
+Overfull \hbox (56.90549pt too wide) in paragraph at lines 1282--1283
  [][] 
  []
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[39] [40] [41] [42] [43] [44] [45] [46] [47] [48] [49] [50] [51] [52] [53] [54] [55] [56] [57] [58] [59] [60]
+[40] [41] [42] [43] [44] [45] [46] [47] [48] [49] [50] [51] [52] [53] [54] [55] [56] [57] [58] [59] [60] [61]
 第 6 章
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 1304.
+(Font)              No change on input line 1317.
 LaTeX Font Info:    Kanji font shape `JY1/mc/m/it' undefined
-(Font)              No change on input line 1304.
-[61
+(Font)              No change on input line 1317.
+[62
 
-] [62] [63
+] [63] [64
 
 ]
-LaTeX Font Info:    Trying to load font information for T1+ntxtt on input line 1347.
+LaTeX Font Info:    Trying to load font information for T1+ntxtt on input line 1360.
  (/usr/local/texlive/2021/texmf-dist/tex/latex/newtx/t1ntxtt.fd
 File: t1ntxtt.fd 2012/04/20 v3.1
 )
 LaTeX Font Info:    Font shape `T1/ntxtt/m/n' will be
-(Font)              scaled to size 11.0pt on input line 1347.
+(Font)              scaled to size 11.0pt on input line 1360.
 
-Underfull \hbox (badness 1997) in paragraph at lines 1373--1374
+Underfull \hbox (badness 1997) in paragraph at lines 1386--1387
 []\T1/ntxtlf/m/n/11 "BufferCore.h", [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1375--1376
+Underfull \hbox (badness 10000) in paragraph at lines 1388--1389
 []\T1/ntxtlf/m/n/11 "BufferCore.cpp lookup-Trans-form", [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
  []
 
-[64
+[65
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 1383--1384
+Underfull \hbox (badness 10000) in paragraph at lines 1396--1397
 []\T1/ntxtlf/m/n/11 "ndt_matching", [][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][][]
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1393--1394
+Underfull \hbox (badness 10000) in paragraph at lines 1406--1407
 []\T1/ntxtlf/m/n/11 "Ogiwara-CostlierRain464/geometry2 github repos-i-tory", [][][][][][][][][][][][][][][]
  []
 
-[65] (./main.aux)
+[66] (./main.aux)
 Package rerunfilecheck Info: File `main.out' has not changed.
 (rerunfilecheck)             Checksum: AF18544CAEF07EF523CAE316CDF79FF5;2228.
  ) 
 Here is how much of TeX's memory you used:
- 13317 strings out of 479466
- 188465 string characters out of 5870549
- 500618 words of memory out of 5000000
- 30736 multiletter control sequences out of 15000+600000
+ 13318 strings out of 479466
+ 188478 string characters out of 5870549
+ 499867 words of memory out of 5000000
+ 30737 multiletter control sequences out of 15000+600000
  498390 words of font info for 167 fonts, out of 8000000 for 9000
  929 hyphenation exceptions out of 8191
- 82i,10n,88p,1193b,460s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 82i,10n,88p,1319b,460s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on main.dvi (72 pages, 312912 bytes).
+Output written on main.dvi (73 pages, 317812 bytes).
