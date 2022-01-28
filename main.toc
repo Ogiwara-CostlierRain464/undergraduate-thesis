@@ -15,22 +15,23 @@
 \contentsline {section}{\numberline {3.4}lookupTransform}{10}{section.3.4}%
 \contentsline {section}{\numberline {3.5}setTransform}{14}{section.3.5}%
 \contentsline {section}{\numberline {3.6}問題点}{14}{section.3.6}%
-\contentsline {chapter}{\numberline {第4章}提案手法}{20}{chapter.4}%
-\contentsline {section}{\numberline {4.1}細粒度ロックの導入}{20}{section.4.1}%
-\contentsline {section}{\numberline {4.2}2PLの導入}{23}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}データの鮮度の確保}{23}{subsection.4.2.1}%
-\contentsline {subsection}{\numberline {4.2.2}データの一貫性の確保}{26}{subsection.4.2.2}%
-\contentsline {subsection}{\numberline {4.2.3}Deadlockの回避}{29}{subsection.4.2.3}%
-\contentsline {chapter}{\numberline {第5章}評価}{34}{chapter.5}%
-\contentsline {section}{\numberline {5.1}実装}{34}{section.5.1}%
-\contentsline {section}{\numberline {5.2}実験環境}{35}{section.5.2}%
-\contentsline {section}{\numberline {5.3}ワークロード}{35}{section.5.3}%
-\contentsline {section}{\numberline {5.4}YCSB-C}{36}{section.5.4}%
-\contentsline {section}{\numberline {5.5}YCSB-A}{37}{section.5.5}%
-\contentsline {section}{\numberline {5.6}YCSB-B}{39}{section.5.6}%
-\contentsline {section}{\numberline {5.7}制御周期}{40}{section.5.7}%
-\contentsline {chapter}{\numberline {第6章}結論}{62}{chapter.6}%
-\contentsline {section}{\numberline {6.1}結論}{62}{section.6.1}%
-\contentsline {section}{\numberline {6.2}今後の課題}{62}{section.6.2}%
-\contentsline {chapter}{\hbox to\@lnumwidth {\hfil }謝辞}{64}{chapter*.9}%
-\contentsline {chapter}{\hbox to\@lnumwidth {\hfil }参考文献}{65}{chapter*.9}%
+\contentsline {chapter}{\numberline {第4章}提案手法}{19}{chapter.4}%
+\contentsline {section}{\numberline {4.1}細粒度ロックの導入}{19}{section.4.1}%
+\contentsline {section}{\numberline {4.2}2PLの導入}{22}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}データの鮮度の確保}{22}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}データの一貫性の確保}{25}{subsection.4.2.2}%
+\contentsline {subsection}{\numberline {4.2.3}Deadlockの回避}{28}{subsection.4.2.3}%
+\contentsline {chapter}{\numberline {第5章}評価}{33}{chapter.5}%
+\contentsline {section}{\numberline {5.1}実装}{33}{section.5.1}%
+\contentsline {section}{\numberline {5.2}実験環境}{34}{section.5.2}%
+\contentsline {section}{\numberline {5.3}ワークロード}{34}{section.5.3}%
+\contentsline {section}{\numberline {5.4}YCSB-C}{35}{section.5.4}%
+\contentsline {section}{\numberline {5.5}YCSB-A}{36}{section.5.5}%
+\contentsline {section}{\numberline {5.6}YCSB-B}{38}{section.5.6}%
+\contentsline {section}{\numberline {5.7}制御周期}{39}{section.5.7}%
+\contentsline {chapter}{\numberline {第6章}議論}{62}{chapter.6}%
+\contentsline {chapter}{\numberline {第7章}結論}{65}{chapter.7}%
+\contentsline {section}{\numberline {7.1}結論}{65}{section.7.1}%
+\contentsline {section}{\numberline {7.2}今後の課題}{65}{section.7.2}%
+\contentsline {chapter}{\hbox to\@lnumwidth {\hfil }謝辞}{66}{chapter*.9}%
+\contentsline {chapter}{\hbox to\@lnumwidth {\hfil }参考文献}{67}{chapter*.9}%

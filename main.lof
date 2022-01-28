@@ -6,30 +6,30 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {3.1}{\ignorespaces ロボット「Aqua」}}{8}{figure.3.1}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces AquaにおけるTFの木構造}}{9}{figure.3.2}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces AquaにおけるTFの木構造、\cite {Aqua}より引用。}}{9}{figure.3.2}%
 \contentsline {figure}{\numberline {3.3}{\ignorespaces TFの木構造}}{10}{figure.3.3}%
 \contentsline {figure}{\numberline {3.4}{\ignorespaces タイムライン}}{10}{figure.3.4}%
 \contentsline {figure}{\numberline {3.5}{\ignorespaces sourceとtargetの祖先がrootのみのパターン}}{12}{figure.3.5}%
 \contentsline {figure}{\numberline {3.6}{\ignorespaces sourceの祖先がtargetのパターン}}{12}{figure.3.6}%
 \contentsline {figure}{\numberline {3.7}{\ignorespaces targetの祖先がsourceのパターン}}{13}{figure.3.7}%
 \contentsline {figure}{\numberline {3.8}{\ignorespaces sourceとtargetの祖先がrootだけではないパターン}}{13}{figure.3.8}%
-\contentsline {figure}{\numberline {3.9}{\ignorespaces シミュレータ上で動作するヘビ型ロボット}}{17}{figure.3.9}%
+\contentsline {figure}{\numberline {3.9}{\ignorespaces シミュレータ上で動作するヘビ型ロボット、\cite {snake-sim}より引用。}}{17}{figure.3.9}%
 \contentsline {figure}{\numberline {3.10}{\ignorespaces ヘビ型ロボットにおける木構造}}{17}{figure.3.10}%
 \contentsline {figure}{\numberline {3.11}{\ignorespaces 不必要な更新が必要な例}}{18}{figure.3.11}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Giant lock}}{20}{figure.4.1}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces ジャイアントロックにおけるスケジュール}}{21}{figure.4.2}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces 細粒度ロッキング}}{22}{figure.4.3}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces 細粒度ロックにおけるスケジュール}}{22}{figure.4.4}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces 二つの読み込みロック}}{23}{figure.4.5}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces 二つの読み込みロックにおけるスケジュール}}{23}{figure.4.6}%
-\contentsline {figure}{\numberline {4.7}{\ignorespaces lookupLatestTransformで取得するデータ}}{26}{figure.4.7}%
-\contentsline {figure}{\numberline {4.8}{\ignorespaces 同時に座標変換が登録されるケース}}{28}{figure.4.8}%
-\contentsline {figure}{\numberline {4.9}{\ignorespaces setTransformsXactとlookupLatestTransformXact 1}}{28}{figure.4.9}%
-\contentsline {figure}{\numberline {4.10}{\ignorespaces setTransformsXactとlookupLatestTransformXact 2}}{29}{figure.4.10}%
-\contentsline {figure}{\numberline {4.11}{\ignorespaces setTransformsXactとlookupLatestTransformXact 3}}{29}{figure.4.11}%
-\contentsline {figure}{\numberline {4.12}{\ignorespaces deadlock}}{30}{figure.4.12}%
-\contentsline {figure}{\numberline {4.13}{\ignorespaces Dirty Read}}{30}{figure.4.13}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Giant lock}}{19}{figure.4.1}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces ジャイアントロックにおけるスケジュール}}{20}{figure.4.2}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces 細粒度ロッキング}}{21}{figure.4.3}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces 細粒度ロックにおけるスケジュール}}{21}{figure.4.4}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces 二つの読み込みロック}}{22}{figure.4.5}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces 二つの読み込みロックにおけるスケジュール}}{22}{figure.4.6}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces lookupLatestTransformで取得するデータ}}{25}{figure.4.7}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces 同時に座標変換が登録されるケース}}{27}{figure.4.8}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces setTransformsXactとlookupLatestTransformXact 1}}{27}{figure.4.9}%
+\contentsline {figure}{\numberline {4.10}{\ignorespaces setTransformsXactとlookupLatestTransformXact 2}}{28}{figure.4.10}%
+\contentsline {figure}{\numberline {4.11}{\ignorespaces setTransformsXactとlookupLatestTransformXact 3}}{28}{figure.4.11}%
+\contentsline {figure}{\numberline {4.12}{\ignorespaces deadlock}}{29}{figure.4.12}%
+\contentsline {figure}{\numberline {4.13}{\ignorespaces Dirty Read}}{29}{figure.4.13}%
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {5.1}{\ignorespaces YCSB-Cにおけるスレッド数と読み込みスループットの関係}}{36}{figure.5.1}%
 \contentsline {figure}{\numberline {5.2}{\ignorespaces YCSB-Cにおけるスレッド数とレイテンシの関係}}{37}{figure.5.2}%
@@ -57,4 +57,7 @@
 \contentsline {figure}{\numberline {5.24}{\ignorespaces YCSB-Bにおけるスレッド数とデータの鮮度の関係}}{59}{figure.5.24}%
 \contentsline {figure}{\numberline {5.25}{\ignorespaces YCSB-Bにおけるスレッド数とデータの同期性の関係}}{60}{figure.5.25}%
 \contentsline {figure}{\numberline {5.26}{\ignorespaces 制御周期とレイテンシ}}{61}{figure.5.26}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces 自動運転におけるエッジクラウドのワークロードの再現}}{63}{figure.6.1}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces 自動運転におけるエッジクラウドのワークロードの再現 2}}{64}{figure.6.2}%
 \addvspace {10\p@ }

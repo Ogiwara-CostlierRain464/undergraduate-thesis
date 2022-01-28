@@ -243,7 +243,7 @@ ROSはロボットソフトウェア用のミドルウェアソフトプラッ�
 \begin{figure}[h] 
 \centering
 \includegraphics[width=8cm]{aqua-tf.jpeg}	
-\caption{AquaにおけるTFの木構造}
+\caption{AquaにおけるTFの木構造、\cite{Aqua}より引用。}
 \label{fig:aqua-tf}
 \end{figure}
 
@@ -333,14 +333,14 @@ TFライブラリの木構造のインターフェイスは~\cite{buffer-core}�
 
 \begin{figure}[h] 
 \centering
-\includegraphics[width=5cm]{s-t}	
+\includegraphics[width=4cm]{s-t}	
 \caption{sourceの祖先がtargetのパターン}
 \label{fig:s-t}
 \end{figure}
 
 \begin{figure}[h] 
 \centering
-\includegraphics[width=5cm]{t-s}	
+\includegraphics[width=4cm]{t-s}	
 \caption{targetの祖先がsourceのパターン}
 \label{fig:t-s}
 \end{figure}
@@ -348,7 +348,7 @@ TFライブラリの木構造のインターフェイスは~\cite{buffer-core}�
 
 \begin{figure}[h] 
 \centering
-\includegraphics[width=5cm]{same-parent}
+\includegraphics[width=4cm]{same-parent}
 \caption{sourceとtargetの祖先がrootだけではないパターン}
 \label{fig:same-parent}
 \end{figure}
@@ -464,9 +464,10 @@ sourceフレームからtargetフレームへの最新の座標変換を計算�
 
 
 \section{setTransform}
+\label{section:chap3-setTransform}
 二つのフレーム間の座標変換情報を更新するには\textit{setTransform}を使う。図\ref{fig:sample-tree}におけるフレームcからフレームbのように直接の親子関係になっているフレーム間の座標変換情報を更新でき、フレームcからフレームaのように直接の親子関係になっていないフレーム間の座標変換情報は更新できない。フレームcからフレームaへの座標変換を更新するにはフレームcからフレームbへの座標変換、及びフレームbからフレームaへの座標変換を更新すればよい。
 
-このインターフェイスを呼び出すことにより新しい座標変換情報がタイムラインに追加される。
+このインターフェイスを呼び出すことにより新しい座標変換情報がタイムラインに追加される。座標変換情報は10秒間保存される。
 
 \textit{setTransform}の擬似コードをアルゴリズム\ref{algo:setTransform}に示す。
 
@@ -488,9 +489,10 @@ sourceフレームからtargetフレームへの最新の座標変換を計算�
 
 \begin{figure}[h] 
 \centering
-\includegraphics[width=10cm]{snake-sim}	
-\caption{シミュレータ上で動作するヘビ型ロボット}
-\label{fig:snake-sim}
+\includegraphics[width=15cm]{snake-sim2}	
+\caption{シミュレータ上で動作するヘビ型ロボット、\cite{snake-sim}より引用。
+}
+\label{fig:snake-sim2}
 \end{figure}
 
 \begin{figure}[h] 
@@ -966,14 +968,14 @@ T1による処理のやり直しの前にT2が$a$を読み込んでしまうと�
 \end{algorithm}
 
 \chapter{評価}
-TFライブラリに細粒度を実装した\textit{lookupTransform}・\textit{setTransform}、及び最新の複数のデータをatomicに取得・更新できる\textit{lookupLatestTransformXact}・\textit{setTransformsXact}を以下の指標で評価した。
+TFライブラリに細粒度を実装した\textit{lookupTransform}・\textit{setTransform}インターフェイス、及び最新の複数のデータをatomicに取得・更新できる\textit{lookupLatestTransformXact}・\textit{setTransformsXact}インターフェイスを、一回のインターフェイスの呼び出しを1タスクとし、以下の指標で評価した。
 
 \begin{enumerate}
-	\item スループット: 一秒間に何回操作(\textit{lookupTransform}及び\textit{setTransforms})ができたか
-	\item レイテンシ: 操作の応答時間
+	\item スループット: 一秒間に何回タスク(\textit{lookupTransform}及び\textit{setTransforms})ができたか
+	\item レイテンシ: タスクの応答時間
 	\item データの鮮度: \textit{lookupTransform}においてアクセスした各座標変換データのタイムスタンプの新しさを表す。アクセスした各座標変換データのタイムスタンプの平均とアクセス時の時刻の差をdelayとし、delayが少ない方がデータの鮮度が高いとみなす。
 	\item データの同期性(\textit{lookupLatestTransformXact}のみ): \textit{lookupLatestTransformXact}においてアクセスした各座標変換データのタイムスタンプの同一性を表す。アクセスした各座標変換データのタイムスタンプの標準偏差を計算し、これが小さい方がデータの同期性があるとみなす。
-	\item abort率(\textit{setTransformsXact}のみ): \textit{setTransformsXact}において、NoWaitによって操作をやり直した回数の比率。(やり直した回数 / \textit{setTransformsXact}を呼び出した回数) で求める。
+	\item abort率(\textit{setTransformsXact}のみ): \textit{setTransformsXact}において、NoWaitによってタスクをやり直した回数の比率。(やり直した回数 / \textit{setTransformsXact}を呼び出した回数) で求める。
 \end{enumerate}
 
 以下、既存手法はold、細粒度ロックを実装した\textit{lookupTransform}・\textit{setTransforms}をsnapshot、2PLを用いて複数のデータをatomicに取得・更新できる\textit{lookupLatestTransformXact}・\textit{setTransformsXact}をlatestと呼称する。
@@ -1017,8 +1019,8 @@ Ubuntuのバージョン & 対応するROSのディストリビューション &
   \item thread: 合計スレッド数
   \item joint: フレームの数
   \item read\_ratio: 合計スレッド数のうち、読み込み専用スレッドの割合
-  \item read\_len: 読み込み専用スレッドにて一回の\textit{lookupTransform}操作で読みこむフレームの数。joint個のフレームのうち一様分布を元にランダム(つまり、Skew=0)にi番目のフレームが選択され、そこからi+read\_len番目のフレームまでの座標変換が計算される。
-  \item write\_len: 書き込み専用スレッドにて一回の操作で座標変換情報を更新するフレームの数。joint個のフレームのうち一様分布を元にランダムにi番目のフレームが選択され、そこからi+read\_len番目のフレームまでの座標変換が更新される。\textit{setTransform}では一度に一個のフレームしか更新できないためwrite\_len回\textit{setTransform}を呼び出す操作を一つの操作とする。
+  \item read\_len: 読み込み専用スレッドにて一回の\textit{lookupTransform}呼び出しで読みこむフレームの数。joint個のフレームのうち一様分布を元にランダム(つまり、Skew=0)にi番目のフレームが選択され、そこからi+read\_len番目のフレームまでの座標変換が計算される。
+  \item write\_len: 書き込み専用スレッドにて一回の操作で座標変換情報を更新するフレームの数。joint個のフレームのうち一様分布を元にランダムにi番目のフレームが選択され、そこからi+read\_len番目のフレームまでの座標変換が更新される。
   \item frequency: 各スレッドにて操作を呼び出す周期。操作の呼び出しが完了したのち、1 / frequency秒待機してから再び操作を呼びだす。0に設定すると待機なしで操作を呼び出し続ける。各スレッドが一定の周期にて操作を呼び出すというのは、ROSにおいて一般的なワークロードである。
 %  \item opposite\_write: 本実験において、読み込み専用スレッドは図\ref{fig:opposite-write}のように下から上に順に読み込みロックをとる。このフラグをtrueにすると、上から下の方向に書き込みロックをとり、読み込みロックとは逆方向にロックをとる。falseにすると下から上の方向に書き込みロックをとる。
 \end{enumerate}
@@ -1030,6 +1032,27 @@ Ubuntuのバージョン & 対応するROSのディストリビューション &
 %\caption{opposite\_writeフラグ}
 %\label{fig:opposite-write}
 %\end{figure}
+
+ここで、\textit{setTransform}ではwrite\_len個のデータの書き込みでは、write\_len回\textit{setTransform}を呼び出すのでwrite\_lenタスク実行できたとみなすが、\textit{setTransformsXact}ではwrite\_len個のデータの書き込みでは、一回の呼び出しでwrite\_len個のデータの書き込みができるので、1タスク実行できたとみなすことに注意する。つまり、\textit{setTransformsXact}の方がスループット・レイテンシの評価において不利になる。各インターフェイスの呼び出しに対応するタスク数を表\ref{table:task-count-method}に示す。
+
+
+\begin{table}[ht]
+\centering
+\begin{tabular}[t]{ | m{5cm} | m{5cm} | m{5cm} |}
+\hline
+インターフェイス & 一度の呼び出しでアクセスするフレーム数 & タスク数の数え方 \\
+\hline
+oldのlookupTransform & read\_len & read\_len個のフレームを読むのが1タスク \\
+oldのsetTransform & 1 & 1個のフレームに書き込むのが1タスク \\
+snapshotのlookupTransform& read\_len & read\_len個のフレームを読むのが1タスク \\
+snapshotのsetTransform& 1 & 1個のフレームに書き込むのが1タスク \\
+latestのlookupLatestTransformXact& read\_len & read\_len個のフレームを読むのが1タスク \\
+latestのsetTransformsXact& write\_len & write\_len個のフレームに書き込むの　が1タスク \\
+\hline
+\end{tabular}
+\caption{各インターフェイスとタスクの数え方}
+\label{table:task-count-method}
+\end{table}%
 
 
 各実験はそれぞれYCSB-A/B/C~\cite{ycsb}ワークロードについて行った。YCSB-A/B/Cはそれぞれ、読み込み操作と書き込み操作の割合が50:50、95:5、100:0のワークロードを指す。ここでは読み込み専用スレッドの数と書き込み専用スレッドの数の比でそれぞれのワークロードを再現するため、read\_ratioをそれぞれ0.5、0.95、1に設定した。
@@ -1063,7 +1086,7 @@ Ubuntuのバージョン & 対応するROSのディストリビューション &
 \label{fig:latency-c2}
 \end{figure}
 
-スループットについては図\ref{fig:throughput-c}のように、oldに比べてsnapshotは最大243倍、latestは最大257倍のスループットとなった。oldと比べ、論理コア数である224倍以上の性能差が出たのは、TFの木構造のC++の実装において各フレームを管理する方法を既存手法から変更したからだと考えられる。
+スループットについては図\ref{fig:throughput-c}のように、oldに比べてsnapshotは最大243倍、latestは最大257倍のスループットとなった。oldと比べ、論理コア数である224倍以上の性能差が出たのは、次に説明するようにTFの木構造のC++の実装において各フレームを管理する方法を既存手法から変更したからだと考えられる。
 
 各フレームはC++の実装においてTimeCacheクラスで表現され、TFの木構造中のフレーム群はstd::vector<std::shared\_ptr<TimeCache>~>で管理される。std::shared\_ptr型は自身を参照しているスコープの数をカウンタで管理するため、複数スレッドからstd::shared\_ptr型のデータにアクセスする際にこのカウンタへの読み込み・書き込みが複数スレッドから行われる。これによりキャッシュミス率が増加し性能劣化につながる。これを避けるため、提案手法の実装ではフレーム群はstd::vector<TimeCache*>で管理される。このような実装の違いが論理コア数である224倍以上の性能差につながったと考えられる。
 
@@ -1111,6 +1134,9 @@ YCSB-Aではスループットについては図\ref{fig:a-throughput}のよう�
 
 
 このようになる原因を調べるため、スレッド数とキャッシュミス率の関係について調べ、図\ref{fig:a-cache}に示した。ここからわかるように、latestではキャッシュミス率がほとんど変化しないのに対し、snapshotではキャッシュミス率が上がっていることがわかる。§\ref{section:intro-high-gran-lock}で説明したようにsnapshotでは\textit{lookupTransform}にて同じ要素に対して二回の読み込みがある。この一回目の読み込みと二回目の読み込みの間にて\textit{setTransform}による同じ要素への書き込みが発生するとキャッシュが汚染され、二回目の読み込み時にキャッシュミスとなる。スレッド数の増加とともにこの現象が増えることがキャッシュミス率の増加に繋がり、読み込みスループットと書き込みスループットの性能低下につながったと考えられる。
+
+§\ref{section:chap3-setTransform}にて説明したように、各フレームに登録された座標変換データは10秒間保存される。これはC++のstd::dequeという両端キューで実装されており、snapshotの\textit{lookupTransform}では二回目の各フレームへのアクセスにおいて、この両端キュー内の要素を二部探索することにより、該当する時刻の座標変換データを取得する~\cite{timecache-search}。このキュー内の要素へのアクセスも読み込みスループットと書き込みスループットの性能低下につながったと考えられる。latestの\textit{lookupLatestTransformXact}では両端キューの先頭にのみ
+アクセスするので、キュー内の要素へのアクセスは発生しない。
 
 \begin{figure}[h] 
 \centering
@@ -1308,6 +1334,54 @@ YCSB-Aではスループットについては図\ref{fig:a-throughput}のよう�
 %でもその情報は一つのマップには集約されていない。別々のプロセスが別々のデータ型でpublishし、内部の情報はopenではない。
 %例えば障害物はmove\_baseによるcostmap、信号はカメラによるYOLO、人や車の検知はLiDARのPointNetのようにデータが分散しており、今は一つにまとまってない！
 
+\chapter{議論}
+%TODO ここにアプリケーションをかく
+本研究のアプリケーションとして次の三つが挙げられる。
+\begin{itemize}
+	\item 関節数が多く、高精度な制御が求められるヘビ型ロボット
+	\item 自動運転におけるエッジクラウド
+	\item 大量のドローンの群の制御
+\end{itemize}
+
+自動運転におけるエッジクラウドでは、一部のローカルな区域における自動運転車両や発生した障害物の位置関係を管理することによって、渋滞の緩和や障害物の回避を行う事ができる。リアルタイム性が求められ、大量の自動運転車両や障害物の位置関係をTFライブラリで管理するには、本研究で提案した手法を用いる事が有用である。
+
+\cite{nexco}には各都道府県における各自動車道(高速自動車国道、一般国道の自動車専用道路、一般国道など)の12時間あたりの交通量が記載されており、どの道路でも12時間あたりの交通量は高々80’000である。\cite{load}には全国の高速道路の一日の交通量が記載されており、東北自動車道が277,584と最大である。
+これらのデータを元に、高速道路の入り口(IC)から出口(別のIC)までのローカルな区域の情報を一つのエッジサーバーが管理すると想定すると、次のようなワークロードが想定できる。
+
+\begin{itemize}
+	\item エッジクラウドにて管理する自動車の台数は高々1000台。
+	\item 各自動車は、自分の周辺の自動車や障害物、標識など、高々20の情報を書き込む。
+	\item 各自動車は、渋滞回避や障害物などの回避のために高々100の周辺の物体の情報を読み込む。
+\end{itemize}
+
+本研究の評価において行った実験と同じように、joint=1000,、read\_ratio=0.5、read\_len=100、write\_len=20、frequency=120に設定してこのワークロードを再現すると、既存手法、提案手法の読み込みレイテンシは図\ref{fig:car-read-latency}、\ref{fig:car-read-latency2}のようになった。スレッド数が224の状況において既存手法では読み込みレイテンシは16ms程度となった。frequency=120で設定してあるので読み込みレイテンシは約8.3ms以内にする必要があるが、既存手法ではこのデッドラインに間に合っていないことがわかる。これに対し、提案手法の読み込みレイテンシは高々0.24ms程度となり、デッドラインに間に合っていることがわかる。
+
+\begin{figure}[h] 
+\centering
+\includegraphics[width=15cm]{car}
+\caption{自動運転におけるエッジクラウドのワークロードの再現}
+\label{fig:car-read-latency}
+\end{figure}
+
+
+\begin{figure}[h] 
+\centering
+\includegraphics[width=15cm]{car2}
+\caption{自動運転におけるエッジクラウドのワークロードの再現 2}
+\label{fig:car-read-latency2}
+\end{figure}
+
+
+自動運転におけるエッジクラウドにてTFライブラリを使用する際には、以下のような問題にも対処する必要がある。
+\begin{itemize}     
+	\item 区域内への自動運転車両の出入りや障害物の登録・削除による大量のフレームの追加・削除
+	\item TFライブラリでは過去一定期間の座標変換情報を管理しているため、大量のフレームの追加・削除が発生する場合には適切なGCも必要になる
+	\item エッジクラウドの電源がロストした場合にすぐに復旧し、いち早くサービスを提供できるようにCrash Recoveryを実装する必要もある
+\end{itemize}
+
+こういったアプリケーションにおいては、もはやデータベースの技術を応用することは避けられないだろう。
+
+
 \chapter{結論}
 \section{結論}
 既存のTFライブラリはジャイアンロックにより、アクセスが完全に逐次化されアクセスするスレッドが増えるに従ってパフォーマンスが低下する問題があった。マルチコア化が進む現在のハードウェアの性能を活かせるよう、本研究ではTFライブラリにデータベースの並行性制御法における細粒度ロッキング法を用いてこの問題を解決した。その結果、既存手法と比べて最大243倍のスループット、最大172倍高速なレイテンシとなり、細粒度ロッキング法を導入した提案手法はマルチコアの性能を活かせ、優れた応答性能をもつ事が示せた。
@@ -1320,17 +1394,8 @@ YCSB-Aではスループットについては図\ref{fig:a-throughput}のよう�
 
 本研究ではTFライブラリの木構造は変化しないと仮定したが、実際には時間とともにフレームが追加・削除され、またフレーム間の親子関係が変わることがある。データベースの並行性制御法においてはこのような要素の追加・削除はIDMモデルで扱われ、高度な並行性制御にはphantom anomalyを避ける必要がある。要素の追加・削除についても扱うことが今後の課題である。
 
+% ここで、既存の実装の問題について指摘する
 % アプリケーションはどこに書こうか
-本研究のアプリケーションは図\ref{fig:snake}で取り上げたようなヘビ型ロボット以外にも、自動運転車におけるエッジクラウドでの応用が挙げられる。自動運転車におけるエッジクラウドでは、一部のローカルな区域における自動運転車両や発生した障害物の位置関係を管理することによって、渋滞の緩和や障害物の回避を行う事ができる。リアルタイム性が求められ、大量の自動運転車両や障害物の位置関係をTFライブラリで管理するには、本研究で提案した手法を用いる事が有用である。
-また、以下のような問題にも対処する必要がある。
-\begin{itemize}     
-	\item 区域内への自動運転車両の出入りや障害物の登録・削除によって大量のフレームの追加・削除が発生するため、上述したようなphantom anomalyの回避が必要になる
-	\item TFライブラリでは過去一定期間の座標変換情報を管理しているため、大量のフレームの追加・削除が発生する場合には適切なGCも必要になる
-	\item エッジクラウドの電源がロストした場合にすぐに復旧し、いち早くサービスを提供できるようにCrash Recoveryを実装する必要もある
-\end{itemize}
-
-こういったアプリケーションにおいては、もはやデータベースの技術を応用することは避けられないだろう。
-
 本研究では並行性制御の具体的なアルゴリズムとしては2PLを実装したが、Siloを実装した場合の性能比較も行うことが今後の課題である。
 
 また、よりロボット向けのワークロードに対応するため、TFに対する操作に優先順位をつけ、優先順位が高い操作をなるべく早く終わらせるために優先順位キューを実装することも検討が必要である。
@@ -1403,6 +1468,12 @@ databases. In SOSP, pages 18–32. ACM, 2013
 \bibitem{ros2-geometry2} "ros2/geometry2 github repository", \url{https://github.com/ros2/geometry2}
 
 \bibitem{ogiwara-geometry2} "Ogiwara-CostlierRain464/geometry2 github repository", \url{https://github.com/Ogiwara-CostlierRain464/geometry2}
+
+\bibitem{timecache-search} "cache.cpp", \url{https://github.com/Ogiwara-CostlierRain464/geometry2/blob/68651682b124cb9d3403cf729e8f9e0c1c1319f5/tf2/src/cache.cpp#L166}
+
+\bibitem{nexco} "NEXCO東日本 高速道路の通行台数と料金収入（令和2年度", \url{https://www.e-nexco.co.jp/activity/word_data/data/r02.html}
+
+\bibitem{load} "平成27年度　全国道路・街路交通情勢調査 一般交通量調査　集計表 交通量整理表（都道府県別道路種別別", \url{https://www.mlit.go.jp/road/census/h27/data/pdf/syuukei04.pdf}
 
 \bibitem{Teseo} Dean De Leo and Peter Boncz. Teseo and the Analysis of Structural Dynamic Graphs. Proc. VLDB Endowment 13(13): 3531-3544 (2020).
 
